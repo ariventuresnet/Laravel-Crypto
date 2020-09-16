@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exchange;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ExchangeController extends Controller
@@ -13,7 +16,7 @@ class ExchangeController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +37,50 @@ class ExchangeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate Data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'logo' => 'required',
+            'url' => 'required',
+            'currencies' => 'required',
+            'countries' => 'required',
+            'payments' => 'required',
+            
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        //store img
+        if ($request->hasFile('logo')) {
+
+            $logo= $request->file('logo');
+            $logo_name = uniqid('logo_',true).Str::random(10). '.' . $logo->getClientOriginalExtension();
+            $logo->storeAs('images', $logo_name );
+        }
+
+        // store data into database
+        Exchange::create([
+            "name"=> $request->name,
+            "logo"=> $logo_name,
+            "url" => $request->url,
+            "currencies"=> serialize($request->currencies),
+            "countries"=> serialize($request->countries),
+            "payments"=> serialize($request->payments),
+            "description" => $request->description,
+            "pros"=> $request->pros,
+            "cons"=> $request->cons,
+            "ease"=> $request->ease,
+            "privacy"=> $request->privacy,
+            "speed"=> $request->speed,
+            "fee"=> $request->fee,
+            "reputation"=> $request->reputation,
+            "limit"=> $request->limit,
+        ]);
+
+        //show message
+        return redirect()->back();
     }
 
     /**

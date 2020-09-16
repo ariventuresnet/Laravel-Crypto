@@ -18,9 +18,9 @@ class CreateExchangesTable extends Migration
             $table->string('Name');
             $table->string('logo');
             $table->string('url');
-            $table->string('currency');
-            $table->string('country');
-            $table->string('payment');
+            $table->string('currencies');
+            $table->string('countries');
+            $table->string('payments');
             $table->string('description');
             $table->string('pros');
             $table->string('cons');
