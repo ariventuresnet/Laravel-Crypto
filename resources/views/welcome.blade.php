@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{asset('images/home-title-img.jpg')}}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{asset('images/title-img.png')}}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- fontawesome Icon -->
+    <script src="https://kit.fontawesome.com/9d28b7cdc0.js" crossorigin="anonymous"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/home-style.css')}}">
-    <title>CryptoCutter</title>
+    {{-- test --}}
+
+    <title>Cryptocutter</title>
 </head>
 <body>
-  
     <!-- header -->
     <header>
         <!-- navbar -->
-        <nav class="navbar navbar-expand-md fixed-top nav-menu">
-            <a href="#" class="navbar-brand text-light text-uppercase"><span class="h2 font-weight-bold">CryptoCutter</span></a>
+        <nav class="navbar navbar-expand-md nav-menu fixed-top">
+            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="150"></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
-                <div class="bg-light line1"></div>
-                <div class="bg-light line2"></div>
-                <div class="bg-light line3"></div>
+                <div class="bg-dark line1"></div>
+                <div class="bg-dark line2"></div>
+                <div class="bg-dark line3"></div>
             </button>
             <div class="collapse navbar-collapse justify-content-end text-uppercase font-weight-bold" id="myNavbar">
                 <ul class="navbar-nav">
@@ -44,45 +53,50 @@
             </div>
         </nav>
         <!-- end of navbar -->
-        
-        <div class="container-fluid wrapper">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Exchanges</a >
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Loans</a >
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Cards</a >
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Wallets</a >
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Laws</a >
-                    <a href="#" class="btn btn-home text-center mr-2 mb-2 px-5 py-4">Banks</a >
+
+        <div class="container-fluid py-4 wrapper">
+            <div class="row px-3">
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Laws</span> <span class="float-right"><i class="fas fa-university"></i></i></span></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="btn btn-home mb-2"> <span class="float-left">Banks</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
                 </div>
             </div>
         </div>
 
-        <!-- banner -->
-        <div class="text-light text-md-right text-center banner">
-            <h1 class="display-4 banner-heading">Welcome to Cryptocutter</h1>
-            <p class="lead banner-par">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        </div>
-        <!-- end of banner -->
-
-        <div class="container search-wrapper">
+        <div class="container-fluid crypto-search">
             <div class="row">
                 <div class="col-md-12">
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-sm-3">
-                                <label for="bue"><span class="text-white font-weight-bold">BUY</span></label>
-                                <input type="text" class="form-control py-3" id="bue" placeholder="Search Crypto">
+                        <div class="form-row d-flex justify-content-center">
+                            <div class="search_box mr-2">
+                                <label><span class="text-dark font-weight-bold">BUY</span></label>
+                                <input type="text" placeholder="Search Crypto">
                             </div>
-                            <div class="form-group col-sm-3">
-                                <label for="in"><span class="text-white font-weight-bold">IN</span></label>
-                                <input type="text" class="form-control py-3" id="in" placeholder="Search Country">
+                            <div class="search_box mr-2">
+                                <label><span class="text-dark font-weight-bold">IN</span></label>
+                                <input type="text" placeholder="Search Country">
                             </div>
-                            <div class="form-group col-sm-3">
-                                <label for="with"><span class="text-white font-weight-bold">WITH</span></label>
-                                <input type="text" class="form-control py-3" id="with" placeholder="Search Payment Method">
+                            <div class="search_box">
+                                <label><span class="text-dark font-weight-bold">WITH</span></label>
+                                <input type="text" placeholder="Search Payment Method">
+                                {{-- <i class="fas fa-search"></i> --}}
+                                <button type="button" class="btn"><i class="fas fa-search"></i></button>
                             </div>
-                            <div><button type="button" class="btn btn-light active search-button"><i class="fas fa-search text-danger"></i></button></div>
+                            {{-- <div><button type="button" class="btn btn-light active search-button"><i class="fas fa-search text-danger"></i></button></div> --}}
                         </div>
                     </form>
                 </div>
@@ -92,61 +106,53 @@
     </header>
     <!-- end of header -->
 
-    <section class="p-5 mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Ease Of Use</th>
-                            <th scope="col">Privacy</th>
-                            <th scope="col">Speed</th>
-                            <th scope="col">Fees</th>
-                            <th scope="col">Reputation</th>
-                            <th scope="col">Limits</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><a href="" class="text-dark"> Mark</a></td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <td><a href="" class="text-dark"> Jacob</a></td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <td><a href="" class="text-dark"> Larry the Bird</a></td>
-                            <td>Thornton</td>
-                            <td>@twitter</td>
-                            <td>Larry the Bird</td>
-                            <td>Thornton</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                </div>
+    <section class="container-fluid mt-5">
+        <div class="row px-5 py-3">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Ease Of Use</th>
+                        <th scope="col">Privacy</th>
+                        <th scope="col">Speed</th>
+                        <th scope="col">Fees</th>
+                        <th scope="col">Reputation</th>
+                        <th scope="col">Limits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($exchanges as $exchange)
+                            <tr>
+                                <td><a href="" class="text-dark font-weight-bold">{{$exchange->Name}}</a></td>
+                                <td>{{$exchange->ease}}</td>
+                                <td>{{$exchange->privacy}}</td>
+                                <td>{{$exchange->speed}}</td>
+                                <td>{{$exchange->fee}}</td>
+                                <td>{{$exchange->reputation}}</td>
+                                <td>{{$exchange->limit}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
+    
 
-    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="{{asset('js/script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- Custom Script -->
+    {{-- <script src="{{asset('js/script.js')}}"></script> --}}
+    <script>
+        $(document).ready(function(){
+            $('.nav-button').click(function(){
+                $('.nav-button').toggleClass('change');
+            });
+
+        });
+    </script>
+
 </body>
 </html>
