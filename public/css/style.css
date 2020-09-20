@@ -39,6 +39,16 @@ body {
     box-shadow: 2px 5px 20px #111;
     transform: translateY(-1px);
 }
+.btn-exchange-info{
+    transition: all .3s;
+}
+
+.btn-exchange-info:hover{
+    background-color: #f44336;
+    border-radius: 7px;
+    box-shadow: 2px 5px 20px #111;
+    transform: translateY(-1px);
+}
 
 .btn-exchange {
     padding         : 16px 48 px;

@@ -1,5 +1,11 @@
 @extends('admin.layout');
 
+@section('custom-stylesheet')
+<link rel="stylesheet" href="{{asset('docsupport/style.css')}}">
+<link rel="stylesheet" href="{{asset('docsupport/prism.css')}}">
+<link rel="stylesheet" href="{{asset('css/chosen.css')}}">
+@endsection
+
 @section('main-content')
 
 <section>
@@ -35,15 +41,26 @@
                             <input type="text" name="url" class="form-control" id="url">
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple name="currencies[]" class="form-control" id="multiple-currencies">
                               <option value="btc">Bitcoin</option>
                               <option value="eth">Ethereum</option>
                               <option value="ustd">Tether</option>
                             </select>
-                        </div>
+                        </div> --}}
+
                         <div class="form-group">
+                            <label for="multiple-currencies">Currencies</label>
+                            <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
+                              <option value="btc">Bitcoin</option>
+                              <option value="eth">Ethereum</option>
+                              <option value="ustd">Tether</option>
+                            </select>
+                        </div>
+
+
+                        {{-- <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="form-control" id="multiple-countries">
                               <option value="china">China</option>
@@ -56,10 +73,36 @@
                               <option value="japan">Japan</option>
                               <option value="bangladesh">Bangladesh</option>
                             </select>
-                        </div>
+                        </div> --}}
+
                         <div class="form-group">
+                            <label for="multiple-countries">Countries</label>
+                            <select multiple name="countries[]" class="chosen-countries" ata-placeholder="Select Countries...">
+                              <option value="china">China</option>
+                              <option value="india">India</option>
+                              <option value="usa">USA</option>
+                              <option value="indonesia">Indonesia</option>
+                              <option value="brazil">Brazil</option>
+                              <option value="nigeria">Nigeria</option>
+                              <option value="russia">Russia</option>
+                              <option value="japan">Japan</option>
+                              <option value="bangladesh">Bangladesh</option>
+                            </select>
+                        </div>
+                        {{-- <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
                             <select multiple name="payments[]" class="form-control" id="multiple-payment">
+                              <option value="cash">Cash</option>
+                              <option value="bank transfer">Bank transfer</option>
+                              <option value="credit card">Credit card</option>
+                              <option value="debit card">Debit card</option>
+                              <option value="ach">ACH transfer</option>
+                            </select>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <label for="multiple-payment">Payment Method</label>
+                            <select multiple name="payments[]" class="chosen-payments" ata-placeholder="Select Payment method...">
                               <option value="cash">Cash</option>
                               <option value="bank transfer">Bank transfer</option>
                               <option value="credit card">Credit card</option>
@@ -116,33 +159,63 @@
     
 @endsection
 
-@section('script')
+@section('custom-script')
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
+    <script src="{{asset('docsupport/prism.js')}}"></script>
+    <script src="{{asset('docsupport/init.js')}}"></script>
 
     <script>
         // $("#description").focus(function(){});
-        if($('#description').length ){
-            ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-        }
-        if($('#pros').length ){
-            ClassicEditor
-            .create( document.querySelector( '#pros' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-        }
-        if($('#cons').length ){
-            ClassicEditor
-            .create( document.querySelector( '#cons' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-        }
+        
+        $(document).ready(function(){
+
+            if($('#description').length ){
+                ClassicEditor
+                .create( document.querySelector( '#description' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            }
+            if($('#pros').length ){
+                ClassicEditor
+                .create( document.querySelector( '#pros' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            }
+            if($('#cons').length ){
+                ClassicEditor
+                .create( document.querySelector( '#cons' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            }
+
+
+            // multiple select boxes plugin
+            $(".chosen-countries").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+            $(".chosen-countries").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+            $(".chosen-payments").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+
+
+
+        })
+
     </script>
+
     
 @endsection

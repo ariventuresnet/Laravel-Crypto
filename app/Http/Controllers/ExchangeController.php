@@ -51,7 +51,7 @@ class ExchangeController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        /*
+        $logo_name='';
         //store img
         if ($request->hasFile('logo')) {
 
@@ -59,11 +59,11 @@ class ExchangeController extends Controller
             $logo_name = uniqid('logo_',true).Str::random(10). '.' . $logo->getClientOriginalExtension();
             $logo->storeAs('images', $logo_name );
         }
-        */
+        
         // store data into database
         Exchange::create([
             "name"=> $request->name,
-            "logo"=> $request->file('logo')->getClientOriginalName(),
+            "logo"=> $logo_name,
             "url" => $request->url,
             "currencies"=> serialize($request->currencies),
             "countries"=> serialize($request->countries),
