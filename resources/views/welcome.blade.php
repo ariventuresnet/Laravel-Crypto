@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{asset('css/home-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
     {{-- test --}}
 
     <title>Cryptocutter</title>
