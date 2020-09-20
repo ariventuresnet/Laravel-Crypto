@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="{{asset('images/title-img.png')}}">
+    <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -25,8 +25,8 @@
     <!-- header -->
     <header>
         <!-- navbar -->
-        <nav class="navbar navbar-expand-md nav-menu fixed-top">
-            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="150"></a>
+        <nav class="navbar navbar-expand-md nav-menu fixed-top px-md-5">
+            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="220"></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>
@@ -54,8 +54,8 @@
         </nav>
         <!-- end of navbar -->
 
-        <div class="container-fluid py-4 wrapper">
-            <div class="row px-3">
+        <div class="container-fluid px-md-5 py-4 wrapper">
+            <div class="row px-2">
                 <div class="col-md-2">
                     <a href="#" class="btn btn-home mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="container-fluid crypto-search">
+        <div class="container-fluid crypto-search px-md-5">
             <div class="row">
                 <div class="col-md-12">
                     <form>
@@ -107,10 +107,13 @@
     <!-- end of header -->
 
     <section class="container-fluid mt-5">
-        <div class="row px-5 py-3">
+        <div class="row px-5">
             <div class="col">
+                <div class="separator">
+                    Top Cryptocurrencies by Market Capitalization
+                </div>
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="">
                       <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Ease Of Use</th>
