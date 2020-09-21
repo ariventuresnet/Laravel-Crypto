@@ -49,7 +49,7 @@
                                 <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange <i class="fas fa-sort-down fa-2x"></i></a>
                                 <ul id="exchanges" class="collapse">
                                     <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.create')}}">Add Exchange</a></li>
-                                    <li><a class="btn btn-exchange-info text-white mb-2" href="#">View Exchange</a></li>
+                                    <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.index')}}">View Exchange</a></li>
                                 </ul>
                             </li> 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-shopping-cart fa-lg text-light mr-3"></i>Sales</a></li> 

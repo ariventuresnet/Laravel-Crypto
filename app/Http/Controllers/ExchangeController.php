@@ -16,7 +16,8 @@ class ExchangeController extends Controller
      */
     public function index()
     {
-        
+        $exchanges = Exchange::all();
+        return view('exchange.index')->with('exchanges', $exchanges);
     }
 
     /**
@@ -79,7 +80,7 @@ class ExchangeController extends Controller
             "limit"=> $request->limit,
         ]);
 
-        
+
         //Redirect and show flash message
         return redirect()->back()->with(session()->flash('alert-success', 'Exchange successfully added'));
     }
@@ -90,9 +91,12 @@ class ExchangeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Exchange $exchange)
     {
-        //
+        return view('exchange.show')->with('exchange',$exchange);
+        // $currencies = unserialize($exchange->currencies);
+        // return $currencies;
+
     }
 
     /**

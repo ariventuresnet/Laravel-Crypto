@@ -7,11 +7,13 @@
 @section('main-content')
 
 <section>
-    <div class="row pt-md-5 mt-md-3">
+    <div class="row pt-md-5">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row">
-
-                <div class="col-xl-8 col-lg-7 col-md-6 px-5 py-3">
+                <div class="col-xl-8 col-lg-7 col-md-6 px-5">
+                    <div class="h2 text-center font-weight-bold mb-3">
+                        Add Exchange
+                    </div>
                     <!--Show Validation Error -->
                     @if ($errors->any())
                         <div class="alert alert-danger">

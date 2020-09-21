@@ -15,21 +15,21 @@ class CreateExchangesTable extends Migration
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
+            $table->string('name');
             $table->string('logo')->nullable();
             $table->string('url');
             $table->string('currencies');
             $table->string('countries');
             $table->string('payments');
-            $table->string('description');
-            $table->string('pros');
-            $table->string('cons');
-            $table->string('ease');
-            $table->string('privacy');
+            $table->text('description');
+            $table->text('pros');
+            $table->text('cons');
+            $table->text('ease');
+            $table->text('privacy');
             $table->string('speed');
             $table->string('fee');
-            $table->string('reputation');
-            $table->string('limit');
+            $table->text('reputation');
+            $table->text('limit');
             $table->timestamps();
         });
     }

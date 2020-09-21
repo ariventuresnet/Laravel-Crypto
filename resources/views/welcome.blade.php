@@ -97,7 +97,7 @@
 
     <section class="container-fluid mt-5">
         <div class="row px-5">
-            <div class="col">
+            <div class="col-md-12">
                 <div class="separator">
                     Top Exchanges
                 </div>
@@ -116,7 +116,7 @@
                     <tbody>
                         @foreach ($exchanges as $exchange)
                             <tr>
-                                <td><a href="" class="text-dark font-weight-bold">{{$exchange->Name}}</a></td>
+                                <td><a href="" class="text-dark font-weight-bold">{{$exchange->name}}</a></td>
                                 <td>{{$exchange->ease}}</td>
                                 <td>{{$exchange->privacy}}</td>
                                 <td>{{$exchange->speed}}</td>

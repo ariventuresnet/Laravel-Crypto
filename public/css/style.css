@@ -137,3 +137,25 @@ body {
     border-left: 3px solid #f66436;
 }
 /* end of task list */
+
+/* Exchange List style */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  .separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+  .separator::before {
+    margin-right: .25em;
+  }
+  .separator::after {
+    margin-left: .25em;
+  }
+  /* Exchange List style End */
