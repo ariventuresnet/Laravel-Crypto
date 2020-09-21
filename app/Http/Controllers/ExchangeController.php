@@ -79,8 +79,9 @@ class ExchangeController extends Controller
             "limit"=> $request->limit,
         ]);
 
-        //show message
-        return redirect()->back();
+        
+        //Redirect and show flash message
+        return redirect()->back()->with(session()->flash('alert-success', 'Exchange successfully added'));
     }
 
     /**

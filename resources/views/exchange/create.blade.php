@@ -12,7 +12,9 @@
     <div class="row pt-md-5 mt-md-3">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row">
+
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5 py-3">
+                    <!--Show Validation Error -->
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -22,6 +24,15 @@
                             </ul>
                         </div>
                     @endif
+                    <!--Show flash Message -->
+                    <div class="flash-message">
+                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @if(Session::has('alert-' . $msg))
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                            @endif
+                        @endforeach
+                    </div>
+
                     <form action="{{route('exchanges.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -59,25 +70,9 @@
                             </select>
                         </div>
 
-
-                        {{-- <div class="form-group">
-                            <label for="multiple-countries">Countries</label>
-                            <select multiple name="countries[]" class="form-control" id="multiple-countries">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
-                            </select>
-                        </div> --}}
-
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
-                            <select multiple name="countries[]" class="chosen-countries" ata-placeholder="Select Countries...">
+                            <select multiple name="countries[]" class="chosen-countries" data-placeholder="Select Countries...">
                               <option value="china">China</option>
                               <option value="india">India</option>
                               <option value="usa">USA</option>
@@ -89,20 +84,11 @@
                               <option value="bangladesh">Bangladesh</option>
                             </select>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="multiple-payment">Payment Method</label>
-                            <select multiple name="payments[]" class="form-control" id="multiple-payment">
-                              <option value="cash">Cash</option>
-                              <option value="bank transfer">Bank transfer</option>
-                              <option value="credit card">Credit card</option>
-                              <option value="debit card">Debit card</option>
-                              <option value="ach">ACH transfer</option>
-                            </select>
-                        </div> --}}
+
 
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
-                            <select multiple name="payments[]" class="chosen-payments" ata-placeholder="Select Payment method...">
+                            <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
                               <option value="cash">Cash</option>
                               <option value="bank transfer">Bank transfer</option>
                               <option value="credit card">Credit card</option>
@@ -213,7 +199,7 @@
 
 
 
-        })
+        });
 
     </script>
 
