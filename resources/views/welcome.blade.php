@@ -35,20 +35,9 @@
             <div class="collapse navbar-collapse justify-content-end text-uppercase font-weight-bold" id="myNavbar">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item nav-active">Home</a>
+                    <a href="#" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">Mission</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">Collection</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">Contact</a>
-                </li>
+                
                 </ul>
             </div>
         </nav>
@@ -110,7 +99,7 @@
         <div class="row px-5">
             <div class="col">
                 <div class="separator">
-                    Top Cryptocurrencies by Market Capitalization
+                    Top Exchanges
                 </div>
                 <table class="table table-hover">
                     <thead class="">

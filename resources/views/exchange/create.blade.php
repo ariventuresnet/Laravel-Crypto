@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="name">Exchange Name</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
@@ -47,7 +47,7 @@
                         
                         <div class="form-group">
                             <label for="url">Exchange URL</label>
-                            <input type="text" name="url" class="form-control" id="url">
+                            <input type="text" name="url" class="form-control" id="url" value="{{old('url')}}">
                         </div>
 
                         {{-- <div class="form-group">
@@ -97,39 +97,39 @@
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control" cols="30" rows="5"></textarea>
+                        <textarea name="description" id="description" class="form-control" cols="30" rows="3">{!! old('description') !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="pros">Pros</label>
-                            <textarea name="pros" id="pros" class="form-control" cols="30" rows="5"></textarea>
+                            <textarea name="pros" id="pros" class="form-control" cols="30" rows="3">{!! old('pros') !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="cons">Cons</label>
-                            <textarea name="cons" id="cons" class="form-control" cols="30" rows="5"></textarea>
+                            <textarea name="cons" id="cons" class="form-control" cols="30" rows="3">{!! old('cons') !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="ease">Ease Of Use</label>
-                            <input type="text" name="ease" class="form-control" id="ease">
+                            <input type="text" name="ease" class="form-control" id="ease" value="{{old('ease')}}">
                         </div>
                         <div class="form-group">
                             <label for="privacy">Privacy</label>
-                            <input type="text" name="privacy" class="form-control" id="privacy">
+                            <input type="text" name="privacy" class="form-control" id="privacy" value="{{old('privacy')}}">
                         </div>
                         <div class="form-group">
                             <label for="speed">Speed</label>
-                            <input type="text" name="speed" class="form-control" id="speed">
+                            <input type="text" name="speed" class="form-control" id="speed" value="{{old('speed')}}">
                         </div>
                         <div class="form-group">
                             <label for="fee">Fees</label>
-                            <input type="text" name="fee" class="form-control" id="fee">
+                            <input type="text" name="fee" class="form-control" id="fee" value="{{old('fee')}}">
                         </div>
                         <div class="form-group">
                             <label for="reputation">Reputation</label>
-                            <input type="text" name="reputation" class="form-control" id="reputation">
+                            <input type="text" name="reputation" class="form-control" id="reputation" value="{{old('reputation')}}">
                         </div>
                         <div class="form-group">
                             <label for="Limit">Limits</label>
-                            <input type="text" name="limit" class="form-control" id="Limit">
+                            <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-exchange">Add Exchange</button>
@@ -162,6 +162,7 @@
                     console.error( error );
                 } );
             }
+
             if($('#pros').length ){
                 ClassicEditor
                 .create( document.querySelector( '#pros' ) )
@@ -169,6 +170,7 @@
                     console.error( error );
                 } );
             }
+
             if($('#cons').length ){
                 ClassicEditor
                 .create( document.querySelector( '#cons' ) )
