@@ -1,8 +1,6 @@
 @extends('admin.layout');
 
 @section('custom-stylesheet')
-<link rel="stylesheet" href="{{asset('docsupport/style.css')}}">
-<link rel="stylesheet" href="{{asset('docsupport/prism.css')}}">
 <link rel="stylesheet" href="{{asset('css/chosen.css')}}">
 @endsection
 

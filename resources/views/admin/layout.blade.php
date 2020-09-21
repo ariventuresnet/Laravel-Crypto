@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- External Css File -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('custom-stylesheet')
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <title>Admin Dashboard</title>
 </head>
