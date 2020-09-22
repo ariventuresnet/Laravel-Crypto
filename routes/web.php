@@ -20,3 +20,4 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('exchanges', 'ExchangeController');
+Route::get('delete/exchanges/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');

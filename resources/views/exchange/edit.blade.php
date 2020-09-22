@@ -1,4 +1,4 @@
-@extends('admin.layout');
+@extends('admin.layout')
 
 @section('custom-stylesheet')
 <link rel="stylesheet" href="{{asset('css/chosen.css')}}">
@@ -125,7 +125,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{ $exchange->limit}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-exchange">Update</button>
+                            <button type="submit" class="btn btn-style draw-border text-uppercase">Update</button>
                         </div>
                     </form>
                 </div>

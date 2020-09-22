@@ -1,4 +1,4 @@
-@extends('admin.layout');
+@extends('admin.layout')
 
 @section('custom-stylesheet')
 <link rel="stylesheet" href="{{asset('css/chosen.css')}}">

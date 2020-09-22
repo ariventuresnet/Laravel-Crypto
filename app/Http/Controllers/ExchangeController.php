@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 class ExchangeController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -143,14 +153,16 @@ class ExchangeController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function delete(Exchange $exchange)
     {
-        //
+        // Delete image
+        unlink( public_path('images/'). '/'. $exchange->logo);
+        //Delete Data
+        $exchange->delete();
+
+        //Redirect and show flash message
+        return redirect()->route('exchanges.index')->with(session()->flash('alert-success', 'Exchange successfully Deleted'));
+
     }
 }

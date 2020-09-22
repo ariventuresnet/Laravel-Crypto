@@ -1,4 +1,4 @@
-@extends('admin.layout');
+@extends('admin.layout')
 
 
 @section('main-content')
@@ -82,7 +82,7 @@
                 <p class="mb-3"> {{ $exchange->limit}} </p>
 
                 <div class="mt-3">
-                    <a href="" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="{{route('exchanges.edit', $exchange->id)}}" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('admin.layout');
+@extends('admin.layout')
 
 @section('main-content')
     <div class="row mt-md-5">
@@ -40,7 +40,7 @@
                                 <td>
                                     <a href="{{route('exchanges.show', $exchange->id)}}" class="text-primary mr-2"><i class="far fa-list-alt"></i></a>
                                     <a href="{{route('exchanges.edit', $exchange->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('exchanges.delete', $exchange->id)}}" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -49,4 +49,36 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+    <!-- sweet alert cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        $(document).on('click', "#delete", function(e){
+            e.preventDefault();
+            var link = $(this).attr('href');
+            
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            })
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    window.location.href = link;
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                }
+                
+            });
+        });
+    </script>
 @endsection
