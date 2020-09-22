@@ -8,6 +8,14 @@
             </div>
             
             <div class="px-2">
+                <!--Show flash Message -->
+                <div class="flash-message">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }} font-weight-bold">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                        @endif
+                    @endforeach
+                </div>
                 <table class="table table-hover">
                     <thead class="">
                       <tr>
@@ -24,14 +32,14 @@
                         @foreach ($exchanges as $exchange)
                             <tr>
                                 <th scope="row">{{$loop->index + 1}}</th>
-                                <td class="font-weight-bold">{{$exchange->Name}}</td>
-                                <td>{{$exchange->privacy}}</td>
+                                <td class="font-weight-bold">{{$exchange->name}}</td>
+                                <td>{{substr($exchange->privacy, 0,15) . '...'}}</td>
                                 <td>{{$exchange->speed}}</td>
                                 <td>{{$exchange->fee}}</td>
-                                <td>{{$exchange->limit}}</td>
+                                <td>{{substr($exchange->limit, 0,15) . '...'}}</td>
                                 <td>
                                     <a href="{{route('exchanges.show', $exchange->id)}}" class="text-primary mr-2"><i class="far fa-list-alt"></i></a>
-                                    <a href="" class="text-success mr-2"><i class="fas fa-edit"></i></a>
+                                    <a href="{{route('exchanges.edit', $exchange->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
                                     <a href="" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>

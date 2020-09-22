@@ -50,23 +50,6 @@ body {
     transform: translateY(-1px);
 }
 
-.btn-exchange {
-    padding         : 16px 48 px;
-    border          : 3px solid #ffc872;
-    border-radius   : 48px;
-    text-transform  : uppercase;
-    letter-spacing  : 2px;
-    font-weight     : bold;
-    color           : #ffc872;
-    background-color: #242424;
-    transition      : all .2s;
-}
-
-.btn-exchange:hover{
-    transform: scale(1.04);
-    color: #ffc872;
-}
-
 .search-input{
     background: transparent;
     border-radius: 0;
@@ -138,7 +121,7 @@ body {
 }
 /* end of task list */
 
-/* Exchange List style */
+/* Exchange List show style */
 .separator {
     display: flex;
     align-items: center;
@@ -159,3 +142,65 @@ body {
     margin-left: .25em;
   }
   /* Exchange List style End */
+
+
+
+/* style button */
+.draw-border {
+    box-shadow: inset 0 0 0 4px #58afd1;
+    color: #58afd1;
+    -webkit-transition: color 0.25s 0.0833333333s;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+}
+.draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+.draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+}
+.draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+}
+.draw-border:hover {
+    color: #ffe593;
+}
+.draw-border:hover::before, .draw-border:hover::after {
+    border-color: #ffe593;
+    -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+}
+.draw-border:hover::before {
+    -webkit-transition-delay: 0s, 0s, 0.25s;
+            transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+    -webkit-transition-delay: 0s, 0.25s, 0s;
+            transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn-style {
+    background: #242424;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: .7em 1.5em;
+    letter-spacing: 0.05rem;
+}
+.btn-style:focus {
+    outline: 2px dotted #55d7dc;
+}
+/* button style end */

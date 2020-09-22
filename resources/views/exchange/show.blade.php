@@ -1,5 +1,6 @@
 @extends('admin.layout');
 
+
 @section('main-content')
     <div class="row mt-md-5">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
@@ -18,7 +19,7 @@
                                 Selected Currencies
                             </div>
                             <ul class="list-group list-group-flush">
-                              <?php $currencies = unserialize($exchange->currencies); ?>
+                              <?php $currencies = json_decode($exchange->currencies); ?>
                               @foreach ($currencies as $currency)
                                 <li class="list-group-item">{{$currency}}</li>
                               @endforeach
@@ -32,7 +33,7 @@
                                 Payment methods
                             </div>
                             <ul class="list-group list-group-flush">
-                              <?php $payments = unserialize($exchange->payments); ?>
+                              <?php $payments = json_decode($exchange->payments); ?>
                               @foreach ($payments as $payment)
                                 <li class="list-group-item">{{$payment}}</li>
                               @endforeach
@@ -46,7 +47,7 @@
                                 Selected Countries
                             </div>
                             <ul class="list-group list-group-flush">
-                              <?php $countries = unserialize($exchange->countries); ?>
+                              <?php $countries = json_decode($exchange->countries); ?>
                               @foreach ($countries as $country)
                                 <li class="list-group-item">{{$country}}</li>
                               @endforeach
@@ -79,6 +80,10 @@
 
                 <h4 class="text-uppercase">limit:</h4>
                 <p class="mb-3"> {{ $exchange->limit}} </p>
+
+                <div class="mt-3">
+                    <a href="" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
             </div>
         </div>
     </div>

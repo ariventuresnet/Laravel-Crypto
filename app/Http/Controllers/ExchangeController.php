@@ -66,9 +66,9 @@ class ExchangeController extends Controller
             "name"=> $request->name,
             "logo"=> $logo_name,
             "url" => $request->url,
-            "currencies"=> serialize($request->currencies),
-            "countries"=> serialize($request->countries),
-            "payments"=> serialize($request->payments),
+            "currencies"=> json_encode($request->currencies),
+            "countries"=> json_encode($request->countries),
+            "payments"=> json_encode($request->payments),
             "description" => $request->description,
             "pros"=> $request->pros,
             "cons"=> $request->cons,
@@ -93,9 +93,9 @@ class ExchangeController extends Controller
      */
     public function show(Exchange $exchange)
     {
+
         return view('exchange.show')->with('exchange',$exchange);
         // $currencies = unserialize($exchange->currencies);
-        // return $currencies;
 
     }
 
@@ -105,9 +105,9 @@ class ExchangeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Exchange $exchange)
     {
-        //
+        return view('exchange.edit')->with('exchange',$exchange);
     }
 
     /**
@@ -119,7 +119,28 @@ class ExchangeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //get request data
+        $data = $request->except("_token", "_method");
+        $exchange = Exchange::find($id);
+
+        if($request->hasFile('logo')){
+            $new_logo= $request->file('logo');
+            $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
+            $new_logo->storeAs('images', $new_logo_name );
+            
+            $data["logo"] = $new_logo_name;
+            // Delete Old image
+            unlink( public_path('images/'). '/'. $exchange->logo);
+
+        }
+
+
+        // update database 
+        $exchange->update($data);
+
+        //Redirect and show flash message
+        return redirect()->route('exchanges.index')->with(session()->flash('alert-success', 'Exchange update successfully'));
+
     }
 
     /**
