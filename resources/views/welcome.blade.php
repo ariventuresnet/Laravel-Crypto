@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse justify-content-end text-uppercase font-weight-bold" id="myNavbar">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
+                    <a href="https://t.me/thecryptocutter" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
                 </li>
                 
                 </ul>
@@ -120,7 +120,7 @@
                             @foreach ($exchanges as $exchange)
                                 <tr class="exchange-row">
                                     <td class="exchange-logo">
-                                        <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="25%" alt="Exchange Logo"> {{$exchange->name}}</a>
+                                        <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="30%" alt="Exchange Logo"> {{$exchange->name}}</a>
                                     </td>
                                     <td>{{$exchange->ease}}</td>
                                     <td>{{$exchange->privacy}}</td>

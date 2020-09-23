@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse justify-content-end text-uppercase font-weight-bold" id="myNavbar">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
+                    <a href="https://t.me/thecryptocutter" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
                 </li>
                 
                 </ul>
