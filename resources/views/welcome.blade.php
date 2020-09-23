@@ -26,7 +26,7 @@
     <header>
         <!-- navbar -->
         <nav class="navbar navbar-expand-md nav-menu fixed-top px-md-5">
-            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="220"></a>
+            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="200"></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>
@@ -101,32 +101,36 @@
                 <div class="separator">
                     Top Exchanges
                 </div>
-                <table class="table table-hover">
-                    <thead class="">
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Ease Of Use</th>
-                        <th scope="col">Privacy</th>
-                        <th scope="col">Speed</th>
-                        <th scope="col">Fees</th>
-                        <th scope="col">Reputation</th>
-                        <th scope="col">Limits</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($exchanges as $exchange)
-                            <tr>
-                                <td style="vertical-align:middle;"><a href="" class="text-dark font-weight-bold">{{$exchange->name}}</a></td>
-                                <td>{{$exchange->ease}}</td>
-                                <td>{{$exchange->privacy}}</td>
-                                <td>{{$exchange->speed}}</td>
-                                <td>{{$exchange->fee}}</td>
-                                <td>{{$exchange->reputation}}</td>
-                                <td>{{$exchange->limit}}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="">
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Ease Of Use</th>
+                            <th scope="col">Privacy</th>
+                            <th scope="col">Speed</th>
+                            <th scope="col">Fees</th>
+                            <th scope="col">Reputation</th>
+                            <th scope="col">Limits</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($exchanges as $exchange)
+                                <tr class="exchange-row">
+                                    <td class="exchange-logo">
+                                        <a href="#" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="25%" alt="Exchange Logo"> {{$exchange->name}}</a>
+                                    </td>
+                                    <td>{{$exchange->ease}}</td>
+                                    <td>{{$exchange->privacy}}</td>
+                                    <td>{{$exchange->speed}}</td>
+                                    <td>{{$exchange->fee}}</td>
+                                    <td>{{$exchange->reputation}}</td>
+                                    <td>{{$exchange->limit}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>

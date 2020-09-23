@@ -22,8 +22,8 @@ class CreateExchangesTable extends Migration
             $table->string('countries');
             $table->string('payments');
             $table->text('description');
-            $table->text('pros');
-            $table->text('cons');
+            $table->text('pros')->nullable();
+            $table->text('cons')->nullable();
             $table->text('ease');
             $table->text('privacy');
             $table->string('speed');

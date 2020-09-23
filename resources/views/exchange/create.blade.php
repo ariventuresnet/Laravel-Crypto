@@ -125,7 +125,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-style draw-border">Add Exchange</button>
+                            <button type="submit" class="btn btn-style draw-border mb-3">Add Exchange</button>
                         </div>
                     </form>
                 </div>
