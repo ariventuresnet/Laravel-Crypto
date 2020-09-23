@@ -18,4 +18,9 @@ class HomeController extends Controller
         $exchanges = Exchange::all();
         return view('welcome', compact('exchanges'));
     }
+
+    public function cryptocurrency(Exchange $exchange){
+        
+        return view('cryptocurrency')->with('exchange', $exchange);
+    }
 }

@@ -103,23 +103,6 @@ body {
 }
 /* end of navbar */
 
-/* cards */
-.card-common{
-    box-shadow: 1px 2px 5px #999;
-    transition: all .4s;
-}
-
-.card-common:hover{
-    box-shadow: 2px 3px 15px #999;
-    transform: translateY(-1px);
-}
-/* end of cards */
-
-/* task list */
-.task-border{
-    border-left: 3px solid #f66436;
-}
-/* end of task list */
 
 /* Exchange List show style */
 .separator {
@@ -129,19 +112,19 @@ body {
     font-weight: bold;
     font-size: 1.3rem;
     margin-bottom: 15px;
-  }
-  .separator::before, .separator::after {
+}
+.separator::before, .separator::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid #000;
-  }
-  .separator::before {
+}
+.separator::before {
     margin-right: .25em;
-  }
-  .separator::after {
+}
+.separator::after {
     margin-left: .25em;
-  }
-  /* Exchange List style End */
+}
+/* Exchange List style End */
 
 
 

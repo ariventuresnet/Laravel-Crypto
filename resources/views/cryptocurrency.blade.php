@@ -85,57 +85,74 @@
                             <div class="search_box">
                                 <label><span class="text-dark font-weight-bold">WITH</span></label>
                                 <input type="text" placeholder="Search Payment Method">
+                                {{-- <i class="fas fa-search"></i> --}}
                                 <button type="button" class="btn"><i class="fas fa-search"></i></button>
                             </div>
+                            {{-- <div><button type="button" class="btn btn-light active search-button"><i class="fas fa-search text-danger"></i></button></div> --}}
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-         <!-- end of cryptocurrency search -->
+        <!-- end of cryptocurrency search -->
 
     </header>
     <!-- end of header -->
 
-    <section class="container-fluid mt-5">
-        <div class="row px-5">
-            <div class="col-md-12">
-                <div class="separator">
-                    Top Exchanges
+    <!-- main content -->
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12 mb-4">
+                <h2 class="mb-4 d-md-inline">
+                    <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-thumbnail" alt="logo" width="120px;">
+                    <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
+                </h2>
+                <span class="d-inline float-sm-right my-4"><button class="btn btn-style draw-border">Buy Crypto</button></span>
+                <p class="mb-3">{!! $exchange->description !!}</p>
+                <div class="row mb-5">
+                    <div class="col-sm-6 mb-2">
+                        <h3>Pros</h3>
+                        <p>{!! $exchange->pros !!}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Cons</h3>
+                        <p>{!! $exchange->cons !!}</p>
+                    </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="">
-                          <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Ease Of Use</th>
-                            <th scope="col">Privacy</th>
-                            <th scope="col">Speed</th>
-                            <th scope="col">Fees</th>
-                            <th scope="col">Reputation</th>
-                            <th scope="col">Limits</th>
-                          </tr>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Ease Of Use</th>
+                                <th>Privacy</th>
+                                <th>Speed</th>
+                                <th>Fees</th>
+                                <th>Reputation</th>
+                                <th>Limits</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            @foreach ($exchanges as $exchange)
-                                <tr class="exchange-row">
-                                    <td class="exchange-logo">
-                                        <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="25%" alt="Exchange Logo"> {{$exchange->name}}</a>
-                                    </td>
-                                    <td>{{$exchange->ease}}</td>
-                                    <td>{{$exchange->privacy}}</td>
-                                    <td>{{$exchange->speed}}</td>
-                                    <td>{{$exchange->fee}}</td>
-                                    <td>{{$exchange->reputation}}</td>
-                                    <td>{{$exchange->limit}}</td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>{{$exchange->ease}}</td>
+                                <td>{{$exchange->privacy}}</td>
+                                <td>{{$exchange->speed}}</td>
+                                <td>{{$exchange->fee}}</td>
+                                <td>{{$exchange->reputation}}</td>
+                                <td>{{$exchange->limit}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+
             </div>
+            {{-- <div class="col-sm-4 col-lg-3 pt-sm-4">
+                <button class="btn btn-style draw-border">Buy Crypto</button>
+            </div> --}}
         </div>
     </section>
+    <!-- end of main content -->
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
