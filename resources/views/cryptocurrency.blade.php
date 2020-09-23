@@ -103,11 +103,13 @@
     <section class="container mt-5">
         <div class="row">
             <div class="col-sm-12 mb-4">
-                <h2 class="mb-4 d-md-inline">
-                    <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-thumbnail" alt="logo" width="120px;">
-                    <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
-                </h2>
-                <span class="d-inline float-sm-right my-4"><button class="btn btn-style draw-border">Buy Crypto</button></span>
+                <div class="">
+                    <h2 class="mb-4 d-md-inline">
+                        <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-thumbnail" alt="logo" width="120px;">
+                        <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
+                    </h2>
+                    <span class="d-inline float-sm-right my-4"><button class="btn btn-style draw-border">Buy Crypto</button></span>
+                </div>
                 <p class="mb-3">{!! $exchange->description !!}</p>
                 <div class="row mb-5">
                     <div class="col-sm-6 mb-2">

@@ -55,9 +55,9 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
-                              <option value="btc">Bitcoin</option>
-                              <option value="eth">Ethereum</option>
-                              <option value="ustd">Tether</option>
+                                <option value="bitcoin">Bitcoin</option>
+                                <option value="ethereum">Ethereum</option>
+                                <option value="tether">Tether</option>
                             </select>
                         </div>
 
@@ -80,11 +80,11 @@
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
                             <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
-                              <option value="cash">Cash</option>
-                              <option value="bank transfer">Bank transfer</option>
-                              <option value="credit card">Credit card</option>
-                              <option value="debit card">Debit card</option>
-                              <option value="ach">ACH transfer</option>
+                                <option value="cash">Cash</option>
+                                <option value="bank transfer">Bank transfer</option>
+                                <option value="credit card">Credit card</option>
+                                <option value="debit card">Debit card</option>
+                                <option value="ach tranfer">ACH transfer</option>
                             </select>
                         </div>
 

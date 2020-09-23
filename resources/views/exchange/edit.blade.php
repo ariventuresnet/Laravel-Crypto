@@ -56,36 +56,66 @@
 
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
+                            <?php 
+                            $currencies = json_decode($exchange->currencies); 
+                            $all_currency = ["bitcoin", "ethereum", "tether"];
+                            ?>
                             <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
-                              <option value="btc">Bitcoin</option>
-                              <option value="eth">Ethereum</option>
-                              <option value="ustd">Tether</option>
+                                @foreach ($currencies as $selected_currency)
+                                    <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
+                                @endforeach
+
+                                @foreach ($all_currency as $currency)
+                                    @if (! in_array( $currency, $currencies))
+                                        <option value="{{$currency}}"> {{ ucfirst($currency) }} </option>
+                                    @endif
+                                @endforeach
+
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
+                            <?php 
+                            $countries = json_decode($exchange->countries); 
+                            $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            ?>
                             <select multiple name="countries[]" class="chosen-countries" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
+                                @foreach ($countries as $selected_country)
+                                    <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
+                                @endforeach
+
+                                @foreach ($all_country as $country)
+                                    @if (! in_array( $country, $countries))
+                                        <option value="{{$country}}"> {{ ucfirst($country) }} </option>
+                                    @endif
+                                @endforeach
+                                
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
+                            <?php 
+                            $payments = json_decode($exchange->payments); 
+                            $payment_option = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            ?>
                             <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
-                              <option value="cash">Cash</option>
-                              <option value="bank transfer">Bank transfer</option>
-                              <option value="credit card">Credit card</option>
-                              <option value="debit card">Debit card</option>
-                              <option value="ach">ACH transfer</option>
+                                @foreach ($payments as $selected_payment)
+                                    <option value="{{$selected_payment}}" selected> {{ ucwords($selected_payment) }} </option>
+                                @endforeach
+
+                                @foreach ($payment_option as $option)
+                                    @if (! in_array( $option, $payments))
+                                        <option value="{{$option}}"> {{ ucwords($option) }} </option>
+                                    @endif
+                                @endforeach
+
+                                <option value="cash">Cash</option>
+                                <option value="bank transfer">Bank transfer</option>
+                                <option value="credit card">Credit card</option>
+                                <option value="debit card">Debit card</option>
+                                <option value="ach tranfer">ACH transfer</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -125,7 +155,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{ $exchange->limit}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-style draw-border text-uppercase">Update</button>
+                            <button type="submit" class="btn btn-style draw-border text-uppercase mb-3">Update</button>
                         </div>
                     </form>
                 </div>

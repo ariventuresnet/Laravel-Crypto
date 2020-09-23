@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/cryptocurrency/{exchange}', 'HomeController@cryptocurrency')->name('cryptocurrency.show')->middleware('auth');
+Route::get('/exchange/{exchange}', 'HomeController@cryptocurrency')->name('cryptocurrency.show');
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('exchanges', 'ExchangeController');
 Route::get('delete/exchanges/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
