@@ -98,7 +98,7 @@
                             <label for="multiple-payment">Payment Method</label>
                             <?php 
                             $payments = json_decode($exchange->payments); 
-                            $payment_option = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            $payment_option = ["cash", "bank transfer", "credit card", "debit card", "ach tranfer"];
                             ?>
                             <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
                                 @foreach ($payments as $selected_payment)
@@ -111,11 +111,6 @@
                                     @endif
                                 @endforeach
 
-                                <option value="cash">Cash</option>
-                                <option value="bank transfer">Bank transfer</option>
-                                <option value="credit card">Credit card</option>
-                                <option value="debit card">Debit card</option>
-                                <option value="ach tranfer">ACH transfer</option>
                             </select>
                         </div>
                         <div class="form-group">

@@ -105,10 +105,10 @@
             <div class="col-sm-12 mb-4">
                 <div class="">
                     <h2 class="mb-4 d-md-inline">
-                        <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-thumbnail" alt="logo" width="120px;">
+                        <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-fluid rounded" alt="logo" width="120px">
                         <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
                     </h2>
-                    <span class="d-inline float-sm-right my-4"><button class="btn btn-style draw-border">Buy Crypto</button></span>
+                    <span class="d-inline float-sm-right my-4"><a href="{{$exchange->url}}" class="btn btn-style draw-border">Buy Crypto</a></span>
                 </div>
                 <p class="mb-3">{!! $exchange->description !!}</p>
                 <div class="row mb-5">
