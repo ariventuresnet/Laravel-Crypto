@@ -7,7 +7,6 @@ body {
 /* header */
   
 header {
-    /* height: 72vh; */
     height: 55vh;
     /* background: url(../images/bg.png) no-repeat center center; */
     background:  #b2edef;
@@ -47,12 +46,11 @@ header {
 
 /* wrapper */
 .wrapper{
-    /* background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 81%, rgba(237,237,237,1) 100%); */
     background: #fff;
 }
 .btn-home{
     background-color: #fff;
-    width: 14vw;
+    width: 100%;
     color: #000;
     font-weight: bold;
     padding: 15px 15px 27px;
@@ -73,7 +71,6 @@ header {
 /* crypto-search start */
 .crypto-search{
     position : absolute;
-    /* top      : 45%; */
     top      : 40%;
     width    : 100%;
 }
@@ -105,23 +102,13 @@ header {
 }
 
 ::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
   color: #fff;
 }
 ::-moz-placeholder {
-  /* Firefox 19+ */
   color: #fff;
 }
 :-ms-input-placeholder {
-  /* IE 10+ */
   color: #fff;
-}
-
-@media screen and (max-width: 425px){
-  .search_box{
-    width: 95%;
-  }
-  
 }
 /* crypto-search end */
 /* end of header */
@@ -156,10 +143,47 @@ header {
 }
 /* table end */
 
-@media screen and (max-width: 768px) {
-  .wrapper{
+@media screen and (max-width: 992px) {
+    .btn-home{
+      width: 100%;
+      color: #000;
+      font-weight: bold;
+      font-size: .8rem;
+      padding: 15px 15px 22px;
+      border: 1px solid #000;
+      border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+  /* .wrapper{
     display: none !important;
+  } */
+  header {
+    height: 65vh;
+    background:  #b2edef;
+    background-attachment: fixed;
+    background-size: cover;
   }
+
+  .crypto-search{
+    position : absolute;
+    top      : 31%;
+    width    : 100%;
+  }
+  .search_box{
+    width: 85%;
+  }
+
+  .btn-home{
+    width: 100%;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 8px 8px 8px;
+    border: 1px solid #000;
+    border-radius: 10px;
+  }
+
   .exchange-logo{
     font-size  : .8rem;
     font-weight: normal;

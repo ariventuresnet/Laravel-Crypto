@@ -44,24 +44,24 @@
         <!-- end of navbar -->
 
         <!-- wrapper -->
-        <div class="container-fluid px-md-5 py-md-4 pb-md-5 wrapper">
+        <div class="container-fluid  px-lg-5 pt-md-4 py-lg-5 wrapper">
             <div class="row px-2">
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Laws</span> <span class="float-right"><i class="fas fa-university"></i></i></span></a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Banks</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
                 </div>
             </div>
@@ -85,16 +85,14 @@
                             <div class="search_box">
                                 <label><span class="text-dark font-weight-bold">WITH</span></label>
                                 <input type="text" placeholder="Search Payment Method">
-                                {{-- <i class="fas fa-search"></i> --}}
                                 <button type="button" class="btn"><i class="fas fa-search"></i></button>
                             </div>
-                            {{-- <div><button type="button" class="btn btn-light active search-button"><i class="fas fa-search text-danger"></i></button></div> --}}
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- end of cryptocurrency search -->
+         <!-- end of cryptocurrency search -->
 
     </header>
     <!-- end of header -->
