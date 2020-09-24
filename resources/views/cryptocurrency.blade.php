@@ -44,7 +44,7 @@
         <!-- end of navbar -->
 
         <!-- wrapper -->
-        <div class="container-fluid  px-lg-5 pt-md-4 py-lg-5 wrapper">
+        <div class="container-fluid  pt-md-4 px-lg-5 pb-lg-5 wrapper">
             <div class="row px-2">
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
