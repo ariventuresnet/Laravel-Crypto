@@ -106,7 +106,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
