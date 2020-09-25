@@ -142,6 +142,9 @@ header {
 
 }
 /* table end */
+.wrapper-change{
+  display: none !important;
+}
 
 @media screen and (max-width: 992px) {
     .btn-home{
@@ -160,7 +163,7 @@ header {
     display: none !important;
   } */
   header {
-    height: 60vh;
+    height: 65vh;
     background:  #b2edef;
     background-attachment: fixed;
     background-size: cover;
@@ -168,7 +171,7 @@ header {
 
   .crypto-search{
     position : absolute;
-    top      : 33%;
+    top      : 35%;
     width    : 100%;
   }
   .search_box{
