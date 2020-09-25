@@ -7,10 +7,8 @@ $(document).ready(function(){
   if(width < 425){
       $(".find").on("focus", function(){
           $('.wrapper').addClass('content-hide');
-          $('.separator').addClass('content-hide');
       }).on("blur", function(){
           $('.wrapper').removeClass('content-hide');
-          $('.separator').removeClass('content-hide');
       });
   }
 
