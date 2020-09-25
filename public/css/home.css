@@ -177,7 +177,11 @@ header {
   .search_box{
     width: 85%;
   }
-
+  label{
+    font-size: .7rem;
+    padding: 0px;
+    margin-bottom: 3px;
+  }
   .btn-home{
     width: 100%;
     color: #000;
