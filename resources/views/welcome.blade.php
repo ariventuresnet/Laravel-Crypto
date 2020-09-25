@@ -97,7 +97,7 @@
     </header>
     <!-- end of header -->
 
-    <section class="container-fluid mt-md-5 mt-3">
+    <section class="container-fluid mt-md-5 mt-3 main">
         <div class="row px-md-5 px-2">
             <div class="col-md-12">
                 <div class="separator">

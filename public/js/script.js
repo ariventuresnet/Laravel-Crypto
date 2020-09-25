@@ -6,9 +6,11 @@ $(document).ready(function(){
   var width= $(window).width();
   if(width < 425){
       $(".find").on("focus", function(){
-          $('.wrapper').addClass('wrapper-change');
+          $('.wrapper').addClass('content-hide');
+          $('.separator').addClass('content-hide');
       }).on("blur", function(){
-          $('.wrapper').removeClass('wrapper-change');
+          $('.wrapper').removeClass('content-hide');
+          $('.separator').removeClass('content-hide');
       });
   }
 
