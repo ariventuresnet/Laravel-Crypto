@@ -97,8 +97,8 @@
     </header>
     <!-- end of header -->
 
-    <section class="container-fluid mt-5">
-        <div class="row px-5">
+    <section class="container-fluid mt-md-5 mt-3">
+        <div class="row px-md-5 px-2">
             <div class="col-md-12">
                 <div class="separator">
                     Top Exchanges
@@ -119,7 +119,7 @@
                         <tbody>
                             @foreach ($exchanges as $exchange)
                                 <tr class="exchange-row">
-                                    <td class="exchange-logo">
+                                    <td class="exchange-name">
                                         <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="25%" alt="Exchange Logo"> {{$exchange->name}}</a>
                                     </td>
                                     <td>{{$exchange->ease}}</td>

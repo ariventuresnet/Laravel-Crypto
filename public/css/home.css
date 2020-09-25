@@ -134,7 +134,7 @@ header {
 .separator::after {
   margin-left: .25em;
 }
-.exchange-logo{
+.exchange-name{
   vertical-align: middle !important;
   width: 16%;
   font-weight: bold;
@@ -160,7 +160,7 @@ header {
     display: none !important;
   } */
   header {
-    height: 65vh;
+    height: 60vh;
     background:  #b2edef;
     background-attachment: fixed;
     background-size: cover;
@@ -168,7 +168,7 @@ header {
 
   .crypto-search{
     position : absolute;
-    top      : 31%;
+    top      : 33%;
     width    : 100%;
   }
   .search_box{
@@ -181,15 +181,26 @@ header {
     font-weight: bold;
     padding: 5px 8px 8px 8px;
     border: 1px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
+  }
+  .search_box input[type="text"]{
+    padding: .5rem;
+
   }
 
-  .exchange-logo{
+  .exchange-name{
     font-size  : .8rem;
-    font-weight: normal;
+    font-weight: bold;
   }
   .exchange-row{
     font-size: .7rem;
+  }
+
+  .table th{
+    font-size: .8rem;
+  }
+  .separator {
+    margin-bottom: 10px;
   }
 
 }
