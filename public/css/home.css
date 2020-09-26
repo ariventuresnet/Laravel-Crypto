@@ -159,21 +159,26 @@ header {
 }
 
 @media screen and (max-width: 576px) {
-  /* .wrapper{
+  body {
+    padding: 0;  
+    margin:0;
+  }
+  .wrapper{
     display: none !important;
-  } */
+  }
   header {
-    height: 65vh;
+    height: 50vh;
     background:  #b2edef;
     background-attachment: fixed;
     background-size: cover;
   }
 
   .crypto-search{
-    position : absolute;
-    top      : 35%;
-    width    : 100%;
+    position : static;
+    padding-top: 50px;
+
   }
+
   .search_box{
     width: 85%;
   }
