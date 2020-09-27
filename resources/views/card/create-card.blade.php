@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5">
                     <div class="h2 text-center font-weight-bold mb-3">
-                        Add Exchange
+                        Add Card
                     </div>
                     <!--Show Validation Error -->
                     @if ($errors->any())
@@ -33,11 +33,11 @@
                         @endforeach
                     </div>
 
-                    <form action="{{route('exchanges.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('cards.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
-                            <label for="name">Exchange Name</label>
+                            <label for="name">Card Name</label>
                             <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
                         </div>
                         <div class="input-group mb-3">
@@ -48,7 +48,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="url">Exchange URL</label>
+                            <label for="url">Card URL</label>
                             <input type="text" name="url" class="form-control" id="url" value="{{old('url')}}">
                         </div>
 
@@ -58,6 +58,7 @@
                                 <option value="bitcoin">Bitcoin</option>
                                 <option value="ethereum">Ethereum</option>
                                 <option value="tether">Tether</option>
+                                <option value="litecoin">Litecoin</option>
                             </select>
                         </div>
 
@@ -80,11 +81,10 @@
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
                             <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
-                                <option value="cash">Cash</option>
-                                <option value="bank transfer">Bank transfer</option>
+                                <option value="visa">Visa</option>
+                                <option value="mastercard">Mastercard</option>
                                 <option value="credit card">Credit card</option>
-                                <option value="debit card">Debit card</option>
-                                <option value="ach tranfer">ACH transfer</option>
+                                <option value="union pay">Union pay</option>
                             </select>
                         </div>
 
@@ -125,7 +125,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-style draw-border mb-3">Add Exchange</button>
+                            <button type="submit" class="btn btn-style draw-border mb-3">Add Card</button>
                         </div>
                     </form>
                 </div>
@@ -142,7 +142,6 @@
     <script src="{{asset('js/chosen.jquery.js')}}"></script>
 
     <script>
-        // $("#description").focus(function(){});
         
         $(document).ready(function(){
 

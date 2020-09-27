@@ -1,22 +1,20 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 65px;  
+    font-family: 'Montserrat', sans-serif;  
     margin:0;
 }
   
 /* header */
   
 header {
-    height: 55vh;
-    /* background: url(../images/bg.png) no-repeat center center; */
+    height: 65vh;
+    padding-top: 65px;
     background:  #b2edef;
-    background-attachment: fixed;
     background-size: cover;
+
 }
   
 /* navbar */
 .nav-menu {
-  /* background:  linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 81%, rgba(237,237,237,1) 100%); */
   background: #fff;
   padding: 0;
   font-size: 13px;
@@ -69,11 +67,12 @@ header {
 
 
 /* crypto-search start */
-.crypto-search{
-    position : absolute;
-    top      : 40%;
-    width    : 100%;
-}
+/* .crypto-search{
+  position : absolute;
+  top      : 40%;
+  width    : 100%;
+} */
+
 .search_box{
     width: 30%;
     position: relative;
@@ -92,15 +91,8 @@ header {
   outline: none;
 }
   
-/* .fa-search{
-  position: absolute;
-  top: 55%;
-  transform: translateY(-50%);
-  right: 25px;
-  color: #fff;
-  font-size: 25px;
-} */
-.c-search{
+
+.search-icon{
   position: absolute;
   top: 70%;
   transform: translateY(-50%);
@@ -172,16 +164,19 @@ header {
     display: none !important;
   } */
   header {
-    height: 65vh;
+    height: 100vh;
+    padding-top: 47px;
     background:  #b2edef;
-    background-attachment: fixed;
     background-size: cover;
   }
 
-  .crypto-search{
+  /* .crypto-search{
     position : absolute;
     top      : 35%;
     width    : 100%;
+  } */
+  .crypto-search{
+    vertical-align: middle !important;
   }
   .search_box{
     width: 85%;
@@ -284,3 +279,7 @@ header {
 }
 /* button style end */
 
+.fixed-bottom{
+  position: fixed;
+  bottom: 0;
+}

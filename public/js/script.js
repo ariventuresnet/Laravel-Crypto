@@ -8,9 +8,11 @@ $(document).ready(function(){
       $(".find").on("focus", function(){
           $('.wrapper').addClass('content-hide');
           $('.crypto-search').css({"position":"static", "padding-top":"20px"});
+          $('main').addClass('fixed-bottom');
       }).on("blur", function(){
           $('.wrapper').removeClass('content-hide');
           $('.crypto-search').css({"position":"absolute", "top":"35%","padding-top":"0" });
+          $('main').removeClass('fixed-bottom');
       });
   }
 

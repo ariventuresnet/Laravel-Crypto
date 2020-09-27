@@ -165,9 +165,7 @@
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
     <script src="{{asset('js/chosen.jquery.js')}}"></script>
-    <script src="{{asset('docsupport/prism.js')}}"></script>
-    <script src="{{asset('docsupport/init.js')}}"></script>
-
+    
     <script>
         // $("#description").focus(function(){});
         

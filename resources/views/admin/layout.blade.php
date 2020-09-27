@@ -36,7 +36,7 @@
                 <div class="row">
                     <!-- sidebar -->
                     <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">  <!--'sidebar' is not a bootstrap class-->
-                        <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Cryptocutter</a>   <!--'bottom-border' is not a bootstrap class-->
+                        <a href="{{route('dashboard')}}" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Cryptocutter</a>   <!--'bottom-border' is not a bootstrap class-->
                         <div class="bottom-border pb-3">
                         <img src="{{asset('images/admin.jpeg')}}" width="50" class="rounded-circle mr-3">
                             <a href="#" class="text-white">Helen Smith</a>
@@ -46,13 +46,21 @@
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2  current"> <i class="fas fa-home fa-lg text-light mr-3"></i>Dashboard</a></li> <!--'sidebar-link' is not a bootstrap class-->
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-user fa-lg text-light mr-3"></i>Profile</a></li> 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange <i class="fas fa-sort-down fa-2x"></i></a>
+                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange&nbsp; <i class="fas fa-sort-down fa-2x"></i></a>
                                 <ul id="exchanges" class="collapse">
                                     <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.create')}}">Add Exchange</a></li>
                                     <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.index')}}">View Exchange</a></li>
                                 </ul>
                             </li> 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-shopping-cart fa-lg text-light mr-3"></i>Sales</a></li> 
+                            
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#cards"><i class="far fa-credit-card fa-lg text-light mr-3"></i>Card&nbsp; <i class="fas fa-sort-down fa-2x"></i></a>
+                                <ul id="cards" class="collapse">
+                                    <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('cards.create')}}">Add Card</a></li>
+                                    <li><a class="btn btn-exchange-info text-white mb-2" href="#">View Card</a></li>
+                                </ul>
+                            </li> 
+
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-chart-line fa-lg text-light mr-3"></i>Analytics</a></li> 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-chart-bar fa-lg text-light mr-3"></i>Charts</a></li> 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-table fa-lg text-light mr-3"></i>Tabels</a></li> 
