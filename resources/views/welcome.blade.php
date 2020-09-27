@@ -71,7 +71,7 @@
         <!-- end of wrapper -->
 
         <!-- cryptocurrency search -->
-        <div class="container-fluid crypto-search px-md-5 py-5">
+        <div class="container-fluid crypto-search px-md-5">
             <div class="row">
                 <div class="col-md-12">
                     <form>
@@ -174,7 +174,7 @@
                 renderItem: function (item, search){
                     search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
                     var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-                    return '<div class="autocomplete-suggestion" data-langname="'+item[0]+'" data-lang="'+item[1]+'" data-val="'+search+'"><img src="http://127.0.0.1:8001/autocomplete/img/'+item[1]+'.png"> '+item[0].replace(re, "<b>$1</b>")+'</div>';
+                    return '<div class="autocomplete-suggestion" data-langname="'+item[0]+'" data-lang="'+item[1]+'" data-val="'+search+'"><img src="https://thecryptocutter.com/img/'+item[1]+'.png"> '+item[0].replace(re, "<b>$1</b>")+'</div>';
                 },
                 onSelect: function(e, term, item){
                     console.log('Item "'+item.data('langname')+' ('+item.data('lang')+')" selected by '+(e.type == 'keydown' ? 'pressing enter or tab' : 'mouse click')+'.');
