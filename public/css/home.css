@@ -86,19 +86,28 @@ header {
   box-sizing: border-box;
   background: rgba(0,0,0,0.3);
   border: 2px solid #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 18px;
   color: #fff;
   outline: none;
 }
   
-.fa-search{
+/* .fa-search{
   position: absolute;
   top: 55%;
   transform: translateY(-50%);
   right: 25px;
   color: #fff;
   font-size: 25px;
+} */
+.c-search{
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  right: 5px;
+  color: #fff;
+  font-size: 25px;
+  box-shadow: none !important;
 }
 
 ::-webkit-input-placeholder {
