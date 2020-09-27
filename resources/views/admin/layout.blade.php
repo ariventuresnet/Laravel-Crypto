@@ -48,16 +48,16 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange&nbsp; <i class="fas fa-sort-down fa-2x"></i></a>
                                 <ul id="exchanges" class="collapse">
-                                    <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.create')}}">Add Exchange</a></li>
-                                    <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('exchanges.index')}}">View Exchange</a></li>
+                                    <li><a class="btn text-white mb-2 border border-danger" href="{{route('exchanges.create')}}">Add Exchange</a></li>
+                                    <li><a class="btn text-white mb-2 border border-success" href="{{route('exchanges.index')}}">View Exchange</a></li>
                                 </ul>
                             </li> 
                             
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#cards"><i class="far fa-credit-card fa-lg text-light mr-3"></i>Card&nbsp; <i class="fas fa-sort-down fa-2x"></i></a>
                                 <ul id="cards" class="collapse">
-                                    <li><a class="btn btn-exchange-info text-white mb-2" href="{{route('cards.create')}}">Add Card</a></li>
-                                    <li><a class="btn btn-exchange-info text-white mb-2" href="#">View Card</a></li>
+                                    <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('cards.create')}}">Add Card</a></li>
+                                    <li><a class="btn text-white mb-2 border-success" href="{{route('cards.index')}}">View Card</a></li>
                                 </ul>
                             </li> 
 

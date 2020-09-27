@@ -4,7 +4,7 @@
     <div class="row mt-md-5">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="separator h2 mb-3">
-                Top Exchange List
+                Card List
             </div>
             
             <div class="px-2">
@@ -29,18 +29,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($exchanges as $exchange)
+                        @foreach ($cards as $card)
                             <tr>
                                 <th scope="row">{{$loop->index + 1}}</th>
-                                <td class="font-weight-bold">{{$exchange->name}}</td>
-                                <td>{{$exchange->privacy}}</td>
-                                <td>{{$exchange->speed}}</td>
-                                <td>{{$exchange->fee}}</td>
-                                <td>{{$exchange->limit}}</td>
+                                <td class="font-weight-bold">{{$card->name}}</td>
+                                <td>{{$card->privacy}}</td>
+                                <td>{{$card->speed}}</td>
+                                <td>{{$card->fee}}</td>
+                                <td>{{$card->limit}}</td>
                                 <td>
-                                    <a href="{{route('exchanges.show', $exchange->id)}}" class="text-primary mr-2"><i class="far fa-list-alt"></i></a>
-                                    <a href="{{route('exchanges.edit', $exchange->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
-                                    <a href="{{route('exchanges.delete', $exchange->id)}}" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('cards.show', $card->id)}}" class="text-primary mr-2"><i class="far fa-list-alt"></i></a>
+                                    <a href="{{route('cards.edit', $card->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
+                                    <a href="{{route('cards.delete', $card->id)}}" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

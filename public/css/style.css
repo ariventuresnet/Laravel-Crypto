@@ -39,16 +39,6 @@ body {
     box-shadow: 2px 5px 20px #111;
     transform: translateY(-1px);
 }
-.btn-exchange-info{
-    transition: all .3s;
-}
-
-.btn-exchange-info:hover{
-    background-color: #f44336;
-    border-radius: 7px;
-    box-shadow: 2px 5px 20px #111;
-    transform: translateY(-1px);
-}
 
 .search-input{
     background: transparent;
@@ -89,6 +79,10 @@ body {
     width: 12px;
     background-color: #4FCD36;
     border-radius: 50%;
+}
+
+#exchanges, #cards{
+    list-style-type: none;
 }
 
 @media( max-width: 768px){

@@ -10,13 +10,24 @@ use Illuminate\Support\Facades\Validator;
 class CardController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $cards = Card::all();
+        return view('card.card-index')->with('cards', $cards); 
     }
 
     /**
@@ -90,9 +101,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Card $card)
     {
-        //
+        return view('card.card-show')->with('card',$card);
     }
 
     /**
@@ -101,9 +112,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Card $card)
     {
-        //
+        return view('card.card-edit')->with('card',$card);
     }
 
     /**
@@ -113,9 +124,32 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Card $card)
     {
-        //
+        //get request data
+        $data = $request->except("_token", "_method");
+        
+        if($request->hasFile('logo')){
+            $new_logo= $request->file('logo');
+            $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
+            $new_logo->storeAs('images', $new_logo_name );
+            
+            //set new logo name
+            $data["logo"] = $new_logo_name;
+
+            // Delete Old image
+            $isExists = file_exists(public_path('images/'). '/'. $card->logo);
+            if($isExists){
+                unlink( public_path('images/'). '/'. $card->logo );
+            }
+            
+        }
+
+        // update database 
+        $card->update($data);
+
+        //Redirect and show flash message
+        return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully updated'));
     }
 
     /**
@@ -127,5 +161,21 @@ class CardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete(Card $card)
+    {
+        // Delete image
+        $isExists = file_exists(public_path('images/'). '/'. $card->logo);
+        if($isExists){
+            unlink( public_path('images/'). '/'. $card->logo );
+        }
+        
+        //Delete Data
+        $card->delete();
+
+        //Redirect and show flash message
+        return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully Deleted'));
+
     }
 }

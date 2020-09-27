@@ -22,3 +22,4 @@ Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('exchanges', 'ExchangeController');
 Route::resource('cards', 'CardController');
 Route::get('delete/exchanges/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
+Route::get('delete/cards/{card}' , 'CardController@delete')->name('cards.delete');

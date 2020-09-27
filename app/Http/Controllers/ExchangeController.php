@@ -127,23 +127,26 @@ class ExchangeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Exchange $exchange)
     {
         //get request data
         $data = $request->except("_token", "_method");
-        $exchange = Exchange::find($id);
 
         if($request->hasFile('logo')){
             $new_logo= $request->file('logo');
             $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
             $new_logo->storeAs('images', $new_logo_name );
             
+            //set new logo name
             $data["logo"] = $new_logo_name;
+
             // Delete Old image
-            unlink( public_path('images/'). '/'. $exchange->logo);
-
+            $isExists = file_exists(public_path('images/'). '/'. $exchange->logo);
+            if($isExists){
+                unlink( public_path('images/'). '/'. $exchange->logo);
+            }
+            
         }
-
 
         // update database 
         $exchange->update($data);
@@ -157,7 +160,11 @@ class ExchangeController extends Controller
     public function delete(Exchange $exchange)
     {
         // Delete image
-        unlink( public_path('images/'). '/'. $exchange->logo);
+        $isExists = file_exists(public_path('images/'). '/'. $exchange->logo);
+        if($isExists){
+            unlink( public_path('images/'). '/'. $exchange->logo);
+        }
+        
         //Delete Data
         $exchange->delete();
 
