@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    padding-top: 65px;  
+    padding-top: 65px; 
     margin:0;
 }
   
@@ -8,15 +8,13 @@ body {
   
 header {
     height: 55vh;
-    /* background: url(../images/bg.png) no-repeat center center; */
     background:  #b2edef;
-    background-attachment: fixed;
     background-size: cover;
+
 }
   
 /* navbar */
 .nav-menu {
-  /* background:  linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 81%, rgba(237,237,237,1) 100%); */
   background: #fff;
   padding: 0;
   font-size: 13px;
@@ -70,10 +68,11 @@ header {
 
 /* crypto-search start */
 .crypto-search{
-    position : absolute;
-    top      : 40%;
-    width    : 100%;
+  position : absolute;
+  top      : 40%;
+  width    : 100%;
 }
+
 .search_box{
     width: 30%;
     position: relative;
@@ -86,19 +85,21 @@ header {
   box-sizing: border-box;
   background: rgba(0,0,0,0.3);
   border: 2px solid #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 18px;
   color: #fff;
   outline: none;
 }
   
-.fa-search{
+
+.search-icon{
   position: absolute;
-  top: 55%;
+  top: 70%;
   transform: translateY(-50%);
-  right: 25px;
+  right: 5px;
   color: #fff;
   font-size: 25px;
+  box-shadow: none !important;
 }
 
 ::-webkit-input-placeholder {
@@ -169,14 +170,14 @@ header {
   header {
     height: 50vh;
     background:  #b2edef;
-    background-attachment: fixed;
     background-size: cover;
   }
 
   .crypto-search{
-    position : static;
-    padding-top: 50px;
-
+    position : absolute;
+    top      : 37%;
+    width    : 100%;
+    background:  #b2edef;
   }
 
   .search_box{
@@ -191,7 +192,8 @@ header {
     width: 100%;
     color: #000;
     font-weight: bold;
-    padding: 5px 8px 8px 8px;
+    /* padding: 5px 8px 8px 8px; */
+    padding: 8px;
     border: 1px solid #000;
     border-radius: 5px;
   }
@@ -279,4 +281,3 @@ header {
   outline: 2px dotted #55d7dc;
 }
 /* button style end */
-
