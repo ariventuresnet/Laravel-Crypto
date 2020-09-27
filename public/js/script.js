@@ -7,11 +7,11 @@ $(document).ready(function(){
   if(width < 425){
       $(".find").on("focus", function(){
           // $('.wrapper').addClass('content-hide');
-          $('.crypto-search').css({"position":"static", "padding-top":"20px"});
+          $('.crypto-search').css({"position":"static", "padding":"30px 0px"});
           $('.main').addClass('content-hide')
       }).on("blur", function(){
           // $('.wrapper').removeClass('content-hide');
-          $('.crypto-search').css({"position":"absolute", "top":"35%","padding-top":"0" });
+          $('.crypto-search').css({"position":"absolute", "top":"37%","padding":"0" });
           $('.main').removeClass('content-hide')
       });
   }

@@ -122,7 +122,7 @@
                             @foreach ($exchanges as $exchange)
                                 <tr class="exchange-row">
                                     <td class="exchange-name">
-                                        <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="25%" alt="Exchange Logo"> {{$exchange->name}}</a>
+                                        <a href="{{route('cryptocurrency.show', $exchange->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="20%" alt="Exchange Logo"> {{$exchange->name}}</a>
                                     </td>
                                     <td>{{$exchange->ease}}</td>
                                     <td>{{$exchange->privacy}}</td>

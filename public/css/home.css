@@ -171,8 +171,9 @@ header {
 
   .crypto-search{
     position : absolute;
-    top      : 35%;
+    top      : 37%;
     width    : 100%;
+    background:  #b2edef;
   }
 
   .search_box{
