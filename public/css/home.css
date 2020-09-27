@@ -1,64 +1,66 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 65px; 
-    margin:0;
+  font-family : 'Montserrat', sans-serif;
+  padding-top : 65px;
+  margin      :0;
 }
-  
+
 /* header */
   
 header {
-    height: 55vh;
-    background:  #b2edef;
-    background-size: cover;
+  height          : 55vh;
+  background      :  #b2edef;
+  background-size : cover;
 
 }
-  
+
 /* navbar */
+
 .nav-menu {
-  background: #fff;
-  padding: 0;
-  font-size: 13px;
+  background : #fff;
+  padding    : 0;
+  font-size  : 13px;
 }
 
 .line1, .line2, .line3 {
-  width: 23px;
-  height: 3px;
-  margin: 5px;
-  transition: all .4s;
+  width      : 23px;
+  height     : 3px;
+  margin     : 5px;
+  transition : all .4s;
 }
 
 .change .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
+  transform : rotate(-45deg) translate(-5px, 6px);
 }
 
 .change .line2 {
-  opacity: 0;
+  opacity : 0;
 }
 
 .change .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
+  transform : rotate(45deg) translate(-5px, -6px);
 }
 
 /* end of navbar */
   
 
 /* wrapper */
+
 .wrapper{
-    background: #fff;
+  background : #fff;
 }
 .btn-home{
-    background-color: #fff;
-    width: 100%;
-    color: #000;
-    font-weight: bold;
-    padding: 15px 15px 27px;
-    border: 1px solid #000;
-    border-radius: 10px;
+  background-color : #fff;
+  width            : 100%;
+  color            : #000;
+  font-weight      : bold;
+  padding          : 15px 15px 27px;
+  border           : 1px solid #000;
+  border-radius    : 10px;
 }
 .btn-home:hover{
-    background: #000;
-    color:#fff;
-    font-weight: bold;
+  background  : #000;
+  color       :#fff;
+  font-weight : bold;
 
 }
 
@@ -67,6 +69,7 @@ header {
 
 
 /* crypto-search start */
+
 .crypto-search{
   position : absolute;
   top      : 40%;
@@ -74,147 +77,141 @@ header {
 }
 
 .search_box{
-    width: 30%;
-    position: relative;
+    width    : 30%;
+    position : relative;
   }
-  
+
 .search_box input[type="text"]{
-  width: 100%;
-  padding: .8rem;
-  padding-right: 60px;
-  box-sizing: border-box;
-  background: rgba(0,0,0,0.3);
-  border: 2px solid #fff;
-  border-radius: 5px;
-  font-size: 18px;
-  color: #fff;
-  outline: none;
+  width         : 100%;
+  padding       : .8rem;
+  padding-right : 60px;
+  box-sizing    : border-box;
+  background    : rgba(0,0,0,0.3);
+  border        : 2px solid #fff;
+  border-radius : 5px;
+  font-size     : 18px;
+  color         : #fff;
+  outline       : none;
 }
-  
+
 
 .search-icon{
-  position: absolute;
-  top: 70%;
-  transform: translateY(-50%);
-  right: 5px;
-  color: #fff;
-  font-size: 25px;
+  position  : absolute;
+  top       : 70%;
+  transform : translateY(-50%);
+  right     : 5px;
+  color     : #fff;
+  font-size : 25px;
   box-shadow: none !important;
 }
 
 ::-webkit-input-placeholder {
-  color: #fff;
+  color : #fff;
 }
 ::-moz-placeholder {
-  color: #fff;
+  color : #fff;
 }
 :-ms-input-placeholder {
-  color: #fff;
+  color : #fff;
 }
+
 /* crypto-search end */
 /* end of header */
 
-
 /* table start */
+
 .separator {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
+  display       : flex;
+  align-items   : center;
+  text-align    : center;
+  font-weight   : bold;
+  font-size     : 1.3rem;
+  margin-bottom : 20px;
 }
 .separator::before, .separator::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #000;
+  content       : '';
+  flex          : 1;
+  border-bottom : 1px solid #000;
 }
 .separator::before {
-  margin-right: .25em;
+  margin-right : .25em;
 }
 .separator::after {
-  margin-left: .25em;
+  margin-left : .25em;
 }
 .exchange-name{
-  vertical-align: middle !important;
-  width: 16%;
-  font-weight: bold;
-  text-transform: uppercase;
+  vertical-align : middle !important;
+  width          : 16%;
+  font-weight    : bold;
+  text-transform : uppercase;
 
 }
 /* table end */
+
 .content-hide{
-  display: none !important;
+  display : none !important;
 }
 
 @media screen and (max-width: 992px) {
-    .btn-home{
-      width: 100%;
-      color: #000;
-      font-weight: bold;
-      font-size: .8rem;
-      padding: 15px 15px 22px;
-      border: 1px solid #000;
-      border-radius: 10px;
-    }
+  .btn-home{
+    width         : 100%;
+    color         : #000;
+    font-weight   : bold;
+    font-size     : .8rem;
+    padding       : 15px 15px 22px;
+    border        : 1px solid #000;
+    border-radius : 10px;
+  }
 }
 
 @media screen and (max-width: 576px) {
-  body {
-    padding: 0;  
-    margin:0;
-  }
-  .wrapper{
-    display: none !important;
-  }
+
   header {
-    height: 50vh;
-    background:  #b2edef;
-    background-size: cover;
+    height          : 65vh;
+    background      :  #b2edef;
+    background-size : cover;
   }
 
   .crypto-search{
-    position : absolute;
-    top      : 37%;
-    width    : 100%;
-    background:  #b2edef;
+    position   : absolute;
+    top        : 40%;
+    width      : 100%;
+    background :  #b2edef;
   }
 
   .search_box{
-    width: 85%;
+    width : 85%;
   }
   label{
-    font-size: .7rem;
-    padding: 0px;
-    margin-bottom: 3px;
+    font-size     : .7rem;
+    padding       : 0px;
+    margin-bottom : 3px;
   }
   .btn-home{
-    width: 100%;
-    color: #000;
-    font-weight: bold;
-    /* padding: 5px 8px 8px 8px; */
-    padding: 8px;
-    border: 1px solid #000;
-    border-radius: 5px;
+    width         : 100%;
+    color         : #000;
+    font-weight   : bold;
+    padding       : 8px;
+    border        : 1px solid #000;
+    border-radius : 5px;
   }
   .search_box input[type="text"]{
-    padding: .5rem;
+    padding : .4rem;
 
   }
 
   .exchange-name{
-    font-size  : .8rem;
-    font-weight: bold;
+    font-size   : .8rem;
+    font-weight : bold;
   }
   .exchange-row{
-    font-size: .7rem;
+    font-size : .7rem;
   }
-
   .table th{
-    font-size: .8rem;
+    font-size : .8rem;
   }
   .separator {
-    margin-bottom: 10px;
+    margin-bottom : 10px;
   }
 
 }
@@ -222,62 +219,62 @@ header {
 
 /* style button */
 .draw-border {
-  box-shadow: inset 0 0 0 4px #58afd1;
-  color: #58afd1;
-  -webkit-transition: color 0.25s 0.0833333333s;
-  transition: color 0.25s 0.0833333333s;
-  position: relative;
+  box-shadow         : inset 0 0 0 4px #58afd1;
+  color              : #58afd1;
+  -webkit-transition : color 0.25s 0.0833333333s;
+  transition         : color 0.25s 0.0833333333s;
+  position           : relative;
 }
 .draw-border::before, .draw-border::after {
-  border: 0 solid transparent;
-  box-sizing: border-box;
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  width: 0;
-  height: 0;
-  bottom: 0;
-  right: 0;
+  border         : 0 solid transparent;
+  box-sizing     : border-box;
+  content        : '';
+  pointer-events : none;
+  position       : absolute;
+  width          : 0;
+  height         : 0;
+  bottom         : 0;
+  right          : 0;
 }
 .draw-border::before {
-  border-bottom-width: 4px;
-  border-left-width: 4px;
+  border-bottom-width : 4px;
+  border-left-width   : 4px;
 }
 .draw-border::after {
-  border-top-width: 4px;
-  border-right-width: 4px;
+  border-top-width   : 4px;
+  border-right-width : 4px;
 }
 .draw-border:hover {
   /* color: #ffe593; */
-  color: #000;
+  color : #000;
 }
 .draw-border:hover::before, .draw-border:hover::after {
-  border-color: #ffe593;
-  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
-  transition: border-color 0s, width 0.25s, height 0.25s;
-  width: 100%;
-  height: 100%;
+  border-color       : #ffe593;
+  -webkit-transition : border-color 0s, width 0.25s, height 0.25s;
+  transition         : border-color 0s, width 0.25s, height 0.25s;
+  width              : 100%;
+  height             : 100%;
 }
 .draw-border:hover::before {
-  -webkit-transition-delay: 0s, 0s, 0.25s;
-          transition-delay: 0s, 0s, 0.25s;
+  -webkit-transition-delay : 0s, 0s, 0.25s;
+          transition-delay : 0s, 0s, 0.25s;
   }
   .draw-border:hover::after {
-  -webkit-transition-delay: 0s, 0.25s, 0s;
-          transition-delay: 0s, 0.25s, 0s;
+  -webkit-transition-delay : 0s, 0.25s, 0s;
+          transition-delay : 0s, 0.25s, 0s;
 }
 
 .btn-style {
-  background: #b2edef;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
-  padding: .7em 1.5em;
-  letter-spacing: 0.05rem;
+  background     : #b2edef;
+  color          : #000;
+  border         : none;
+  cursor         : pointer;
+  line-height    : 1.5;
+  font           : 700 1.2rem 'Roboto Slab', sans-serif;
+  padding        : .7em 1.5em;
+  letter-spacing : 0.05rem;
 }
 .btn-style:focus {
-  outline: 2px dotted #55d7dc;
+  outline : 2px dotted #55d7dc;
 }
 /* button style end */

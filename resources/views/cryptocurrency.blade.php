@@ -17,7 +17,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
-    {{-- test --}}
+
+    <link rel="stylesheet" href="{{asset('autocomplete/jquery.auto-complete.css')}}">
 
     <title>Cryptocutter</title>
 </head>
@@ -44,17 +45,18 @@
         <!-- end of navbar -->
 
         <!-- wrapper -->
-        <div class="container-fluid  pt-md-4 px-lg-5 pb-lg-5 wrapper">
+        <div class="container-fluid pt-md-4 px-lg-5 pb-lg-5 wrapper">
             <div class="row px-2">
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
-                </div>
-                <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
                 </div>
+                <div class="col-6 col-sm-4 col-lg-2">
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                </div>
+                
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
                 </div>
@@ -76,16 +78,16 @@
                         <div class="form-row d-flex justify-content-center">
                             <div class="search_box mr-2">
                                 <label><span class="text-dark font-weight-bold">BUY</span></label>
-                                <input type="text" placeholder="Search Crypto">
+                                <input type="text" class="find" id="find1" placeholder="Search Crypto">
                             </div>
                             <div class="search_box mr-2">
                                 <label><span class="text-dark font-weight-bold">IN</span></label>
-                                <input type="text" placeholder="Search Country">
+                                <input type="text" class="find" id="find2" placeholder="Search Country">
                             </div>
                             <div class="search_box">
                                 <label><span class="text-dark font-weight-bold">WITH</span></label>
-                                <input type="text" placeholder="Search Payment Method">
-                                <button type="button" class="btn"><i class="fas fa-search"></i></button>
+                                <input type="text" class="find" id="find3" placeholder="Search Payment Method">
+                                <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
                             </div>
                         </div>
                     </form>
