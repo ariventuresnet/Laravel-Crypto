@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/card', 'HomeController@viewCards')->name('crypto.card');
+Route::get('/card', 'HomeController@viewCards')->name('cryptocard');
 
 Auth::routes();
 
-Route::get('/exchange/{exchange}', 'HomeController@cryptocurrency')->name('cryptocurrency.show');
+Route::get('/exchange/{exchange}', 'HomeController@cryptoExchange')->name('cryptocurrency.show');
+Route::get('/card/{card}', 'HomeController@cryptoCard')->name('cryptocard.show');
 
 
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');

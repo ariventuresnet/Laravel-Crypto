@@ -1,42 +1,53 @@
 @extends('layouts.cryptocutter-layout')
 
 @section('main-content')
-    <section class="container-fluid pt-md-5 pt-3 px-md-5 px-2 main">
+    <section class="container mt-5 main">
         <div class="row">
-            <div class="col-12">
-                <div class="separator">
-                    Top Cards
+            <div class="col-sm-12 mb-4">
+                <div class="">
+                    <h2 class="mb-4 d-md-inline">
+                        <img src="{{asset('images/') . "/" . $card->logo}}" class="img-fluid rounded" alt="logo" width="120px">
+                        <span class="text-uppercase font-weight-bold">{{$card->name}}</span>
+                    </h2>
+                    <span class="d-inline float-sm-right my-4"><a href="{{$card->url}}" class="btn btn-style draw-border">Buy Crypto</a></span>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="">
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Ease Of Use</th>
-                            <th scope="col">Privacy</th>
-                            <th scope="col">Speed</th>
-                            <th scope="col">Fees</th>
-                            <th scope="col">Reputation</th>
-                            <th scope="col">Limits</th>
-                        </tr>
+                <p class="mb-3">{!! $card->description !!}</p>
+                <div class="row mb-5">
+                    <div class="col-sm-6 mb-2">
+                        <h3>Pros</h3>
+                        <p>{!! $card->pros !!}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Cons</h3>
+                        <p>{!! $card->cons !!}</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Ease Of Use</th>
+                                <th>Privacy</th>
+                                <th>Speed</th>
+                                <th>Fees</th>
+                                <th>Reputation</th>
+                                <th>Limits</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cards as $card)
-                                <tr class="exchange-row">
-                                    <td class="exchange-name">
-                                        <a href="{{route('cryptocard.show', $card->id)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $card->logo}}" class="rounded-circle" width="15%" alt="Logo"> {{$card->name}}</a>
-                                    </td>
-                                    <td>{{$card->ease}}</td>
-                                    <td>{{$card->privacy}}</td>
-                                    <td>{{$card->speed}}</td>
-                                    <td>{{$card->fee}}</td>
-                                    <td>{{$card->reputation}}</td>
-                                    <td>{{$card->limit}}</td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>{{$card->ease}}</td>
+                                <td>{{$card->privacy}}</td>
+                                <td>{{$card->speed}}</td>
+                                <td>{{$card->fee}}</td>
+                                <td>{{$card->reputation}}</td>
+                                <td>{{$card->limit}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </section>
@@ -94,7 +105,5 @@
             });
 
         });
-
-        $('#card').addClass('current');
     </script>
 @endsection

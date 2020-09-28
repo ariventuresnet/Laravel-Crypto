@@ -20,13 +20,18 @@ class HomeController extends Controller
         return view('welcome', compact('exchanges'));
     }
 
-    public function cryptocurrency(Exchange $exchange){
+    public function cryptoExchange(Exchange $exchange){
         
-        return view('cryptocurrency')->with('exchange', $exchange);
+        return view('exchange.cryptoexchange')->with('exchange', $exchange);
     }
 
     public function viewCards(){
         $cards = Card::all();
         return view('cryptocard')->with('cards', $cards);
     }
+
+    public function cryptoCard(Card $card){
+        return view('card.cryptocard-show')->with('card', $card);
+    }
+
 }
