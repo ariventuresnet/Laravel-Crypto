@@ -28,7 +28,7 @@
     <header>
         <!-- navbar -->
         <nav class="navbar navbar-expand-md nav-menu fixed-top px-md-5">
-            <a href="#" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="200"></a>
+            <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo.png')}}" class="img-fluid" alt="brang logo" width="200"></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>
@@ -49,23 +49,23 @@
         <div class="container-fluid pt-md-4 px-lg-5 pb-lg-5 wrapper">
             <div class="row px-2">
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="exchange"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
+                    <a href="{{route('crypto.card')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="card"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="loan"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
                 </div>
                 
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="wallet"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Laws</span> <span class="float-right"><i class="fas fa-university"></i></i></span></a>
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="law"> <span class="float-left">Laws</span> <span class="float-right"><i class="fas fa-university"></i></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2"> <span class="float-left">Banks</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="bank"> <span class="float-left">Banks</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
                 </div>
             </div>
         </div>

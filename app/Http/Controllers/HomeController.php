@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Card;
 use App\Exchange;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,10 @@ class HomeController extends Controller
     public function cryptocurrency(Exchange $exchange){
         
         return view('cryptocurrency')->with('exchange', $exchange);
+    }
+
+    public function viewCards(){
+        $cards = Card::all();
+        return view('cryptocard')->with('cards', $cards);
     }
 }
