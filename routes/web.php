@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/card', 'HomeController@viewCards')->name('cryptocard');
+Route::get('/cards', 'HomeController@viewCards')->name('cryptocard');
 
 Auth::routes();
 
-Route::get('/exchange/{exchange}', 'HomeController@cryptoExchange')->name('cryptocurrency.show');
-Route::get('/card/{card}', 'HomeController@cryptoCard')->name('cryptocard.show');
+Route::get('/exchanges/{exchange}', 'HomeController@cryptoExchange')->name('cryptoexchange.show');
+Route::get('/cards/{card}', 'HomeController@cryptoCard')->name('cryptocard.show');
 
 
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
-Route::resource('exchanges', 'ExchangeController');
-Route::resource('cards', 'CardController');
-Route::get('delete/exchanges/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
-Route::get('delete/cards/{card}' , 'CardController@delete')->name('cards.delete');
+Route::resource('admin/exchanges', 'ExchangeController');
+Route::resource('admin/cards', 'CardController');
+Route::get('exchanges/delete/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
+Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete');

@@ -20,8 +20,10 @@ class HomeController extends Controller
         return view('welcome', compact('exchanges'));
     }
 
-    public function cryptoExchange(Exchange $exchange){
+    public function cryptoExchange($name){
         
+        $exchangeName = str_replace('_', ' ', $name);
+        $exchange = Exchange::where('name', $exchangeName)->first();
         return view('exchange.cryptoexchange')->with('exchange', $exchange);
     }
 
@@ -30,7 +32,10 @@ class HomeController extends Controller
         return view('cryptocard')->with('cards', $cards);
     }
 
-    public function cryptoCard(Card $card){
+    public function cryptoCard($name){
+
+        $cardName = str_replace('_', ' ', $name);
+        $card = Card::where('name', $cardName)->first();
         return view('card.cryptocard-show')->with('card', $card);
     }
 
