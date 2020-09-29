@@ -22,8 +22,8 @@
                         </thead>
                         <tbody>
                             @foreach ($cards as $card)
-                                <tr class="exchange-row">
-                                    <td class="exchange-name">
+                                <tr class="table-row">
+                                    <td class="td-name">
                                         <?php $name= str_replace(' ', '_', $card->name); ?>
                                         <a href="{{route('cryptocard.show', $name )}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $card->logo}}" class="rounded-circle" width="15%" alt="Logo"> {{$card->name}}</a>
                                     </td>

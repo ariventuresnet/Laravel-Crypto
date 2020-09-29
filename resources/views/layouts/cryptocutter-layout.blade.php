@@ -47,7 +47,7 @@
 
         <!-- wrapper -->
         <div class="container-fluid pt-md-4 px-lg-5 pb-lg-5 wrapper">
-            <div class="row px-2">
+            <div class="row">
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="{{URL::to('/')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="exchange"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
@@ -72,20 +72,20 @@
         <!-- end of wrapper -->
 
         <!-- searchbox -->
-        <div class="container-fluid crypto-search px-md-5">
+        <div class="container-fluid searchbox px-md-5">
             <div class="row">
                 <div class="col-md-12">
                     <form>
                         <div class="form-row d-flex justify-content-center">
-                            <div class="search_box mr-2">
+                            <div class="input-box mr-2">
                                 <label><span class="text-dark font-weight-bold">BUY</span></label>
                                 <input type="text" class="find" id="find1" placeholder="Search Crypto">
                             </div>
-                            <div class="search_box mr-2">
+                            <div class="input-box mr-2">
                                 <label><span class="text-dark font-weight-bold">IN</span></label>
                                 <input type="text" class="find" id="find2" placeholder="Search Country">
                             </div>
-                            <div class="search_box">
+                            <div class="input-box">
                                 <label><span class="text-dark font-weight-bold">WITH</span></label>
                                 <input type="text" class="find" id="find3" placeholder="Search Payment Method">
                                 <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>

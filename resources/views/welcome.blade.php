@@ -22,8 +22,8 @@
                         </thead>
                         <tbody>
                             @foreach ($exchanges as $exchange)
-                                <tr class="exchange-row">
-                                    <td class="exchange-name">
+                                <tr class="table-row">
+                                    <td class="td-name">
                                         <?php $name= str_replace(' ', '_', $exchange->name); ?>
                                         <a href="{{route('cryptoexchange.show', $name)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="15%" alt="Exchange Logo"> {{$exchange->name}}</a>
                                     </td>
