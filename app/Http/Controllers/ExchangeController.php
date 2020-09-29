@@ -50,7 +50,7 @@ class ExchangeController extends Controller
     {
         // validate Data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'name' => 'required|unique:exchanges|max:255',
             'logo' => 'required',
             'url' => 'required',
             'currencies' => 'required',

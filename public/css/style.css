@@ -40,6 +40,10 @@ body {
     transform: translateY(-1px);
 }
 
+.move-top{
+    transform: translateY(-2px);
+}
+
 .search-input{
     background: transparent;
     border-radius: 0;
@@ -81,7 +85,7 @@ body {
     border-radius: 50%;
 }
 
-#exchanges, #cards{
+#exchanges, #cards, #loans{
     list-style-type: none;
 }
 

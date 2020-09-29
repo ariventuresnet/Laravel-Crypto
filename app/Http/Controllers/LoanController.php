@@ -2,23 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Card;
+use App\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
-class CardController extends Controller
+class LoanController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +16,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards = Card::all();
-        return view('card.card-index')->with('cards', $cards); 
+        //
     }
 
     /**
@@ -37,7 +26,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('card.card-create');
+        return view('loan.create');
     }
 
     /**
@@ -50,13 +39,12 @@ class CardController extends Controller
     {
         // validate Data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:cards|max:255',
+            'name' => 'required|unique:loans|max:255',
             'logo' => 'required',
             'url' => 'required',
             'currencies' => 'required',
             'countries' => 'required',
-            'payments' => 'required',
-            
+            'collaterals' => 'required',
         ]);
         
         if ($validator->fails()) {
@@ -67,21 +55,26 @@ class CardController extends Controller
         if ($request->hasFile('logo')) {
 
             $logo= $request->file('logo');
-            $logo_name = uniqid('card_',true).Str::random(10). '.' . $logo->getClientOriginalExtension();
+            $logo_name = uniqid('',true).Str::random(10). '.' . $logo->getClientOriginalExtension();
             $logo->storeAs('images', $logo_name );
         }
         
         // store data into database
-        Card::create([
+        Loan::create([
             "name"=> $request->name,
             "logo"=> $logo_name,
             "url" => $request->url,
             "currencies"=> json_encode($request->currencies),
             "countries"=> json_encode($request->countries),
-            "payments"=> json_encode($request->payments),
+            "collaterals"=> json_encode($request->collaterals),
             "description" => $request->description,
             "pros"=> $request->pros,
             "cons"=> $request->cons,
+            "btc_only"=> $request->btc_only,
+            "fiat_loan"=> $request->fiat_loan,
+            "crypto_loan"=> $request->crypto_loan,
+            "term"=> $request->term,
+            "interest"=> $request->interest,
             "ease"=> $request->ease,
             "privacy"=> $request->privacy,
             "speed"=> $request->speed,
@@ -92,7 +85,7 @@ class CardController extends Controller
 
 
         //Redirect and show flash message
-        return redirect()->back()->with(session()->flash('alert-success', 'Card successfully added'));
+        return redirect()->back()->with(session()->flash('alert-success', 'New Loan successfully added'));
     }
 
     /**
@@ -101,9 +94,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Card $card)
+    public function show($id)
     {
-        return view('card.card-show')->with('card',$card);
+        //
     }
 
     /**
@@ -112,9 +105,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Card $card)
+    public function edit($id)
     {
-        return view('card.card-edit')->with('card',$card);
+        //
     }
 
     /**
@@ -124,32 +117,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(Request $request, $id)
     {
-        //get request data
-        $data = $request->except("_token", "_method");
-        
-        if($request->hasFile('logo')){
-            $new_logo= $request->file('logo');
-            $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
-            $new_logo->storeAs('images', $new_logo_name );
-            
-            //set new logo name
-            $data["logo"] = $new_logo_name;
-
-            // Delete Old image
-            $isExists = file_exists(public_path('images/'). '/'. $card->logo);
-            if($isExists){
-                unlink( public_path('images/'). '/'. $card->logo );
-            }
-            
-        }
-
-        // update database 
-        $card->update($data);
-
-        //Redirect and show flash message
-        return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully updated'));
+        //
     }
 
     /**
@@ -161,21 +131,5 @@ class CardController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function delete(Card $card)
-    {
-        // Delete image
-        $isExists = file_exists(public_path('images/'). '/'. $card->logo);
-        if($isExists){
-            unlink( public_path('images/'). '/'. $card->logo );
-        }
-        
-        //Delete Data
-        $card->delete();
-
-        //Redirect and show flash message
-        return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully Deleted'));
-
     }
 }

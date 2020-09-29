@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5">
                     <div class="h2 text-center font-weight-bold mb-3">
-                        Add Card
+                        Add Loan
                     </div>
                     <!--Show Validation Error -->
                     @if ($errors->any())
@@ -33,32 +33,38 @@
                         @endforeach
                     </div>
 
-                    <form action="{{route('cards.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('loans.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
-                            <label for="name">Card Name</label>
+                            <label for="name">Name</label>
                             <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                              <input type="file" name="logo" class="custom-file-input" id="card-logo">
-                              <label class="custom-file-label" for="card-logo">Choose Logo</label>
+                              <input type="file" name="logo" class="custom-file-input" id="loan-logo">
+                              <label class="custom-file-label" for="loan-logo">Choose Logo</label>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="url">Card URL</label>
+                            <label for="url">URL</label>
                             <input type="text" name="url" class="form-control" id="url" value="{{old('url')}}">
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="bitcoin">Bitcoin</option>
-                                <option value="ethereum">Ethereum</option>
-                                <option value="tether">Tether</option>
-                                <option value="litecoin">Litecoin</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="CNY">CNY</option>
+                                <option value="INR">INR</option>
+                                <option value="JPY">JPY</option>
+                                <option value="IDR">IDR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="USDT">USDT</option>
+                                <option value="BUSD">BUSD</option>
+                                <option value="NEO">NEO</option>
                             </select>
                         </div>
 
@@ -79,18 +85,23 @@
 
 
                         <div class="form-group">
-                            <label for="multiple-payment">Payment Method</label>
-                            <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
-                                <option value="visa">Visa</option>
-                                <option value="mastercard">Mastercard</option>
-                                <option value="credit card">Credit card</option>
-                                <option value="union pay">Union pay</option>
+                            <label for="multiple-collateral">Collateral</label>
+                            <select multiple name="collaterals[]" class="chosen-collaterals" data-placeholder="Select collaterals...">
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="BNB">BNB</option>
+                                <option value="XRP">XRP</option>
+                                <option value="LTC">LTC</option>
+                                <option value="EOS">EOS</option>
+                                <option value="XLM">XLM</option>
+                                <option value="LINK">LINK</option>
+                                <option value="TRX">TRX</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" cols="30" rows="3">{!! old('description') !!}</textarea>
+                            <textarea name="description" id="description" class="form-control" cols="30" rows="3">{!! old('description') !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="pros">Pros</label>
@@ -100,6 +111,28 @@
                             <label for="cons">Cons</label>
                             <textarea name="cons" id="cons" class="form-control" cols="30" rows="3">{!! old('cons') !!}</textarea>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="btc-only">BTC Only</label>
+                            <input type="text" name="btc_only" class="form-control" id="btc-only" value="{{old('btc_only')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="fiat-loan">Fiat Loan</label>
+                            <input type="text" name="fiat_loan" class="form-control" id="fiat-loan" value="{{old('fiat_loan')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="crypto-loan">Crypto Loan</label>
+                            <input type="text" name="crypto_loan" class="form-control" id="crypto-loan" value="{{old('crypto_loan')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="term">Term</label>
+                            <input type="text" name="term" class="form-control" id="term" value="{{old('term')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Interest</label>
+                            <input type="text" name="interest" class="form-control" id="interest" value="{{old('interest')}}">
+                        </div>
+                        
                         <div class="form-group">
                             <label for="ease">Ease Of Use</label>
                             <input type="text" name="ease" class="form-control" id="ease" value="{{old('ease')}}">
@@ -125,7 +158,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-style draw-border mb-3">Add Card</button>
+                            <button type="submit" class="btn btn-style draw-border mb-3">Add Loan</button>
                         </div>
                     </form>
                 </div>
@@ -142,6 +175,7 @@
     <script src="{{asset('js/chosen.jquery.js')}}"></script>
 
     <script>
+        // $("#description").focus(function(){});
         
         $(document).ready(function(){
 
@@ -181,20 +215,18 @@
                 no_results_text: "Oops, nothing found!",
                 width: "100%"
             });
-            $(".chosen-payments").chosen({
+            $(".chosen-collaterals").chosen({
                 disable_search_threshold: 10,
                 no_results_text: "Oops, nothing found!",
                 width: "100%"
             });
 
-
-            $('#card-logo').on('change',function(){
+            $('#loan-logo').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label
                 $(this).next('.custom-file-label').html(fileName);
             });
-
 
         });
 

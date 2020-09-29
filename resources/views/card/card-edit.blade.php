@@ -167,7 +167,6 @@
     <script src="{{asset('js/chosen.jquery.js')}}"></script>
     
     <script>
-        // $("#description").focus(function(){});
         
         $(document).ready(function(){
 
@@ -213,7 +212,12 @@
                 width: "100%"
             });
 
-
+            $('#card-logo').on('change',function(){
+                //get the file name
+                var fileName = $(this).val().replace('C:\\fakepath\\', "");
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            });
 
         });
 

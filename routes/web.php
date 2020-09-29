@@ -25,5 +25,6 @@ Route::get('/cards/{card}', 'HomeController@cryptoCard')->name('cryptocard.show'
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
+Route::resource('admin/loans', 'LoanController');
 Route::get('exchanges/delete/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
 Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete');
