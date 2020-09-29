@@ -110,5 +110,7 @@
         
     <!-- Custom Script -->
     @yield('custom-script')
+
+    @include('analytics')
 </body>
 </html>
