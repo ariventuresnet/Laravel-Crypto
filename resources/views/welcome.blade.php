@@ -9,7 +9,7 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead class="">
+                        <thead>
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Ease Of Use</th>
