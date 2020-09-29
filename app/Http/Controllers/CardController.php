@@ -37,7 +37,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('card.create-card');
+        return view('card.card-create');
     }
 
     /**

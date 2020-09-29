@@ -9,7 +9,7 @@
                         <img src="{{asset('images/') . "/" . $card->logo}}" class="img-fluid rounded" alt="logo" width="120px">
                         <span class="text-uppercase font-weight-bold">{{$card->name}}</span>
                     </h2>
-                    <span class="d-inline float-sm-right my-4"><a href="{{$card->url}}" class="btn btn-style draw-border">Buy Crypto</a></span>
+                    <span class="d-inline float-sm-right my-4"><a href="{{$card->url}}" class="btn btn-style draw-border">Get Card</a></span>
                 </div>
                 <p class="mb-3">{!! $card->description !!}</p>
                 <div class="row mb-5">
