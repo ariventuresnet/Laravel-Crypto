@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Card;
 use App\Exchange;
+use App\Loan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,6 +38,19 @@ class HomeController extends Controller
         $cardName = str_replace('_', ' ', $name);
         $card = Card::where('name', $cardName)->first();
         return view('card.cryptocard-show')->with('card', $card);
+    }
+
+    public function viewLoans(){
+        $loans = Loan::all();
+        return view('cryptoloan')->with('loans', $loans);
+    }
+
+    public function cryptoLoan($name){
+
+        $loanName = str_replace('_', ' ', $name);
+        $loan = Loan::where('name', $loanName)->first();
+        return view('loan.cryptoloan-show')->with('loan', $loan);
+
     }
 
 }
