@@ -85,7 +85,7 @@
 
 
                         <div class="form-group">
-                            <label for="multiple-collateral">Collateral</label>
+                            <label for="multiple-collateral">Collaterals</label>
                             <select multiple name="collaterals[]" class="chosen-collaterals" data-placeholder="Select collaterals...">
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>

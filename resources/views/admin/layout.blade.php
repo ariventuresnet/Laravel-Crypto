@@ -62,7 +62,7 @@
                             </li> 
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="far fa-credit-card fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="loans" class="collapse">
                                     <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('loans.create')}}">Add Loan</a></li>
                                     <li><a class="btn text-white mb-2 border-success" href="{{route('loans.index')}}">View Loan</a></li>

@@ -134,7 +134,7 @@ class CardController extends Controller
             $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
             $new_logo->storeAs('images', $new_logo_name );
             
-            //set new logo name
+            //set new logo unique name
             $data["logo"] = $new_logo_name;
 
             // Delete Old image

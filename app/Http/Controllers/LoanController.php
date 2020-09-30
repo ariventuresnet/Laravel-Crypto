@@ -10,13 +10,24 @@ use Illuminate\Support\Facades\Validator;
 class LoanController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $loans = Loan::all();
+        return view('loan.index')->with('loans', $loans);
     }
 
     /**
@@ -94,9 +105,9 @@ class LoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Loan $loan)
     {
-        //
+        return view('loan.show')->with('loan', $loan);
     }
 
     /**
@@ -105,9 +116,9 @@ class LoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( Loan $loan )
     {
-        //
+        return view('loan.edit')->with('loan', $loan);
     }
 
     /**
@@ -117,9 +128,32 @@ class LoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Loan $loan)
     {
-        //
+        //get request data
+        $data = $request->except("_token", "_method");
+
+        if($request->hasFile('logo')){
+            $new_logo= $request->file('logo');
+            $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
+            $new_logo->storeAs('images', $new_logo_name );
+            
+            //set new logo unique name
+            $data["logo"] = $new_logo_name;
+
+            // Delete Old image
+            $isExists = file_exists(public_path('images/'). '/'. $loan->logo);
+            if($isExists){
+                unlink( public_path('images/'). '/'. $loan->logo );
+            }
+            
+        }
+
+        // update database 
+        $loan->update($data);
+
+        //Redirect and show flash message
+        return redirect()->route('loans.index')->with(session()->flash('alert-success', 'Loan successfully updated'));
     }
 
     /**
@@ -131,5 +165,21 @@ class LoanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete(Loan $loan)
+    {
+        // Delete image
+        $isExists = file_exists(public_path('images/'). '/'. $loan->logo);
+        if($isExists){
+            unlink( public_path('images/'). '/'. $loan->logo );
+        }
+        
+        //Delete Data
+        $loan->delete();
+
+        //Redirect and show flash message
+        return redirect()->route('loans.index')->with(session()->flash('alert-success', 'Loan successfully Deleted'));
+
     }
 }

@@ -28,3 +28,4 @@ Route::resource('admin/cards', 'CardController');
 Route::resource('admin/loans', 'LoanController');
 Route::get('exchanges/delete/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
 Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete');
+Route::get('loans/delete/{loan}' , 'LoanController@delete')->name('loans.delete');
