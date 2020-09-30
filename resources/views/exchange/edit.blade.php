@@ -147,8 +147,30 @@
                         </div>
                         <div class="form-group">
                             <label for="Limit">Limits</label>
-                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $exchange->limit}}">
+                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $exchange->limit }}">
                         </div>
+                        <!-- New Field -->
+                        <div class="form-group">
+                            <label for="bitcoin_only">Bitcoin Only</label>
+                            <input type="text" name="bitcoin_only" class="form-control" id="bitcoin_only" value="{{ $exchange->bitcoin_only }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="recurring_buys">Recurring Buys</label>
+                            <input type="text" name="recurring_buys" class="form-control" id="recurring_buys" value="{{ $exchange->recurring_buys }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="lightning">Lightning</label>
+                            <input type="text" name="lightning" class="form-control" id="lightning" value="{{ $exchange->lightning }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="liquid">Liquid</label>
+                            <input type="text" name="liquid" class="form-control" id="liquid" value="{{ $exchange->liquid }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="kyc">KYC</label>
+                            <input type="text" name="kyc" class="form-control" id="kyc" value="{{ $exchange->kyc }}">
+                        </div>
+                        <!-- End Of New Field -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-style draw-border text-uppercase mb-3">Update</button>
                         </div>

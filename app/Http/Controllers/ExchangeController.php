@@ -88,6 +88,11 @@ class ExchangeController extends Controller
             "fee"=> $request->fee,
             "reputation"=> $request->reputation,
             "limit"=> $request->limit,
+            "bitcoin_only"=> $request->bitcoin_only,
+            "recurring_buys"=> $request->recurring_buys,
+            "lightning"=> $request->lightning,
+            "liquid"=> $request->liquid,
+            "kyc"=> $request->kyc,
         ]);
 
 

@@ -81,6 +81,21 @@
                 <h5 class="text-uppercase font-weight-bold">limit:</h5>
                 <p class="mb-3"> {{ $exchange->limit}} </p>
 
+                <h5 class="text-uppercase font-weight-bold">Bitcoin Only:</h5>
+                <p class="mb-3"> {{ $exchange->bitcoin_only}} </p>
+
+                <h5 class="text-uppercase font-weight-bold">recurring buys:</h5>
+                <p class="mb-3"> {{ $exchange->recurring_buys}} </p>
+
+                <h5 class="text-uppercase font-weight-bold">lightning:</h5>
+                <p class="mb-3"> {{ $exchange->lightning}} </p>
+
+                <h5 class="text-uppercase font-weight-bold">liquid:</h5>
+                <p class="mb-3"> {{ $exchange->liquid}} </p>
+
+                <h5 class="text-uppercase font-weight-bold">kyc:</h5>
+                <p class="mb-3"> {{ $exchange->kyc}} </p>
+
                 <div class="mt-3">
                     <a href="{{route('exchanges.edit', $exchange->id)}}" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>

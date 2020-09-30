@@ -124,6 +124,28 @@
                             <label for="Limit">Limits</label>
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
+                        <!-- New Field -->
+                        <div class="form-group">
+                            <label for="bitcoin_only">Bitcoin Only</label>
+                            <input type="text" name="bitcoin_only" class="form-control" id="bitcoin_only" value="{{old('bitcoin_only')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="recurring_buys">Recurring Buys</label>
+                            <input type="text" name="recurring_buys" class="form-control" id="recurring_buys" value="{{old('recurring_buys')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="lightning">Lightning</label>
+                            <input type="text" name="lightning" class="form-control" id="lightning" value="{{old('lightning')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="liquid">Liquid</label>
+                            <input type="text" name="liquid" class="form-control" id="liquid" value="{{old('liquid')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="kyc">KYC</label>
+                            <input type="text" name="kyc" class="form-control" id="kyc" value="{{old('kyc')}}">
+                        </div>
+                        <!-- End Of New Field -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-style draw-border mb-3">Add Exchange</button>
                         </div>

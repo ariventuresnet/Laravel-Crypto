@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Exchange extends Model
 {
     protected $fillable = [
-        'name', 'logo', 'url','currencies', 'countries', 'payments', 'description', 'pros', 'cons', 'ease', 'privacy', 'speed', 'fee', 'reputation', 'limit', 
+        'name', 'logo', 'url','currencies', 'countries', 'payments', 'description', 'pros', 'cons', 'ease', 'privacy', 'speed', 'fee', 'reputation', 'limit', 'bitcoin_only', 'recurring_buys', 'lightning', 'liquid', 'kyc',
     ];
 }
