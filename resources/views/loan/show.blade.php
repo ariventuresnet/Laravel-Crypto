@@ -57,43 +57,43 @@
                     
                 </div>
                 <!--End Of nested row -->
-                <h5 class="text-uppercase font-weight-bold">pros:</h5>
+                <h5 class="text-capitalize font-weight-bold">pros:</h5>
                 <p class="mb-3"> {!! $loan->pros !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Cons:</h5>
+                <h5 class="text-capitalize font-weight-bold">Cons:</h5>
                 <p class="mb-3"> {!! $loan->cons !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Btc Only:</h5>
+                <h5 class="text-capitalize font-weight-bold">Btc Only:</h5>
                 <p class="mb-3"> {{ $loan->btc_only }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Fiat Loan:</h5>
+                <h5 class="text-capitalize font-weight-bold">Fiat Loan:</h5>
                 <p class="mb-3"> {{ $loan->fiat_loan }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Crypto Loan:</h5>
+                <h5 class="text-capitalize font-weight-bold">Crypto Loan:</h5>
                 <p class="mb-3"> {{ $loan->crypto_loan }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Term:</h5>
+                <h5 class="text-capitalize font-weight-bold">Term:</h5>
                 <p class="mb-3"> {{ $loan->term }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Interest:</h5>
+                <h5 class="text-capitalize font-weight-bold">Interest:</h5>
                 <p class="mb-3"> {{ $loan->interest }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">ease of use:</h5>
+                <h5 class="text-capitalize font-weight-bold">ease of use:</h5>
                 <p class="mb-3"> {{ $loan->ease }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">privacy:</h5>
+                <h5 class="text-capitalize font-weight-bold">privacy:</h5>
                 <p class="mb-3"> {{ $loan->privacy }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">speed:</h5>
+                <h5 class="text-capitalize font-weight-bold">speed:</h5>
                 <p class="mb-3"> {{ $loan->speed }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">fee:</h5>
+                <h5 class="text-capitalize font-weight-bold">fee:</h5>
                 <p class="mb-3"> {{ $loan->fee}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">reputation:</h5>
+                <h5 class="text-capitalize font-weight-bold">reputation:</h5>
                 <p class="mb-3"> {{ $loan->reputation}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">limit:</h5>
+                <h5 class="text-capitalize font-weight-bold">limit:</h5>
                 <p class="mb-3"> {{ $loan->limit}} </p>
 
                 <div class="mt-3">

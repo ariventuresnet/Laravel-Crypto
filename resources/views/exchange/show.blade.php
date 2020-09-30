@@ -57,43 +57,43 @@
                     
                 </div>
                 <!--End Of nested row -->
-                <h5 class="text-uppercase font-weight-bold">pros:</h5>
+                <h5 class="text-capitalize font-weight-bold">pros:</h5>
                 <p class="mb-3"> {!! $exchange->pros !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Cons:</h5>
+                <h5 class="text-capitalize font-weight-bold">Cons:</h5>
                 <p class="mb-3"> {!! $exchange->cons !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">ease of use:</h5>
+                <h5 class="text-capitalize font-weight-bold">ease of use:</h5>
                 <p class="mb-3"> {{ $exchange->ease }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">privacy:</h5>
+                <h5 class="text-capitalize font-weight-bold">privacy:</h5>
                 <p class="mb-3"> {{ $exchange->privacy }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">speed:</h5>
+                <h5 class="text-capitalize font-weight-bold">speed:</h5>
                 <p class="mb-3"> {{ $exchange->speed }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">fee:</h5>
+                <h5 class="text-capitalize font-weight-bold">fee:</h5>
                 <p class="mb-3"> {{ $exchange->fee}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">reputation:</h5>
+                <h5 class="text-capitalize font-weight-bold">reputation:</h5>
                 <p class="mb-3"> {{ $exchange->reputation}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">limit:</h5>
+                <h5 class="text-capitalize font-weight-bold">limit:</h5>
                 <p class="mb-3"> {{ $exchange->limit}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Bitcoin Only:</h5>
+                <h5 class="text-capitalize font-weight-bold">Bitcoin Only:</h5>
                 <p class="mb-3"> {{ $exchange->bitcoin_only}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">recurring buys:</h5>
+                <h5 class="text-capitalize font-weight-bold">recurring buys:</h5>
                 <p class="mb-3"> {{ $exchange->recurring_buys}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">lightning:</h5>
+                <h5 class="text-capitalize font-weight-bold">lightning:</h5>
                 <p class="mb-3"> {{ $exchange->lightning}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">liquid:</h5>
+                <h5 class="text-capitalize font-weight-bold">liquid:</h5>
                 <p class="mb-3"> {{ $exchange->liquid}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">kyc:</h5>
+                <h5 class="text-capitalize font-weight-bold">kyc:</h5>
                 <p class="mb-3"> {{ $exchange->kyc}} </p>
 
                 <div class="mt-3">

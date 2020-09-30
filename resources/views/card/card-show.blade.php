@@ -57,29 +57,53 @@
                     
                 </div>
                 <!--End Of nested row -->
-                <h5 class="text-uppercase font-weight-bold">pros:</h5>
+                <h5 class="text-capitalize font-weight-bold">pros:</h5>
                 <p class="mb-3"> {!! $card->pros !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">Cons:</h5>
+                <h5 class="text-capitalize font-weight-bold">Cons:</h5>
                 <p class="mb-3"> {!! $card->cons !!} </p>
 
-                <h5 class="text-uppercase font-weight-bold">ease of use:</h5>
+                <h5 class="text-capitalize font-weight-bold">ease of use:</h5>
                 <p class="mb-3"> {{ $card->ease }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">privacy:</h5>
+                <h5 class="text-capitalize font-weight-bold">privacy:</h5>
                 <p class="mb-3"> {{ $card->privacy }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">speed:</h5>
+                <h5 class="text-capitalize font-weight-bold">speed:</h5>
                 <p class="mb-3"> {{ $card->speed }} </p>
 
-                <h5 class="text-uppercase font-weight-bold">fee:</h5>
+                <h5 class="text-capitalize font-weight-bold">fee:</h5>
                 <p class="mb-3"> {{ $card->fee}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">reputation:</h5>
+                <h5 class="text-capitalize font-weight-bold">reputation:</h5>
                 <p class="mb-3"> {{ $card->reputation}} </p>
 
-                <h5 class="text-uppercase font-weight-bold">limit:</h5>
+                <h5 class="text-capitalize font-weight-bold">limit:</h5>
                 <p class="mb-3"> {{ $card->limit}} </p>
+                <!-- new Field -->
+                <h5 class="text-capitalize font-weight-bold">price:</h5>
+                <p class="mb-3"> {{ $card->price}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">delivery fees:</h5>
+                <p class="mb-3"> {{ $card->delivery_fees}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">coverage:</h5>
+                <p class="mb-3"> {{ $card->coverage}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">monthly fees:</h5>
+                <p class="mb-3"> {{ $card->monthly_fees}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">atm fees:</h5>
+                <p class="mb-3"> {{ $card->atm_fees}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">monthly atm limit:</h5>
+                <p class="mb-3"> {{ $card->monthly_atm_limit}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">online purchases:</h5>
+                <p class="mb-3"> {{ $card->online_purchases}} </p>
+
+                <h5 class="text-capitalize font-weight-bold">monthly purchases:</h5>
+                <p class="mb-3"> {{ $card->monthly_purchases}} </p>
 
                 <div class="mt-3">
                     <a href="{{route('cards.edit', $card->id)}}" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>

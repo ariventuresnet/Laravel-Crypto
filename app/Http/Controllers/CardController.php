@@ -88,6 +88,14 @@ class CardController extends Controller
             "fee"=> $request->fee,
             "reputation"=> $request->reputation,
             "limit"=> $request->limit,
+            "price"=> $request->price,
+            "delivery_fees"=> $request->delivery_fees,
+            "coverage"=> $request->coverage,
+            "monthly_fees"=> $request->monthly_fees,
+            "atm_fees"=> $request->atm_fees,
+            "monthly_atm_limit"=> $request->monthly_atm_limit,
+            "online_purchases"=> $request->online_purchases,
+            "monthly_purchases"=> $request->monthly_purchases,
         ]);
 
 

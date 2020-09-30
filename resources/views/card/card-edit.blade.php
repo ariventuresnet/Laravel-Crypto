@@ -147,8 +147,42 @@
                         </div>
                         <div class="form-group">
                             <label for="Limit">Limits</label>
-                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $card->limit}}">
+                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $card->limit }}">
                         </div>
+                        <!-- New Column -->
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" class="form-control" id="price" value="{{ $card->price }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_fees">Delivery Fees</label>
+                            <input type="text" name="delivery_fees" class="form-control" id="delivery_fees" value="{{ $card->delivery_fees }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="coverage">Coverage</label>
+                            <input type="text" name="coverage" class="form-control" id="coverage" value="{{ $card->coverage }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly_fees">Monthly Fees</label>
+                            <input type="text" name="monthly_fees" class="form-control" id="monthly_fees" value="{{ $card->monthly_fees }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="atm_fees">Atm Fees</label>
+                            <input type="text" name="atm_fees" class="form-control" id="atm_fees" value="{{ $card->atm_fees }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly_atm_limit">Monthly Atm Limit</label>
+                            <input type="text" name="monthly_atm_limit" class="form-control" id="monthly_atm_limit" value="{{ $card->monthly_atm_limit }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="online_purchases">Online Purchases</label>
+                            <input type="text" name="online_purchases" class="form-control" id="online_purchases" value="{{ $card->online_purchases }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly_purchases">Monthly Purchases</label>
+                            <input type="text" name="monthly_purchases" class="form-control" id="monthly_purchases" value="{{ $card->monthly_purchases }}">
+                        </div>
+                        <!-- End Of New Column -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-style draw-border text-uppercase mb-3">Update</button>
                         </div>
