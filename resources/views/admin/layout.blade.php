@@ -72,8 +72,8 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#interest"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Interest <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="interest" class="collapse">
-                                    <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('interests.create')}}">Add Loan</a></li>
-                                    <li><a class="btn text-white mb-2 border-success" href="{{route('interests.index')}}">View Loan</a></li>
+                                    <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('interests.create')}}">Add Interest</a></li>
+                                    <li><a class="btn text-white mb-2 border-success" href="{{route('interests.index')}}">View Interest</a></li>
                                 </ul>
                             </li>
 

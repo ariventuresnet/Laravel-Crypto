@@ -12,7 +12,7 @@
                 <h1 class="text-uppercase text-center font-weight-bold display-3 mb-3">{{$exchange->name}}</h1>
                 <p class="mb-3"> {!! $exchange->description !!} </p>
 
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-3 mr-2 mb-2">
                         <div class="card">
                             <div class="card-header">

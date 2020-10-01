@@ -10,13 +10,24 @@ use Illuminate\Support\Facades\Validator;
 class InterestController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $interests = Interest::all();
+        return view('interest.index')->with('interests', $interests);
     }
 
     /**
@@ -90,9 +101,9 @@ class InterestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Interest $interest)
     {
-        //
+        return view('interest.show')->with('interest', $interest);
     }
 
     /**

@@ -85,7 +85,7 @@ body {
     border-radius: 50%;
 }
 
-#exchanges, #cards, #loans{
+#exchanges, #cards, #loans, #interest{
     list-style-type: none;
 }
 
