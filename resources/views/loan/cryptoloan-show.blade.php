@@ -143,5 +143,7 @@
             });
 
         });
+
+        $('#loan').addClass('current');
     </script>
 @endsection

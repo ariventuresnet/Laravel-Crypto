@@ -59,7 +59,7 @@
                 </div>
                 
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="interest"> <span class="float-left">Interest</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                    <a href="{{route('cryptointerest.accounts')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="interest"> <span class="float-left">Interest</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="wallet"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>

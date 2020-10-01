@@ -152,5 +152,21 @@ class InterestController extends Controller
         return redirect()->route('interests.index')->with(session()->flash('alert-success', 'Interest successfully updated'));
     }
 
+    public function delete(Interest $interest)
+    {
+        // Delete image
+        $isExists = file_exists(public_path('images/'). '/'. $interest->logo);
+        if($isExists){
+            unlink( public_path('images/'). '/'. $interest->logo );
+        }
+        
+        //Delete Data
+        $interest->delete();
+
+        //Redirect and show flash message
+        return redirect()->route('interests.index')->with(session()->flash('alert-success', 'Interests Account successfully Deleted'));
+
+    }
+
     
 }

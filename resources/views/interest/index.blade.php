@@ -40,8 +40,7 @@
                                 <td>
                                     <a href="{{route('interests.show', $interest->id)}}" class="text-primary mr-2"><i class="far fa-list-alt"></i></a>
                                     <a href="{{route('interests.edit', $interest->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
-                                    {{-- <a href="{{route('loans.delete', $interest->id)}}" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a> --}}
-                                    <a href="#" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('interests.delete', $interest->id)}}" id="delete" class="text-danger mr-2" ><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

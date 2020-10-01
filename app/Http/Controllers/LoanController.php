@@ -156,17 +156,6 @@ class LoanController extends Controller
         return redirect()->route('loans.index')->with(session()->flash('alert-success', 'Loan successfully updated'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function delete(Loan $loan)
     {
         // Delete image

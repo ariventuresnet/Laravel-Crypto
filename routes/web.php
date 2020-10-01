@@ -16,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/cards', 'HomeController@viewCards')->name('cryptocard');
 Route::get('/loans', 'HomeController@viewLoans')->name('cryptoloan');
+Route::get('/interests', 'HomeController@viewInterestAccounts')->name('cryptointerest.accounts');
 
 Auth::routes();
 
-Route::get('/exchanges/{exchange}', 'HomeController@cryptoExchange')->name('cryptoexchange.show');
-Route::get('/cards/{card}', 'HomeController@cryptoCard')->name('cryptocard.show');
-Route::get('/loans/{loan}', 'HomeController@cryptoLoan')->name('cryptoloan.show');
+Route::get('/exchanges/{exchange}', 'HomeController@cryptoExchangeDetails')->name('cryptoexchange.show');
+Route::get('/cards/{card}', 'HomeController@cryptoCardDetails')->name('cryptocard.show');
+Route::get('/loans/{loan}', 'HomeController@cryptoLoanDetails')->name('cryptoloan.show');
+Route::get('/interests/{interest}', 'HomeController@cryptoInterestDetails')->name('cryptointerest.show');
 
 
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
@@ -29,6 +31,8 @@ Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
 Route::resource('admin/loans', 'LoanController');
 Route::resource('admin/interests', 'InterestController');
+
 Route::get('exchanges/delete/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
 Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete');
 Route::get('loans/delete/{loan}' , 'LoanController@delete')->name('loans.delete');
+Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('interests.delete');

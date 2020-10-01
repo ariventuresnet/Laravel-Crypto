@@ -133,5 +133,7 @@
             });
 
         });
+
+        $('#card').addClass('current');
     </script>
 @endsection

@@ -7,19 +7,16 @@
             <div class="col-md-12">
                 <form>
                     <div class="form-row d-flex justify-content-center">
-                        <div class="input-box mr-2">
-                            <label><span class="text-dark font-weight-bold">BUY</span></label>
-                            <input type="text" class="find" id="find1" placeholder="Search Cryptocurrency">
+                        <div class="input-box mr-sm-4">
+                            <label><span class="text-dark font-weight-bold">Earn Interest With</span></label>
+                            <input type="text" class="find" id="find1" placeholder="Search Deposit">
                         </div>
-                        <div class="input-box mr-2">
-                            <label><span class="text-dark font-weight-bold">IN</span></label>
+                        <div class="input-box ml-sm-4">
+                            <label><span class="text-dark font-weight-bold">In</span></label>
                             <input type="text" class="find" id="find2" placeholder="Search Country">
-                        </div>
-                        <div class="input-box">
-                            <label><span class="text-dark font-weight-bold">WITH</span></label>
-                            <input type="text" class="find" id="find3" placeholder="Search Payment Method">
                             <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
                         </div>
+                        
                     </div>
                 </form>
             </div>
@@ -34,20 +31,20 @@
             <div class="col-sm-12 mb-4">
                 <div class="">
                     <h2 class="mb-4 d-md-inline">
-                        <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-fluid rounded" alt="logo" width="120px">
-                        <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
+                        <img src="{{asset('images/') . "/" . $interest->logo}}" class="img-fluid rounded" alt="logo" width="120px">
+                        <span class="text-uppercase font-weight-bold">{{$interest->name}}</span>
                     </h2>
-                    <span class="d-inline float-sm-right my-4"><a href="{{$exchange->url}}" class="btn btn-style draw-border">Buy Crypto</a></span>
+                    <span class="d-inline float-sm-right my-4"><a href="{{$interest->url}}" class="btn btn-style draw-border">Get account</a></span>
                 </div>
-                <p class="mb-3">{!! $exchange->description !!}</p>
+                <p class="mb-3">{!! $interest->description !!}</p>
                 <div class="row mb-5">
                     <div class="col-sm-6 mb-2">
                         <h3>Pros</h3>
-                        <p>{!! $exchange->pros !!}</p>
+                        <p>{!! $interest->pros !!}</p>
                     </div>
                     <div class="col-sm-6">
                         <h3>Cons</h3>
-                        <p>{!! $exchange->cons !!}</p>
+                        <p>{!! $interest->cons !!}</p>
                     </div>
                 </div>
 
@@ -55,6 +52,9 @@
                     <table class="table table-borderless">
                         <thead>
                             <tr>
+                                <th>BTC Only</th>
+                                <th>Term</th>
+                                <th>Interest</th>
                                 <th>Ease Of Use</th>
                                 <th>Privacy</th>
                                 <th>Speed</th>
@@ -65,12 +65,15 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{$exchange->ease}}</td>
-                                <td>{{$exchange->privacy}}</td>
-                                <td>{{$exchange->speed}}</td>
-                                <td>{{$exchange->fee}}</td>
-                                <td>{{$exchange->reputation}}</td>
-                                <td>{{$exchange->limit}}</td>
+                                <td>{{$interest->btc_only}}</td>
+                                <td>{{$interest->term}}</td>
+                                <td>{{$interest->interest}}</td>
+                                <td>{{$interest->ease}}</td>
+                                <td>{{$interest->privacy}}</td>
+                                <td>{{$interest->speed}}</td>
+                                <td>{{$interest->fee}}</td>
+                                <td>{{$interest->reputation}}</td>
+                                <td>{{$interest->limit}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -120,20 +123,8 @@
                 }
             });
 
-            $('#find3').autoComplete({
-                minChars: 1,
-                source: function(term, suggest){
-                    term = term.toLowerCase();
-                    var choices = ['Cash', 'Bank transfer', 'Credit card', 'Debit card', 'Ach tranfer'];
-                    var suggestions = [];
-                    for (i=0;i<choices.length;i++)
-                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                    suggest(suggestions);
-                }
-            });
-
         });
 
-        $('#exchange').addClass('current');
+        $('#interest').addClass('current');
     </script>
 @endsection
