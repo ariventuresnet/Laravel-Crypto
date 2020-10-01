@@ -62,12 +62,20 @@
                             </li> 
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="fas fa-money-check fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="loans" class="collapse">
                                     <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('loans.create')}}">Add Loan</a></li>
                                     <li><a class="btn text-white mb-2 border-success" href="{{route('loans.index')}}">View Loan</a></li>
                                 </ul>
-                            </li> 
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#interest"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Interest <i class="fas fa-sort-down move-top"></i></a>
+                                <ul id="interest" class="collapse">
+                                    <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('interests.create')}}">Add Loan</a></li>
+                                    <li><a class="btn text-white mb-2 border-success" href="{{route('interests.index')}}">View Loan</a></li>
+                                </ul>
+                            </li>
 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-chart-bar fa-lg text-light mr-3"></i>Charts</a></li> 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-table fa-lg text-light mr-3"></i>Tabels</a></li> 

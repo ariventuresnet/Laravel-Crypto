@@ -54,7 +54,7 @@
 
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
-                            <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
+                            <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 <option value="bitcoin">Bitcoin</option>
                                 <option value="ethereum">Ethereum</option>
                                 <option value="tether">Tether</option>
@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
-                            <select multiple name="countries[]" class="chosen-countries" data-placeholder="Select Countries...">
+                            <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                               <option value="china">China</option>
                               <option value="india">India</option>
                               <option value="usa">USA</option>
@@ -79,7 +79,7 @@
 
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
-                            <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
+                            <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
                                 <option value="cash">Cash</option>
                                 <option value="bank transfer">Bank transfer</option>
                                 <option value="credit card">Credit card</option>
@@ -194,17 +194,7 @@
 
 
             // multiple select boxes plugin
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-payments").chosen({
+            $(".chosen").chosen({
                 disable_search_threshold: 10,
                 no_results_text: "Oops, nothing found!",
                 width: "100%"

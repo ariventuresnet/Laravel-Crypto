@@ -55,17 +55,17 @@
                     <a href="{{route('cryptocard')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="card"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="{{route('cryptoloan')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="loan"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                    <a href="{{route('cryptoloan')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="loan"> <span class="float-left">Loans</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
                 </div>
                 
+                <div class="col-6 col-sm-4 col-lg-2">
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="interest"> <span class="float-left">Interest</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
+                </div>
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="wallet"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="law"> <span class="float-left">Laws</span> <span class="float-right"><i class="fas fa-university"></i></i></span></a>
-                </div>
-                <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="bank"> <span class="float-left">Banks</span> <span class="float-right"><i class="fas fa-money-check"></i></span></a>
+                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5">
                     <div class="h2 text-center font-weight-bold mb-3">
-                        Add Loan
+                        Add Interest Accounts
                     </div>
                     <!--Show Validation Error -->
                     @if ($errors->any())
@@ -33,7 +33,7 @@
                         @endforeach
                     </div>
 
-                    <form action="{{route('loans.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('interests.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                              <input type="file" name="logo" class="custom-file-input" id="loan-logo">
+                              <input type="file" name="logo" class="custom-file-input" id="logo-of-interest">
                               <label class="custom-file-label" for="loan-logo">Choose Logo</label>
                             </div>
                         </div>
@@ -53,40 +53,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="multiple-currencies">Currencies</label>
-                            <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="CNY">CNY</option>
-                                <option value="INR">INR</option>
-                                <option value="JPY">JPY</option>
-                                <option value="IDR">IDR</option>
-                                <option value="GBP">GBP</option>
-                                <option value="USDT">USDT</option>
-                                <option value="BUSD">BUSD</option>
-                                <option value="NEO">NEO</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="multiple-countries">Countries</label>
-                            <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="multiple-collateral">Collaterals</label>
-                            <select multiple name="collaterals[]" class="chosen" data-placeholder="Select collaterals...">
+                            <label for="multiple-deposits">Deposits</label>
+                            <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>
                                 <option value="BNB">BNB</option>
@@ -96,6 +64,24 @@
                                 <option value="XLM">XLM</option>
                                 <option value="LINK">LINK</option>
                                 <option value="TRX">TRX</option>
+                                <option value="DASH">DASH</option>
+                                <option value="USDT">USDT</option>
+                                <option value="USDC">USDC</option>
+                                <option value="BUSD">BUSD</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="multiple-countries">Countries</label>
+                            <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
+                              <option value="china">China</option>
+                              <option value="india">India</option>
+                              <option value="usa">USA</option>
+                              <option value="uk">UK</option>
+                              <option value="indonesia">Indonesia</option>
+                              <option value="russia">Russia</option>
+                              <option value="japan">Japan</option>
+                              <option value="germany">Germany</option>
                             </select>
                         </div>
 
@@ -116,14 +102,7 @@
                             <label for="btc-only">BTC Only</label>
                             <input type="text" name="btc_only" class="form-control" id="btc-only" value="{{old('btc_only')}}">
                         </div>
-                        <div class="form-group">
-                            <label for="fiat-loan">Fiat Loan</label>
-                            <input type="text" name="fiat_loan" class="form-control" id="fiat-loan" value="{{old('fiat_loan')}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="crypto-loan">Crypto Loan</label>
-                            <input type="text" name="crypto_loan" class="form-control" id="crypto-loan" value="{{old('crypto_loan')}}">
-                        </div>
+
                         <div class="form-group">
                             <label for="term">Term</label>
                             <input type="text" name="term" class="form-control" id="term" value="{{old('term')}}">
@@ -158,7 +137,7 @@
                             <input type="text" name="limit" class="form-control" id="Limit" value="{{old('limit')}}">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-style draw-border mb-3">Add Loan</button>
+                            <button type="submit" class="btn btn-style draw-border mb-3">Add Interest</button>
                         </div>
                     </form>
                 </div>
@@ -211,7 +190,8 @@
                 width: "100%"
             });
 
-            $('#loan-logo').on('change',function(){
+
+            $('#logo-of-interest').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label

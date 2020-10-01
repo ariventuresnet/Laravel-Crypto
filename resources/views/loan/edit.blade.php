@@ -60,7 +60,7 @@
                             $currencies = json_decode($loan->currencies); 
                             $all_currency = ["USD", "EUR", "CNY", "INR", "JPY", "IDR", "GBP", "USDT" ,"BUSD", "NEO"];
                             ?>
-                            <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
+                            <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($currencies as $selected_currency)
                                     <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
                                 @endforeach
@@ -80,7 +80,7 @@
                             $countries = json_decode($loan->countries); 
                             $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
                             ?>
-                            <select multiple name="countries[]" class="chosen-countries" data-placeholder="Select Countries...">
+                            <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($countries as $selected_country)
                                     <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
                                 @endforeach
@@ -100,7 +100,7 @@
                             $collaterals= json_decode($loan->collaterals); 
                             $collaterals_option = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK", "TRX"];
                             ?>
-                            <select multiple name="collaterals[]" class="chosen-collaterals" data-placeholder="Select collaterals...">
+                            <select multiple name="collaterals[]" class="chosen" data-placeholder="Select collaterals...">
                                 @foreach ($collaterals as $selected_collateral)
                                     <option value="{{$selected_collateral}}" selected> {{ ucwords($selected_collateral) }} </option>
                                 @endforeach
@@ -218,17 +218,7 @@
 
 
             // multiple select boxes plugin
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-collaterals").chosen({
+            $(".chosen").chosen({
                 disable_search_threshold: 10,
                 no_results_text: "Oops, nothing found!",
                 width: "100%"

@@ -60,7 +60,7 @@
                             $currencies = json_decode($card->currencies); 
                             $all_currency = ["bitcoin", "ethereum", "tether", "litecoin"];
                             ?>
-                            <select multiple class="chosen-countries" name="currencies[]" data-placeholder="Select Currencies...">
+                            <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($currencies as $selected_currency)
                                     <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
                                 @endforeach
@@ -80,7 +80,7 @@
                             $countries = json_decode($card->countries); 
                             $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
                             ?>
-                            <select multiple name="countries[]" class="chosen-countries" data-placeholder="Select Countries...">
+                            <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($countries as $selected_country)
                                     <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
                                 @endforeach
@@ -100,7 +100,7 @@
                             $payments = json_decode($card->payments); 
                             $payment_option = ["visa", "mastercard", "union pay"];
                             ?>
-                            <select multiple name="payments[]" class="chosen-payments" data-placeholder="Select Payment method...">
+                            <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
                                 @foreach ($payments as $selected_payment)
                                     <option value="{{$selected_payment}}" selected> {{ ucwords($selected_payment) }} </option>
                                 @endforeach
@@ -230,17 +230,7 @@
 
 
             // multiple select boxes plugin
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-countries").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-            $(".chosen-payments").chosen({
+            $(".chosen").chosen({
                 disable_search_threshold: 10,
                 no_results_text: "Oops, nothing found!",
                 width: "100%"
