@@ -112,9 +112,9 @@ class InterestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Interest $interest)
     {
-        //
+        return view('interest.edit')->with('interest',$interest);
     }
 
     /**
@@ -124,19 +124,33 @@ class InterestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Interest $interest)
     {
-        //
+        //get request data
+        $data = $request->except("_token", "_method");
+
+        if($request->hasFile('logo')){
+            $new_logo= $request->file('logo');
+            $new_logo_name = uniqid('logo_',true).Str::random(10). '.' . $new_logo->getClientOriginalExtension();
+            $new_logo->storeAs('images', $new_logo_name );
+            
+            //set new logo unique name
+            $data["logo"] = $new_logo_name;
+
+            // Delete Old image
+            $isExists = file_exists(public_path('images/'). '/'. $interest->logo);
+            if($isExists){
+                unlink( public_path('images/'). '/'. $interest->logo );
+            }
+            
+        }
+
+        // update database 
+        $interest->update($data);
+
+        //Redirect and show flash message
+        return redirect()->route('interests.index')->with(session()->flash('alert-success', 'Interest successfully updated'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

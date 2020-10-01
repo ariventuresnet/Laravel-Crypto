@@ -42,7 +42,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                              <input type="file" name="logo" class="custom-file-input" id="card-logo">
+                              <input type="file" name="logo" class="custom-file-input" id="logo-of-card">
                               <label class="custom-file-label" for="card-logo">Choose Logo</label>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
             });
 
 
-            $('#card-logo').on('change',function(){
+            $('#logo-of-card').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label

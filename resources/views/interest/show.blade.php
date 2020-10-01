@@ -77,7 +77,7 @@
                 <p class="mb-3"> {{ $interest->limit}} </p>
 
                 <div class="mt-3">
-                    <a href="{{route('loans.edit', $interest->id)}}" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="{{route('interests.edit', $interest->id)}}" class="btn btn-style draw-border">Edit <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
         </div>

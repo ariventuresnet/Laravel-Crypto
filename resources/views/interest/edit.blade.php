@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5">
                     <div class="h2 text-center font-weight-bold mb-3">
-                        Update Loan
+                        Update Interest
                     </div>
                     <!--Show Validation Error -->
                     @if ($errors->any())
@@ -33,41 +33,41 @@
                         @endforeach
                     </div>
 
-                    <form action="{{route('loans.update', $loan->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('interests.update', $interest->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" value="{{$loan->name}}">
+                            <input type="text" name="name" class="form-control" id="name" value="{{$interest->name}}">
                         </div>
-                        <img src="{{asset('images/') . "/" . $loan->logo}}" class="img-thumbnail mb-2" alt="Responsive logo" width="20%">
+                        <img src="{{asset('images/') . "/" . $interest->logo}}" class="img-thumbnail mb-2" alt="Responsive logo" width="20%">
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                              <input type="file" name="logo" class="custom-file-input" id="logo-of-loan">
+                              <input type="file" name="logo" class="custom-file-input" id="logo-of-interest">
                               <label class="custom-file-label" for="loan-logo">Choose Logo</label>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="url">URL</label>
-                            <input type="text" name="url" class="form-control" id="url" value="{{$loan->url}}">
+                            <input type="text" name="url" class="form-control" id="url" value="{{$interest->url}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="multiple-currencies">Currencies</label>
+                            <label for="multiple-deposits">Deposits</label>
                             <?php 
-                            $currencies = json_decode($loan->currencies); 
-                            $all_currency = ["USD", "EUR", "CNY", "INR", "JPY", "IDR", "GBP", "USDT" ,"BUSD", "NEO"];
+                            $deposits = json_decode($interest->deposits); 
+                            $all_deposit = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK" ,"TRX", "DASH", "USDT", "USDC", "BUSD"];
                             ?>
-                            <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                @foreach ($currencies as $selected_currency)
-                                    <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
+                            <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
+                                @foreach ($deposits as $selected_deposit)
+                                    <option value="{{$selected_deposit}}" selected> {{ ucfirst($selected_deposit) }} </option>
                                 @endforeach
 
-                                @foreach ($all_currency as $currency)
-                                    @if (! in_array( $currency, $currencies))
-                                        <option value="{{$currency}}"> {{ ucfirst($currency) }} </option>
+                                @foreach ($all_deposit as $deposit)
+                                    @if (! in_array( $deposit, $deposits))
+                                        <option value="{{$deposit}}"> {{ ucfirst($deposit) }} </option>
                                     @endif
                                 @endforeach
 
@@ -77,8 +77,8 @@
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <?php 
-                            $countries = json_decode($loan->countries); 
-                            $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            $countries = json_decode($interest->countries); 
+                            $all_country = ["china", "india", "usa", "uk", "indonesia", "russia", "japan", "germany"];
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($countries as $selected_country)
@@ -95,81 +95,54 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="multiple-payment">Collaterals</label>
-                            <?php 
-                            $collaterals= json_decode($loan->collaterals); 
-                            $collaterals_option = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK", "TRX"];
-                            ?>
-                            <select multiple name="collaterals[]" class="chosen" data-placeholder="Select collaterals...">
-                                @foreach ($collaterals as $selected_collateral)
-                                    <option value="{{$selected_collateral}}" selected> {{ ucwords($selected_collateral) }} </option>
-                                @endforeach
-
-                                @foreach ($collaterals_option as $option)
-                                    @if (! in_array( $option, $collaterals))
-                                        <option value="{{$option}}"> {{ ucwords($option) }} </option>
-                                    @endif
-                                @endforeach
-
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" cols="30" rows="3">{!! $loan->description !!}</textarea>
+                        <textarea name="description" id="description" class="form-control" cols="30" rows="3">{!! $interest->description !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="pros">Pros</label>
-                            <textarea name="pros" id="pros" class="form-control" cols="30" rows="3">{!! $loan->pros !!}</textarea>
+                            <textarea name="pros" id="pros" class="form-control" cols="30" rows="3">{!! $interest->pros !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="cons">Cons</label>
-                            <textarea name="cons" id="cons" class="form-control" cols="30" rows="3">{!! $loan->cons !!}</textarea>
+                            <textarea name="cons" id="cons" class="form-control" cols="30" rows="3">{!! $interest->cons !!}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="btc-only">BTC Only</label>
-                            <input type="text" name="btc_only" class="form-control" id="btc-only" value="{{ $loan->btc_only }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="fiat-loan">Fiat Loan</label>
-                            <input type="text" name="fiat_loan" class="form-control" id="fiat-loan" value="{{ $loan->fiat_loan }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="crypto-loan">Crypto Loan</label>
-                            <input type="text" name="crypto_loan" class="form-control" id="crypto-loan" value="{{ $loan->crypto_loan }}">
+                            <input type="text" name="btc_only" class="form-control" id="btc-only" value="{{ $interest->btc_only }}">
                         </div>
                         <div class="form-group">
                             <label for="term">Term</label>
-                            <input type="text" name="term" class="form-control" id="term" value="{{ $loan->term }}">
+                            <input type="text" name="term" class="form-control" id="term" value="{{ $interest->term }}">
                         </div>
                         <div class="form-group">
                             <label for="interest">Interest</label>
-                            <input type="text" name="interest" class="form-control" id="interest" value="{{ $loan->interest }}">
+                            <input type="text" name="interest" class="form-control" id="interest" value="{{ $interest->interest }}">
                         </div>
 
                         <div class="form-group">
                             <label for="ease">Ease Of Use</label>
-                            <input type="text" name="ease" class="form-control" id="ease" value="{{ $loan->ease }}">
+                            <input type="text" name="ease" class="form-control" id="ease" value="{{ $interest->ease }}">
                         </div>
                         <div class="form-group">
                             <label for="privacy">Privacy</label>
-                            <input type="text" name="privacy" class="form-control" id="privacy" value="{{ $loan->privacy }}">
+                            <input type="text" name="privacy" class="form-control" id="privacy" value="{{ $interest->privacy }}">
                         </div>
                         <div class="form-group">
                             <label for="speed">Speed</label>
-                            <input type="text" name="speed" class="form-control" id="speed" value="{{ $loan->speed }}">
+                            <input type="text" name="speed" class="form-control" id="speed" value="{{ $interest->speed }}">
                         </div>
                         <div class="form-group">
                             <label for="fee">Fees</label>
-                            <input type="text" name="fee" class="form-control" id="fee" value="{{ $loan->fee }}">
+                            <input type="text" name="fee" class="form-control" id="fee" value="{{ $interest->fee }}">
                         </div>
                         <div class="form-group">
                             <label for="reputation">Reputation</label>
-                            <input type="text" name="reputation" class="form-control" id="reputation" value="{{ $loan->reputation }}">
+                            <input type="text" name="reputation" class="form-control" id="reputation" value="{{ $interest->reputation }}">
                         </div>
                         <div class="form-group">
                             <label for="Limit">Limits</label>
-                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $loan->limit}}">
+                            <input type="text" name="limit" class="form-control" id="Limit" value="{{ $interest->limit}}">
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-style draw-border text-uppercase mb-3">Update</button>
@@ -224,7 +197,7 @@
                 width: "100%"
             });
 
-            $('#logo-of-loan').on('change',function(){
+            $('#logo-of-interest').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label

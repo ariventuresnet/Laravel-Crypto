@@ -42,7 +42,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                              <input type="file" name="logo" class="custom-file-input" id="loan-logo">
+                              <input type="file" name="logo" class="custom-file-input" id="logo-of-loan">
                               <label class="custom-file-label" for="loan-logo">Choose Logo</label>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                 width: "100%"
             });
 
-            $('#loan-logo').on('change',function(){
+            $('#logo-of-loan').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label
