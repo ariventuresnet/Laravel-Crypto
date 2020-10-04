@@ -9,43 +9,22 @@ use Illuminate\Support\Facades\Validator;
 
 class CardController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $cards = Card::all();
-        return view('card.card-index')->with('cards', $cards); 
+        return view('card.index')->with('cards', $cards); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('card.card-create');
+        return view('card.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // validate Data
@@ -70,68 +49,29 @@ class CardController extends Controller
             $logo_name = uniqid('card_',true).Str::random(10). '.' . $logo->getClientOriginalExtension();
             $logo->storeAs('images', $logo_name );
         }
-        
-        // store data into database
-        Card::create([
-            "name"=> $request->name,
-            "logo"=> $logo_name,
-            "url" => $request->url,
-            "currencies"=> json_encode($request->currencies),
-            "countries"=> json_encode($request->countries),
-            "payments"=> json_encode($request->payments),
-            "description" => $request->description,
-            "pros"=> $request->pros,
-            "cons"=> $request->cons,
-            "ease"=> $request->ease,
-            "privacy"=> $request->privacy,
-            "speed"=> $request->speed,
-            "fee"=> $request->fee,
-            "reputation"=> $request->reputation,
-            "limit"=> $request->limit,
-            "price"=> $request->price,
-            "delivery_fees"=> $request->delivery_fees,
-            "coverage"=> $request->coverage,
-            "monthly_fees"=> $request->monthly_fees,
-            "atm_fees"=> $request->atm_fees,
-            "monthly_atm_limit"=> $request->monthly_atm_limit,
-            "online_purchases"=> $request->online_purchases,
-            "monthly_purchases"=> $request->monthly_purchases,
-        ]);
 
+        // store data into database
+        $data = $request->except('_token');
+        $data["logo"] = $logo_name;
+        $data["currencies"] = json_encode($request->currencies);
+        $data["countries"] = json_encode($request->countries);
+        $data["payments"] = json_encode($request->payments);
+        Card::create($data);
 
         //Redirect and show flash message
         return redirect()->back()->with(session()->flash('alert-success', 'Card successfully added'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Card $card)
     {
-        return view('card.card-show')->with('card',$card);
+        return view('card.show')->with('card',$card);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Card $card)
     {
-        return view('card.card-edit')->with('card',$card);
+        return view('card.edit')->with('card',$card);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Card $card)
     {
         //get request data
@@ -158,17 +98,6 @@ class CardController extends Controller
 
         //Redirect and show flash message
         return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully updated'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function delete(Card $card)

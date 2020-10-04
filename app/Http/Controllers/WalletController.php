@@ -55,7 +55,6 @@ class WalletController extends Controller
         $data["logo"] = $logo_name;
         $data["currencies"] = json_encode($request->currencies);
         $data["type"] = json_encode($request->type);
-
         Wallet::create($data);
 
         //Redirect and show flash message

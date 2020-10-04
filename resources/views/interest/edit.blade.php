@@ -11,7 +11,7 @@
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row">
                 <div class="col-xl-8 col-lg-7 col-md-6 px-5">
-                    <div class="h2 text-center font-weight-bold mb-3">
+                    <div class="h2 text-center font-weight-bold my-3">
                         Update Interest
                     </div>
                     <!--Show Validation Error -->

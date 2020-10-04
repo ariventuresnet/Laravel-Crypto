@@ -9,43 +9,22 @@ use Illuminate\Support\Facades\Validator;
 
 class InterestController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $interests = Interest::all();
         return view('interest.index')->with('interests', $interests);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('interest.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // validate Data
@@ -70,60 +49,26 @@ class InterestController extends Controller
         }
         
         // store data into database
-        Interest::create([
-            "name"=> $request->name,
-            "logo"=> $logo_name,
-            "url" => $request->url,
-            "deposits"=> json_encode($request->deposits),
-            "countries"=> json_encode($request->countries),
-            "description" => $request->description,
-            "pros"=> $request->pros,
-            "cons"=> $request->cons,
-            "btc_only"=> $request->btc_only,
-            "term"=> $request->term,
-            "interest"=> $request->interest,
-            "ease"=> $request->ease,
-            "privacy"=> $request->privacy,
-            "speed"=> $request->speed,
-            "fee"=> $request->fee,
-            "reputation"=> $request->reputation,
-            "limit"=> $request->limit,
-        ]);
-
+        $data = $request->except('_token');
+        $data["logo"] = $logo_name;
+        $data["deposits"] = json_encode($request->deposits);
+        $data["countries"] = json_encode($request->countries);
+        Interest::create($data);
 
         //Redirect and show flash message
         return redirect()->back()->with(session()->flash('alert-success', 'Interest Accounts successfully added'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Interest $interest)
     {
         return view('interest.show')->with('interest', $interest);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Interest $interest)
     {
         return view('interest.edit')->with('interest',$interest);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Interest $interest)
     {
         //get request data
