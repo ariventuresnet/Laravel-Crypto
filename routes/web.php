@@ -31,8 +31,10 @@ Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
 Route::resource('admin/loans', 'LoanController');
 Route::resource('admin/interests', 'InterestController');
+Route::resource('admin/wallets', 'WalletController');
 
 Route::get('exchanges/delete/{exchange}' , 'ExchangeController@delete')->name('exchanges.delete');
 Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete');
 Route::get('loans/delete/{loan}' , 'LoanController@delete')->name('loans.delete');
 Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('interests.delete');
+Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets.delete');

@@ -18,7 +18,8 @@ body {
 }
 
 .sidebar-link{
-    transition: all .4s;
+    padding    : .8rem;
+    transition : all .4s;
 }
 
 .sidebar-link:hover{
@@ -85,7 +86,7 @@ body {
     border-radius: 50%;
 }
 
-#exchanges, #cards, #loans, #interest{
+#exchanges, #cards, #loans, #interest, #wallet{
     list-style-type: none;
 }
 

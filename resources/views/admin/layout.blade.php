@@ -44,9 +44,9 @@
 
                         <ul class="navbar-nav flex-column mt-3">
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2  current"> <i class="fas fa-home fa-lg text-light mr-3"></i>Dashboard</a></li> <!--'sidebar-link' is not a bootstrap class-->
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-user fa-lg text-light mr-3"></i>Profile</a></li> 
+                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-user fa-lg text-light mr-3"></i>Profile</a></li> 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="exchanges" class="collapse">
                                     <li><a class="btn text-white mb-2 border border-danger" href="{{route('exchanges.create')}}">Add Exchange</a></li>
                                     <li><a class="btn text-white mb-2 border border-success" href="{{route('exchanges.index')}}">View Exchange</a></li>
@@ -54,7 +54,7 @@
                             </li> 
                             
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#cards"><i class="far fa-credit-card fa-lg text-light mr-3"></i>Card <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#cards"><i class="far fa-credit-card fa-lg text-light mr-3"></i>Card <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="cards" class="collapse">
                                     <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('cards.create')}}">Add Card</a></li>
                                     <li><a class="btn text-white mb-2 border-success" href="{{route('cards.index')}}">View Card</a></li>
@@ -62,7 +62,7 @@
                             </li> 
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="fas fa-money-check fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#loans"><i class="fas fa-money-check fa-lg text-light mr-3"></i>Loan <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="loans" class="collapse">
                                     <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('loans.create')}}">Add Loan</a></li>
                                     <li><a class="btn text-white mb-2 border-success" href="{{route('loans.index')}}">View Loan</a></li>
@@ -70,17 +70,24 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link" data-toggle="collapse" data-target="#interest"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Interest <i class="fas fa-sort-down move-top"></i></a>
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#interest"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Interest <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="interest" class="collapse">
                                     <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('interests.create')}}">Add Interest</a></li>
                                     <li><a class="btn text-white mb-2 border-success" href="{{route('interests.index')}}">View Interest</a></li>
                                 </ul>
                             </li>
 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-chart-bar fa-lg text-light mr-3"></i>Charts</a></li> 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-table fa-lg text-light mr-3"></i>Tabels</a></li> 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-wrench fa-lg text-light mr-3"></i>Settings</a></li> 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"> <i class="fas fa-file-alt fa-lg text-light mr-3"></i>Documentation</a></li> 
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#wallet"><i class="fas fa-money-check-alt fa-lg text-light mr-3"></i>Wallet <i class="fas fa-sort-down move-top"></i></a>
+                                <ul id="wallet" class="collapse">
+                                    <li><a class="btn text-white mb-2 px-3 border-danger" href="{{route('wallets.create')}}">Add Wallet</a></li>
+                                    <li><a class="btn text-white mb-2 border-success" href="{{route('wallets.index')}}">View Wallet</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-table fa-lg text-light mr-3"></i>Tabels</a></li> 
+                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-wrench fa-lg text-light mr-3"></i>Settings</a></li> 
+                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-file-alt fa-lg text-light mr-3"></i>Documentation</a></li> 
                         </ul>
   
                     </div>
