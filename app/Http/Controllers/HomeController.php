@@ -6,6 +6,7 @@ use App\Card;
 use App\Exchange;
 use App\Interest;
 use App\Loan;
+use App\Wallet;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -64,6 +65,19 @@ class HomeController extends Controller
         $interestName = str_replace('_', ' ', $name);
         $interest =Interest::where('name', $interestName)->first();
         return view('interest.cryptointerest-show')->with('interest', $interest);
+
+    }
+
+    public function viewWallets(){
+        $wallets = Wallet::all();
+        return view('cryptowallet')->with('wallets', $wallets);
+    }
+
+    public function cryptoWalletDetails($name){
+
+        $walletName = str_replace('_', ' ', $name);
+        $wallet = Wallet::where('name', $walletName)->first();
+        return view('wallet.cryptowallet-show')->with('wallet', $wallet);
 
     }
 

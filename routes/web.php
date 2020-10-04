@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/cards', 'HomeController@viewCards')->name('cryptocard');
 Route::get('/loans', 'HomeController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'HomeController@viewInterestAccounts')->name('cryptointerest.accounts');
+Route::get('/wallets', 'HomeController@viewWallets')->name('cryptowallet');
 
 Auth::routes();
 
@@ -24,6 +25,7 @@ Route::get('/exchanges/{exchange}', 'HomeController@cryptoExchangeDetails')->nam
 Route::get('/cards/{card}', 'HomeController@cryptoCardDetails')->name('cryptocard.show');
 Route::get('/loans/{loan}', 'HomeController@cryptoLoanDetails')->name('cryptoloan.show');
 Route::get('/interests/{interest}', 'HomeController@cryptoInterestDetails')->name('cryptointerest.show');
+Route::get('/wallets/{wallet}', 'HomeController@cryptoWalletDetails')->name('cryptowallet.show');
 
 
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');

@@ -209,7 +209,7 @@
                 width: "100%"
             });
 
-            $('#logo-of-loan').on('change',function(){
+            $('#logo-of-wallet').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label
