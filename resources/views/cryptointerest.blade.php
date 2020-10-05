@@ -81,7 +81,7 @@
     <script>
         $(function(){
             $('#find1').autoComplete({
-                minChars: 1,
+                minChars: 0,
                 source: function(term, suggest){
                     term = term.toLowerCase();
                     var choices = ['Bitcoin', 'Binance Coin', 'EOS', 'Ethereum', 'Libra','Litecoin','Monero', 'Ripple', 'Tether'];

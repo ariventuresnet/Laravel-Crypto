@@ -87,35 +87,42 @@ header {
 
 .input-box input[type="text"]{
   width         : 100%;
-  padding       : .8rem;
+  padding       : .6rem;
   padding-right : 60px;
   box-sizing    : border-box;
-  background    : rgba(0,0,0,0.3);
-  border        : 2px solid #fff;
+  background    : #fff;
+  border        : 1px solid #eee;
   border-radius : 5px;
   font-size     : 18px;
-  color         : #fff;
+  color         : #000;
   outline       : none;
+  box-shadow    : 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
-
+::placeholder {
+  color: #5D6D7E !important;
+  opacity: 1 !important;
+}
+::-ms-input-placeholder { 
+  color: #5D6D7E !important;
+}
 .search-icon{
   position  : absolute;
   top       : 70%;
   transform : translateY(-50%);
   right     : 5px;
-  color     : #fff;
+  color     : #000;
   font-size : 25px;
   box-shadow: none !important;
 }
 
 ::-webkit-input-placeholder {
-  color : #fff;
+  color :  #000;
 }
 ::-moz-placeholder {
-  color : #fff;
+  color :  #000;
 }
 :-ms-input-placeholder {
-  color : #fff;
+  color :  #000;
 }
 
 /* searchbox end */

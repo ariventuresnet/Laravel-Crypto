@@ -2,7 +2,7 @@
 
 @section('searchbox-content')
     <!-- searchbox -->
-    <div class="container-fluid searchbox px-md-5">
+    <div class="container-fluid searchbox px-md-5 mt-2">
         <div class="row">
             <div class="col-md-12">
                 <form>
@@ -98,7 +98,7 @@
     <script>
         $(function(){
             $('#find1').autoComplete({
-                minChars: 1,
+                minChars: 0,
                 source: function(term, suggest){
                     term = term.toLowerCase();
                     var choices = ['Bitcoin', 'Binance Coin', 'EOS', 'Ethereum', 'Libra','Litecoin','Monero', 'Ripple', 'Tether'];
@@ -131,7 +131,7 @@
             });
 
             $('#find3').autoComplete({
-                minChars: 1,
+                minChars: 0,
                 source: function(term, suggest){
                     term = term.toLowerCase();
                     var choices = ['Cash', 'Bank transfer', 'Credit card', 'Debit card', 'Ach tranfer'];
