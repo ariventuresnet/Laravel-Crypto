@@ -81,4 +81,8 @@ class HomeController extends Controller
 
     }
 
+    public function donate(){
+        return view('donate');
+    }
+
 }

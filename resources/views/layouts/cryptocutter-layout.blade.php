@@ -67,7 +67,7 @@
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a>
                 </div>
             </div>
-            <p class="text-center text-primary font-weight-bold mt-2 donate">Cryptocutter is reader-supported through donations & commissions. <a href="">Donate now</a></p>
+            <p class="text-center text-primary font-weight-bold mt-2 donate">Cryptocutter is reader-supported through donations & commissions. <a href="{{route('donate')}}">Donate now</a></p>
         </div>
         <!-- end of wrapper -->
 

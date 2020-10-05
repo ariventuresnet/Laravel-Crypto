@@ -40,3 +40,5 @@ Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete'
 Route::get('loans/delete/{loan}' , 'LoanController@delete')->name('loans.delete');
 Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('interests.delete');
 Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets.delete');
+
+Route::get('donate', 'HomeController@donate')->name('donate');

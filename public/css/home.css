@@ -7,9 +7,8 @@ body {
 /* header */
   
 header {
-  height          : 57vh;
+  height          : 58vh;
   background      :  #b2edef;
-  background-size : cover;
 
 }
 
@@ -46,6 +45,10 @@ header {
 /* wrapper */
 .wrapper{
   background : #fff;
+}
+.donate{
+  margin: 0;
+  padding: 0;
 }
 .btn-home{
   background-color : #fff;
