@@ -45,7 +45,7 @@
         <!-- end of navbar -->
 
         <!-- wrapper -->
-        <div class="container-fluid pt-md-4 px-lg-5 pb-lg-5 wrapper">
+        <div class="container-fluid pt-md-4 px-md-5 pb-sm-3 wrapper">
             <div class="row">
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="{{URL::to('/')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="exchange"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
@@ -67,6 +67,7 @@
                     <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a>
                 </div>
             </div>
+            <p class="text-center text-primary font-weight-bold mt-2 donate">Cryptocutter is reader-supported through donations & commissions. <a href="">Donate now</a></p>
         </div>
         <!-- end of wrapper -->
 

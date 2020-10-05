@@ -7,7 +7,7 @@ body {
 /* header */
   
 header {
-  height          : 55vh;
+  height          : 57vh;
   background      :  #b2edef;
   background-size : cover;
 
@@ -44,7 +44,6 @@ header {
   
 
 /* wrapper */
-
 .wrapper{
   background : #fff;
 }
@@ -159,12 +158,25 @@ header {
 }
 
 @media screen and (max-width: 992px) {
+
+  header {
+    height          : 65vh;
+  }
+  .wrapper{
+    padding-bottom: 3rem;
+  }
   .btn-home{
     color         : #000;
     font-weight   : bold;
     font-size     : .8rem;
-    padding       : 15px 15px 22px;
+    padding       : 13px 15px 18px;
     border-radius : 10px;
+  }
+  .searchbox{
+    position   : absolute;
+    top        : 48%;
+    width      : 100%;
+    background : #b2edef;
   }
   .current{
     background  : #000;
@@ -173,6 +185,41 @@ header {
   }
 }
 
+
+@media screen and (max-width: 768px) {
+  .donate{
+    font-size: .8rem;
+  }
+  header {
+    height: 60vh;
+  }
+
+  .table-row{
+    font-size : .7rem;
+  }
+  .td-name{
+    font-size   : .7rem;
+    font-weight : bold;
+  }
+
+  .searchbox{
+    position   : absolute;
+    top        : 45%;
+    width      : 100%;
+    background : #b2edef;
+  }
+  .btn-home{
+    border-radius : 8px;
+  }
+  .current{
+    background  : #000;
+    color       :#fff;
+    font-weight : bold;
+  }
+}
+
+
+
 @media screen and (max-width: 576px) {
 
   header {
@@ -180,7 +227,12 @@ header {
     background      :  #b2edef;
     background-size : cover;
   }
-
+  .wrapper{
+    padding-bottom: 5px;
+  }
+  .donate{
+    font-size: .7rem;
+  }
   .searchbox{
     position   : absolute;
     top        : 40%;
@@ -208,13 +260,14 @@ header {
     border-radius : 5px;
   }
   
+  .table-row{
+    font-size : .7rem;
+  }
   .td-name{
     font-size   : .8rem;
     font-weight : bold;
   }
-  .table-row{
-    font-size : .7rem;
-  }
+
   .table th{
     font-size : .8rem;
   }

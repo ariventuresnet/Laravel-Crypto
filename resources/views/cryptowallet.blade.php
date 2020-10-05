@@ -13,7 +13,7 @@
 
 @section('searchbox-content')
     <!-- searchbox -->
-    <div class="container-fluid searchbox px-md-5">
+    <div class="container-fluid searchbox px-md-5 mt-3">
         <div class="row">
             <div class="col-md-12">
                 <form>
@@ -37,7 +37,7 @@
 @endsection
 
 @section('main-content')
-    <section class="container-fluid pt-md-5 pt-3 px-md-5 px-2 main">
+    <section class="container-fluid pt-md-4 pt-3 px-md-5 px-2 main">
         <div class="row">
             <div class="col-12">
                 <div class="separator">
