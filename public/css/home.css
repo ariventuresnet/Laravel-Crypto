@@ -351,7 +351,4 @@ header {
   padding        : .7em 1.5em;
   letter-spacing : 0.05rem;
 }
-.btn-style:focus {
-  outline : 2px dotted #55d7dc;
-}
 /* button style end */

@@ -37,7 +37,7 @@
                         <img src="{{asset('images/') . "/" . $loan->logo}}" class="img-fluid rounded" alt="logo" width="120px">
                         <span class="text-uppercase font-weight-bold">{{$loan->name}}</span>
                     </h2>
-                    <span class="d-inline float-sm-right my-4"><a href="{{$loan->url}}" class="btn btn-style draw-border">Get Loan</a></span>
+                    <span class="d-inline float-sm-right my-4"><a href="{{$loan->url}}" class="btn btn-success font-weight-bold px-4 py-2">Get Loan</a></span>
                 </div>
                 <p class="mb-3">{!! $loan->description !!}</p>
                 <div class="row mb-5">

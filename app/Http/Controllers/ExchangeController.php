@@ -60,14 +60,6 @@ class ExchangeController extends Controller
 
         //Redirect and show flash message
         return redirect()->back()->with(session()->flash('alert-success', 'Exchange successfully added'));
-        
-
-        /*if ($request->hasFile('logo')) {
-
-            $logo= $request->file('logo');
-            $logo_name = $logo->getClientOriginalName();
-            $logo->storeAs('images', $logo_name );
-        }*/
 
     }
 

@@ -37,7 +37,8 @@
                         <img src="{{asset('images/') . "/" . $exchange->logo}}" class="img-fluid rounded" alt="logo" width="120px">
                         <span class="text-uppercase font-weight-bold">{{$exchange->name}}</span>
                     </h2>
-                    <span class="d-inline float-sm-right my-4"><a href="{{$exchange->url}}" class="btn btn-style draw-border">Buy Crypto</a></span>
+                    {{-- <span class="d-inline float-sm-right my-4"><a href="{{$exchange->url}}" class="btn btn-style draw-border">Buy Crypto</a></span> --}}
+                    <span class="d-inline float-sm-right my-4"><a href="{{$exchange->url}}" class="btn btn-success font-weight-bold px-4 py-2">Buy Crypto</a></span>
                 </div>
                 <p class="mb-3">{!! $exchange->description !!}</p>
                 <div class="row mb-5">

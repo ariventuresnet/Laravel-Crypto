@@ -26,6 +26,6 @@
 
     <div class="btc text-center mt-3">
         <p class="font-weight-bold">BTC Address: 3NKpsiJwKwQd5qaWWuiHtwGQejCiFUjKHn</p>
-        <img src="{{asset('images/donate.jpg')}}" class="img-fluid" alt="Donate" width="250">
+        <img src="{{asset('images/donate.jpg')}}" class="img-fluid" alt="Donate" width="220">
     </div>
 @endsection
