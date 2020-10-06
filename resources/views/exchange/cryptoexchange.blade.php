@@ -56,6 +56,11 @@
                     <table class="table table-borderless">
                         <thead>
                             <tr>
+                                <th>Bitcoin only</th>
+                                <th>Recurring Buys</th>
+                                <th>Lightning</th>
+                                <th>Liquid</th>
+                                <th>KYC</th>
                                 <th>Ease Of Use</th>
                                 <th>Privacy</th>
                                 <th>Speed</th>
@@ -66,6 +71,11 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>{{$exchange->bitcoin_only}}</td>
+                                <td>{{$exchange->recurring_buys}}</td>
+                                <td>{{$exchange->lightning}}</td>
+                                <td>{{$exchange->liquid}}</td>
+                                <td>{{$exchange->kyc}}</td>
                                 <td>{{$exchange->ease}}</td>
                                 <td>{{$exchange->privacy}}</td>
                                 <td>{{$exchange->speed}}</td>

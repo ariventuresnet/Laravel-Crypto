@@ -1,5 +1,16 @@
 @extends('layouts.cryptocutter-layout')
 
+@section('custom-css')
+    <style>
+        .table th{
+            font-size: .8rem;
+        }
+        .table-row{
+            font-size: .8rem;
+        }
+    </style>
+@endsection
+
 @section('searchbox-content')
     <!-- searchbox -->
     <div class="container-fluid searchbox px-md-5 mt-2">
@@ -40,6 +51,11 @@
                         <thead>
                         <tr>
                             <th scope="col">Name</th>
+                            <th scope="col">Bitcoin only</th>
+                            <th scope="col">Recurring Buys</th>
+                            <th scope="col">Lightning</th>
+                            <th scope="col">Liquid</th>
+                            <th scope="col">KYC</th>
                             <th scope="col">Ease Of Use</th>
                             <th scope="col">Privacy</th>
                             <th scope="col">Speed</th>
@@ -55,6 +71,11 @@
                                         <?php $name= str_replace(' ', '_', $exchange->name); ?>
                                         <a href="{{route('cryptoexchange.show', $name)}}" class="text-dark text-nowrap"> <img src="{{asset('images/') . "/" . $exchange->logo}}" class="rounded-circle" width="15%" alt="Exchange Logo"> {{$exchange->name}}</a>
                                     </td>
+                                    <td>{{$exchange->bitcoin_only}}</td>
+                                    <td>{{$exchange->recurring_buys}}</td>
+                                    <td>{{$exchange->lightning}}</td>
+                                    <td>{{$exchange->liquid}}</td>
+                                    <td>{{$exchange->kyc}}</td>
                                     <td>{{$exchange->ease}}</td>
                                     <td>{{$exchange->privacy}}</td>
                                     <td>{{$exchange->speed}}</td>

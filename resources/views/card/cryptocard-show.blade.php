@@ -1,5 +1,16 @@
 @extends('layouts.cryptocutter-layout')
 
+@section('custom-css')
+    <style>
+        .table th{
+            font-size: .8rem;
+        }
+        .table-row{
+            font-size: .8rem;
+        }
+    </style>
+@endsection
+
 @section('searchbox-content')
     <!-- searchbox -->
     <div class="container-fluid searchbox px-md-5 mt-2">
@@ -61,6 +72,14 @@
                                 <th>Fees</th>
                                 <th>Reputation</th>
                                 <th>Limits</th>
+                                <th>Price</th>
+                                <th>Delivery Fees</th>
+                                <th>Coverage</th>
+                                <th>Monthly Fees</th>
+                                <th>ATM Fees</th>
+                                <th>Monthly ATM Limit</th>
+                                <th>Online Purchases</th>
+                                <th>Monthly Purchases</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,6 +90,14 @@
                                 <td>{{$card->fee}}</td>
                                 <td>{{$card->reputation}}</td>
                                 <td>{{$card->limit}}</td>
+                                <td>{{$card->price}}</td>
+                                <td>{{$card->delivery_fees}}</td>
+                                <td>{{$card->coverage}}</td>
+                                <td>{{$card->monthly_fees}}</td>
+                                <td>{{$card->atm_fees}}</td>
+                                <td>{{$card->monthly_atm_limit}}</td>
+                                <td>{{$card->online_purchases}}</td>
+                                <td>{{$card->monthly_purchases}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -60,7 +60,6 @@ class ExchangeController extends Controller
 
         //Redirect and show flash message
         return redirect()->back()->with(session()->flash('alert-success', 'Exchange successfully added'));
-
     }
 
     public function show(Exchange $exchange)
