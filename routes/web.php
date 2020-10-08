@@ -46,3 +46,5 @@ Route::get('donate', 'HomeController@donate')->name('donate');
 Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
 Route::resource('admin/currencies', 'CurrencyController');
 Route::get('currency/delete/{currency}' , 'CurrencyController@destroy')->name('currencies.delete');
+Route::resource('admin/countries', 'CountryController');
+Route::get('country/delete/{country}' , 'CountryController@destroy')->name('countries.delete');

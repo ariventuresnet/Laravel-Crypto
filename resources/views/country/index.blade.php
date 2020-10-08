@@ -10,7 +10,7 @@
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row align-items-center mb-5">
                     <div class="col">
-                            <h3 class="text-muted text-center mb-3">Currency</h3>
+                            <h3 class="text-muted text-center mb-3">Country</h3>
 
                             <!--Show flash Message -->
                             <div class="flash-message">
@@ -35,18 +35,18 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($currencies as $currency)
+                                    @foreach ($countries as $country)
                                     <tr>
                                         <th>{{$loop->index + 1}}</th>
-                                        <td>{{ $currency->name}}</td>
-                                        <td>{!! $currency->is_exchange == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
-                                        <td>{!! $currency->is_card == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
-                                        <td>{!! $currency->is_loan == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
-                                        <td>{!! $currency->is_wallet== 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
-                                        <td>{!! $currency->status== 0 ? '<p class="text-warning font-weight-bold">Inactive</p>' : '<p class="text-success font-weight-bold">Active</p>' !!}</td>
+                                        <td>{{  $country->name}}</td>
+                                        <td>{!! $country->is_exchange == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
+                                        <td>{!! $country->is_card == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
+                                        <td>{!! $country->is_loan == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
+                                        <td>{!! $country->is_interest== 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
+                                        <td>{!! $country->status== 0 ? '<p class="text-warning font-weight-bold">Inactive</p>' : '<p class="text-success font-weight-bold">Active</p>' !!}</td>
                                         <td>
-                                            <a href="{{route('currencies.edit', $currency->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
-                                            <a href="{{route('currencies.delete', $currency->id)}}" id="delete" class="text-danger" ><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{{route('countries.edit', $country->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>
+                                            <a href="{{route('countries.delete', $country->id)}}" id="delete" class="text-danger" ><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
