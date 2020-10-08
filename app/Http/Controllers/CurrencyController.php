@@ -51,7 +51,8 @@ class CurrencyController extends Controller
 
     public function edit(Currency $currency)
     {
-        return view('currency.edit')->with('currency', $currency);
+        $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        return view('currency.edit', compact('currency', 'autocomplete_card'));
     }
 
     public function update(Request $request, Currency $currency)
@@ -74,7 +75,7 @@ class CurrencyController extends Controller
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
         $autocomplete_card->no_of_currency -= 1;
         $autocomplete_card->save();
-        
+
         return redirect()->route('currencies.index')->with(session()->flash('alert-success', 'Currency successfully deleted!!'));
     }
 }
