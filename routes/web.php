@@ -42,3 +42,7 @@ Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('i
 Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets.delete');
 
 Route::get('donate', 'HomeController@donate')->name('donate');
+
+Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
+Route::resource('admin/currencies', 'CurrencyController');
+Route::get('currency/delete/{currency}' , 'CurrencyController@destroy')->name('currencies.delete');
