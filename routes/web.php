@@ -50,3 +50,5 @@ Route::resource('admin/countries', 'CountryController')->except('show');
 Route::get('country/delete/{country}' , 'CountryController@destroy')->name('countries.delete');
 Route::resource('admin/payments', 'PaymentController')->except('show');
 Route::get('payment/delete/{payment}' , 'PaymentController@destroy')->name('payments.delete');
+Route::resource('admin/collaterals', 'CollateralController')->except('show');
+Route::get('collateral/delete/{collateral}' , 'CollateralController@destroy')->name('collaterals.delete');
