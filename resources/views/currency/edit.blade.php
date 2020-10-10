@@ -5,7 +5,7 @@
 @endsection
 
 @section('main-content')
-   @include('includes.card')
+   @include('includes.autocard')
 
    <!-- activities / quick post -->
    <section>
