@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Country;
+use App\Currency;
 use App\Exchange;
 use App\Interest;
 use App\Loan;
@@ -20,7 +22,9 @@ class HomeController extends Controller
     public function index()
     {
         $exchanges = Exchange::all();
-        return view('welcome', compact('exchanges'));
+        $currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        $countries = Country::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        return view('welcome', compact('exchanges', 'currencies', 'countries'));
     }
 
     public function cryptoExchangeDetails($name){

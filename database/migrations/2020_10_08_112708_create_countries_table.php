@@ -16,7 +16,6 @@ class CreateCountriesTable extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('is_exchange')->default(0);
             $table->tinyInteger('is_card')->default(0);
