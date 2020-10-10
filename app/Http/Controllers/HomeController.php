@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Collateral;
 use App\Country;
 use App\Currency;
 use App\Exchange;
@@ -14,51 +15,61 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $currencies;
+    protected $countries;
+    protected $payments;
+    protected $collaterals;
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $exchanges = Exchange::all();
-        $currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();
-        $countries = Country::select('name')->where('is_exchange', '1')->where('status', '1')->get();
-        $payments = Payment::select('name')->where('is_exchange', '1')->where('status', '1')->get();
-        return view('welcome', compact('exchanges', 'currencies', 'countries', 'payments'));
+        
+        //get suggestion
+        // return view('welcome', compact('exchanges', 'currencies', 'countries', 'payments'));
+        $this->suggestionForExchange();
+        return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
     }
 
     public function cryptoExchangeDetails($name){
         
         $exchangeName = str_replace('_', ' ', $name);
         $exchange = Exchange::where('name', $exchangeName)->first();
-        return view('exchange.cryptoexchange')->with('exchange', $exchange);
+
+        $this->suggestionForExchange();
+        return view('exchange.details')->with('exchange', $exchange)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
     }
 
     public function viewCards(){
         $cards = Card::all();
-        return view('cryptocard')->with('cards', $cards);
+        
+        $this->suggestionForCard();
+        return view('cryptocard')->with('cards', $cards)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
+
     }
 
     public function cryptoCardDetails($name){
 
         $cardName = str_replace('_', ' ', $name);
         $card = Card::where('name', $cardName)->first();
-        return view('card.cryptocard-show')->with('card', $card);
+
+        $this->suggestionForCard();
+        return view('card.details')->with('card', $card)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
     }
 
     public function viewLoans(){
         $loans = Loan::all();
-        return view('cryptoloan')->with('loans', $loans);
+
+        $this->suggestionForLoan();
+        return view('cryptoloan')->with('loans', $loans)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
     }
 
     public function cryptoLoanDetails($name){
 
         $loanName = str_replace('_', ' ', $name);
         $loan = Loan::where('name', $loanName)->first();
-        return view('loan.cryptoloan-show')->with('loan', $loan);
 
+        $this->suggestionForLoan();
+        return view('loan.details')->with('loan', $loan)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
     }
 
     public function viewInterestAccounts(){
@@ -89,6 +100,25 @@ class HomeController extends Controller
 
     public function donate(){
         return view('donate');
+    }
+
+
+    public function suggestionForExchange(){
+        $this->currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        $this->countries = Country::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        $this->payments = Payment::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+    }
+
+    public function suggestionForCard(){
+        $this->currencies = Currency::select('name')->where('is_card', '1')->where('status', '1')->get();
+        $this->countries = Country::select('name')->where('is_card', '1')->where('status', '1')->get();
+        $this->payments = Payment::select('name')->where('is_card', '1')->where('status', '1')->get();
+    }
+
+    public function suggestionForLoan(){
+        $this->currencies = Currency::select('name')->where('is_loan', '1')->where('status', '1')->get();
+        $this->countries = Country::select('name')->where('is_loan', '1')->where('status', '1')->get();
+        $this->collaterals = Collateral::select('name')->where('status', '1')->get();
     }
 
 }
