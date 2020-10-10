@@ -5,7 +5,7 @@
 @endsection
 
 @section('main-content')
-   @include('includes.autocard')
+   @include('includes.card_one')
 
    <!-- activities / quick post -->
    <section>
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row align-items-center mb-5">
-                    <div class="col-md-7">
+                    <div class="col-md-10 col-xl-7">
                         <div class="card">
                             <div class="card-header">
                                 <h5>Edit Payment Method</h5>

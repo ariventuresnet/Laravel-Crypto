@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('main-content')
-   @include('includes.autocard')
+   @include('includes.card_one')
 
    <!-- activities / quick post -->
    <section>
