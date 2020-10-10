@@ -43,7 +43,14 @@
             minChars: 0,
             source: function(term, suggest){
                 term = term.toLowerCase();
-                var choices = ['Cash', 'Bank transfer', 'Credit card', 'Debit card', 'Ach tranfer'];
+                var choices = [];
+                <?php
+                    foreach( $payments as $payment){
+                        ?>
+                        choices.push('<?php echo $payment->name ; ?>');
+                        <?php
+                    }
+                ?>
                 var suggestions = [];
                 for (i=0;i<choices.length;i++)
                     if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);

@@ -51,13 +51,13 @@
                                     <i class="fas fa-money-bill fa-3x text-info"></i>
                                     <div class="text-right text-secondary">
                                         <h5>Payment</h5>
-                                        <h3>5</h3>
+                                        <h3>{{ $autocomplete_card->no_of_payment_method }}</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="#"><i class="far fa-plus-square fa-2x text-primary mr-2"></i></a>
-                                <a href="#"><i class="far fa-list-alt fa-2x text-success"></i></a>
+                                <a href="{{route('payments.create')}}"><i class="far fa-plus-square fa-2x text-primary mr-2"></i></a>
+                                <a href="{{route('payments.index')}}"><i class="far fa-list-alt fa-2x text-success"></i></a>
                             </div>
                         </div>
                     </div>

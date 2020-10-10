@@ -44,7 +44,9 @@ Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets
 Route::get('donate', 'HomeController@donate')->name('donate');
 
 Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
-Route::resource('admin/currencies', 'CurrencyController');
+Route::resource('admin/currencies', 'CurrencyController')->except('show');
 Route::get('currency/delete/{currency}' , 'CurrencyController@destroy')->name('currencies.delete');
-Route::resource('admin/countries', 'CountryController');
+Route::resource('admin/countries', 'CountryController')->except('show');
 Route::get('country/delete/{country}' , 'CountryController@destroy')->name('countries.delete');
+Route::resource('admin/payments', 'PaymentController')->except('show');
+Route::get('payment/delete/{payment}' , 'PaymentController@destroy')->name('payments.delete');

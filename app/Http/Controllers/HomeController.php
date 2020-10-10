@@ -8,6 +8,7 @@ use App\Currency;
 use App\Exchange;
 use App\Interest;
 use App\Loan;
+use App\Payment;
 use App\Wallet;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class HomeController extends Controller
         $exchanges = Exchange::all();
         $currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();
         $countries = Country::select('name')->where('is_exchange', '1')->where('status', '1')->get();
-        return view('welcome', compact('exchanges', 'currencies', 'countries'));
+        $payments = Payment::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        return view('welcome', compact('exchanges', 'currencies', 'countries', 'payments'));
     }
 
     public function cryptoExchangeDetails($name){
