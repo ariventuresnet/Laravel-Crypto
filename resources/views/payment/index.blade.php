@@ -27,7 +27,6 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Exchange</th>
-                                        <th>Card</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -37,8 +36,7 @@
                                     <tr>
                                         <th>{{$loop->index + 1}}</th>
                                         <td>{{  $payment->name}}</td>
-                                        <td>{!! $payment->is_exchange == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
-                                        <td>{!! $payment->is_card == 0 ? 'false' : '<p class="text-success font-weight-bold">true</p>' !!}</td>
+                                        <td>{!! '<p class="text-success font-weight-bold">true</p>' !!}</td>
                                         <td>{!! $payment->status== 0 ? '<p class="text-warning font-weight-bold">Inactive</p>' : '<p class="text-success font-weight-bold">Active</p>' !!}</td>
                                         <td>
                                             <a href="{{route('payments.edit', $payment->id)}}" class="text-success mr-2"><i class="fas fa-edit"></i></a>

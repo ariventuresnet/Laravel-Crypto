@@ -37,14 +37,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="categories">For</label>
-                                        <select multiple name="categories[]" class="chosen" id="categories" data-placeholder="Select Categories...">
-                                          <option value="exchange" {{ $payment->is_exchange == 1 ? 'selected' : '' }}>Exchange</option>
-                                          <option value="card" {{ $payment->is_card == 1 ? 'selected' : '' }}>Card</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="status">Status</label>
                                         <select name="status" class="form-control" id="status">
                                             @if ($payment->status == 1)
@@ -70,25 +62,4 @@
         </div>
     </div>
 </section>
-@endsection
-
-
-@section('custom-script')
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
-
-    <script>
-        $(document).ready(function(){
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-
-        });
-
-    </script>
-
-    
 @endsection

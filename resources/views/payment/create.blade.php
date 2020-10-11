@@ -42,14 +42,6 @@
                                       <label for="name">Name</label>
                                       <input type="text" name="name" class="form-control" id="name">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="categories">For</label>
-                                        <select multiple name="categories[]" class="chosen" id="categories" data-placeholder="Select Categories...">
-                                          <option value="exchange">Exchange</option>
-                                          <option value="card">Card</option>
-                                        </select>
-                                    </div>
                                     
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                   </form>
@@ -63,25 +55,4 @@
         </div>
     </div>
 </section>
-@endsection
-
-
-@section('custom-script')
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
-
-    <script>
-        $(document).ready(function(){
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-
-        });
-
-    </script>
-
-    
 @endsection

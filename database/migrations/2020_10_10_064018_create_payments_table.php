@@ -17,8 +17,6 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('is_exchange')->default(0);
-            $table->tinyInteger('is_card')->default(0);
             $table->timestamps();
         });
     }

@@ -31,13 +31,11 @@ class PaymentController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:payments|max:255',
-            'categories' => 'required',
         ]);
-        $data['name'] = ucfirst($request->name);
-        $data['is_exchange'] = in_array("exchange", $request->categories) ? 1 : 0;
-        $data['is_card'] = in_array("card", $request->categories) ? 1 : 0;
 
-        Payment::create($data);
+        $payment = new Payment();
+        $payment->name = $request->name;
+        $payment->save();
 
         //update Autocomplete_cards table
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
@@ -57,8 +55,6 @@ class PaymentController extends Controller
     {
         $data['name'] = ucfirst($request->name);
         $data['status'] = $request->status;
-        $data['is_exchange'] = in_array("exchange", $request->categories) ? 1 : 0;
-        $data['is_card'] = in_array("card", $request->categories) ? 1 : 0;
 
         $payment->update($data);
         return redirect()->route('payments.index')->with(session()->flash('alert-success', 'Payment Method successfully updated!!'));
