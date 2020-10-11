@@ -30,7 +30,7 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:currencies|max:255',
+            'name' => 'required|unique:countries|max:255',
             'categories' => 'required',
         ]);
         $data['name'] = ucfirst($request->name);

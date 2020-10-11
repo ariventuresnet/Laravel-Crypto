@@ -17,7 +17,7 @@ class AutocompleteCardSeeder extends Seeder
             "no_of_country" => 0,
             "no_of_payment_method" => 0,
             "no_of_card_method" => 0,
-            "no_of_diposit" => 0,
+            "no_of_deposit" => 0,
             "no_of_collateral" => 0,
             "no_of_wallet" => 0,
         ]);

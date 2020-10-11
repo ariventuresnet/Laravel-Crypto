@@ -19,7 +19,7 @@ class CreateAutocompleteCardsTable extends Migration
             $table->integer('no_of_country');
             $table->integer('no_of_payment_method');
             $table->integer('no_of_card_method');
-            $table->integer('no_of_diposit');
+            $table->integer('no_of_deposit');
             $table->integer('no_of_collateral');
             $table->integer('no_of_wallet');
             $table->timestamps();
