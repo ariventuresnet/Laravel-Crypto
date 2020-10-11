@@ -7,6 +7,7 @@ use App\CardMethod;
 use App\Collateral;
 use App\Country;
 use App\Currency;
+use App\Deposit;
 use App\Exchange;
 use App\Interest;
 use App\Loan;
@@ -22,6 +23,7 @@ class HomeController extends Controller
     protected $payments;
     protected $collaterals;
     protected $cardMethods;
+    protected $deposits;
     protected $walletTypes;
 
     public function index()
@@ -78,15 +80,18 @@ class HomeController extends Controller
 
     public function viewInterestAccounts(){
         $interests = Interest::all();
-        return view('cryptointerest')->with('interests', $interests);
+
+        $this->suggestionForDeposit();
+        return view('cryptointerest')->with('interests', $interests)->with('countries', $this->countries)->with('deposits', $this->deposits);
     }
 
     public function cryptoInterestDetails($name){
 
         $interestName = str_replace('_', ' ', $name);
         $interest =Interest::where('name', $interestName)->first();
-        return view('interest.cryptointerest-show')->with('interest', $interest);
 
+        $this->suggestionForDeposit();
+        return view('interest.details')->with('interest', $interest)->with('countries', $this->countries)->with('deposits', $this->deposits);
     }
 
     public function viewWallets(){
@@ -127,6 +132,11 @@ class HomeController extends Controller
         $this->currencies = Currency::select('name')->where('is_loan', '1')->where('status', '1')->get();
         $this->countries = Country::select('name')->where('is_loan', '1')->where('status', '1')->get();
         $this->collaterals = Collateral::select('name')->where('status', '1')->get();
+    }
+
+    public function suggestionForDeposit(){
+        $this->countries   = Country::select('name')->where('is_interest', '1')->where('status', '1')->get();
+        $this->deposits    = Deposit::select('name')->where('status', '1')->get();
     }
 
     public function suggestionForWallet(){

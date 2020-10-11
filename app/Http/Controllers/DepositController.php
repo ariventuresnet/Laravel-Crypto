@@ -15,7 +15,10 @@ class DepositController extends Controller
 
     public function index()
     {
-        //
+        $deposits = Deposit::all();
+        $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+
+        return view('deposit.index', compact('deposits', 'autocomplete_card'));
     }
 
     public function create()
@@ -41,18 +44,30 @@ class DepositController extends Controller
         return redirect()->back()->with(session()->flash('alert-success', 'Deposit successfully added'));
     }
 
-    public function edit($id)
+    public function edit(Deposit $deposit)
     {
-        //
+        $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        return view('deposit.edit', compact('deposit', 'autocomplete_card'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Deposit $deposit)
     {
-        //
+        $data['name'] = ucfirst($request->name);
+        $data['status'] = $request->status;
+
+        $deposit->update($data);
+        return redirect()->route('deposits.index')->with(session()->flash('alert-success', 'Deposit successfully updated!!'));
     }
 
-    public function destroy($id)
+    public function destroy(Deposit $deposit)
     {
-        //
+        $deposit->delete();
+
+        //update Autocomplete_cards table
+        $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        $autocomplete_card->no_of_deposit -= 1;
+        $autocomplete_card->save();
+
+        return redirect()->route('deposits.index')->with(session()->flash('alert-success', 'Deposit successfully deleted!!'));
     }
 }

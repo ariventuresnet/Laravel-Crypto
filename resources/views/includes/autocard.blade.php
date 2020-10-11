@@ -134,7 +134,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <a href="{{route('deposits.create')}}"><i class="far fa-plus-square fa-2x text-primary mr-2"></i></a>
-                                <a href="#"><i class="far fa-list-alt fa-2x text-success"></i></a>
+                                <a href="{{route('deposits.index')}}"><i class="far fa-list-alt fa-2x text-success"></i></a>
                             </div>
                         </div>
                     </div>
