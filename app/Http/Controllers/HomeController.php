@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\CardMethod;
 use App\Collateral;
 use App\Country;
 use App\Currency;
@@ -19,6 +20,7 @@ class HomeController extends Controller
     protected $countries;
     protected $payments;
     protected $collaterals;
+    protected $cardMethods;
 
     public function index()
     {
@@ -43,7 +45,7 @@ class HomeController extends Controller
         $cards = Card::all();
         
         $this->suggestionForCard();
-        return view('cryptocard')->with('cards', $cards)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
+        return view('cryptocard')->with('cards', $cards)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
 
     }
 
@@ -53,7 +55,7 @@ class HomeController extends Controller
         $card = Card::where('name', $cardName)->first();
 
         $this->suggestionForCard();
-        return view('card.details')->with('card', $card)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
+        return view('card.details')->with('card', $card)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
     }
 
     public function viewLoans(){
@@ -106,13 +108,13 @@ class HomeController extends Controller
     public function suggestionForExchange(){
         $this->currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();
         $this->countries = Country::select('name')->where('is_exchange', '1')->where('status', '1')->get();
-        $this->payments = Payment::select('name')->where('is_exchange', '1')->where('status', '1')->get();
+        $this->payments = Payment::select('name')->where('status', '1')->get();
     }
 
     public function suggestionForCard(){
         $this->currencies = Currency::select('name')->where('is_card', '1')->where('status', '1')->get();
         $this->countries = Country::select('name')->where('is_card', '1')->where('status', '1')->get();
-        $this->payments = Payment::select('name')->where('is_card', '1')->where('status', '1')->get();
+        $this->cardMethods = CardMethod::select('name')->where('status', '1')->get();
     }
 
     public function suggestionForLoan(){

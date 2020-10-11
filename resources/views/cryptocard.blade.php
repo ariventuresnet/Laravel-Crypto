@@ -28,7 +28,7 @@
                         </div>
                         <div class="input-box">
                             <label><span class="text-dark font-weight-bold">WITH</span></label>
-                            <input type="text" class="find" id="find3" placeholder="Search Payment Method">
+                            <input type="text" class="find" id="find3" placeholder="Search Card Method">
                             <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
 
 
 @section('custom-script')
-    @include('exchange.suggestion')
+    @include('card.suggestion')
     <script>
         $('#card').addClass('current');
     </script>
