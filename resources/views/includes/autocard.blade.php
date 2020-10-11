@@ -70,7 +70,7 @@
                                 <div class="d-flex justify-content-between">
                                     <i class="far fa-credit-card fa-3x text-success"></i>
                                     <div class="text-right text-secondary">
-                                        <h5>Card</h5>
+                                        <h5>Card Method</h5>
                                         <h3>5</h3>
                                     </div>
                                 </div>
