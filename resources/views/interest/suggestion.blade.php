@@ -7,9 +7,9 @@
                 term = term.toLowerCase();
                 var choices = [];
                 <?php
-                    foreach( $countries as $country){
+                    foreach( $deposits as $deposit){
                         ?>
-                        choices.push('<?php echo $country->name ; ?>');
+                        choices.push('<?php echo $deposit->name ; ?>');
                         <?php
                     }
                 ?>
@@ -26,9 +26,9 @@
                 term = term.toLowerCase();
                 var choices = [];
                 <?php
-                    foreach( $deposits as $deposit){
+                    foreach( $countries as $country){
                         ?>
-                        choices.push('<?php echo $deposit->name ; ?>');
+                        choices.push('<?php echo $country->name ; ?>');
                         <?php
                     }
                 ?>
