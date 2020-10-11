@@ -44,11 +44,18 @@ Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets
 Route::get('donate', 'HomeController@donate')->name('donate');
 
 Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
+
 Route::resource('admin/currencies', 'CurrencyController')->except('show');
 Route::get('currency/delete/{currency}' , 'CurrencyController@destroy')->name('currencies.delete');
+
 Route::resource('admin/countries', 'CountryController')->except('show');
 Route::get('country/delete/{country}' , 'CountryController@destroy')->name('countries.delete');
+
 Route::resource('admin/payments', 'PaymentController')->except('show');
 Route::get('payment/delete/{payment}' , 'PaymentController@destroy')->name('payments.delete');
+
+Route::resource('admin/cardmethods', 'CardMethodController')->except('show');
+Route::get('cardmethod/delete/{cardmethod}' , 'CardMethodController@destroy')->name('cardmethods.delete');
+
 Route::resource('admin/collaterals', 'CollateralController')->except('show');
 Route::get('collateral/delete/{collateral}' , 'CollateralController@destroy')->name('collaterals.delete');
