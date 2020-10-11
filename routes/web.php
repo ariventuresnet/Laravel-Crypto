@@ -59,3 +59,6 @@ Route::get('cardmethod/delete/{cardmethod}' , 'CardMethodController@destroy')->n
 
 Route::resource('admin/collaterals', 'CollateralController')->except('show');
 Route::get('collateral/delete/{collateral}' , 'CollateralController@destroy')->name('collaterals.delete');
+
+Route::resource('admin/wallet_types', 'WalletTypeController')->except('show');
+Route::get('walletTypes/delete/{wallet_type}' , 'WalletTypeController@destroy')->name('wallet_types.delete');

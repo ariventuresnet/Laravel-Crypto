@@ -51,13 +51,13 @@
                                     <i class="fab fa-google-wallet fa-3x text-danger"></i>
                                     <div class="text-right text-secondary">
                                         <h5>wallet</h5>
-                                        <h3>5</h3>
+                                        <h3>{{ $autocomplete_card->no_of_wallet }}</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="#"><i class="far fa-plus-square fa-2x text-primary mr-2"></i></a>
-                                <a href="#"><i class="far fa-list-alt fa-2x text-success"></i></a>
+                                <a href="{{route('wallet_types.create')}}"><i class="far fa-plus-square fa-2x text-primary mr-2"></i></a>
+                                <a href="{{route('wallet_types.index')}}"><i class="far fa-list-alt fa-2x text-success"></i></a>
                             </div>
                         </div>
                     </div>

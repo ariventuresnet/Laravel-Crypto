@@ -12,6 +12,7 @@ use App\Interest;
 use App\Loan;
 use App\Payment;
 use App\Wallet;
+use App\WalletType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,6 +22,7 @@ class HomeController extends Controller
     protected $payments;
     protected $collaterals;
     protected $cardMethods;
+    protected $walletTypes;
 
     public function index()
     {
@@ -89,14 +91,18 @@ class HomeController extends Controller
 
     public function viewWallets(){
         $wallets = Wallet::all();
-        return view('cryptowallet')->with('wallets', $wallets);
+
+        $this->suggestionForWallet();
+        return view('cryptowallet')->with('wallets', $wallets)->with('currencies', $this->currencies)->with('walletTypes', $this->walletTypes);
     }
 
     public function cryptoWalletDetails($name){
 
         $walletName = str_replace('_', ' ', $name);
         $wallet = Wallet::where('name', $walletName)->first();
-        return view('wallet.cryptowallet-show')->with('wallet', $wallet);
+
+        $this->suggestionForWallet();
+        return view('wallet.details')->with('wallet', $wallet)->with('currencies', $this->currencies)->with('walletTypes', $this->walletTypes);
 
     }
 
@@ -121,6 +127,11 @@ class HomeController extends Controller
         $this->currencies = Currency::select('name')->where('is_loan', '1')->where('status', '1')->get();
         $this->countries = Country::select('name')->where('is_loan', '1')->where('status', '1')->get();
         $this->collaterals = Collateral::select('name')->where('status', '1')->get();
+    }
+
+    public function suggestionForWallet(){
+        $this->currencies = Currency::select('name')->where('is_wallet', '1')->where('status', '1')->get();
+        $this->walletTypes = WalletType::select('name')->where('status', '1')->get();
     }
 
 }

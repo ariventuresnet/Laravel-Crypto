@@ -103,36 +103,5 @@
 
 
 @section('custom-script')
-    <script src="{{asset('autocomplete/jquery.auto-complete.js')}}"></script>
-
-    <script>
-        $(function(){
-            $('#find1').autoComplete({
-                minChars: 0,
-                source: function(term, suggest){
-                    term = term.toLowerCase();
-                    var choices = ['Bitcoin', 'Binance Coin', 'EOS', 'Ethereum', 'Libra','Litecoin','Monero', 'Ripple', 'Tether'];
-                    var suggestions = [];
-                    for (i=0;i<choices.length;i++)
-                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                    suggest(suggestions);
-                }
-            });
-
-            $('#find2').autoComplete({
-                minChars: 0,
-                source: function(term, suggest){
-                    term = term.toLowerCase();
-                    var choices = ['Hardware', 'iOS', 'Android', 'Mac', 'Windows','Web'];
-                    var suggestions = [];
-                    for (i=0;i<choices.length;i++)
-                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                    suggest(suggestions);
-                }
-            });
-
-        });
-
-        $('#wallet').addClass('current');
-    </script>
+    @include('wallet.suggestion')
 @endsection

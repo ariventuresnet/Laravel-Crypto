@@ -30,7 +30,7 @@ class CardMethodController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:payments|max:255',
+            'name' => 'required|unique:card_methods|max:255',
         ]);
 
         $card_method = new CardMethod();
