@@ -55,30 +55,18 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="BTC">BTC</option>
-                                <option value="ETH">ETH</option>
-                                <option value="BNB">BNB</option>
-                                <option value="XRP">XRP</option>
-                                <option value="LTC">LTC</option>
-                                <option value="EOS">EOS</option>
-                                <option value="XLM">XLM</option>
-                                <option value="LINK">LINK</option>
-                                <option value="TRX">TRX</option>
-                                <option value="USDT">USDT</option>
-                                <option value="USDC">USDC</option>
-                                <option value="BUSD">BUSD</option>
+                                @foreach ($currencies as $currency)
+                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-types">Types</label>
                             <select multiple name="type[]" class="chosen" data-placeholder="Select Types...">
-                              <option value="hardware">Hardware</option>
-                              <option value="iOS">iOS</option>
-                              <option value="android">Android</option>
-                              <option value="mac">Mac</option>
-                              <option value="windows">Windows</option>
-                              <option value="web">Web</option>
+                                @foreach ($walletTypes as $walletType)
+                                    <option value="{{strtolower($walletType->name)}}">{{ $walletType->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -157,14 +145,21 @@
 @endsection
 
 @section('custom-script')
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
-
+    
     <script>
         // $("#description").focus(function(){});
         
         $(document).ready(function(){
+
+            // multiple select boxes plugin
+            $(".chosen").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
 
             if($('#description').length ){
                 ClassicEditor
@@ -189,14 +184,6 @@
                     console.error( error );
                 } );
             }
-
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
 
             $('#logo-of-wallet').on('change',function(){
                 //get the file name

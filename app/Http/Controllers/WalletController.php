@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Currency;
 use App\Wallet;
+use App\WalletType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class WalletController extends Controller
 {
+    protected $currencies;
+    protected $walletTypes;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,7 +28,8 @@ class WalletController extends Controller
     
     public function create()
     {
-        return view('wallet.create');
+        $this->selectBoxForWallet();
+        return view('wallet.create')->with('currencies', $this->currencies)->with('walletTypes', $this->walletTypes);
     }
 
     public function store(Request $request)
@@ -68,7 +74,8 @@ class WalletController extends Controller
 
     public function edit(Wallet $wallet)
     {
-        return view('wallet.edit')->with('wallet', $wallet);
+        $this->selectBoxForWallet();
+        return view('wallet.edit')->with('wallet', $wallet)->with('currencies', $this->currencies)->with('walletTypes', $this->walletTypes);
     }
 
     public function update(Request $request, Wallet $wallet)
@@ -113,6 +120,11 @@ class WalletController extends Controller
         //Redirect and show flash message
         return redirect()->route('wallets.index')->with(session()->flash('alert-success', 'Wallet successfully Deleted'));
 
+    }
+
+    public function selectBoxForWallet(){
+        $this->currencies  = Currency::select('name')->where('is_wallet', '1')->get();
+        $this->walletTypes = WalletType::select('name')->get();
     }
 
 }

@@ -57,17 +57,16 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <?php 
-                            $currencies = json_decode($wallet->currencies); 
-                            $all_currency = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK" ,"TRX", "USDT", "USDC", "BUSD"];
+                            $selected_currencies = json_decode($wallet->currencies); 
                             ?>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                @foreach ($currencies as $selected_currency)
+                                @foreach ($selected_currencies as $selected_currency)
                                     <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
                                 @endforeach
 
-                                @foreach ($all_currency as $currency)
-                                    @if (! in_array( $currency, $currencies))
-                                        <option value="{{$currency}}"> {{ ucfirst($currency) }} </option>
+                                @foreach ($currencies as $currency)
+                                    @if (! in_array( strtolower($currency->name), $selected_currencies))
+                                        <option value="{{strtolower($currency->name)}}"> {{ ucfirst($currency->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -77,17 +76,16 @@
                         <div class="form-group">
                             <label for="multiple-types">Types</label>
                             <?php 
-                            $types = json_decode($wallet->type); 
-                            $all_type = ["hardware", "iOS", "android", "mac", "windows", "web"];
+                            $selected_types = json_decode($wallet->type); 
                             ?>
                             <select multiple name="type[]" class="chosen" data-placeholder="Select types...">
-                                @foreach ($types as $selected_type)
+                                @foreach ($selected_types as $selected_type)
                                     <option value="{{$selected_type}}" selected> {{ ucfirst($selected_type) }} </option>
                                 @endforeach
 
-                                @foreach ($all_type as $type)
-                                    @if (! in_array( $type, $types))
-                                        <option value="{{$type}}"> {{ ucfirst($type) }} </option>
+                                @foreach ($walletTypes as $walletType)
+                                    @if (! in_array( strtolower($walletType->name), $selected_types))
+                                        <option value="{{strtolower($walletType->name)}}"> {{ ucfirst($walletType->name) }} </option>
                                     @endif
                                 @endforeach
                                 
@@ -169,13 +167,20 @@
 @endsection
 
 @section('custom-script')
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     
     <script>
         
         $(document).ready(function(){
+
+            // multiple select boxes plugin
+            $(".chosen").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
 
             if($('#description').length ){
                 ClassicEditor
@@ -200,14 +205,6 @@
                     console.error( error );
                 } );
             }
-
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
 
             $('#logo-of-wallet').on('change',function(){
                 //get the file name
