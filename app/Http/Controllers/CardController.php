@@ -126,8 +126,8 @@ class CardController extends Controller
     }
 
     public function selectBoxForCard(){
-        $this->currencies = Currency::select('name')->get();
-        $this->countries  = Country::select('name')->get();
+        $this->currencies = Currency::select('name')->where('is_card', '1')->get();
+        $this->countries  = Country::select('name')->where('is_card', '1')->get();
         $this->cardMethods   = CardMethod::select('name')->get();
     }
 

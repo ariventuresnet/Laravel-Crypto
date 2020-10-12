@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Collateral;
+use App\Country;
+use App\Currency;
 use App\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -9,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class LoanController extends Controller
 {
+    protected $currencies;
+    protected $countries;
+    protected $collaterals;
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,7 +30,8 @@ class LoanController extends Controller
 
     public function create()
     {
-        return view('loan.create');
+        $this->selectBoxForLoan();
+        return view('loan.create')->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
     }
 
     public function store(Request $request)
@@ -68,7 +77,8 @@ class LoanController extends Controller
 
     public function edit( Loan $loan )
     {
-        return view('loan.edit')->with('loan', $loan);
+        $this->selectBoxForLoan();
+        return view('loan.edit')->with('loan', $loan)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
     }
 
     public function update(Request $request, Loan $loan)
@@ -113,5 +123,11 @@ class LoanController extends Controller
         //Redirect and show flash message
         return redirect()->route('loans.index')->with(session()->flash('alert-success', 'Loan successfully Deleted'));
 
+    }
+
+    public function selectBoxForLoan(){
+        $this->currencies  = Currency::select('name')->where('is_loan', '1')->get();
+        $this->countries   = Country::select('name')->where('is_loan', '1')->get();
+        $this->collaterals = Collateral::select('name')->get();
     }
 }

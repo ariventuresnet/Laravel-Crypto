@@ -55,31 +55,18 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="CNY">CNY</option>
-                                <option value="INR">INR</option>
-                                <option value="JPY">JPY</option>
-                                <option value="IDR">IDR</option>
-                                <option value="GBP">GBP</option>
-                                <option value="USDT">USDT</option>
-                                <option value="BUSD">BUSD</option>
-                                <option value="NEO">NEO</option>
+                                @foreach ($currencies as $currency)
+                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -87,15 +74,9 @@
                         <div class="form-group">
                             <label for="multiple-collateral">Collaterals</label>
                             <select multiple name="collaterals[]" class="chosen" data-placeholder="Select collaterals...">
-                                <option value="BTC">BTC</option>
-                                <option value="ETH">ETH</option>
-                                <option value="BNB">BNB</option>
-                                <option value="XRP">XRP</option>
-                                <option value="LTC">LTC</option>
-                                <option value="EOS">EOS</option>
-                                <option value="XLM">XLM</option>
-                                <option value="LINK">LINK</option>
-                                <option value="TRX">TRX</option>
+                                @foreach ($collaterals as $collateral)
+                                    <option value="{{strtolower($collateral->name)}}">{{ $collateral->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 

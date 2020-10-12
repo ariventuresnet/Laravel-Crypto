@@ -57,17 +57,16 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <?php 
-                            $currencies = json_decode($loan->currencies); 
-                            $all_currency = ["USD", "EUR", "CNY", "INR", "JPY", "IDR", "GBP", "USDT" ,"BUSD", "NEO"];
+                            $selected_currencies = json_decode($loan->currencies); 
                             ?>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                @foreach ($currencies as $selected_currency)
+                                @foreach ($selected_currencies as $selected_currency)
                                     <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
                                 @endforeach
 
-                                @foreach ($all_currency as $currency)
-                                    @if (! in_array( $currency, $currencies))
-                                        <option value="{{$currency}}"> {{ ucfirst($currency) }} </option>
+                                @foreach ($currencies as $currency)
+                                    @if (! in_array( strtolower($currency->name), $selected_currencies))
+                                        <option value="{{strtolower($currency->name)}}"> {{ ucfirst($currency->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -77,17 +76,16 @@
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <?php 
-                            $countries = json_decode($loan->countries); 
-                            $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            $selected_countries = json_decode($loan->countries); 
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                                @foreach ($countries as $selected_country)
+                                @foreach ($selected_countries as $selected_country)
                                     <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
                                 @endforeach
 
-                                @foreach ($all_country as $country)
-                                    @if (! in_array( $country, $countries))
-                                        <option value="{{$country}}"> {{ ucfirst($country) }} </option>
+                                @foreach ($countries as $country)
+                                    @if (! in_array( strtolower($country->name), $selected_countries))
+                                        <option value="{{strtolower($country->name)}}"> {{ ucfirst($country->name) }} </option>
                                     @endif
                                 @endforeach
                                 
@@ -97,17 +95,16 @@
                         <div class="form-group">
                             <label for="multiple-payment">Collaterals</label>
                             <?php 
-                            $collaterals= json_decode($loan->collaterals); 
-                            $collaterals_option = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK", "TRX"];
+                            $selected_collaterals= json_decode($loan->collaterals); 
                             ?>
                             <select multiple name="collaterals[]" class="chosen" data-placeholder="Select collaterals...">
-                                @foreach ($collaterals as $selected_collateral)
+                                @foreach ($selected_collaterals as $selected_collateral)
                                     <option value="{{$selected_collateral}}" selected> {{ ucwords($selected_collateral) }} </option>
                                 @endforeach
 
-                                @foreach ($collaterals_option as $option)
-                                    @if (! in_array( $option, $collaterals))
-                                        <option value="{{$option}}"> {{ ucwords($option) }} </option>
+                                @foreach ($collaterals as $collateral)
+                                    @if (! in_array( strtolower($collateral->name), $selected_collaterals))
+                                        <option value="{{strtolower($collateral->name)}}"> {{ ucwords($collateral->name) }} </option>
                                     @endif
                                 @endforeach
 

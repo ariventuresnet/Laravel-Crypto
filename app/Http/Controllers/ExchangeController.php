@@ -132,8 +132,8 @@ class ExchangeController extends Controller
 
 
     public function selectBoxForExchange(){
-        $this->currencies = Currency::select('name')->get();
-        $this->countries  = Country::select('name')->get();
+        $this->currencies = Currency::select('name')->where('is_exchange', '1')->get();
+        $this->countries  = Country::select('name')->where('is_exchange', '1')->get();
         $this->payments   = Payment::select('name')->get();
     }
 }
