@@ -57,17 +57,16 @@
                         <div class="form-group">
                             <label for="multiple-deposits">Deposits</label>
                             <?php 
-                            $deposits = json_decode($interest->deposits); 
-                            $all_deposit = ["BTC", "ETH", "BNB", "XRP", "LTC", "EOS", "XLM", "LINK" ,"TRX", "DASH", "USDT", "USDC", "BUSD"];
+                            $selected_deposits = json_decode($interest->deposits); 
                             ?>
                             <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
-                                @foreach ($deposits as $selected_deposit)
+                                @foreach ($selected_deposits as $selected_deposit)
                                     <option value="{{$selected_deposit}}" selected> {{ ucfirst($selected_deposit) }} </option>
                                 @endforeach
 
-                                @foreach ($all_deposit as $deposit)
-                                    @if (! in_array( $deposit, $deposits))
-                                        <option value="{{$deposit}}"> {{ ucfirst($deposit) }} </option>
+                                @foreach ($deposits as $deposit)
+                                    @if (! in_array( strtolower($deposit->name), $selected_deposits))
+                                        <option value="{{strtolower($deposit->name)}}"> {{ ucfirst($deposit->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -77,17 +76,16 @@
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <?php 
-                            $countries = json_decode($interest->countries); 
-                            $all_country = ["china", "india", "usa", "uk", "indonesia", "russia", "japan", "germany"];
+                            $selected_countries = json_decode($interest->countries); 
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                                @foreach ($countries as $selected_country)
+                                @foreach ($selected_countries as $selected_country)
                                     <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
                                 @endforeach
 
-                                @foreach ($all_country as $country)
-                                    @if (! in_array( $country, $countries))
-                                        <option value="{{$country}}"> {{ ucfirst($country) }} </option>
+                                @foreach ($countries as $country)
+                                    @if (! in_array( strtolower($country->name), $selected_countries))
+                                        <option value="{{strtolower($country->name)}}"> {{ ucfirst($country->name) }} </option>
                                     @endif
                                 @endforeach
                                 
@@ -157,13 +155,20 @@
 @endsection
 
 @section('custom-script')
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     
     <script>
         
         $(document).ready(function(){
+
+            // multiple select boxes plugin
+            $(".chosen").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
 
             if($('#description').length ){
                 ClassicEditor
@@ -188,14 +193,6 @@
                     console.error( error );
                 } );
             }
-
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
 
             $('#logo-of-interest').on('change',function(){
                 //get the file name

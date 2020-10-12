@@ -55,33 +55,18 @@
                         <div class="form-group">
                             <label for="multiple-deposits">Deposits</label>
                             <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
-                                <option value="BTC">BTC</option>
-                                <option value="ETH">ETH</option>
-                                <option value="BNB">BNB</option>
-                                <option value="XRP">XRP</option>
-                                <option value="LTC">LTC</option>
-                                <option value="EOS">EOS</option>
-                                <option value="XLM">XLM</option>
-                                <option value="LINK">LINK</option>
-                                <option value="TRX">TRX</option>
-                                <option value="DASH">DASH</option>
-                                <option value="USDT">USDT</option>
-                                <option value="USDC">USDC</option>
-                                <option value="BUSD">BUSD</option>
+                                @foreach ($deposits as $deposit)
+                                    <option value="{{strtolower($deposit->name)}}">{{ $deposit->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="uk">UK</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="germany">Germany</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -149,15 +134,22 @@
 @endsection
 
 @section('custom-script')
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
 
     <script>
         // $("#description").focus(function(){});
         
         $(document).ready(function(){
 
+            // multiple select boxes plugin
+            $(".chosen").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+            
             if($('#description').length ){
                 ClassicEditor
                 .create( document.querySelector( '#description' ) )
@@ -181,15 +173,6 @@
                     console.error( error );
                 } );
             }
-
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-
 
             $('#logo-of-interest').on('change',function(){
                 //get the file name

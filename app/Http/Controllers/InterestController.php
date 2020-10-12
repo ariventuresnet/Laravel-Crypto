@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Deposit;
 use App\Interest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -9,6 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class InterestController extends Controller
 {
+    protected $countries;
+    protected $deposits;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,7 +27,8 @@ class InterestController extends Controller
 
     public function create()
     {
-        return view('interest.create');
+        $this->selectBoxForInterestAccount();
+        return view('interest.create')->with('countries', $this->countries)->with('deposits', $this->deposits);
     }
 
     public function store(Request $request)
@@ -66,7 +72,8 @@ class InterestController extends Controller
 
     public function edit(Interest $interest)
     {
-        return view('interest.edit')->with('interest',$interest);
+        $this->selectBoxForInterestAccount();
+        return view('interest.edit')->with('interest',$interest)->with('countries', $this->countries)->with('deposits', $this->deposits);
     }
 
     public function update(Request $request, Interest $interest)
@@ -111,6 +118,11 @@ class InterestController extends Controller
         //Redirect and show flash message
         return redirect()->route('interests.index')->with(session()->flash('alert-success', 'Interests Account successfully Deleted'));
 
+    }
+
+    public function selectBoxForInterestAccount(){
+        $this->countries = Country::select('name')->where('is_interest', '1')->get();
+        $this->deposits  = Deposit::select('name')->get();
     }
 
     
