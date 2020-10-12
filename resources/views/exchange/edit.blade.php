@@ -57,17 +57,16 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <?php 
-                            $currencies = json_decode($exchange->currencies); 
-                            $all_currency = ["bitcoin", "ethereum", "tether"];
+                            $selected_currencies = json_decode($exchange->currencies); 
                             ?>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                @foreach ($currencies as $selected_currency)
+                                @foreach ($selected_currencies as $selected_currency)
                                     <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
                                 @endforeach
 
-                                @foreach ($all_currency as $currency)
-                                    @if (! in_array( $currency, $currencies))
-                                        <option value="{{$currency}}"> {{ ucfirst($currency) }} </option>
+                                @foreach ($currencies as $currency)
+                                    @if (! in_array( strtolower($currency->name), $selected_currencies))
+                                        <option value="{{strtolower($currency->name)}}"> {{ ucfirst($currency->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -77,17 +76,16 @@
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <?php 
-                            $countries = json_decode($exchange->countries); 
-                            $all_country = ["china", "india", "usa", "indonesia", "brazil", "nigeria", "russia", "japan", "bangladesh"];
+                            $selected_countries = json_decode($exchange->countries); 
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                                @foreach ($countries as $selected_country)
+                                @foreach ($selected_countries as $selected_country)
                                     <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
                                 @endforeach
 
-                                @foreach ($all_country as $country)
-                                    @if (! in_array( $country, $countries))
-                                        <option value="{{$country}}"> {{ ucfirst($country) }} </option>
+                                @foreach ($countries as $country)
+                                    @if (! in_array( strtolower($country->name), $selected_countries))
+                                        <option value="{{strtolower($country->name)}}"> {{ ucfirst($country->name) }} </option>
                                     @endif
                                 @endforeach
                                 
@@ -97,17 +95,16 @@
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
                             <?php 
-                            $payments = json_decode($exchange->payments); 
-                            $payment_option = ["cash", "bank transfer", "credit card", "debit card", "ach tranfer"];
+                            $selected_payments = json_decode($exchange->payments); 
                             ?>
                             <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
-                                @foreach ($payments as $selected_payment)
+                                @foreach ($selected_payments as $selected_payment)
                                     <option value="{{$selected_payment}}" selected> {{ ucwords($selected_payment) }} </option>
                                 @endforeach
 
-                                @foreach ($payment_option as $option)
-                                    @if (! in_array( $option, $payments))
-                                        <option value="{{$option}}"> {{ ucwords($option) }} </option>
+                                @foreach ($payments as $payment)
+                                    @if (! in_array( strtolower($payment->name), $selected_payments))
+                                        <option value="{{strtolower($payment->name)}}"> {{ ucwords($payment->name) }} </option>
                                     @endif
                                 @endforeach
 

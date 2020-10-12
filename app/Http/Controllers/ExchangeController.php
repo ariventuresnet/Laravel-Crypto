@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Currency;
 use App\Exchange;
+use App\Payment;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ExchangeController extends Controller
 {
+    protected $currencies;
+    protected $countries;
+    protected $payments;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,7 +29,8 @@ class ExchangeController extends Controller
 
     public function create()
     {
-        return view('exchange.create');
+        $this->selectBoxForExchange();
+        return view('exchange.create')->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
     }
 
     public function store(Request $request)
@@ -72,7 +80,8 @@ class ExchangeController extends Controller
 
     public function edit(Exchange $exchange)
     {
-        return view('exchange.edit')->with('exchange',$exchange);
+        $this->selectBoxForExchange();
+        return view('exchange.edit')->with('exchange',$exchange)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
     }
 
     public function update(Request $request, Exchange $exchange)
@@ -119,5 +128,12 @@ class ExchangeController extends Controller
         //Redirect and show flash message
         return redirect()->route('exchanges.index')->with(session()->flash('alert-success', 'Exchange successfully Deleted'));
 
+    }
+
+
+    public function selectBoxForExchange(){
+        $this->currencies = Currency::select('name')->get();
+        $this->countries  = Country::select('name')->get();
+        $this->payments   = Payment::select('name')->get();
     }
 }

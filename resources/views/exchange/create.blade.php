@@ -55,24 +55,18 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="bitcoin">Bitcoin</option>
-                                <option value="ethereum">Ethereum</option>
-                                <option value="tether">Tether</option>
+                                @foreach ($currencies as $currency)
+                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -80,11 +74,9 @@
                         <div class="form-group">
                             <label for="multiple-payment">Payment Method</label>
                             <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
-                                <option value="cash">Cash</option>
-                                <option value="bank transfer">Bank transfer</option>
-                                <option value="credit card">Credit card</option>
-                                <option value="debit card">Debit card</option>
-                                <option value="ach tranfer">ACH transfer</option>
+                                @foreach ($payments as $payment)
+                                    <option value="{{strtolower($payment->name)}}">{{ $payment->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -159,14 +151,22 @@
 @endsection
 
 @section('custom-script')
+    <script src="{{asset('js/chosen.jquery.js')}}"></script>
     <!-- ckeditor5 CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    <script src="{{asset('js/chosen.jquery.js')}}"></script>
+    
 
     <script>
         // $("#description").focus(function(){});
         
         $(document).ready(function(){
+            
+            // multiple select boxes plugin
+            $(".chosen").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
 
             if($('#description').length ){
                 ClassicEditor
@@ -191,14 +191,6 @@
                     console.error( error );
                 } );
             }
-
-
-            // multiple select boxes plugin
-            $(".chosen").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
 
             $('#logo-of-exchange').on('change',function(){
                 //get the file name
