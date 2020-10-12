@@ -55,36 +55,28 @@
                         <div class="form-group">
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
-                                <option value="bitcoin">Bitcoin</option>
-                                <option value="ethereum">Ethereum</option>
-                                <option value="tether">Tether</option>
-                                <option value="litecoin">Litecoin</option>
+                                @foreach ($currencies as $currency)
+                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="usa">USA</option>
-                              <option value="indonesia">Indonesia</option>
-                              <option value="brazil">Brazil</option>
-                              <option value="nigeria">Nigeria</option>
-                              <option value="russia">Russia</option>
-                              <option value="japan">Japan</option>
-                              <option value="bangladesh">Bangladesh</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="multiple-payment">Payment Method</label>
+                            <label for="multiple-payment">Card Method</label>
                             <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
-                                <option value="visa">Visa</option>
-                                <option value="mastercard">Mastercard</option>
-                                <option value="credit card">Credit card</option>
-                                <option value="union pay">Union pay</option>
+                                @foreach ($cardMethods as $cardMethod)
+                                    <option value="{{strtolower($cardMethod->name)}}">{{ $cardMethod->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 

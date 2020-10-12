@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\CardMethod;
+use App\Country;
+use App\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class CardController extends Controller
 {
+    protected $currencies;
+    protected $countries;
+    protected $cardMethods;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,7 +29,8 @@ class CardController extends Controller
 
     public function create()
     {
-        return view('card.create');
+        $this->selectBoxForCard();
+        return view('card.create')->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
     }
 
     public function store(Request $request)
@@ -69,7 +77,8 @@ class CardController extends Controller
 
     public function edit(Card $card)
     {
-        return view('card.edit')->with('card',$card);
+        $this->selectBoxForCard();
+        return view('card.edit')->with('card',$card)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
     }
 
     public function update(Request $request, Card $card)
@@ -115,4 +124,11 @@ class CardController extends Controller
         return redirect()->route('cards.index')->with(session()->flash('alert-success', 'Card successfully Deleted'));
 
     }
+
+    public function selectBoxForCard(){
+        $this->currencies = Currency::select('name')->get();
+        $this->countries  = Country::select('name')->get();
+        $this->cardMethods   = CardMethod::select('name')->get();
+    }
+
 }
