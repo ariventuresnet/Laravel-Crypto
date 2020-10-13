@@ -43,8 +43,14 @@
                         </div>
 
                         <ul class="navbar-nav flex-column mt-3">
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2  current"> <i class="fas fa-home fa-lg text-light mr-3"></i>Dashboard</a></li> <!--'sidebar-link' is not a bootstrap class-->
-                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-user fa-lg text-light mr-3"></i>Profile</a></li> 
+                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-user fa-lg text-light mr-3"></i>Profile</a></li>  <!--'sidebar-link' is not a bootstrap class-->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#cms"><i class="fab fa-buffer fa-lg text-light mr-3"></i>CMS <i class="fas fa-sort-down move-top"></i></a>
+                                <ul id="cms" class="collapse">
+                                    <li><a class="btn text-white mb-2 border border-danger" href="{{route('categories.index')}}">Category</a></li>
+                                    <li><a class="btn text-white mb-2 border border-success" style="padding-left: 2rem ; padding-right: 2rem;" href="#">Post</a></li>
+                                </ul>
+                            </li> 
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#exchanges"><i class="fab fa-stack-exchange fa-lg text-light mr-3"></i>Exchange <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="exchanges" class="collapse">
