@@ -8,6 +8,9 @@
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row align-items-center mb-5">
                     <div class="col-md-8">
+                        <div class="d-flex justify-content-end mb-2">
+                            <div><a href="{{route('categories.index')}}" class="btn btn-info px-3"> <i class="fas fa-long-arrow-alt-left text-white mr-2"></i>Back</a></div>
+                        </div>
                         <!--Show flash Message -->
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
