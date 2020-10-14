@@ -45,6 +45,10 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+        ]);
+        
         $category->name = strtolower($request->name);
         $category->slug = Str::slug($request->name);
         $category->save();

@@ -68,3 +68,6 @@ Route::get('deposit/delete/{deposit}' , 'DepositController@destroy')->name('depo
 
 Route::resource('admin/categories', 'CategoryController')->except('show');
 Route::get('categories/delete/{category}', 'CategoryController@destroy')->name('categories.delete');
+
+Route::resource('admin/posts', 'PostController');
+Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete');

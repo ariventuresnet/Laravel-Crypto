@@ -48,7 +48,7 @@
                                 <a href="#" class="nav-link text-white mb-2 sidebar-link" data-toggle="collapse" data-target="#cms"><i class="fab fa-buffer fa-lg text-light mr-3"></i>CMS <i class="fas fa-sort-down move-top"></i></a>
                                 <ul id="cms" class="collapse">
                                     <li><a class="btn text-white mb-2 border border-danger" href="{{route('categories.index')}}">Category</a></li>
-                                    <li><a class="btn text-white mb-2 border border-success" style="padding-left: 2rem ; padding-right: 2rem;" href="#">Post</a></li>
+                                    <li><a class="btn text-white mb-2 border border-success" style="padding-left: 2rem ; padding-right: 2rem;" href="{{route('posts.index')}}">Post</a></li>
                                 </ul>
                             </li> 
                             <li class="nav-item">
