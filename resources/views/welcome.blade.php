@@ -40,9 +40,9 @@
 @endsection
 
 @section('main-content')
-    <section class="container-fluid pt-md-4 pt-3 px-md-5 px-2 main">
-        <div class="row">
-            <div class="col-12">
+    <section class="container-fluid px-md-5 px-2 mb-4 main">
+        <div class="row py-md-4 py-3 border-bottom">
+            <div class="col">
                 <div class="separator">
                     Top Exchanges
                 </div>
@@ -90,6 +90,8 @@
             </div>
         </div>
     </section>
+
+    @include('exchange.post')
 @endsection
 
 

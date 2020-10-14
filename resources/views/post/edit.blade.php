@@ -40,6 +40,16 @@
                                         <label for="sub-title">Sub Title</label>
                                         <input type="text" name="sub_title" id="sub-title" class="form-control" value="{{ $post->sub_title }}">
                                     </div>
+                                    
+                                    <img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid mb-2" alt="Responsive logo" width="20%">
+                                    <div class="form-group mb-3">
+                                        <div class="custom-file">
+                                          <input type="file" name="img" class="custom-file-input" id="img">
+                                          <label class="custom-file-label" for="img">Choose image</label>
+                                          <small class="form-text text-muted">Use HD image (1280x720)</small>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="category">Category</label>
                                         <select class="form-control" name="category_id" id="category">
@@ -47,14 +57,6 @@
                                             <option value="{{$category->id}}" {{ ($category->id == $post->category_id) ? 'selected' : '' }} >{{ ucfirst($category->name) }}</option>
                                           @endforeach
                                         </select>
-                                    </div>
-
-                                    <img src="{{asset('images/') . "/" . $post->img}}" class="img-thumbnail mb-2" alt="Responsive logo" width="20%">
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                          <input type="file" name="img" class="custom-file-input" id="img">
-                                          <label class="custom-file-label" for="img">Choose image</label>
-                                        </div>
                                     </div>
 
                                     <div class="form-group">

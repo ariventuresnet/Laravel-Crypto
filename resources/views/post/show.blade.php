@@ -10,7 +10,7 @@
                     <div class="col-md-10">
 
                         <div class="d-flex justify-content-end mb-2">
-                            <div><a href="{{route('posts.index')}}" class="btn btn-info">Post List</a></div>
+                            <div><a href="{{route('posts.index')}}" class="btn btn-info px-3"> <i class="fas fa-long-arrow-alt-left text-white mr-2"></i>Back</a></div>
                         </div>
 
                         <!--Show flash Message -->
@@ -28,7 +28,7 @@
                             categoty: <a href="#">{{ ucfirst($post->category->name) }}</a>
                         </p>
                         <p><i class="far fa-clock text-info"></i> {{$post->created_at->toDateString()}}</p>
-                        <img src="{{asset('images/') . "/" . $post->img}}" class="img-thumbnail rounded" alt="Responsive image" width="85%">
+                        <img src="{{asset('images/') . "/" . $post->img}}" class="img-thumbnail rounded" alt="Responsive image" width="70%">
                         <hr>
                         <p>{!! $post->content !!}</p>
 

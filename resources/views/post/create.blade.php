@@ -8,6 +8,9 @@
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row align-items-center mb-5">
                     <div class="col-md-8">
+                        <div class="d-flex justify-content-end mb-2">
+                            <div><a href="{{route('posts.index')}}" class="btn btn-info px-3"> <i class="fas fa-long-arrow-alt-left text-white mr-2"></i>Back</a></div>
+                        </div>
                         <!--Show flash Message -->
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -39,6 +42,14 @@
                                         <label for="sub-title">Sub Title</label>
                                         <input type="text" name="sub_title" id="sub-title" class="form-control" value="{{ old('sub_title') }}">
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <div class="custom-file">
+                                          <input type="file" name="img" class="custom-file-input" id="img">
+                                          <label class="custom-file-label" for="img">Choose image</label>
+                                          <small class="form-text text-muted">Use HD image (1280x720)</small>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="category">Category</label>
                                         <select class="form-control" name="category_id" id="category">
@@ -47,13 +58,8 @@
                                             <option value="{{$category->id}}">{{ ucfirst($category->name) }}</option>
                                           @endforeach
                                         </select>
-                                      </div>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                          <input type="file" name="img" class="custom-file-input" id="img">
-                                          <label class="custom-file-label" for="img">Choose image</label>
-                                        </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="content">Content</label>
                                         <textarea name="content" class="form-control" id="content" cols="30" rows="5">{{ old('content') }}</textarea>

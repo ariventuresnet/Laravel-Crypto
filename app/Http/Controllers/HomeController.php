@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Card;
 use App\CardMethod;
+use App\Category;
 use App\Collateral;
 use App\Country;
 use App\Currency;
@@ -12,6 +13,7 @@ use App\Exchange;
 use App\Interest;
 use App\Loan;
 use App\Payment;
+use App\Post;
 use App\Wallet;
 use App\WalletType;
 use Illuminate\Http\Request;
@@ -25,15 +27,16 @@ class HomeController extends Controller
     protected $cardMethods;
     protected $deposits;
     protected $walletTypes;
+    
 
     public function index()
     {
         $exchanges = Exchange::all();
-        
-        //get suggestion
-        // return view('welcome', compact('exchanges', 'currencies', 'countries', 'payments'));
+        $category = Category::where('name', 'exchange')->first();
+        $posts = Post::where('category_id', $category->id)->get();
+
         $this->suggestionForExchange();
-        return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
+        return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
     }
 
     public function cryptoExchangeDetails($name){
