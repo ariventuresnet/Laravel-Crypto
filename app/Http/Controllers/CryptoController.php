@@ -16,7 +16,9 @@ use App\Payment;
 use App\Post;
 use App\Wallet;
 use App\WalletType;
+use Stevebauman\Location\Facades\Location;
 use Illuminate\Http\Request;
+
 
 class CryptoController extends Controller
 {
@@ -31,16 +33,17 @@ class CryptoController extends Controller
 
     public function index()
     {
-        $exchanges = Exchange::all();
+        //get user Location
+        $location = $this->clientLocation();
+
+        $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->where('currencies', 'like', '%btc%')->where('payments', 'like', '%credit card%')->get();
+        // return count($exchanges);
 
         // $posts = Post::with('category')->get();
         // $posts = Post::with('category')->select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->whereHas('category', function($query){
         //     $query->where('name','=','exchange');
         // })->get();
 
-        //get user IP address
-        $ipaddress = $this->get_client_ip();
-        //return $ipaddress;
         $posts = Category::where('name', 'exchange')->first()->posts;
         $this->suggestionForExchange();
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
@@ -160,24 +163,10 @@ class CryptoController extends Controller
         $this->walletTypes = WalletType::select('name')->where('status', '1')->get();
     }
 
-
-    function get_client_ip() {
-        $ipaddress = '';
-        if (isset($_SERVER['HTTP_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];
-        else
-            $ipaddress = 'UNKNOWN';
-        return $ipaddress;
+    public function clientLocation(){
+        $ipaddress = \Request::ip();
+        // $position = Location::get($ipaddress);
+        $position = Location::get('43.245.121.112');
+        return strtolower($position->countryName);
     }
-
 }
