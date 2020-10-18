@@ -166,7 +166,8 @@ class CryptoController extends Controller
     public function clientLocation(){
         $ipaddress = \Request::ip();
         // $position = Location::get($ipaddress);
-        $position = Location::get('43.245.121.112');
+        // $position = Location::get('43.245.121.112');
+        $position = Location::get($ipaddress);
         return strtolower($position->countryName);
     }
 }
