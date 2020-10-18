@@ -18,7 +18,7 @@ use App\Wallet;
 use App\WalletType;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CryptoController extends Controller
 {
     protected $currencies;
     protected $countries;
@@ -32,9 +32,13 @@ class HomeController extends Controller
     public function index()
     {
         $exchanges = Exchange::all();
-        $category = Category::where('name', 'exchange')->first();
-        $posts = Post::where('category_id', $category->id)->get();
 
+        // $posts = Post::with('category')->get();
+        // $posts = Post::with('category')->select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->whereHas('category', function($query){
+        //     $query->where('name','=','exchange');
+        // })->get();
+        
+        $posts = Category::where('name', 'exchange')->first()->posts;
         $this->suggestionForExchange();
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
     }
@@ -46,6 +50,12 @@ class HomeController extends Controller
 
         $this->suggestionForExchange();
         return view('exchange.details')->with('exchange', $exchange)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments);
+    }
+
+    public function PostOfExchange($slug){
+        $specificPost = Post::where('slug', $slug)->first();
+        $posts = Post::select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->get();
+        return view('exchange.specificPost', compact('specificPost', 'posts') );
     }
 
     public function viewCards(){
@@ -114,10 +124,10 @@ class HomeController extends Controller
 
     }
 
+    
     public function donate(){
         return view('donate');
     }
-
 
     public function suggestionForExchange(){
         $this->currencies = Currency::select('name')->where('is_exchange', '1')->where('status', '1')->get();

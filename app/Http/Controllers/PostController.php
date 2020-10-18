@@ -50,7 +50,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->sub_title = $request->sub_title;
-        $post->slug  = Str::slug($request->title);
+        $post->slug  = Str::slug($request->title). '_' . uniqid();
         $post->content = $request->content;
         $post->category_id = $request->category_id;
         $post->img = $img_name;
@@ -82,7 +82,7 @@ class PostController extends Controller
 
         //get request data
         $data = $request->except("_token", "_method");
-        $data["slug"] = Str::slug($request->title);
+        $data["slug"] = Str::slug($request->title). '_' . uniqid();
 
         if($request->has('img')){
             $new_img= $request->file('img');

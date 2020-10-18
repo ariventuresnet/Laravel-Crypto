@@ -13,20 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/cards', 'HomeController@viewCards')->name('cryptocard');
-Route::get('/loans', 'HomeController@viewLoans')->name('cryptoloan');
-Route::get('/interests', 'HomeController@viewInterestAccounts')->name('cryptointerest.accounts');
-Route::get('/wallets', 'HomeController@viewWallets')->name('cryptowallet');
+Route::get('/', 'CryptoController@index');
+Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
+Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
+Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');
+Route::get('/wallets', 'CryptoController@viewWallets')->name('cryptowallet');
 
 Auth::routes();
 
-Route::get('/exchanges/{exchange}', 'HomeController@cryptoExchangeDetails')->name('cryptoexchange.show');
-Route::get('/cards/{card}', 'HomeController@cryptoCardDetails')->name('cryptocard.show');
-Route::get('/loans/{loan}', 'HomeController@cryptoLoanDetails')->name('cryptoloan.show');
-Route::get('/interests/{interest}', 'HomeController@cryptoInterestDetails')->name('cryptointerest.show');
-Route::get('/wallets/{wallet}', 'HomeController@cryptoWalletDetails')->name('cryptowallet.show');
+Route::get('/exchanges/{exchange}', 'CryptoController@cryptoExchangeDetails')->name('cryptoexchange.show');
+Route::get('/cards/{card}', 'CryptoController@cryptoCardDetails')->name('cryptocard.show');
+Route::get('/loans/{loan}', 'CryptoController@cryptoLoanDetails')->name('cryptoloan.show');
+Route::get('/interests/{interest}', 'CryptoController@cryptoInterestDetails')->name('cryptointerest.show');
+Route::get('/wallets/{wallet}', 'CryptoController@cryptoWalletDetails')->name('cryptowallet.show');
 
+Route::get('donate', 'CryptoController@donate')->name('donate');
+
+Route::get('/exchange/{slug}', 'CryptoController@PostOfExchange')->name('exchange.post');
 
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('admin/exchanges', 'ExchangeController');
@@ -40,8 +43,6 @@ Route::get('cards/delete/{card}' , 'CardController@delete')->name('cards.delete'
 Route::get('loans/delete/{loan}' , 'LoanController@delete')->name('loans.delete');
 Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('interests.delete');
 Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets.delete');
-
-Route::get('donate', 'HomeController@donate')->name('donate');
 
 Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
 

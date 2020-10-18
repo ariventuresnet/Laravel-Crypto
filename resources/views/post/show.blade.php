@@ -23,9 +23,9 @@
                         </div>
 
                         <h2 class="font-weight-bold">{{$post->title}}</h2>
-                        <h5 class="font-weight-bold">Sub-title: {{ $post->sub_title }}</h5>
-                        <p class="lead">
-                            categoty: <a href="#">{{ ucfirst($post->category->name) }}</a>
+                        <p class="">Sub-title: {{ $post->sub_title }}</p>
+                        <p>
+                            Categoty: <a href="#" class="text-dark">{{ ucfirst($post->category->name) }}</a>
                         </p>
                         <p><i class="far fa-clock text-info"></i> {{$post->created_at->toDateString()}}</p>
                         <img src="{{asset('images/') . "/" . $post->img}}" class="img-thumbnail rounded" alt="Responsive image" width="70%">
