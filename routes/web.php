@@ -72,3 +72,6 @@ Route::resource('admin/categories', 'CategoryController')->except('show');
 
 Route::resource('admin/posts', 'PostController');
 Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete');
+
+//search
+Route::post('exchange/search', 'CryptoController@findExchange')->name('exchange.search');

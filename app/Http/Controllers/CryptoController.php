@@ -163,6 +163,24 @@ class CryptoController extends Controller
         $this->walletTypes = WalletType::select('name')->where('status', '1')->get();
     }
 
+    //search
+    public function findExchange(Request $request){
+        // if( ! isset($request->currency, $request->country , $request->payment_method) )
+        // {
+        //     return redirect()->back();
+        // }
+        $currency = strtolower($request->currency);
+        $country  = strtolower($request->country);
+        $payment  = strtolower($request->payment_method);
+
+        $exchanges = Exchange::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('payments', 'like', '%'.$payment.'%')->get();
+        // $this->suggestionForExchange();
+        // $posts = Category::where('name', 'exchange')->first()->posts;
+        // return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
+        return response()->json( [ 'exchanges'=>$exchanges ]);
+        
+    }
+
     public function clientLocation(){
         $ipaddress = \Request::ip();
         // $position = Location::get($ipaddress);
