@@ -21,7 +21,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $currencies = json_decode($wallet->currencies); ?>
                               @foreach ($currencies as $currency)
-                                <li class="list-group-item">{{$currency}}</li>
+                                <li class="list-group-item">{{ strtoupper($currency) }}</li>
                               @endforeach
                             </ul>
                         </div>
@@ -35,7 +35,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $types = json_decode($wallet->type); ?>
                               @foreach ($types as $type)
-                                <li class="list-group-item">{{$type}}</li>
+                                <li class="list-group-item">{{ strtoupper($type) }}</li>
                               @endforeach
                             </ul>
                         </div>

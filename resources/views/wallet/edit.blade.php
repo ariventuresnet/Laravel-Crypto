@@ -61,12 +61,12 @@
                             ?>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($selected_currencies as $selected_currency)
-                                    <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
+                                    <option value="{{$selected_currency}}" selected> {{ strtoupper($selected_currency) }} </option>
                                 @endforeach
 
                                 @foreach ($currencies as $currency)
                                     @if (! in_array( strtolower($currency->name), $selected_currencies))
-                                        <option value="{{strtolower($currency->name)}}"> {{ ucfirst($currency->name) }} </option>
+                                        <option value="{{strtolower($currency->name)}}"> {{ strtoupper($currency->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -80,12 +80,12 @@
                             ?>
                             <select multiple name="type[]" class="chosen" data-placeholder="Select types...">
                                 @foreach ($selected_types as $selected_type)
-                                    <option value="{{$selected_type}}" selected> {{ ucfirst($selected_type) }} </option>
+                                    <option value="{{$selected_type}}" selected> {{ strtoupper($selected_type) }} </option>
                                 @endforeach
 
                                 @foreach ($walletTypes as $walletType)
                                     @if (! in_array( strtolower($walletType->name), $selected_types))
-                                        <option value="{{strtolower($walletType->name)}}"> {{ ucfirst($walletType->name) }} </option>
+                                        <option value="{{strtolower($walletType->name)}}"> {{ strtoupper($walletType->name) }} </option>
                                     @endif
                                 @endforeach
                                 

@@ -56,7 +56,7 @@
                             <label for="multiple-deposits">Deposits</label>
                             <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
                                 @foreach ($deposits as $deposit)
-                                    <option value="{{strtolower($deposit->name)}}">{{ $deposit->name }}</option>
+                                    <option value="{{strtolower($deposit->name)}}">{{ strtoupper($deposit->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($countries as $country)
-                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                    <option value="{{strtolower($country->name)}}">{{ strtoupper($country->name) }}</option>
                                 @endforeach
                             </select>
                         </div>

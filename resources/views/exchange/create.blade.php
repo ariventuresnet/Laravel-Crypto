@@ -56,7 +56,7 @@
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($currencies as $currency)
-                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                    <option value="{{strtolower($currency->name)}}">{{ strtoupper($currency->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                             <label for="multiple-countries">Countries</label>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($countries as $country)
-                                    <option value="{{strtolower($country->name)}}">{{ $country->name }}</option>
+                                    <option value="{{strtolower($country->name)}}">{{ strtoupper($country->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -75,7 +75,7 @@
                             <label for="multiple-payment">Payment Method</label>
                             <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
                                 @foreach ($payments as $payment)
-                                    <option value="{{strtolower($payment->name)}}">{{ $payment->name }}</option>
+                                    <option value="{{strtolower($payment->name)}}">{{ strtoupper($payment->name) }}</option>
                                 @endforeach
                             </select>
                         </div>

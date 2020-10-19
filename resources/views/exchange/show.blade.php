@@ -21,7 +21,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $currencies = json_decode($exchange->currencies); ?>
                               @foreach ($currencies as $currency)
-                                <li class="list-group-item">{{$currency}}</li>
+                                <li class="list-group-item">{{ strtoupper($currency) }}</li>
                               @endforeach
                             </ul>
                         </div>
@@ -35,7 +35,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $payments = json_decode($exchange->payments); ?>
                               @foreach ($payments as $payment)
-                                <li class="list-group-item">{{$payment}}</li>
+                                <li class="list-group-item">{{ strtoupper($payment) }}</li>
                               @endforeach
                             </ul>
                         </div>
@@ -49,7 +49,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $countries = json_decode($exchange->countries); ?>
                               @foreach ($countries as $country)
-                                <li class="list-group-item">{{$country}}</li>
+                                <li class="list-group-item">{{ strtoupper($country) }}</li>
                               @endforeach
                             </ul>
                         </div>

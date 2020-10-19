@@ -61,12 +61,12 @@
                             ?>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($selected_currencies as $selected_currency)
-                                    <option value="{{$selected_currency}}" selected> {{ ucfirst($selected_currency) }} </option>
+                                    <option value="{{$selected_currency}}" selected> {{ strtoupper($selected_currency) }} </option>
                                 @endforeach
 
                                 @foreach ($currencies as $currency)
                                     @if (! in_array( strtolower($currency->name), $selected_currencies))
-                                        <option value="{{strtolower($currency->name)}}"> {{ ucfirst($currency->name) }} </option>
+                                        <option value="{{strtolower($currency->name)}}"> {{ strtoupper($currency->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -80,12 +80,12 @@
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($selected_countries as $selected_country)
-                                    <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
+                                    <option value="{{$selected_country}}" selected> {{ strtoupper($selected_country) }} </option>
                                 @endforeach
 
                                 @foreach ($countries as $country)
                                     @if (! in_array( strtolower($country->name), $selected_countries))
-                                        <option value="{{strtolower($country->name)}}"> {{ ucfirst($country->name) }} </option>
+                                        <option value="{{strtolower($country->name)}}"> {{ strtoupper($country->name) }} </option>
                                     @endif
                                 @endforeach
                                 
@@ -99,12 +99,12 @@
                             ?>
                             <select multiple name="payments[]" class="chosen" data-placeholder="Select Payment method...">
                                 @foreach ($selected_cardMethods as $selected_cardMethod)
-                                    <option value="{{$selected_cardMethod}}" selected> {{ ucwords($selected_cardMethod) }} </option>
+                                    <option value="{{$selected_cardMethod}}" selected> {{ strtoupper($selected_cardMethod) }} </option>
                                 @endforeach
 
                                 @foreach ($cardMethods as $cardMethod)
                                     @if (! in_array( strtolower($cardMethod->name), $selected_cardMethods))
-                                        <option value="{{strtolower($cardMethod->name)}}"> {{ ucwords($cardMethod->name) }} </option>
+                                        <option value="{{strtolower($cardMethod->name)}}"> {{ strtoupper($cardMethod->name) }} </option>
                                     @endif
                                 @endforeach
 

@@ -56,7 +56,7 @@
                             <label for="multiple-currencies">Currencies</label>
                             <select multiple class="chosen" name="currencies[]" data-placeholder="Select Currencies...">
                                 @foreach ($currencies as $currency)
-                                    <option value="{{strtolower($currency->name)}}">{{ $currency->name }}</option>
+                                    <option value="{{strtolower($currency->name)}}">{{ strtoupper($currency->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                             <label for="multiple-types">Types</label>
                             <select multiple name="type[]" class="chosen" data-placeholder="Select Types...">
                                 @foreach ($walletTypes as $walletType)
-                                    <option value="{{strtolower($walletType->name)}}">{{ $walletType->name }}</option>
+                                    <option value="{{strtolower($walletType->name)}}">{{ strtoupper($walletType->name) }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -61,12 +61,12 @@
                             ?>
                             <select multiple class="chosen" name="deposits[]" data-placeholder="Select Deposits...">
                                 @foreach ($selected_deposits as $selected_deposit)
-                                    <option value="{{$selected_deposit}}" selected> {{ ucfirst($selected_deposit) }} </option>
+                                    <option value="{{$selected_deposit}}" selected> {{ strtoupper($selected_deposit) }} </option>
                                 @endforeach
 
                                 @foreach ($deposits as $deposit)
                                     @if (! in_array( strtolower($deposit->name), $selected_deposits))
-                                        <option value="{{strtolower($deposit->name)}}"> {{ ucfirst($deposit->name) }} </option>
+                                        <option value="{{strtolower($deposit->name)}}"> {{ strtoupper($deposit->name) }} </option>
                                     @endif
                                 @endforeach
 
@@ -80,12 +80,12 @@
                             ?>
                             <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
                                 @foreach ($selected_countries as $selected_country)
-                                    <option value="{{$selected_country}}" selected> {{ ucfirst($selected_country) }} </option>
+                                    <option value="{{$selected_country}}" selected> {{ strtoupper($selected_country) }} </option>
                                 @endforeach
 
                                 @foreach ($countries as $country)
                                     @if (! in_array( strtolower($country->name), $selected_countries))
-                                        <option value="{{strtolower($country->name)}}"> {{ ucfirst($country->name) }} </option>
+                                        <option value="{{strtolower($country->name)}}"> {{ strtoupper($country->name) }} </option>
                                     @endif
                                 @endforeach
                                 

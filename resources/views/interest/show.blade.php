@@ -21,7 +21,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $deposits = json_decode($interest->deposits); ?>
                               @foreach ($deposits as $deposit)
-                                <li class="list-group-item">{{$deposit}}</li>
+                                <li class="list-group-item">{{ strtoupper($deposit) }}</li>
                               @endforeach
                             </ul>
                         </div>
@@ -35,7 +35,7 @@
                             <ul class="list-group list-group-flush">
                               <?php $countries = json_decode($interest->countries); ?>
                               @foreach ($countries as $country)
-                                <li class="list-group-item">{{$country}}</li>
+                                <li class="list-group-item">{{ strtoupper($country) }}</li>
                               @endforeach
                             </ul>
                         </div>
