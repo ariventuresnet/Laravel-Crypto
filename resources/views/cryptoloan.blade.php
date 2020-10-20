@@ -5,20 +5,20 @@
     <div class="container-fluid searchbox px-md-5 mt-2">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form id="search-form">
                     <div class="form-row d-flex justify-content-center">
                         <div class="input-box mr-2">
                             <label><span class="text-dark font-weight-bold">Borrow</span></label>
-                            <input type="text" class="find" id="find1" placeholder="Search Currency">
+                            <input type="text" name="currency" id="find1" placeholder="Search Currency">
                         </div>
                         <div class="input-box mr-2">
                             <label><span class="text-dark font-weight-bold">In</span></label>
-                            <input type="text" class="find" id="find2" placeholder="Search Country">
+                            <input type="text" name="country" id="find2" placeholder="Search Country">
                         </div>
                         <div class="input-box">
                             <label><span class="text-dark font-weight-bold">With</span></label>
-                            <input type="text" class="find" id="find3" placeholder="Search Collateral">
-                            <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
+                            <input type="text" name="collateral" id="find3" placeholder="Search Collateral">
+                            <button id="search" class="btn search-icon"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -84,4 +84,5 @@
 
 @section('custom-script')
     @include('loan.suggestion')
+    @include('loan.ajax_request')
 @endsection

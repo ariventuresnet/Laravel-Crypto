@@ -226,5 +226,30 @@ class CryptoController extends Controller
         
     }
 
+    //search Loan
+    public function AjaxRequestForLoan(Request $request){
+        $currency = strtolower($request->currency);
+        $country  = strtolower($request->country);
+        $collateral  = strtolower($request->collateral);
+
+        $loans = Loan::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('collaterals', 'like', '%'.$collateral.'%')->get();
+        return response()->json( [ 'loans'=>$loans ]);
+
+    }
+
+    public function searchLoan(Request $request){
+        if( ! isset($request->currency, $request->country , $request->collateral) )
+        {
+            return redirect()->back();
+        }
+        $currency = strtolower($request->currency);
+        $country  = strtolower($request->country);
+        $collateral  = strtolower($request->collateral);
+
+        $loans = Loan::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('collaterals', 'like', '%'.$collateral.'%')->get();
+        $this->suggestionForLoan();
+        return view('cryptoloan')->with('loans', $loans)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
+        
+    }
 
 }

@@ -78,7 +78,4 @@
 @section('custom-script')
     @include('card.suggestion')
     @include('card.ajax_request')
-    <script>
-        $('#card').addClass('current');
-    </script>
 @endsection

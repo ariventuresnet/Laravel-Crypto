@@ -112,7 +112,4 @@
 
 @section('custom-script')
     @include('card.suggestion')
-    <script>
-        $('#card').addClass('current');
-    </script>
 @endsection

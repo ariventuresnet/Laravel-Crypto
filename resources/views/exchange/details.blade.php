@@ -6,7 +6,6 @@
         <div class="row">
             <div class="col-md-12">
                 <form action="{{route('exchanges.search')}}" method="POST">
-                <form id="search-form">
                     @csrf
                     <div class="form-row d-flex justify-content-center">
                         <div class="input-box mr-sm-2">

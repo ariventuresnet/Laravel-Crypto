@@ -59,4 +59,6 @@
         });
 
     });
+
+    $('#card').addClass('current');
 </script>
