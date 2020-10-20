@@ -21,6 +21,7 @@ Route::get('/wallets', 'CryptoController@viewWallets')->name('cryptowallet');
 
 Auth::routes();
 
+//Front-end
 Route::get('/exchanges/{exchange}', 'CryptoController@cryptoExchangeDetails')->name('cryptoexchange.show');
 Route::get('/cards/{card}', 'CryptoController@cryptoCardDetails')->name('cryptocard.show');
 Route::get('/loans/{loan}', 'CryptoController@cryptoLoanDetails')->name('cryptoloan.show');
@@ -31,6 +32,9 @@ Route::get('donate', 'CryptoController@donate')->name('donate');
 
 Route::get('/exchange/{slug}', 'CryptoController@PostOfExchange')->name('exchange.post');
 
+
+
+//Backend
 Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
@@ -73,6 +77,11 @@ Route::resource('admin/categories', 'CategoryController')->except('show');
 Route::resource('admin/posts', 'PostController');
 Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete');
 
+
+
 //ajax search
 Route::post('getexchanges', 'CryptoController@AjaxRequestForExchange');
-Route::post('exchanges/search', 'CryptoController@searchExchange')->name('exchanges.search');
+Route::post('exchange/lists', 'CryptoController@searchExchange')->name('exchanges.search');
+
+Route::post('getcards', 'CryptoController@AjaxRequestForCard');
+Route::post('card/lists', 'CryptoController@searchCard')->name('cards.search');

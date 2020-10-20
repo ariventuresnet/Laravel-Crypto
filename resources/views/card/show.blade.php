@@ -30,7 +30,7 @@
                     <div class="col-md-4 mr-2 mb-2">
                         <div class="card">
                             <div class="card-header">
-                                Payment methods
+                                Card Methods
                             </div>
                             <ul class="list-group list-group-flush">
                               <?php $payments = json_decode($card->payments); ?>

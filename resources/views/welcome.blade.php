@@ -40,7 +40,7 @@
                             <th scope="col">Limits</th>
                         </tr>
                         </thead>
-                        <tbody class="table_body">
+                        <tbody>
                             @foreach ($exchanges as $exchange)
                                 <tr class="table-row">
                                     <td class="td-name">

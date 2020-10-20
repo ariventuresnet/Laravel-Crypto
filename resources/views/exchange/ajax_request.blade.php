@@ -20,7 +20,8 @@
             success: function(response){
                 // console.log(response.exchanges);
                 let exchanges = response.exchanges;
-                $(".table_body").html("");
+                $("tbody").html("");
+                $(".separator").html("Search Result");
                 for (let count=0 ; count < exchanges.length ; count++){
                     let exchange = exchanges[count];
                     // console.log(exchange);
@@ -43,7 +44,7 @@
                     image = image.replace(':logo', logo);
                     let path = '{{route("cryptoexchange.show", ":slug")}}';
                     path = path.replace(':slug', slug_name);
-                    $('.table_body').append('<tr class="table-row"><td class="td-name"><a href="'+path+'" class="text-dark text-nowrap"> <img src="'+image+'" class="rounded-circle" width="15%" alt="Exchange Logo"> '+name+' </a></td> <td>'+bitcoin_only+'</td> <td>'+recurring_buys+'</td> <td>'+lightning+'</td> <td>'+liquid+'</td> <td>'+kyc+'</td> <td>'+ease+'</td> <td>'+privacy+'</td> <td>'+speed+'</td> <td>'+fee+'</td> <td>'+reputation+'</td> <td>'+limit+'</td>');
+                    $('tbody').append('<tr class="table-row"><td class="td-name"><a href="'+path+'" class="text-dark text-nowrap"> <img src="'+image+'" class="rounded-circle" width="15%" alt="Exchange Logo"> '+name+' </a></td> <td>'+bitcoin_only+'</td> <td>'+recurring_buys+'</td> <td>'+lightning+'</td> <td>'+liquid+'</td> <td>'+kyc+'</td> <td>'+ease+'</td> <td>'+privacy+'</td> <td>'+speed+'</td> <td>'+fee+'</td> <td>'+reputation+'</td> <td>'+limit+'</td>');
 
                 }
 

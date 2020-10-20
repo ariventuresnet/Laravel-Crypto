@@ -173,7 +173,7 @@ class CryptoController extends Controller
         return strtolower($position->countryName);
     }
 
-    //search
+    //search exchange
     public function AjaxRequestForExchange(Request $request){
         $currency = strtolower($request->currency);
         $country  = strtolower($request->country);
@@ -197,6 +197,32 @@ class CryptoController extends Controller
         $this->suggestionForExchange();
         $posts = Category::where('name', 'exchange')->first()->posts;
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
+        
+    }
+
+    //search card
+    public function AjaxRequestForCard(Request $request){
+        $currency = strtolower($request->currency);
+        $country  = strtolower($request->country);
+        $card_method  = strtolower($request->card_method);
+
+        $cards = Card::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('payments', 'like', '%'.$card_method.'%')->get();
+        return response()->json( [ 'cards'=>$cards ]);
+
+    }
+
+    public function searchCard(Request $request){
+        if( ! isset($request->currency, $request->country , $request->card_method) )
+        {
+            return redirect()->back();
+        }
+        $currency = strtolower($request->currency);
+        $country  = strtolower($request->country);
+        $card_method  = strtolower($request->card_method);
+
+        $cards = Card::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('payments', 'like', '%'.$card_method.'%')->get();
+        $this->suggestionForCard();
+        return view('cryptocard')->with('cards', $cards)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
         
     }
 
