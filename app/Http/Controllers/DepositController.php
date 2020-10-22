@@ -33,7 +33,7 @@ class DepositController extends Controller
             'name' => 'required|unique:deposits|max:255',
         ]);
         $deposit = new Deposit();
-        $deposit->name = $request->name;
+        $deposit->name = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $deposit->save();
 
         //update Autocomplete_cards table
@@ -52,7 +52,7 @@ class DepositController extends Controller
 
     public function update(Request $request, Deposit $deposit)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name']   = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
 
         $deposit->update($data);

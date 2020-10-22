@@ -34,7 +34,7 @@ class CardMethodController extends Controller
         ]);
 
         $card_method = new CardMethod();
-        $card_method->name = $request->name;
+        $card_method->name = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $card_method->save();
 
         //update Autocomplete_cards table
@@ -53,7 +53,7 @@ class CardMethodController extends Controller
 
     public function update(Request $request, CardMethod $cardmethod)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name']   = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
 
         $cardmethod->update($data);

@@ -34,7 +34,7 @@ class PaymentController extends Controller
         ]);
 
         $payment = new Payment();
-        $payment->name = $request->name;
+        $payment->name = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $payment->save();
 
         //update Autocomplete_cards table
@@ -53,7 +53,7 @@ class PaymentController extends Controller
 
     public function update(Request $request, Payment $payment)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name'] = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
 
         $payment->update($data);

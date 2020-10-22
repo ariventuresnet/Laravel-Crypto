@@ -35,7 +35,7 @@ class WalletTypeController extends Controller
         ]);
 
         $walletType = new WalletType();
-        $walletType->name = $request->name;
+        $walletType->name = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $walletType->save();
 
         //update Autocomplete_cards table
@@ -54,7 +54,7 @@ class WalletTypeController extends Controller
 
     public function update(Request $request, WalletType $wallet_type)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name']   = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
 
         $wallet_type->update($data);

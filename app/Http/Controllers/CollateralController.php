@@ -34,7 +34,7 @@ class CollateralController extends Controller
             'name' => 'required|unique:collaterals|max:255',
         ]);
         $collateral = new Collateral();
-        $collateral->name = $request->name;
+        $collateral->name = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $collateral->save();
 
         //update Autocomplete_cards table
@@ -53,7 +53,7 @@ class CollateralController extends Controller
 
     public function update(Request $request, Collateral $collateral)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name']   = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
 
         $collateral->update($data);

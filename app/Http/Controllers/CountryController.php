@@ -33,7 +33,7 @@ class CountryController extends Controller
             'name' => 'required|unique:countries|max:255',
             'categories' => 'required',
         ]);
-        $data['name'] = ucfirst($request->name);
+        $data['name'] = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['is_exchange'] = in_array("exchange", $request->categories) ? 1 : 0;
         $data['is_card'] = in_array("card", $request->categories) ? 1 : 0;
         $data['is_loan'] = in_array("loan", $request->categories) ? 1 : 0;
@@ -57,7 +57,7 @@ class CountryController extends Controller
 
     public function update(Request $request, Country $country)
     {
-        $data['name'] = ucfirst($request->name);
+        $data['name'] = ucfirst(str_replace( array( "'", "\"", '`' ), ' ', $request->name));
         $data['status'] = $request->status;
         $data['is_exchange'] = in_array("exchange", $request->categories) ? 1 : 0;
         $data['is_card'] = in_array("card", $request->categories) ? 1 : 0;
