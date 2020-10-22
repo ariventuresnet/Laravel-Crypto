@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="separator">
-                    Interest Accounts
+                    {{ \Request::is('interests') ? "Interest Accounts" : "Search Result" }}
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">

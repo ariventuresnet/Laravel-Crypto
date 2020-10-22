@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="separator">
-                    Wallets
+                    {{ \Request::is('wallets') ? "Top Walltes" : "Search Result" }}
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">

@@ -20,7 +20,7 @@
         <div class="row py-md-4 py-3 border-bottom">
             <div class="col">
                 <div class="separator">
-                    Top Exchanges
+                    {{ \Request::is('/') ? "Top Exchanges" : "Search Result" }}
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
