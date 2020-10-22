@@ -276,4 +276,28 @@ class CryptoController extends Controller
         
     }
 
+    //search Wallet
+    public function AjaxRequestForWallet(Request $request){
+        $currency = strtolower($request->currency);
+        $wallet_type  = strtolower($request->wallet_type);
+
+        $wallets = Wallet::where('currencies', 'like', '%'.$currency.'%')->where('type', 'like', '%'.$wallet_type.'%')->get();
+        return response()->json( [ 'wallets'=>$wallets ]);
+
+    }
+
+    public function searchWallet(Request $request){
+        if( ! isset($request->currency, $request->wallet_type) )
+        {
+            return redirect()->back();
+        }
+        $currency = strtolower($request->currency);
+        $wallet_type  = strtolower($request->wallet_type);
+        
+        $wallets = Wallet::where('currencies', 'like', '%'.$currency.'%')->where('type', 'like', '%'.$wallet_type.'%')->get();
+        $this->suggestionForWallet();
+        return view('cryptowallet')->with('wallets', $wallets)->with('currencies', $this->currencies)->with('walletTypes', $this->walletTypes);
+        
+    }
+
 }

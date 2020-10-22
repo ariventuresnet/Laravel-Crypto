@@ -91,3 +91,6 @@ Route::post('loan/lists', 'CryptoController@searchLoan')->name('loans.search');
 
 Route::post('getinterests', 'CryptoController@AjaxRequestForInterest');
 Route::post('interest-account/lists', 'CryptoController@searchInterest')->name('interest.search');
+
+Route::post('getwallets', 'CryptoController@AjaxRequestForWallet');
+Route::post('wallet/lists', 'CryptoController@searchWallet')->name('wallet.search');

@@ -16,16 +16,17 @@
     <div class="container-fluid searchbox px-md-5 mt-2">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form action="{{route('wallet.search')}}" method="POST">
+                    @csrf
                     <div class="form-row d-flex justify-content-center">
                         <div class="input-box mr-sm-4">
                             <label><span class="text-dark font-weight-bold">Secure</span></label>
-                            <input type="text" class="find" id="find1" placeholder="Search cryptocurrency">
+                            <input type="text" name="currency" id="find1" placeholder="Search cryptocurrency">
                         </div>
                         <div class="input-box ml-sm-4">
                             <label><span class="text-dark font-weight-bold">With</span></label>
-                            <input type="text" class="find" id="find2" placeholder="Search Wallet Type">
-                            <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
+                            <input type="text" name="wallet_type" id="find2" placeholder="Search Wallet Type">
+                            <button type="submit" class="btn search-icon"><i class="fas fa-search"></i></button>
                         </div>
                         
                     </div>
