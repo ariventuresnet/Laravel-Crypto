@@ -5,16 +5,16 @@
     <div class="container-fluid searchbox px-md-5 mt-2">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form id="search-form">
                     <div class="form-row d-flex justify-content-center">
                         <div class="input-box mr-sm-4">
                             <label><span class="text-dark font-weight-bold">Earn Interest With</span></label>
-                            <input type="text" class="find" id="find1" placeholder="Search Deposit">
+                            <input type="text" name="deposit" id="find1" placeholder="Search Deposit">
                         </div>
                         <div class="input-box ml-sm-4">
                             <label><span class="text-dark font-weight-bold">In</span></label>
-                            <input type="text" class="find" id="find2" placeholder="Search Country">
-                            <a href="#" class="btn search-icon"><i class="fas fa-search"></i></a>
+                            <input type="text" name="country" id="find2" placeholder="Search Country">
+                            <button id="search" class="btn search-icon"><i class="fas fa-search"></i></button>
                         </div>
                         
                     </div>
@@ -77,4 +77,5 @@
 
 @section('custom-script')
     @include('interest.suggestion')
+    @include('interest.ajax_request')
 @endsection

@@ -252,4 +252,28 @@ class CryptoController extends Controller
         
     }
 
+    //search Interest Account
+    public function AjaxRequestForInterest(Request $request){
+        $deposit = strtolower($request->deposit);
+        $country  = strtolower($request->country);
+
+        $interests = Interest::where('deposits', 'like', '%'.$deposit.'%')->where('countries', 'like', '%'.$country.'%')->get();
+        return response()->json( [ 'interests'=>$interests ]);
+
+    }
+
+    public function searchInterest(Request $request){
+        if( ! isset($request->deposit, $request->country) )
+        {
+            return redirect()->back();
+        }
+        $deposit = strtolower($request->deposit);
+        $country  = strtolower($request->country);
+
+        $interests = Interest::where('deposits', 'like', '%'.$deposit.'%')->where('countries', 'like', '%'.$country.'%')->get();
+        $this->suggestionForDeposit();
+        return view('cryptointerest')->with('interests', $interests)->with('countries', $this->countries)->with('deposits', $this->deposits);
+        
+    }
+
 }

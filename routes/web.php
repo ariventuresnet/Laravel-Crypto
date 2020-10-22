@@ -88,3 +88,6 @@ Route::post('card/lists', 'CryptoController@searchCard')->name('cards.search');
 
 Route::post('getloans', 'CryptoController@AjaxRequestForLoan');
 Route::post('loan/lists', 'CryptoController@searchLoan')->name('loans.search');
+
+Route::post('getinterests', 'CryptoController@AjaxRequestForInterest');
+Route::post('interest-account/lists', 'CryptoController@searchInterest')->name('interest.search');
