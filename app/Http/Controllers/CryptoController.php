@@ -35,7 +35,7 @@ class CryptoController extends Controller
     {
         //get user Location
         $location = $this->clientLocation();
-
+        // $location = 'bangladesh';
         $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->where('currencies', 'like', '%btc%')->where('payments', 'like', '%credit card%')->get();
         // return count($exchanges);
 
@@ -167,8 +167,7 @@ class CryptoController extends Controller
     //get Location
     public function clientLocation(){
         $ipaddress = \Request::ip();
-        // $position = Location::get($ipaddress);
-        $position = Location::get('43.245.121.156');
+        $position = Location::get('43.245.121.244');
         // $position = Location::get($ipaddress);
         return strtolower($position->countryName);
     }
