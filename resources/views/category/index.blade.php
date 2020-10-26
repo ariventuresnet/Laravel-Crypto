@@ -32,7 +32,7 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td> {{ $loop->index + 1 }} </td>
-                                                <td> {{ ucfirst($category->name) }} </td>
+                                                <td> {{ strtoupper($category->name) }} </td>
                                                 <td> 
                                                     <a href="{{route('categories.edit', $category->id)}}" class="btn btn-info btn-sm"> Edit </a> 
                                                     {{-- <button href="{{route('categories.delete', $category->id)}}" class="btn btn-danger btn-sm" id="delete">Delete</button> --}}

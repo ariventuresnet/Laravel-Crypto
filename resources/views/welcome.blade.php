@@ -16,7 +16,7 @@
 @endsection
 
 @section('main-content')
-    <section class="container-fluid px-md-5 px-2 mb-4 main">
+    <section class="container-fluid px-md-5 px-2 main">
         <div class="row py-md-4 py-3 border-bottom">
             <div class="col">
                 <div class="separator">
@@ -67,7 +67,22 @@
         </div>
     </section>
 
-    @include('exchange.post')
+    @if (count($posts["exchange"]) > 0)
+        @include('exchange.post')
+    @endif
+    @if (count($posts["card"]) > 0 )
+        @include('card.post')
+    @endif
+    @if (count($posts["loan"]) > 0 )
+        @include('loan.post')
+    @endif
+    @if (count($posts["interest"]) > 0 )
+        @include('interest.post')
+    @endif
+    @if (count($posts["wallet"]) > 0 )
+        @include('wallet.post')
+    @endif
+
 @endsection
 
 

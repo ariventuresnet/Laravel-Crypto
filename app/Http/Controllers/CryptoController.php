@@ -35,20 +35,26 @@ class CryptoController extends Controller
     {
         //get user Location
         $location = $this->clientLocation();
-        // $location = 'bangladesh';
+        // $location = "bangladesh";
+        //get default exchanges
         $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->where('currencies', 'like', '%btc%')->where('payments', 'like', '%credit card%')->get();
-        // return count($exchanges);
 
         // $posts = Post::with('category')->get();
         // $posts = Post::with('category')->select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->whereHas('category', function($query){
         //     $query->where('name','=','exchange');
         // })->get();
 
-        $posts = Category::where('name', 'exchange')->first()->posts;
+        $posts["exchange"]= Category::where('name', 'exchange')->first()->posts;
+        $posts["card"]= Category::where('name', 'card')->first()->posts;
+        $posts["loan"]= Category::where('name', 'loan')->first()->posts;
+        $posts["interest"]= Category::where('name', 'interest account')->first()->posts;
+        $posts["wallet"]= Category::where('name', 'wallet')->first()->posts;
+
         $this->suggestionForExchange();
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
     }
 
+    //exchanges
     public function cryptoExchangeDetails($name){
         
         $exchangeName = str_replace('_', ' ', $name);
@@ -60,10 +66,11 @@ class CryptoController extends Controller
 
     public function PostOfExchange($slug){
         $specificPost = Post::where('slug', $slug)->first();
-        $posts = Post::select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->get();
-        return view('exchange.specificPost', compact('specificPost', 'posts') );
+        $posts = Category::where('name', 'exchange')->first()->posts;
+        return view('exchange.specific_post', compact('specificPost', 'posts') );
     }
 
+    //Cards
     public function viewCards(){
         $cards = Card::all();
         
@@ -81,6 +88,13 @@ class CryptoController extends Controller
         return view('card.details')->with('card', $card)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('cardMethods', $this->cardMethods);
     }
 
+    public function PostOfCard($slug){
+        $specificPost = Post::where('slug', $slug)->first();
+        $posts = Category::where('name', 'card')->first()->posts;
+        return view('card.specific_post', compact('specificPost', 'posts') );
+    }
+
+    //Loans
     public function viewLoans(){
         $loans = Loan::all();
 
@@ -97,6 +111,13 @@ class CryptoController extends Controller
         return view('loan.details')->with('loan', $loan)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('collaterals', $this->collaterals);
     }
 
+    public function PostOfLoan($slug){
+        $specificPost = Post::where('slug', $slug)->first();
+        $posts = Category::where('name', 'loan')->first()->posts;
+        return view('loan.specific_post', compact('specificPost', 'posts') );
+    }
+
+    //Interest Accounts
     public function viewInterestAccounts(){
         $interests = Interest::all();
 
@@ -113,6 +134,13 @@ class CryptoController extends Controller
         return view('interest.details')->with('interest', $interest)->with('countries', $this->countries)->with('deposits', $this->deposits);
     }
 
+    public function PostOfInterest($slug){
+        $specificPost = Post::where('slug', $slug)->first();
+        $posts = Category::where('name', 'interest account')->first()->posts;
+        return view('interest.specific_post', compact('specificPost', 'posts') );
+    }
+
+    //Wallets
     public function viewWallets(){
         $wallets = Wallet::all();
 
@@ -130,9 +158,24 @@ class CryptoController extends Controller
 
     }
 
+    public function PostOfWallet($slug){
+        $specificPost = Post::where('slug', $slug)->first();
+        $posts = Category::where('name', 'wallet')->first()->posts;
+        return view('wallet.specific_post', compact('specificPost', 'posts') );
+    }
+
     
     public function donate(){
         return view('donate');
+    }
+
+    //get Location
+    public function clientLocation(){
+        $ipaddress = \Request::ip();
+        $position = Location::get('43.245.121.244');
+        // $position = Location::get($ipaddress);
+        return strtolower($position->countryName);
+
     }
 
     public function suggestionForExchange(){
@@ -163,14 +206,6 @@ class CryptoController extends Controller
         $this->walletTypes = WalletType::select('name')->where('status', '1')->get();
     }
 
-
-    //get Location
-    public function clientLocation(){
-        $ipaddress = \Request::ip();
-        $position = Location::get('43.245.121.244');
-        // $position = Location::get($ipaddress);
-        return strtolower($position->countryName);
-    }
 
     //search exchange
     public function AjaxRequestForExchange(Request $request){

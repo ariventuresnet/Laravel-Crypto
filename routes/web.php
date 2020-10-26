@@ -31,6 +31,10 @@ Route::get('/wallets/{wallet}', 'CryptoController@cryptoWalletDetails')->name('c
 Route::get('donate', 'CryptoController@donate')->name('donate');
 
 Route::get('/exchange/{slug}', 'CryptoController@PostOfExchange')->name('exchange.post');
+Route::get('/card/{slug}', 'CryptoController@PostOfCard')->name('card.post');
+Route::get('/loan/{slug}', 'CryptoController@PostOfLoan')->name('loan.post');
+Route::get('/interest/{slug}', 'CryptoController@PostOfInterest')->name('interest.post');
+Route::get('/wallet/{slug}', 'CryptoController@PostOfWallet')->name('wallet.post');
 
 
 
