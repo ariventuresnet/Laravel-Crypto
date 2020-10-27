@@ -1,27 +1,24 @@
 <section class="container-fluid px-md-5 px-2 py-md-4 py-3 border-bottom">
-    <h2>Wallets</h2>
+    <h2 class="mb-4">Wallets</h2>
     <div class="row">
         <div class="col-md-7">
-            <div class="mt-4">
-                @foreach ($posts["wallet"] as $post)
-                    <img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid rounded" alt="Responsive image" width="85%">
-                    <h5 class="font-weight-bold mt-3"> <a href="{{route('wallet.post', $post->slug)}}" class="text-dark"> {{$post->title}} </a> </h5>
-                    <p><i class="far fa-clock text-info"></i> {{$post->created_at->toDateString()}}</p>
-                    <p>{!! $post->content !!}</p>
+            @foreach ($posts["wallet"] as $post)
+                <img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid rounded" alt="Responsive image" width="85%">
+                <h5 class="font-weight-bold mt-3"> <a href="{{route('wallet.post', $post->slug)}}" class="text-dark"> {{$post->title}} </a> </h5>
+                <p><i class="far fa-clock text-info"></i> {{$post->created_at->toDateString()}}</p>
+                <p>{!! $post->content !!}</p>
 
-                    @if ($loop->index + 1 == 1)
-                        @break
-                    @endif
-                @endforeach
-            </div>
-
+                @if ($loop->index == 0)
+                    @break
+                @endif
+            @endforeach
         </div>
         <div class="col-md-5 mt-5">
 
             @foreach ($posts["wallet"] as $post)
-                {{-- @if ($loop->index >=3 )
-                    @break
-                @endif --}}
+                @if ($loop->index == 0 )
+                    @continue
+                @endif
                 <div class="row mb-3">
                     <div class="col-4 pr-0">
                         <a href="{{route('wallet.post', $post->slug)}}"><img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid rounded" alt="Responsive image" width="100%"></a>

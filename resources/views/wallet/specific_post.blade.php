@@ -28,13 +28,16 @@
                 <p class="mb-4"><i class="far fa-clock text-info"></i> {{ $specificPost->created_at->toDateString() }}</p>
 
                 <p>{!! $specificPost->content !!}</p>
-                
+                <?php $hide = $specificPost->id; ?>
             </div>
         </div>
         <hr>
         <h2 class="my-4">Wallets</h2>
         <div class="row">
             @foreach ($posts as $post)
+                @if ($post->id == $hide )
+                    @continue
+                @endif
                 <div class="col-md-6">
                     <div class="row mb-3">
                         <div class="col-4 pr-0">
