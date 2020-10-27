@@ -53,6 +53,7 @@ Route::get('interests/delete/{interest}' , 'InterestController@delete')->name('i
 Route::get('wallets/delete/{wallet}' , 'WalletController@delete')->name('wallets.delete');
 
 Route::get('admin/autocomplete', 'AutocompleteController@index')->name('autocomplete.index');
+Route::get('admin/category/more', 'CategoryMoreController@index')->name('category.more');
 
 Route::resource('admin/currencies', 'CurrencyController')->except('show');
 Route::get('currency/delete/{currency}' , 'CurrencyController@destroy')->name('currencies.delete');
@@ -80,6 +81,9 @@ Route::resource('admin/categories', 'CategoryController')->except('show');
 
 Route::resource('admin/posts', 'PostController');
 Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete');
+
+Route::resource('admin/treasuries', 'TreasuryController');
+Route::get('treasury/delete/{treasury}' , 'TreasuryController@destroy')->name('treasuries.delete');
 
 
 

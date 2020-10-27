@@ -92,8 +92,8 @@
                             </li>
 
                             <li class="nav-item"><a href="{{route('autocomplete.index')}}" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-table fa-lg text-light mr-3"></i>Autocomplete</a></li> 
+                            <li class="nav-item"><a href="{{route('category.more')}}" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-box fa-lg text-light mr-3"></i>More</a></li> 
                             <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-wrench fa-lg text-light mr-3"></i>Settings</a></li> 
-                            <li class="nav-item"><a href="#" class="nav-link text-white mb-2 sidebar-link"> <i class="fas fa-file-alt fa-lg text-light mr-3"></i>Documentation</a></li> 
                         </ul>
   
                     </div>
