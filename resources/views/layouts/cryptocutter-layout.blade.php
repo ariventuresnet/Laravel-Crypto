@@ -40,6 +40,9 @@
                     <li class="nav-item">
                         <a href="https://t.me/thecryptocutter" class="nav-link m-2 menu-item text-primary"><i class="fab fa-telegram fa-3x"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a href="https://twitter.com/thecryptocutter" class="nav-link m-2 menu-item text-primary"><i class="fab fa-twitter fa-3x"></i></a>    
+                    </li>
                 </ul>
             </div>
         </nav>
