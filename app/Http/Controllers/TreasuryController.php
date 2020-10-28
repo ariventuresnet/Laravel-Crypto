@@ -79,4 +79,12 @@ class TreasuryController extends Controller
         return redirect()->route('treasuries.index')->with(session()->flash('alert-success', 'Treasury successfully Deleted'));
 
     }
+
+    public function AjaxRequestForTreasury(Request $request){
+        $country = strtolower($request->country);
+
+        $treasuries = Treasury::where('countries', 'like', '%'.$country.'%')->get();
+        return response()->json( [ 'treasuries'=>$treasuries ]);
+
+    }
 }

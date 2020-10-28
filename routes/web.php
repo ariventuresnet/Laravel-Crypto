@@ -2,22 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Header Button
 Route::get('/', 'CryptoController@index');
 Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
 Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');
 Route::get('/wallets', 'CryptoController@viewWallets')->name('cryptowallet');
+Route::get('/treasuries', 'CategoryMoreController@viewTreasuries')->name('company.treasuries');
+
 
 Auth::routes();
 
@@ -102,3 +94,5 @@ Route::post('interest-account/lists', 'CryptoController@searchInterest')->name('
 
 Route::post('getwallets', 'CryptoController@AjaxRequestForWallet');
 Route::post('wallet/lists', 'CryptoController@searchWallet')->name('wallet.search');
+
+Route::post('gettreasuries', 'TreasuryController@AjaxRequestForTreasury');

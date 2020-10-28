@@ -68,7 +68,17 @@
                     <a href="{{route('cryptowallet')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="wallet"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2">
-                    <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a>
+                    {{-- <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a> --}}
+                    <div class="dropdown">
+                        <a class="btn btn-home px-lg-3 px-2 mb-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{route('company.treasuries')}}">Company Treasuries</a>
+                          {{-- <a class="dropdown-item" href="#">Another</a>
+                          <a class="dropdown-item" href="#">Something</a> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
             <p class="text-center text-primary font-weight-bold mt-2 donate">Cryptocutter is reader-supported through donations & commissions. <a href="{{route('donate')}}">Donate now</a></p>
