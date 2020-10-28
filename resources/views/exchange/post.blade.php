@@ -1,4 +1,4 @@
-<section class="container-fluid px-md-5 px-2 py-md-4 py-3 border-bottom">
+<section class="container-fluid px-md-5 px-2 py-md-4 py-3">
     <h2 class="mb-4">Exchanges</h2>
     <div class="row">
         <div class="col-md-7">
@@ -32,4 +32,5 @@
             @endforeach
         </div>
     </div>
+    <hr>
 </section>
