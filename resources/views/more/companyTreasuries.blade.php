@@ -39,6 +39,7 @@
                         <thead class="">
                         <tr>
                             <th scope="col">Name</th>
+                            <th scope="col">Country</th>
                             <th scope="col">Filings</th>
                             <th scope="col">Symbol</th>
                             <th scope="col">BTC Holdings</th>
@@ -48,7 +49,8 @@
                             @foreach ($treasuries as $treasury)
                                 <tr>
                                     <td class="font-weight-bold">{{$treasury->name}}</td>
-                                    <td>{{$treasury->filings}}</td>
+                                    <td>{{$treasury->country->name}}</td>
+                                    <td><a href="{{$treasury->filings}}" target="_blank">Link</a></td>
                                     <td>{{$treasury->symbol}}</td>
                                     <td>{{$treasury->btc_holding}}</td>
                                 </tr>

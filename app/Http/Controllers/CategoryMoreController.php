@@ -17,10 +17,5 @@ class CategoryMoreController extends Controller
         $num_of_treasury = Treasury::get()->count();
         return view('more.index', compact('num_of_treasury'));
     }
-    //frontend list
-    public function viewTreasuries(){
-        $treasuries = Treasury::get();
-        $countries  = Country::select('name')->get();
-        return view('more.companyTreasuries')->with('treasuries',$treasuries)->with('countries', $countries);
-    }
+    
 }

@@ -55,21 +55,15 @@
                                     </div>
             
                                     <div class="form-group">
-                                        <label for="multiple-countries">Countries</label>
-                                        <?php 
-                                        $selected_countries = json_decode($treasury->countries); 
-                                        ?>
-                                        <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
-                                            @foreach ($selected_countries as $selected_country)
-                                                <option value="{{$selected_country}}" selected> {{ strtoupper($selected_country) }} </option>
-                                            @endforeach
-            
+                                        <label for="country">Countries</label>               
+                                        <select name="country_id" class="chosen">
                                             @foreach ($countries as $country)
-                                                @if (! in_array( strtolower($country->name), $selected_countries))
-                                                    <option value="{{strtolower($country->name)}}"> {{ strtoupper($country->name) }} </option>
+                                                @if ($country->id == $treasury->country_id )
+                                                    <option value="{{$country->id}}" selected> {{ strtoupper($country->name) }} </option>
+                                                @else
+                                                    <option value="{{$country->id}}"> {{ strtoupper($country->name) }} </option>
                                                 @endif
                                             @endforeach
-                                            
                                         </select>
                                     </div>
             

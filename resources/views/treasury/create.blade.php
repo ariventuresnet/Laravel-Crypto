@@ -53,10 +53,11 @@
                                     </div>
             
                                     <div class="form-group">
-                                        <label for="multiple-countries">Countries</label>
-                                        <select multiple name="countries[]" class="chosen" data-placeholder="Select Countries...">
+                                        <label for="country">Countries</label>
+                                        <select name="country" class="chosen">
+                                            <option value="">Choose Country...</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{strtolower($country->name)}}">{{ strtoupper($country->name) }}</option>
+                                                <option value="{{$country->id}}">{{ strtoupper($country->name) }}</option>
                                             @endforeach
                                         </select>
                                     </div>

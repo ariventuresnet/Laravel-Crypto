@@ -8,7 +8,7 @@ Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
 Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');
 Route::get('/wallets', 'CryptoController@viewWallets')->name('cryptowallet');
-Route::get('/treasuries', 'CategoryMoreController@viewTreasuries')->name('company.treasuries');
+Route::get('/treasuries', 'TreasuryController@viewTreasuries')->name('company.treasuries');
 
 
 Auth::routes();

@@ -23,17 +23,17 @@ class TreasuryController extends Controller
 
     public function create()
     {
-        $countries = Country::select('name')->get();
+        $countries = Country::select('id','name')->get();
         return view('treasury.create')->with('countries', $countries);
     }
 
     public function store(Request $request)
     {
-        // validate Data
+        //validate Data
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:treasuries|max:255',
             'filings' => 'required',
-            'countries' => 'required',
+            'country' => 'required',
             'symbol' => 'required',
             'btc_holding' => 'required',
         ]);
@@ -41,8 +41,8 @@ class TreasuryController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except('_token', 'countries');
-        $data["countries"] = json_encode($request->countries);
+        $data = $request->except('_token');
+        $data['country_id'] = $request->country;
         Treasury::create($data);
 
         //Redirect and show flash message
@@ -56,7 +56,7 @@ class TreasuryController extends Controller
 
     public function edit(Treasury $treasury)
     {
-        $countries = Country::select('name')->get();
+        $countries = Country::select('id','name')->get();
         return view('treasury.edit', compact('treasury', 'countries'));
     }
 
@@ -78,6 +78,12 @@ class TreasuryController extends Controller
         //Redirect and show flash message
         return redirect()->route('treasuries.index')->with(session()->flash('alert-success', 'Treasury successfully Deleted'));
 
+    }
+
+    public function viewTreasuries(){
+        $treasuries = Treasury::with('country')->get();
+        $countries  = Country::select('name')->get();
+        return view('more.companyTreasuries')->with('treasuries',$treasuries)->with('countries', $countries);
     }
 
     public function AjaxRequestForTreasury(Request $request){

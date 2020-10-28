@@ -17,10 +17,11 @@ class CreateTreasuriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('filings');
-            $table->text('countries');
             $table->string('symbol');
             $table->string('btc_holding');
             $table->tinyInteger('status')->default(1);
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->timestamps();
         });
     }
