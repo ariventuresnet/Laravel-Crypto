@@ -167,6 +167,11 @@ header {
   font-weight : bold;
 }
 
+/* footer */
+footer{
+  background-color: #f4f5f7;
+}
+
 @media screen and (max-width: 992px) {
 
   header {

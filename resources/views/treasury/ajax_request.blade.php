@@ -25,7 +25,7 @@
                     let symbol = treasury["symbol"];
                     let btc_holding = treasury["btc_holding"];
 
-                    $('tbody').append('<tr class="table-row"><td class="td-name">'+name+'</td> <td>'+filings+'</td> <td>'+symbol+'</td> <td>'+btc_holding+'</td>');
+                    $('tbody').append('<tr><td class="font-weight-bold">'+name+'</td> <td>'+filings+'</td> <td>'+symbol+'</td> <td>'+btc_holding+'</td>');
                 }
 
             },

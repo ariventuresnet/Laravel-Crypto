@@ -92,6 +92,36 @@
 
     @yield('main-content')
 
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="py-4"></div>
+            <hr>
+            <div class="row align-items-center justify-content-md-between py-4">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        &copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                {{-- <ul class="nav nav-footer justify-content-end">
+                    <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">Cloudstars</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">License</a>
+                    </li>
+                </ul> --}}
+                    <p class="small">Suite C, Level 7, World Trust Tower, 50 Stanley Street, Central, Hong Kong.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

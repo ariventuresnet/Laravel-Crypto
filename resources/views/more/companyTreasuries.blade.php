@@ -46,8 +46,8 @@
                         </thead>
                         <tbody>
                             @foreach ($treasuries as $treasury)
-                                <tr class="table-row">
-                                    <td class="td-name">{{$treasury->name}}</td>
+                                <tr>
+                                    <td class="font-weight-bold">{{$treasury->name}}</td>
                                     <td>{{$treasury->filings}}</td>
                                     <td>{{$treasury->symbol}}</td>
                                     <td>{{$treasury->btc_holding}}</td>
