@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\AutocompleteCard;
-use App\Wallet;
 use App\WalletType;
+use App\CryptoType;
 use Illuminate\Http\Request;
 
 class WalletTypeController extends Controller
@@ -18,14 +18,16 @@ class WalletTypeController extends Controller
     {
         $walletTypes = WalletType::all();
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        $no_of_cryptos = CryptoType::get()->count();
 
-        return view('walletType.index', compact('walletTypes', 'autocomplete_card'));
+        return view('walletType.index', compact('walletTypes', 'autocomplete_card', 'no_of_cryptos'));
     }
 
     public function create()
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('walletType.create')->with('autocomplete_card',$autocomplete_card);
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('walletType.create', compact('autocomplete_card', 'no_of_cryptos'));
     }
 
     public function store(Request $request)
@@ -43,13 +45,14 @@ class WalletTypeController extends Controller
         $autocomplete_card->no_of_wallet += 1;
         $autocomplete_card->save();
 
-        return redirect()->back()->with(session()->flash('alert-success', 'Payment Method successfully added'));
+        return redirect()->back()->with(session()->flash('alert-success', 'Wallet Type successfully added'));
     }
 
     public function edit(WalletType $wallet_type)
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('walletType.edit', compact('wallet_type', 'autocomplete_card'));
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('walletType.edit', compact('wallet_type', 'autocomplete_card', 'no_of_cryptos'));
     }
 
     public function update(Request $request, WalletType $wallet_type)

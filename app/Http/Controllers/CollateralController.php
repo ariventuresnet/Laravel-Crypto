@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AutocompleteCard;
 use App\Collateral;
+use App\CryptoType;
 use Illuminate\Http\Request;
 
 class CollateralController extends Controller
@@ -17,15 +18,17 @@ class CollateralController extends Controller
     {
         $collaterals = Collateral::all();
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        $no_of_cryptos = CryptoType::get()->count();
 
-        return view('collateral.index', compact('collaterals', 'autocomplete_card'));
+        return view('collateral.index', compact('collaterals', 'autocomplete_card', 'no_of_cryptos'));
     }
 
 
     public function create()
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('collateral.create')->with('autocomplete_card',$autocomplete_card);
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('collateral.create', compact('autocomplete_card','no_of_cryptos'));
     }
 
     public function store(Request $request)
@@ -48,7 +51,8 @@ class CollateralController extends Controller
     public function edit(Collateral $collateral)
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('collateral.edit', compact('collateral', 'autocomplete_card'));
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('collateral.edit', compact('collateral', 'autocomplete_card', 'no_of_cryptos'));
     }
 
     public function update(Request $request, Collateral $collateral)

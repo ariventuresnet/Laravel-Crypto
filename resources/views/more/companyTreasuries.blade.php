@@ -53,6 +53,7 @@
                                     <td><a href="{{$treasury->filings}}" target="_blank">Link</a></td>
                                     <td>{{$treasury->symbol}}</td>
                                     <td>{{$treasury->btc_holding}}</td>
+                                    <a href="" target="_blank">Link</a>
                                 </tr>
                             @endforeach
                         </tbody>

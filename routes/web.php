@@ -68,6 +68,9 @@ Route::get('walletTypes/delete/{wallet_type}' , 'WalletTypeController@destroy')-
 Route::resource('admin/deposits', 'DepositController')->except('show');
 Route::get('deposit/delete/{deposit}' , 'DepositController@destroy')->name('deposits.delete');
 
+Route::resource('admin/crypto_types', 'CryptoTypeController')->except('show');
+Route::get('cryptoTypes/delete/{crypto_type}' , 'CryptoTypeController@destroy')->name('crypto_types.delete');
+
 Route::resource('admin/categories', 'CategoryController')->except('show');
 // Route::get('categories/delete/{category}', 'CategoryController@destroy')->name('categories.delete');
 

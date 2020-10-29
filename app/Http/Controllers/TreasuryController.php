@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\Treasury;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class TreasuryController extends Controller
 {
@@ -85,12 +85,9 @@ class TreasuryController extends Controller
         $countries  = Country::select('name')->get();
         return view('more.companyTreasuries')->with('treasuries',$treasuries)->with('countries', $countries);
     }
-
+    
     public function AjaxRequestForTreasury(Request $request){
-        $country = strtolower($request->country);
-
-        $treasuries = Treasury::where('countries', 'like', '%'.$country.'%')->get();
+        $treasuries = Country::where('name', $request->country)->first()->treasuries;
         return response()->json( [ 'treasuries'=>$treasuries ]);
-
     }
 }

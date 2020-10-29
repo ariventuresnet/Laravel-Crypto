@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AutocompleteCard;
 use App\Deposit;
+use App\CryptoType;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -17,14 +18,16 @@ class DepositController extends Controller
     {
         $deposits = Deposit::all();
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
+        $no_of_cryptos = CryptoType::get()->count();
 
-        return view('deposit.index', compact('deposits', 'autocomplete_card'));
+        return view('deposit.index', compact('deposits', 'autocomplete_card', 'no_of_cryptos'));
     }
 
     public function create()
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('deposit.create')->with('autocomplete_card',$autocomplete_card);
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('deposit.create', compact('autocomplete_card','no_of_cryptos'));
     }
 
     public function store(Request $request)
@@ -47,7 +50,8 @@ class DepositController extends Controller
     public function edit(Deposit $deposit)
     {
         $autocomplete_card = AutocompleteCard::where('id', 1)->first();
-        return view('deposit.edit', compact('deposit', 'autocomplete_card'));
+        $no_of_cryptos = CryptoType::get()->count();
+        return view('deposit.edit', compact('deposit', 'autocomplete_card', 'no_of_cryptos'));
     }
 
     public function update(Request $request, Deposit $deposit)
