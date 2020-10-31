@@ -77,8 +77,8 @@ Route::resource('admin/categories', 'CategoryController')->except('show');
 Route::resource('admin/posts', 'PostController');
 Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete');
 
-Route::resource('admin/treasuries', 'TreasuryController');
-Route::get('treasury/delete/{treasury}' , 'TreasuryController@destroy')->name('treasuries.delete');
+Route::resource('admin/treasuries', 'TreasuryController')->middleware('auth');
+Route::get('treasury/delete/{treasury}' , 'TreasuryController@destroy')->name('treasuries.delete')->middleware('auth');
 
 
 

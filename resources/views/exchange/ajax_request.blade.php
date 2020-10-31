@@ -8,8 +8,14 @@
 
         let _token = $('meta[name="csrf-token"]').attr('content');
 
+        console.log(currency);
+        console.log(country);
+        console.log(payment_method);
+        console.log(_token);
+
+
         $.ajax({
-            url : "getexchanges",
+            url : "{{url('getexchanges')}}",
             type: "POST",
             data: {
                 "currency": currency,

@@ -36,7 +36,7 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead class="">
+                        <thead>
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Country</th>
@@ -53,7 +53,6 @@
                                     <td><a href="{{$treasury->filings}}" target="_blank">Link</a></td>
                                     <td>{{$treasury->symbol}}</td>
                                     <td>{{$treasury->btc_holding}}</td>
-                                    <a href="" target="_blank">Link</a>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -66,6 +65,6 @@
 
 
 @section('custom-script')
-    @include('treasury.suggestion')
-    @include('treasury.ajax_request')
+    {{-- @include('treasury.suggestion')
+    @include('treasury.ajax_request') --}}
 @endsection

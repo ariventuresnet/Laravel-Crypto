@@ -10,11 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TreasuryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $treasuries = Treasury::all();

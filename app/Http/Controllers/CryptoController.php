@@ -172,7 +172,7 @@ class CryptoController extends Controller
     //get Location
     public function clientLocation(){
         // $ipaddress = \Request::ip();
-        $position = Location::get('43.245.121.244');
+        $position = Location::get('43.245.120.182');
         // $position = Location::get();
         return strtolower($position->countryName);
 
@@ -229,7 +229,14 @@ class CryptoController extends Controller
 
         $exchanges = Exchange::where('currencies', 'like', '%'.$currency.'%')->where('countries', 'like', '%'.$country.'%')->where('payments', 'like', '%'.$payment.'%')->get();
         $this->suggestionForExchange();
-        $posts = Category::where('name', 'exchange')->first()->posts;
+        
+        //get Post of all categories
+        $posts["exchange"]= Category::where('name', 'exchange')->first()->posts;
+        $posts["card"]= Category::where('name', 'card')->first()->posts;
+        $posts["loan"]= Category::where('name', 'loan')->first()->posts;
+        $posts["interest"]= Category::where('name', 'interest account')->first()->posts;
+        $posts["wallet"]= Category::where('name', 'wallet')->first()->posts;
+
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
         
     }

@@ -7,7 +7,7 @@
 
 
         $.ajax({
-            url : "gettreasuries",
+            url : "{{url('gettreasuries')}}",
             type: "POST",
             data: {
                 "country" : country,

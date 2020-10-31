@@ -9,7 +9,7 @@
         let _token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url : "getcards",
+            url : "{{url('getcards')}}",
             type: "POST",
             data: {
                 "currency": currency,
