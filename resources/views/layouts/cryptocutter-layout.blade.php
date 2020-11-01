@@ -97,12 +97,10 @@
             <div class="py-4"></div>
             <hr>
             <div class="row align-items-center justify-content-md-between py-4">
-                <div class="col-md-6">
-                    <div class="copyright">
-                        &copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.
-                    </div>
+                <div class="col-md-6 mb-2">
+                    &copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2">
                 {{-- <ul class="nav nav-footer justify-content-end">
                     <li class="nav-item">
                     <a href="" class="nav-link" target="_blank">Cloudstars</a>
@@ -117,7 +115,7 @@
                     <a href="" class="nav-link" target="_blank">License</a>
                     </li>
                 </ul> --}}
-                    <p class="small">Suite C, Level 7, World Trust Tower, 50 Stanley Street, Central, Hong Kong.</p>
+
                 </div>
             </div>
         </div>
