@@ -97,25 +97,8 @@
             <div class="py-4"></div>
             <hr>
             <div class="row align-items-center justify-content-md-between py-4">
-                <div class="col-md-6 mb-2">
+                <div class="col text-md-center">
                    <span class="footer-font-size">&copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.</span> 
-                </div>
-                <div class="col-md-6 mb-2">
-                {{-- <ul class="nav nav-footer justify-content-end">
-                    <li class="nav-item">
-                    <a href="" class="nav-link" target="_blank">Cloudstars</a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="" class="nav-link" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="" class="nav-link" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="" class="nav-link" target="_blank">License</a>
-                    </li>
-                </ul> --}}
-
                 </div>
             </div>
         </div>
