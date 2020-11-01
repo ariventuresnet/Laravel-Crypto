@@ -98,7 +98,7 @@
             <hr>
             <div class="row align-items-center justify-content-md-between py-4">
                 <div class="col-md-6 mb-2">
-                    &copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.
+                   <span class="footer-font-size">&copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.</span> 
                 </div>
                 <div class="col-md-6 mb-2">
                 {{-- <ul class="nav nav-footer justify-content-end">

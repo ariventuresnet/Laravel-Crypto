@@ -80,6 +80,8 @@ Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.delete'
 Route::resource('admin/treasuries', 'TreasuryController')->middleware('auth');
 Route::get('treasury/delete/{treasury}' , 'TreasuryController@destroy')->name('treasuries.delete')->middleware('auth');
 
+Route::resource('admin/cryptos', 'MoreCryptoController')->middleware('auth');
+Route::get('crypto/delete/{crypto}' , 'MoreCryptoController@destroy')->name('cryptos.delete')->middleware('auth');
 
 
 //ajax search

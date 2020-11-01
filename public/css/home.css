@@ -172,6 +172,10 @@ footer{
   background-color: #f4f5f7;
 }
 
+.footer-font-size{
+  font-size: 10px;
+}
+
 @media screen and (max-width: 992px) {
 
   header {
