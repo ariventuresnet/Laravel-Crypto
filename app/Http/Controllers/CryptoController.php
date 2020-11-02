@@ -37,7 +37,7 @@ class CryptoController extends Controller
         $location = $this->clientLocation();
 
         //get default exchanges
-        $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->where('currencies', 'like', '%btc%')->where('payments', 'like', '%credit card%')->get();
+        $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->get();
 
         // $posts = Post::with('category')->get();
         // $posts = Post::with('category')->select('id', 'title', 'slug', 'sub_title','content', 'img', 'created_at')->whereHas('category', function($query){
