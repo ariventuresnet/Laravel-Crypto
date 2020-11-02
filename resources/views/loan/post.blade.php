@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-md-7">
             @foreach ($posts["loan"] as $post)
-                <img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid rounded" alt="Responsive image" width="85%">
+                <a href="{{route('loan.post', $post->slug)}}"><img src="{{asset('images/') . "/" . $post->img}}" class="img-fluid rounded" alt="Responsive image" width="85%"></a>
                 <h5 class="font-weight-bold mt-3"> <a href="{{route('loan.post', $post->slug)}}" class="text-dark"> {{$post->title}} </a> </h5>
+                <p>{{ $post->sub_title }}</p>
                 <p><i class="far fa-clock text-info"></i> {{$post->created_at->toDateString()}}</p>
-                <p>{!! $post->content !!}</p>
 
                 @if ($loop->index == 0)
                     @break

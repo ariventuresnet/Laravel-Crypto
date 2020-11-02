@@ -29,7 +29,7 @@
 @endsection
 
 @section('main-content')
-    <section class="container-fluid pt-md-4 pt-3 px-md-5 px-2 main">
+    <section class="container-fluid py-md-4 pt-3 px-md-5 px-2 main">
         <div class="row">
             <div class="col-12">
                 <div class="separator">
