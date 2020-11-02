@@ -98,4 +98,27 @@ class MoreCryptoController extends Controller
         $crypto->delete();
         return redirect()->route('cryptos.index')->with(session()->flash('alert-success', 'Crypto successfully Deleted'));
     }
+
+    public function viewCryptos(){
+        $currencies  = Currency::select('name')->get();
+        $types  = CryptoType::select('name')->get();
+        $cryptos = Crypto::with('currency', 'cryptoType')->get();
+        return view('more.crypto')->with('cryptos',$cryptos)->with('currencies', $currencies)->with('types', $types);
+    }
+
+    public function AjaxRequestForCrypto(Request $request){
+        $currency   = Currency::select('id')->where('name', $request->name)->first();
+        $cryptoType = CryptoType::select('id')->where('name', $request->type)->first();
+        $cryptoLists = Crypto::where('currency_id', $currency->id)->where('crypto_type_id', $cryptoType->id)->get();
+        return response()->json( [ 'cryptoLists'=>$cryptoLists ]);
+    }
+
+    public function AjaxRequestForCrypto2($name,$type ){
+        $currency  = Currency::select('id')->where('name', $name)->first();
+        $cryptoType = CryptoType::select('id')->where('name', $type)->first();
+        $cryptoLists = Crypto::where('currency_id', $currency->id)->where('crypto_type_id', $cryptoType->id)->get();
+        // return response()->json( [ 'cryptoLists'=>$cryptoLists ]);
+        return $cryptoLists;
+    }
+    
 }

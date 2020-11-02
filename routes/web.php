@@ -8,7 +8,8 @@ Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
 Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');
 Route::get('/wallets', 'CryptoController@viewWallets')->name('cryptowallet');
-Route::get('/treasuries', 'TreasuryController@viewTreasuries')->name('company.treasuries');
+Route::get('/treasuries', 'TreasuryController@viewTreasuries')->name('more.treasuries');
+Route::get('/cryptos', 'MoreCryptoController@viewCryptos')->name('more.cryptos');
 
 
 Auth::routes();
@@ -101,3 +102,5 @@ Route::post('getwallets', 'CryptoController@AjaxRequestForWallet');
 Route::post('wallet/lists', 'CryptoController@searchWallet')->name('wallet.search');
 
 Route::post('gettreasuries', 'TreasuryController@AjaxRequestForTreasury');
+Route::post('getcryptos', 'MoreCryptoController@AjaxRequestForCrypto');
+// Route::get('getcryptos/{name}/{type}', 'MoreCryptoController@AjaxRequestForCrypto2');

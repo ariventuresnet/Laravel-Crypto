@@ -65,6 +65,6 @@
 
 
 @section('custom-script')
-    {{-- @include('treasury.suggestion')
-    @include('treasury.ajax_request') --}}
+    @include('treasury.suggestion')
+    @include('treasury.ajax_request')
 @endsection

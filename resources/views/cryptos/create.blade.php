@@ -66,7 +66,7 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="algorithm">algorithm</label>
+                                        <label for="algorithm">Algorithm</label>
                                         <input type="text" name="algorithm" class="form-control" id="algorithm" value="{{old('algorithm')}}">
                                     </div>
             

@@ -74,9 +74,9 @@
                             <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{route('company.treasuries')}}">Company Treasuries</a>
-                          {{-- <a class="dropdown-item" href="#">Another</a>
-                          <a class="dropdown-item" href="#">Something</a> --}}
+                            <a class="dropdown-item" href="{{route('more.cryptos')}}">Cryptos</a>
+                            <a class="dropdown-item" href="{{route('more.treasuries')}}">Company Treasuries</a>
+                          {{-- <a class="dropdown-item" href="#">Something</a> --}}
                         </div>
                     </div>
                 </div>
