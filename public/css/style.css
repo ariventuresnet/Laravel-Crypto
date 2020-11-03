@@ -17,6 +17,10 @@ body {
     border-bottom: 1px groove #eee;
 }
 
+.profile{
+    transform: translateY(4px);
+}
+
 .sidebar-link{
     padding    : .8rem;
     transition : all .4s;

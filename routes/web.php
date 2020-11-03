@@ -32,7 +32,8 @@ Route::get('/wallet/{slug}', 'CryptoController@PostOfWallet')->name('wallet.post
 
 
 //Backend
-Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
+// Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
+Route::get('/home', 'CryptoController@dashboard')->name('dashboard')->middleware('auth');
 Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
 Route::resource('admin/loans', 'LoanController');

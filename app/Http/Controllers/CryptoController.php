@@ -54,6 +54,13 @@ class CryptoController extends Controller
         return view('welcome')->with('exchanges', $exchanges)->with('currencies', $this->currencies)->with('countries', $this->countries)->with('payments', $this->payments)->with('posts', $posts);
     }
 
+    public function dashboard(){
+        $no_of_exchanges = Exchange::count();
+        $no_of_posts = Post::count();
+        $last_post = Post::latest()->first();
+        return view('dashboard', compact('no_of_exchanges', 'no_of_posts','last_post'));
+    }
+
     //exchanges
     public function cryptoExchangeDetails($name){
         

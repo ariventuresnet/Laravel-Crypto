@@ -36,10 +36,11 @@
                 <div class="row">
                     <!-- sidebar -->
                     <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">  <!--'sidebar' is not a bootstrap class-->
-                        <a href="{{route('dashboard')}}" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Cryptocutter</a>   <!--'bottom-border' is not a bootstrap class-->
+                        <a href="{{route('dashboard')}}" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-3 bottom-border">Cryptocutter</a>   <!--'bottom-border' is not a bootstrap class-->
                         <div class="bottom-border pb-3">
-                        <img src="{{asset('images/admin.jpeg')}}" width="50" class="rounded-circle mr-3">
-                            <a href="#" class="text-white">Helen Smith</a>
+                            {{-- <img src="{{asset('images/admin.jpeg')}}" width="50" class="rounded-circle mr-3"> --}}
+                            <i class="fas fa-user-circle fa-2x text-white mr-2 profile"></i>
+                            <a href="#" class="text-white">Dev Appanah</a>
                         </div>
 
                         <ul class="navbar-nav flex-column mt-3">

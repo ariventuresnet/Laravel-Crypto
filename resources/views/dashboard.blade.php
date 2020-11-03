@@ -12,10 +12,10 @@
                             <div class="card card-common">  <!--'card-common' is not a Bootstrap class-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-shopping-cart fa-3x text-warning"></i>
+                                        <i class="fas fa-money-bill-alt fa-3x text-warning"></i>
                                         <div class="text-right text-secondary">
-                                            <h5>Sales</h5>
-                                            <h3>$135,000</h3>
+                                            <h5>Exchanges</h5>
+                                            <h3>{{$no_of_exchanges}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -24,7 +24,6 @@
                                     <span>Updated Now</span>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="col-xl-3 col-sm-6 p-2">
@@ -32,10 +31,11 @@
                             <div class="card card-common">  <!--'card-common' is not a Bootstrap class-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-money-bill-alt fa-3x text-success"></i>
+                                        {{-- <i class="fas fa-copy"></i> --}}
+                                        <i class="fas fa-copy fa-3x text-success"></i>
                                         <div class="text-right text-secondary">
-                                            <h5>Expences</h5>
-                                            <h3>$39,000</h3>
+                                            <h5>Posts</h5>
+                                            <h3>{{$no_of_posts}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -51,10 +51,10 @@
                             <div class="card card-common">  <!--'card-common' is not a Bootstrap class-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-users fa-3x text-info"></i>
+                                        <i class="fas fa-file-upload fa-3x text-info"></i>
                                         <div class="text-right text-secondary">
-                                            <h5>Users</h5>
-                                            <h3>15,000</h3>
+                                            <h5>Last Post</h5>
+                                            <h3>{{$last_post->created_at->format('d-M-y')}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                             <div class="card card-common">  <!--'card-common' is not a Bootstrap class-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-chart-line fa-3x text-danger"></i>
+                                        <i class="fas fa-users fa-3x text-primary"></i>
                                         <div class="text-right text-secondary">
                                             <h5>Visitors</h5>
                                             <h3>45,000</h3>

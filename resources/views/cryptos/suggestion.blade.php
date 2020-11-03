@@ -41,5 +41,5 @@
 
     });
 
-    $('#more').addClass('current');
+    $('#dropdownMenuLink').addClass('current');
 </script>
