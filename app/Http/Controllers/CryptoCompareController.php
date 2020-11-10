@@ -20,6 +20,7 @@ class CryptoCompareController extends Controller
         ];
         $result = $priceGateway->getSingleSymbolPrice($parameters);
         // $result = $historyGateway->getHistoricalDaily($parameters);
-        return $result;
+        // return $result;
+        return view('bitcoinDashboard');
     }
 }
