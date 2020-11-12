@@ -17,7 +17,8 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
-        "stevebauman/location": "^5.2"
+        "stevebauman/location": "^5.2",
+        "weidner/goutte": "1.6.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

@@ -104,14 +104,14 @@
             <div class="col-md-8">
                 <h4>Bitcoin (BTC) Live Price</h3>
                 <span class="font-weight-bold">$</span> <span class="display-4">15387.46</span> <span class="font-weight-bold">USD</span>
-                <img src="{{asset('images/chart.png')}}" alt="chart" class="img-fluid mt-3">
+                <img src="{{asset('images/demo-chart.png')}}" alt="chart" class="img-fluid mt-3">
             </div>
             <div class="col-md-4">
                 <h4>Bitcoin Market Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item py-3"><span class="float-left">24hr Range</span> <span class="float-right">$ 14,838.01- $ 15,808.71</span></li>
                     <li class="list-group-item py-3"><span class="float-left">USD Per Satoshi</span> <span class="float-right">$ 0.000158234</span></li>
-                    <li class="list-group-item py-3"><span class="float-left">Satoshis Per USD</span> <span class="float-right">$ 6489</span></li>
+                    <li class="list-group-item py-3"><span class="float-left">Satoshis Per USD</span> <span class="float-right">ⓢ 6489</span></li>
                     <li class="list-group-item py-3"><span class="float-left">24hr Volume (BTC)</span> <span class="float-right">$ 424,384.84</span></li>
                     <li class="list-group-item py-3"><span class="float-left">24hr Volume (USD)</span> <span class="float-right">$ 285.82</span></li>
                 </ul>

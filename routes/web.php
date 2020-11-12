@@ -105,4 +105,6 @@ Route::post('wallet/lists', 'CryptoController@searchWallet')->name('wallet.searc
 Route::post('gettreasuries', 'TreasuryController@AjaxRequestForTreasury');
 Route::post('getcryptos', 'MoreCryptoController@AjaxRequestForCrypto');
 // Route::get('getcryptos/{name}/{type}', 'MoreCryptoController@AjaxRequestForCrypto2');
+
 Route::get('/ticker', 'CryptoCompareController@getBTCPrice');
+Route::get('/get_data', 'CryptoCompareController@get_data');
