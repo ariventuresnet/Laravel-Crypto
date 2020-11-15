@@ -6,9 +6,14 @@
             height     : 23vh;
             background :  #fff;
         }
-        .post-img{
+        .banner{
             width : 100vw;
             height: 480px; 
+        }
+        img:not(.not){
+            width: 50vw;
+            height: auto;
+            border-radius: 8px;
         }
     </style>
 @endsection
@@ -18,7 +23,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <img src="{{asset('images/') . "/" . $specificPost->img}}" class="img-fluid rounded post-img" alt="Responsive image">
+                <img src="{{asset('images/') . "/" . $specificPost->img}}" class="img-fluid rounded banner not" alt="Responsive image">
             </div>
         </div>
         <div class="row mt-5">

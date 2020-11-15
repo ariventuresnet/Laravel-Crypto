@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Goutte\Client;
-use GuzzleHttp\Client as GuzzleClient;
+use DB;
 
 class CryptoCompareController extends Controller
 {   
@@ -22,10 +22,19 @@ class CryptoCompareController extends Controller
             'fsym' => 'BTC',
             'tsym' => 'USD',
         ];
-        $result = $priceGateway->getSingleSymbolPrice($parameters);
+        $result = $priceGateway->getMultiSymbolPriceFull($parameters);
+        $states = json_decode($result, true);
         // $result = $historyGateway->getHistoricalDaily($parameters);
-        // return $result;
-        return view('bitcoinDashboard');
+
+        //fetch store data
+        // $bitbo = DB::table('web_scraps')->where('id', 1)->first();
+        // $scraps = json_decode($bitbo->state, true);
+        
+        $scraps = $this->web_scrap();
+
+        return view('bitcoinDashboard')->with('states', $states)->with('scraps', $scraps);
+        // return $states['DISPLAY']['BTC']['USD'];
+
     }
 
     // public function get_data(){
@@ -61,6 +70,21 @@ class CryptoCompareController extends Controller
     //     return $output;
     // }
 
+    public function web_scrap(){
+        $goutteClient = new Client();
+
+        $page = $goutteClient->request('GET', 'https://bitbo.io/');
+        // $value = $page->filter('.stat .value')->text();
+
+        $page->filter('.stat .value')->each(function ($item) {
+            // echo $item->text() . "<br>";
+            array_push($this->states, $item->text());
+        });
+        $result = $this->makeResult();
+        
+        return $result;
+    }
+
     public function get_data(){
         $goutteClient = new Client();
 
@@ -72,80 +96,86 @@ class CryptoCompareController extends Controller
             array_push($this->states, $item->text());
         });
         $result = $this->makeResult();
-        return response()->json($result);
+        
+        //insert intodatabase 
+        // $data["website"] = "bitbo";
+        // $data["state"] = json_encode($result);
+        // DB::table('web_scraps')->insert($data);
+        // DB::table('web_scraps')->where('id', 1)->update($data);
+        return $result;
 
     }
 
     private function makeResult(){
         $output = [];
-        $output["24hr Range"] = str_replace('-', ' - ', $this->states[0]);
-        $output["USD Per Satoshi"] = str_replace('$', '', $this->states[1]);
-        $output["Satoshis Per USD"] = str_replace('ⓢ', '', $this->states[2]);
-        $output["24hr Volume BTC"] = $this->states[3];
-        $output["24hr Volume USD"] = str_replace( array( "$", "B" ), '', $this->states[4]);
-        $output["Market Cap"] = str_replace( array( "$", "B" ), '', $this->states[5]);
-        $output["Block Height"] = $this->states[6];
-        $output["Time Since Last Block"] = "null";
-        $output["Average Block Time"] = $this->states[8];
-        $output["Money Supply"] = str_replace('BTC', '', $this->states[9]);
-        $output["Percentage Issued"] = str_replace('%', '', $this->states[10]);
-        $output["Chain Size"] = str_replace('GB', '', $this->states[11]);
-        $output["Total Transactions"] = $this->states[12];
+        $output["Range24hr"] = str_replace('-', ' - ', $this->states[0]);
+        $output["USDPerSatoshi"] = str_replace('$', '', $this->states[1]);
+        $output["SatoshisPerUSD"] = str_replace('ⓢ', '', $this->states[2]);
+        $output["BTCVolume24hr"] = $this->states[3];
+        $output["USDVolume24hr"] = str_replace( array( "$", "B" ), '', $this->states[4]);
+        $output["MarketCap"] = str_replace( array( "$", "B" ), '', $this->states[5]);
+        $output["BlockHeight"] = $this->states[6];
+        $output["TimeSinceLastBlock"] = "null";
+        $output["AverageBlockTime"] = $this->states[8];
+        $output["MoneySupply"] = str_replace('BTC', '', $this->states[9]);
+        $output["PercentageIssued"] = str_replace('%', '', $this->states[10]);
+        $output["ChainSize"] = str_replace('GB', '', $this->states[11]);
+        $output["TotalTransactions"] = $this->states[12];
         $output["Difficulty"] = str_replace('T', '', $this->states[13]);
-        $output["Difficulty Epoch"] = $this->states[14];
-        $output["Estimated Difficulty Change"] = str_replace('%', '', $this->states[15]);
-        $output["Blocks To Retarget"] = "null";
-        $output["Estimated Retarget Date"] = "null";
-        $output["Last Difficulty Change"] = str_replace('%', '', $this->states[18]);
-        $output["Hash Rate"] = str_replace('EH/s', '', $this->states[19]);
-        $output["Block Subsidy"] = str_replace('BTC', '', $this->states[20]);
-        $output["Block Subsidy Value"] = str_replace('$', '', $this->states[21]);
-        $output["Blocks Mined"] = $this->states[22];
-        $output["Mining Transactions"] = $this->states[23];
-        $output["Percentage SegWit"] = str_replace('%', '', $this->states[24]);
-        $output["Total Fees"] = str_replace('BTC', '', $this->states[25]);
-        $output["Average Fees Per Block"] = str_replace('BTC', '', $this->states[26]);
-        $output["Total Fees vs Reward"] = str_replace('%', '', $this->states[27]);
+        $output["DifficultyEpoch"] = $this->states[14];
+        $output["EstimatedDifficultyChange"] = str_replace('%', '', $this->states[15]);
+        $output["BlocksToRetarget"] = "null";
+        $output["EstimatedRetargetDate"] = "null";
+        $output["LastDifficultyChange"] = str_replace('%', '', $this->states[18]);
+        $output["HashRate"] = str_replace('EH/s', '', $this->states[19]);
+        $output["BlockSubsidy"] = str_replace('BTC', '', $this->states[20]);
+        $output["BlockSubsidyValue"] = str_replace('$', '', $this->states[21]);
+        $output["BlocksMined"] = $this->states[22];
+        $output["MiningTransactions"] = $this->states[23];
+        $output["PercentageSegWit"] = str_replace('%', '', $this->states[24]);
+        $output["TotalFees"] = str_replace('BTC', '', $this->states[25]);
+        $output["AverageFeesPerBlock"] = str_replace('BTC', '', $this->states[26]);
+        $output["TotalFeesVsReward"] = str_replace('%', '', $this->states[27]);
 
-        $output["Mempool Transactions"] = $this->states[28];
-        $output["Pending Fees"] = str_replace('BTC', '', $this->states[29]);
-        $output["Pending Fees Value"] = str_replace('$', '', $this->states[30]);
-        $output["Virtual Size"] = str_replace('MB', '', $this->states[31]);
-        $output["Blocks To Clear"] = $this->states[32];
-        $output["Percentage RBF"] = str_replace('%', '', $this->states[33]);
+        $output["MempoolTransactions"] = $this->states[28];
+        $output["PendingFees"] = str_replace('BTC', '', $this->states[29]);
+        $output["PendingFeesValue"] = str_replace('$', '', $this->states[30]);
+        $output["VirtualSize"] = str_replace('MB', '', $this->states[31]);
+        $output["BlocksToClear"] = $this->states[32];
+        $output["PercentageRBF"] = str_replace('%', '', $this->states[33]);
 
-        $output["Estimate Next Block"] = str_replace('sat/vB', '', $this->states[34]);
-        $output["Estimate Minutes"] = str_replace('sat/vB', '', $this->states[35]);
-        $output["Estimate Hour"] = str_replace('sat/vB', '', $this->states[36]);
-        $output["Estimate Day"] = str_replace('sat/vB', '', $this->states[37]);
-        $output["Estimate Week"] = str_replace('sat/vB', '', $this->states[38]);
+        $output["EstimateNextBlock"] = str_replace('sat/vB', '', $this->states[34]);
+        $output["EstimateMinutes"] = str_replace('sat/vB', '', $this->states[35]);
+        $output["EstimateHour"] = str_replace('sat/vB', '', $this->states[36]);
+        $output["EstimateDay"] = str_replace('sat/vB', '', $this->states[37]);
+        $output["EstimateWeek"] = str_replace('sat/vB', '', $this->states[38]);
 
-        $output["Mayer Multiple"] = $this->states[39];
-        $output["50 Day Moving"] = str_replace('$', '', $this->states[40]);
-        $output["100 Day Moving"] = str_replace('$', '', $this->states[41]);
-        $output["200 Day Moving"] = str_replace('$', '', $this->states[42]);
+        $output["MayerMultiple"] = $this->states[39];
+        $output["MovingDay50"] = str_replace('$', '', $this->states[40]);
+        $output["MovingDay100"] = str_replace('$', '', $this->states[41]);
+        $output["MovingDay200"] = str_replace('$', '', $this->states[42]);
 
-        $output["GBTC Price"] = str_replace('$', '', $this->states[43]);
-        $output["GBTC Bitcoin Per Share"] = str_replace('BTC', '', $this->states[44]);
-        $output["GBTC Premium"] = str_replace('%', '', $this->states[45]);
-        $output["QBTC Price"] = str_replace('$', '', $this->states[46]);
-        $output["QBTC Bitcoin Share"] = str_replace('BTC', '', $this->states[47]);
-        $output["QBTC Premium"] = str_replace('%', '', $this->states[48]);
+        $output["GBTCPrice"] = str_replace('$', '', $this->states[43]);
+        $output["GBTCBitcoinPerShare"] = str_replace('BTC', '', $this->states[44]);
+        $output["GBTCPremium"] = str_replace('%', '', $this->states[45]);
+        $output["QBTCPrice"] = str_replace('$', '', $this->states[46]);
+        $output["QBTCBitcoinShare"] = str_replace('BTC', '', $this->states[47]);
+        $output["QBTCToPremium"] = str_replace('%', '', $this->states[48]);
 
-        $output["Bitcoin Priced In Gold"] = str_replace('OZ', '', $this->states[49]);
-        $output["Bitcoin vs Gold Market Cap"] = str_replace('%', '', $this->states[50]);
-        $output["Gold Parity"] = str_replace('$', '', $this->states[51]);
-        $output["Gold Price Per Ounce"] = str_replace('$', '', $this->states[52]);
-        $output["Gold Market Cap"] = str_replace(array( "$", "T" ), '', $this->states[53]);
-        $output["Gold Supply In Tonnes"] = $this->states[54];
+        $output["BitcoinPricedInGold"] = str_replace('OZ', '', $this->states[49]);
+        $output["BitcoinVsGoldMarketCap"] = str_replace('%', '', $this->states[50]);
+        $output["GoldParity"] = str_replace('$', '', $this->states[51]);
+        $output["GoldPricePerOunce"] = str_replace('$', '', $this->states[52]);
+        $output["GoldMarketCap"] = str_replace(array( "$", "T" ), '', $this->states[53]);
+        $output["GoldSupplyInTonnes"] = $this->states[54];
 
-        $output["Forward Annual Inflation"] = "null";
-        $output["GRealized Annual Inflation"] = str_replace('%', '', $this->states[56]);
+        $output["ForwardAnnualInflation"] = "null";
+        $output["RealizedAnnualInflation"] = str_replace('%', '', $this->states[56]);
 
-        $output["Companies Reporting BTC Holdings"] = $this->states[57];
-        $output["Bitcoin Held In Treasuries"] = str_replace('BTC', '', $this->states[58]);
-        $output["Percentage Held In Treasuries"] = str_replace('%', '', $this->states[59]);
-        $output["Treasuries Value"] = str_replace(array( "$", "B" ), '', $this->states[60]);
+        $output["CompaniesReportingBTCHoldings"] = $this->states[57];
+        $output["BitcoinHeldInTreasuries"] = str_replace('BTC', '', $this->states[58]);
+        $output["PercentageHeldInTreasuries"] = str_replace('%', '', $this->states[59]);
+        $output["TreasuriesValue"] = str_replace(array( "$", "B" ), '', $this->states[60]);
 
         $output["Block_1"] = $this->states[61];
         $output["Block_2"] = $this->states[62];
@@ -160,9 +190,9 @@ class CryptoCompareController extends Controller
         $output["supply_4"] = $this->states[70];
         $output["supply_5"] = $this->states[71];
 
-        $output["Reachable Bitcoin Nodes"] = $this->states[72];
-        $output["Bitcoin Tor Nodes"] = $this->states[73];
-        $output["Percentage Tor Nodes"] = str_replace('%', '', $this->states[74]);
+        $output["ReachableBitcoinNodes"] = $this->states[72];
+        $output["BitcoinTorNodes"] = $this->states[73];
+        $output["PercentageTorNodes"] = str_replace('%', '', $this->states[74]);
 
         $output["Satoshi_1"] = str_replace('(', ' (', $this->states[75]);
         $output["Satoshi_2"] = str_replace('(', ' (', $this->states[76]);
@@ -170,16 +200,16 @@ class CryptoCompareController extends Controller
         $output["Satoshi_4"] = str_replace('(', ' (', $this->states[78]);
         $output["Satoshi_5"] = str_replace('(', ' (', $this->states[79]);
 
-        $output["Network Capacity"] = str_replace('BTC', '', $this->states[80]);
-        $output["Network Capacity Value"] = str_replace(array( "$", "M" ), '', $this->states[81]);
-        $output["Number of Channels"] = $this->states[82];
-        $output["Number of Nodes"] = $this->states[83];
-        $output["Average Channel Capacity"] = str_replace('BTC', '', $this->states[84]);
-        $output["Average Channel Capacity Value"] = str_replace('$', '', $this->states[85]);
-        $output["Average Channels Per Node"] = $this->states[86];
-        $output["Average Node Capacity"] = $this->states[87];
-        $output["Active Channels"] = $this->states[88];
-        $output["Number of Tor Nodes"] = $this->states[89];
+        $output["NetworkCapacity"] = str_replace('BTC', '', $this->states[80]);
+        $output["NetworkCapacityValue"] = str_replace(array( "$", "M" ), '', $this->states[81]);
+        $output["NumberOfChannels"] = $this->states[82];
+        $output["NumberOfNodes"] = $this->states[83];
+        $output["AverageChannelCapacity"] = str_replace('BTC', '', $this->states[84]);
+        $output["AverageChannelCapacityValue"] = str_replace('$', '', $this->states[85]);
+        $output["AverageChannelsPerNode"] = $this->states[86];
+        $output["AverageNodeCapacity"] = $this->states[87];
+        $output["ActiveChannels"] = $this->states[88];
+        $output["NumberOfTorNodes"] = $this->states[89];
         
 
         return $output;
