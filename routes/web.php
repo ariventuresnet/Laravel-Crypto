@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 //Header Button
-Route::get('/', 'CryptoController@index');
+Route::get('/', 'BitcoinDashboardController@index');
+Route::get('/exchages', 'CryptoController@index');
 Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
 Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');

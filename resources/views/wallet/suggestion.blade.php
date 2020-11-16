@@ -41,5 +41,5 @@
 
     });
 
-    $('#wallet').addClass('current');
+    $('#dropdownMenuLink').addClass('current');
 </script>

@@ -58,5 +58,7 @@
             }
         });
 
+        $('#exchange').addClass('current');
+
     });
 </script>
