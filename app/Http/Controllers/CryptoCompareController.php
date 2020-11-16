@@ -10,8 +10,22 @@ class CryptoCompareController extends Controller
 {   
     private $states = [];
 
+    public function getCurrency(){
+        $manager = app('cryptocurrencies.manager');
+        $priceGateway = $manager->getGateway('price');
+
+        $parameters = [
+            'fsym' => 'BTC',
+            'tsym' => 'USD',
+        ];
+        $result = $priceGateway->getMultiSymbolPriceFull($parameters);
+        $states = json_decode($result);
+        return response()->json( [ 'states'=>$states ]);
+    }
+
     public function getBTCPrice()
     {
+
         $manager = app('cryptocurrencies.manager');
         /** @var CryptocomparePriceGateway $priceGateway */
         $priceGateway = $manager->getGateway('price');

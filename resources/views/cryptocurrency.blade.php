@@ -25,7 +25,9 @@
             <div class="col-md-8">
                 <h4>Bitcoin (BTC) Live Price</h3>
                 <?php $change24h = (float) $states['DISPLAY']['BTC']['USD']['CHANGEPCT24HOUR'];  ?>
-                <span class="font-weight-bold">$</span> <span class="display-4 price">{{$states['RAW']['BTC']['USD']['PRICE']}}</span> <span class="font-weight-bold {{$change24h > 0 ? 'text-success' : 'text-danger'}}"> ({{$change24h}}%)</span>
+                <span class="font-weight-bold">$</span> 
+                <span class="display-4 price">{{$states['RAW']['BTC']['USD']['PRICE']}}</span> 
+                <span class="change-percent font-weight-bold {{$change24h > 0 ? 'text-success' : 'text-danger'}}"> (<span class="value">{{$change24h}}</span>%)</span>
                 <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4">
             </div>
             <div class="col-md-4">
@@ -36,8 +38,9 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Satoshis Per USD</span> <span class="float-right">ⓢ {{$scraps["SatoshisPerUSD"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Volume (BTC)</span> <span class="float-right btc-volumn">{{$states['DISPLAY']['BTC']['USD']['TOTALVOLUME24H']}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Volume (USD)</span> <span class="float-right usd-volumn">{{$states['DISPLAY']['BTC']['USD']['TOTALVOLUME24HTO']}}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Top Tier Volumn</span> <span class="float-right tier-volumn">{{$states['DISPLAY']['BTC']['USD']['TOTALTOPTIERVOLUME24HTO']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Top Tier Volume</span> <span class="float-right tier-volumn">{{$states['DISPLAY']['BTC']['USD']['TOTALTOPTIERVOLUME24HTO']}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Market Cap</span> <span class="float-right market-cap">{{$states['DISPLAY']['BTC']['USD']['MKTCAP']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Chg. 24H</span> <span class="float-right current-percent">{{$change24h}} %</span></li>
                 </ul>
             </div>
         </div>
@@ -211,4 +214,55 @@
 
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+    <script>
+        $(document).ready( function(){
+            var percent = $('.change-percent .value').text();
+
+            var updatePrice = function() {
+                $.ajax({
+                    url : "{{url('multiSymbolPrice')}}",
+                    type: "GET",
+                    dataType: 'json',
+                    success: function(response){
+                        console.log(response.states);
+                        var states = response.states;
+
+                        //MultiSymbolPrice
+                        var current_price   = states['RAW']['BTC']['USD']['PRICE'];
+                        var current_percent = states['DISPLAY']['BTC']['USD']['CHANGEPCT24HOUR'];
+                        $('.price').html(states['RAW']['BTC']['USD']['PRICE']);
+                        $('.current-percent').html(current_percent + " %");
+                        if(current_percent > 0){
+                            if(percent > 0){
+                                $('.change-percent .value').html(current_percent);
+                            }
+                            else{
+                                $('.change-percent').removeClass('text-danger').addClass('text-success');
+                                $('.change-percent .value').html(current_percent);
+                            }
+                            
+                        }
+                        else{
+                            if(percent < 0){
+                                $('.change-percent .value').html(current_percent);
+                            }
+                            else{
+                                $('.change-percent').removeClass('text-success').addClass('text-danger');
+                                $('.change-percent .value').html(current_percent);
+                            }
+                        } 
+
+                    },
+                });
+            }
+
+            updatePrice();
+            setInterval(() => {
+                updatePrice();
+            }, 4000);
+        });
+    </script>
 @endsection
