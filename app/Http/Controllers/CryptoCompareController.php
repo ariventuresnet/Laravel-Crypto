@@ -110,16 +110,19 @@ class CryptoCompareController extends Controller
             // echo $item->text() . "<br>";
             array_push($this->states, $item->text());
         });
-        return $this->states;
+    
+        $CurrentPrice  = $bitbo->filter('.amount')->text();
+        array_push($this->states, $CurrentPrice);
+        // return $this->states;
 
-        // $result = $this->makeResult();
+        $result = $this->makeResult();
         
         // insert intodatabase 
         // $data["website"] = "bitbo";
         // $data["state"] = json_encode($result);
         // DB::table('web_scraps')->insert($data);
         // DB::table('web_scraps')->where('id', 1)->update($data);
-        // return $result;
+        return $result;
 
     }
     public function fetch_data(){
@@ -278,8 +281,8 @@ class CryptoCompareController extends Controller
         $output["AverageNodeCapacity"] = $this->states[87];
         $output["ActiveChannels"] = $this->states[88];
         $output["NumberOfTorNodes"] = $this->states[89];
+        $output['currentPrice'] = $this->states[90];
         
-
         return $output;
     }
 

@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 //Header Button
 // Route::get('/', 'BitcoinDashboardController@index');
-Route::get('cryptocurrency', 'BitcoinDashboardController@index');
-Route::get('/', 'CryptoController@index');
+Route::get('/', 'BitcoinDashboardController@index');
+Route::get('/exchanges', 'CryptoController@index');
 Route::get('/cards', 'CryptoController@viewCards')->name('cryptocard');
 Route::get('/loans', 'CryptoController@viewLoans')->name('cryptoloan');
 Route::get('/interests', 'CryptoController@viewInterestAccounts')->name('cryptointerest.accounts');
@@ -112,4 +112,5 @@ Route::get('/ticker', 'CryptoCompareController@getBTCPrice');
 Route::get('/get_data', 'CryptoCompareController@get_data');
 Route::get('/fetch_data', 'CryptoCompareController@fetch_data');
 
-Route::get('multiSymbolPrice', 'CryptoCompareController@getCurrency');
+//ajax call
+Route::get('getbtcPrice', 'BitcoinDashboardController@currentStatus');

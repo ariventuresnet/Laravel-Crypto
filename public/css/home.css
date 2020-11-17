@@ -176,6 +176,10 @@ footer{
   font-size: 10px;
 }
 
+.main-content{
+  padding: 0 4.5rem;
+}
+
 @media screen and (max-width: 992px) {
 
   header {
@@ -299,6 +303,9 @@ footer{
     font-weight : bold;
   }
   
+  .main-content{
+    padding: 0 1.5rem;
+  }
 
 }
 

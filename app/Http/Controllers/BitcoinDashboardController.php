@@ -10,29 +10,23 @@ class BitcoinDashboardController extends Controller
     private $states = [];
     
     public function index(){
-        $manager = app('cryptocurrencies.manager');
-        $priceGateway = $manager->getGateway('price');
-        $parameters = [
-            'fsym' => 'BTC',
-            'tsym' => 'USD',
-        ];
-        //API Call
-        $result = $priceGateway->getMultiSymbolPriceFull($parameters);
-        $states = json_decode($result, true);
-
+        
         //Web Scrap from bitbo
         $scraps = $this->web_scrap();
-        return view('cryptocurrency')->with('states', $states)->with('scraps', $scraps);
+        return view('cryptocurrency')->with('scraps', $scraps);
     }
 
     public function web_scrap(){
         $goutteClient = new Client();
 
-        $page = $goutteClient->request('GET', 'https://bitbo.io/');
+        $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
 
-        $page->filter('.stat .value')->each(function ($item) {
+        $bitbo->filter('.stat .value')->each(function ($item) {
             array_push($this->states, $item->text());
         });
+        $CurrentPrice  = $bitbo->filter('.amount')->text();
+        array_push($this->states, $CurrentPrice);
+
         $result = $this->makeResult();
         
         return $result;
@@ -142,7 +136,20 @@ class BitcoinDashboardController extends Controller
         $output["AverageNodeCapacity"] = $this->states[87];
         $output["ActiveChannels"] = $this->states[88];
         $output["NumberOfTorNodes"] = $this->states[89];
+        $output['currentPrice'] = $this->states[90];
 
         return $output;
+    }
+
+    public function currentStatus(){
+        $goutteClient = new Client();
+
+        $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
+        $CurrentPrice  = $bitbo->filter('.amount')->text();
+        $btc_volume = $bitbo->filter('.stat .value')->eq(3)->text();
+        $marketCap = str_replace( array( "$", "B" ), '', $bitbo->filter('.stat .value')->eq(5)->text());
+        // return $CurrentPrice;
+        // var_dump($CurrentPrice);
+        return response()->json(["price"=>$CurrentPrice, "btc_volume"=>$btc_volume, "market_cap"=>$marketCap]);
     }
 }
