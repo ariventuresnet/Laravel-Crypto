@@ -51,11 +51,11 @@
         <!-- wrapper -->
         <div class="container-fluid pt-md-4 px-md-5 pb-sm-3 wrapper">
             <div class="row">
-                {{-- <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
-                    <a href="{{URL::to('/')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="bitcoin"> <span class="float-left">Bitcoin Dashboard</span></a>           
-                </div> --}}
                 <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
-                    <a href="{{URL::to('/')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="exchange"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
+                    <a href="{{URL::to('/')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="bitcoin"> <span class="float-left">Bitcoin Dashboard</span></a>           
+                </div>
+                <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
+                    <a href="{{URL::to('exchanges')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="exchange"> <span class="float-left">Exchanges</span> <span class="float-right"><i class="fab fa-stack-exchange"></i></span></a>           
                 </div>
                 <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
                     <a href="{{route('cryptocard')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="card"> <span class="float-left">Cards</span> <span class="float-right"><i class="far fa-credit-card"></i></span></a>
@@ -67,9 +67,9 @@
                 <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
                     <a href="{{route('cryptointerest.accounts')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="interest"> <span class="float-left">Interest</span> <span class="float-right"><i class="fas fa-money-check-alt"></i></span></a>
                 </div>
-                <div class="col-6 col-sm-4 col-lg-2">
+                {{-- <div class="col-6 col-sm-4 col-lg-2">
                     <a href="{{route('cryptowallet')}}" class="btn btn-home px-lg-3 px-2 mb-2" id="wallet"> <span class="float-left">Wallets</span> <span class="float-right"><i class="fas fa-wallet"></i></span></a>
-                </div>
+                </div> --}}
                 <div class="col-6 col-sm-4 col-lg-2 pr-md-0">
                     {{-- <a href="#" class="btn btn-home px-lg-3 px-2 mb-2" id="more"> <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span></a> --}}
                     <div class="dropdown">
@@ -77,7 +77,7 @@
                             <span class="float-left">More</span> <span class="float-right"><i class="fas fa-ellipsis-h"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {{-- <a class="dropdown-item" href="{{route('cryptowallet')}}">Wallets</a> --}}
+                            <a class="dropdown-item" href="{{route('cryptowallet')}}">Wallets</a>
                             <a class="dropdown-item" href="{{route('more.cryptos')}}">Cryptos</a>
                             <a class="dropdown-item" href="{{route('more.treasuries')}}">Company Treasuries</a>
                           {{-- <a class="dropdown-item" href="#">Something</a> --}}

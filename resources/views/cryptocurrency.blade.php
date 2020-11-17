@@ -23,7 +23,7 @@
     <div class="container-fluid px-5">
         <div class="row mb-5">
             <div class="col-md-8">
-                <h4>Bitcoin (BTC) Live Price</h3>
+                <h4>Bitcoin (BTC) Live Price</h4>
                 <?php $change24h = (float) $states['DISPLAY']['BTC']['USD']['CHANGEPCT24HOUR'];  ?>
                 <span class="font-weight-bold">$</span> 
                 <span class="display-4 price">{{$states['RAW']['BTC']['USD']['PRICE']}}</span> 
@@ -227,7 +227,7 @@
                     type: "GET",
                     dataType: 'json',
                     success: function(response){
-                        console.log(response.states);
+                        // console.log(response.states);
                         var states = response.states;
 
                         //MultiSymbolPrice
@@ -259,10 +259,10 @@
                 });
             }
 
-            // updatePrice();
-            // setInterval(() => {
-            //     updatePrice();
-            // }, 4000);
+            updatePrice();
+            setInterval(() => {
+                updatePrice();
+            }, 4000);
         });
     </script>
 @endsection
