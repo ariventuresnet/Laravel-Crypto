@@ -109,5 +109,6 @@ Route::post('getcryptos', 'MoreCryptoController@AjaxRequestForCrypto');
 
 Route::get('/ticker', 'CryptoCompareController@getBTCPrice');
 Route::get('/get_data', 'CryptoCompareController@get_data');
+Route::get('/fetch_data', 'CryptoCompareController@fetch_data');
 
 Route::get('multiSymbolPrice', 'CryptoCompareController@getCurrency');

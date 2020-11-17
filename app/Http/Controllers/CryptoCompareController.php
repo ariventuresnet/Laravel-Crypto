@@ -9,7 +9,8 @@ use DB;
 class CryptoCompareController extends Controller
 {   
     private $states = [];
-
+    private $caseBitcoinStates = [];
+    //ajax call
     public function getCurrency(){
         $manager = app('cryptocurrencies.manager');
         $priceGateway = $manager->getGateway('price');
@@ -102,21 +103,74 @@ class CryptoCompareController extends Controller
     public function get_data(){
         $goutteClient = new Client();
 
-        $page = $goutteClient->request('GET', 'https://bitbo.io/');
-        // $value = $page->filter('.stat .value')->text();
+        $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
 
-        $page->filter('.stat .value')->each(function ($item) {
+
+        $bitbo->filter('.stat .value')->each(function ($item) {
             // echo $item->text() . "<br>";
             array_push($this->states, $item->text());
         });
-        $result = $this->makeResult();
+        return $this->states;
+
+        // $result = $this->makeResult();
         
-        //insert intodatabase 
+        // insert intodatabase 
         // $data["website"] = "bitbo";
         // $data["state"] = json_encode($result);
         // DB::table('web_scraps')->insert($data);
         // DB::table('web_scraps')->where('id', 1)->update($data);
-        return $result;
+        // return $result;
+
+    }
+    public function fetch_data(){
+        $goutteClient = new Client();
+
+        $casebitcoin = $goutteClient->request('GET', 'https://casebitcoin.com/');
+        // $value = $casebitcoin->filter('.qb_itemset')->count();
+        // return $value;
+        $casebitcoin->filter('.qb_content .qb_itemset')->each(function ($item) {
+            echo $item->text() . "<br>";
+        });
+
+        // $casebitcoin->filter('.qb_itemset')->each(function ($item , $i) {
+        //     if($i <= 7){
+        //         echo $i . " => " . $item->filter('.qbi_content1')->text() . "<br>";
+        //     }
+        //     else{
+        //         echo $i . " => " . $item->text(). "<br>";
+        //     }
+        // });
+
+        // $page  = $casebitcoin->filter('.qb_itemset');
+        // for($i = 0 ; $i < 18 ; $i++){
+        //     if($i <= 7){
+        //         echo $i . " => " . $casebitcoin->filter('.qb_itemset')->eq($i)->filter('.qbi_content1')->text();
+        //         echo "<br>";
+        //     }
+        //     else{
+        //         echo $i . " => " . $casebitcoin->filter('.qb_itemset')->eq($i)->filter('.qbi_content_big')->text();
+        //         echo "<br>";
+        //     }
+            
+        // }
+        
+        // return $casebitcoin->filter('.qb_itemset')->eq(0)->filter('.qbi_content1')->text();
+
+
+        // $casebitcoin->filter('.qbi_content1')->each(function ($item) {
+        //     echo $item->text(). "<br>";
+        // });
+        // echo "<br>";
+        // echo "<br>";
+        // $casebitcoin->filter('.qbi_content2')->each(function ($item) {
+        //     echo $item->text() . "<br>";
+        // });
+        // echo "<br>";
+        // echo "<br>";
+        // $casebitcoin->filter('.qbi_change')->each(function ($item) {
+        //     echo $item->text() . "<br>";
+        //     // array_push($this->states, $item->text());
+        // });
 
     }
 

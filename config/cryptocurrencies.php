@@ -55,7 +55,7 @@ return [
         /**
          * Api key from cryptocompare
          */
-        'api_key' => env('CRYPTOCOMPARE_API_KEY', 'c5ccf4c72f27c6296be48a573b1daa9287480b08703564385270a0d19841bfe3'),
+        'api_key' => env('CRYPTOCOMPARE_API_KEY', 'fa4b417ab1d29768e54a0f4affd00a2c673be536785a072e3e96324b113c986a'),
 
     ],
 

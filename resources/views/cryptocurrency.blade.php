@@ -211,7 +211,7 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Number of Tor Nodes</span> <span class="float-right">{{$scraps['NumberOfTorNodes'] }}</span></li>
                 </ul>
             </div>
-
+            
         </div>
     </div>
 @endsection
@@ -259,10 +259,10 @@
                 });
             }
 
-            updatePrice();
-            setInterval(() => {
-                updatePrice();
-            }, 4000);
+            // updatePrice();
+            // setInterval(() => {
+            //     updatePrice();
+            // }, 4000);
         });
     </script>
 @endsection
