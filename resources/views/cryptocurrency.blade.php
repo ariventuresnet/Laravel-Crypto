@@ -24,22 +24,36 @@
             bottom: 13px;
             font-size: 2rem;
         }
+        .exception{
+            border-top: none !important;
+        }
     </style>
 @endsection
 
 @section('main-content')
     <!-- Main -->
     <section class="container-fluid main-content">
-        <div class="row mb-5">
-            <div class="col-md-8 mb-3">
+        <div class="row mb-3">
+            <div class="col">
                 <h4>Bitcoin (BTC) Live Price</h4>
                 <p>
                     <span class="font-weight-bold doller-sign">$</span>
                     <span class="display-4 price">{{$scraps["currentPrice"]}}</span>
                     <span class="font-weight-bold">USD</span>
+                    <!-- <span class="change-percent font-weight-bold"> (<span class="value">0.00</span>%)</span> -->
+                {{-- <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4"> --}}
                 </p>
-                <!-- <span class="change-percent font-weight-bold"> (<span class="value">0.00</span>%)</span> -->
-                <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4">
+            </div>
+        </div>
+        <div class="row mb-md-3">
+            <div class="col-md-8 mb-3">
+                <div style="height:480px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px; width: 100%;">
+                    <div style="height:540px; padding:0px; margin:0px; width: 100%;">
+                        <iframe src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" width="100%" height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;line-height:14px;"></iframe>
+                    </div>
+                    <div style="color: #FFFFFF; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;"><a href="https://coinlib.io" target="_blank" style="font-weight: 500; color: #FFFFFF; text-decoration:none; font-size:11px">Cryptocurrency Prices</a>&nbsp;by Coinlib
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <h4 class="px-3">Bitcoin Stats</h4>
@@ -65,19 +79,19 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Active Addresses</span> <span class="float-right">{{$scraps['ActiveAddresses']}} <span class="small font-weight-bold">M</span> </span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Mining Reward Value (24hr)</span> <span class="float-right">{{$scraps['MiningRewardValue']}} <span class="small font-weight-bold">M</span></span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">GBTC Premium</span> <span class="float-right">{{$scraps['GBTCPremium'] }} %</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Down From ATH</span> <span class="float-right">{{$scraps['BtcDownATH']}} %</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Up From Cycle Low</span> <span class="float-right">{{$scraps['BtcUpCycleLow']}} %</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Down From ATH</span> <span class="float-right">{{$scraps['BtcDownATH']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Up From Cycle Low</span> <span class="float-right">{{$scraps['BtcUpCycleLow']}}</span></li>
                 </ul>
             </div>
             <div class="col-md-4 mb-4">
-                <h4 class="px-3">KEY MARKETS</h4>
+                <h4 class="px-3">Key Markets</h4>
                 <table class="table">
                     <tbody class="font-weight-bold">
                         <tr>
-                            <th>Bitcoin</th>
-                            <td>$ {{ $scraps["currentPrice"] }}</td>
-                            <td>{{ $scraps["PriceChange"] }}</td>
-                            <td>{{ $scraps["PriceChangePCT"] }}</td>
+                            <th class="exception">Bitcoin</th>
+                            <td class="exception">$ {{ $scraps["currentPrice"] }}</td>
+                            <td class="exception">{{ $scraps["PriceChange"] }}</td>
+                            <td class="exception">{{ $scraps["PriceChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>S&P 500</th>
@@ -137,15 +151,6 @@
                 </ul>
             </div>
             <div class="col-md-4 mb-4">
-                <h4 class="px-3">Mining Stats</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Difficulty</span> <span class="float-right"> {{$scraps['Difficulty']}} <span class="small font-weight-bold">T</span></span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Difficulty Epoch</span> <span class="float-right">{{$scraps['DifficultyEpoch']}}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Estimated Difficulty Change</span> <span class="float-right">{{$scraps['EstimatedDifficultyChange']}} %</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Last Difficulty Change</span> <span class="float-right">{{$scraps['LastDifficultyChange']}} %</span></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-4">
                 <h4 class="px-3">Blockchain Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">Hash Rate (24hrs)</span> <span class="float-right">{{$scraps['HashRate']}} <span class="small font-weight-bold">EH/s</span></span></li>
@@ -156,6 +161,15 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Percentage SegWit (24hrs)</span> <span class="float-right">{{$scraps['PercentageSegWit']}} %</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Total Fees (24hrs)</span> <span class="float-right">{{$scraps['TotalFees']}} <span class="small font-weight-bold">BTC</span></span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Average Fees Per Block (24hrs)</span> <span class="float-right">{{$scraps['AverageFeesPerBlock']}} <span class="small font-weight-bold">BTC</span></span></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Mining Stats</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Difficulty</span> <span class="float-right"> {{$scraps['Difficulty']}} <span class="small font-weight-bold">T</span></span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Difficulty Epoch</span> <span class="float-right">{{$scraps['DifficultyEpoch']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Estimated Difficulty Change</span> <span class="float-right">{{$scraps['EstimatedDifficultyChange']}} %</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Last Difficulty Change</span> <span class="float-right">{{$scraps['LastDifficultyChange']}} %</span></li>
                 </ul>
             </div>
             <div class="col-md-4 mb-4">
@@ -265,17 +279,6 @@
             </div>
 
             <div class="col-md-4 mb-4">
-                <h4 class="px-3">Top Bitcoin Node Versions</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.1</span> <span class="float-right"> {{$scraps['Satoshi_1'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.0</span> <span class="float-right">{{$scraps['Satoshi_2'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.19.1</span> <span class="float-right">{{$scraps['Satoshi_4'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.1</span> <span class="float-right">{{$scraps['Satoshi_3'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.0</span> <span class="float-right">{{$scraps['Satoshi_5'] }}</span></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 mb-4">
                 <h4 class="px-3">Lightning Network Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">Network Capacity</span> <span class="float-right"> {{$scraps['NetworkCapacity'] }} <span class="small font-weight-bold">BTC</span> </span></li>
@@ -290,7 +293,17 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Number of Tor Nodes</span> <span class="float-right">{{$scraps['NumberOfTorNodes'] }}</span></li>
                 </ul>
             </div>
-            
+
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Top Bitcoin Node Versions</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.1</span> <span class="float-right"> {{$scraps['Satoshi_1'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.0</span> <span class="float-right">{{$scraps['Satoshi_2'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.19.1</span> <span class="float-right">{{$scraps['Satoshi_4'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.1</span> <span class="float-right">{{$scraps['Satoshi_3'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.0</span> <span class="float-right">{{$scraps['Satoshi_5'] }}</span></li>
+                </ul>
+            </div>
         </div>
     </section>
     <!-- End Of Main -->
