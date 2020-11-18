@@ -16,6 +16,9 @@
         li{
             font-size: .8rem;
         }
+        tbody{
+            font-size: .8rem;
+        }
         .doller-sign{
             position: relative;
             bottom: 13px;
@@ -39,7 +42,7 @@
                 <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4">
             </div>
             <div class="col-md-4">
-                <h4 class="px-3">Bitcoin Market Stats</h4>
+                <h4 class="px-3">Bitcoin Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Range</span> <span class="float-right"><span class="low">{{$scraps["Range24hr"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">USD Per Satoshi</span> <span class="float-right">$ {{$scraps["USDPerSatoshi"]}}</span></li>
@@ -52,6 +55,76 @@
         </div>
 
         <div class="row pt-3">
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Bitcoin Market Stats</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Inflation Rate (next 1yr)</span> <span class="float-right">{{$scraps['BtcInflationRate']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">% Supply Issued</span> <span class="float-right">{{$scraps['SupplyIssued']}}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Settlement Volume (24hr)</span> <span class="float-right">{{$scraps['BtcSettlementVolume']}} <span class="small font-weight-bold">B</span> </span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Real Exchange Volume (24hr)</span> <span class="float-right">{{$scraps['RealExchangeVolume']}} <span class="small font-weight-bold">B</span> </span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Active Addresses</span> <span class="float-right">{{$scraps['ActiveAddresses']}} <span class="small font-weight-bold">M</span> </span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Mining Reward Value (24hr)</span> <span class="float-right">{{$scraps['MiningRewardValue']}} <span class="small font-weight-bold">M</span></span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">GBTC Premium</span> <span class="float-right">{{$scraps['GBTCPremium'] }} %</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Down From ATH</span> <span class="float-right">{{$scraps['BtcDownATH']}} %</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">BTC Up From Cycle Low</span> <span class="float-right">{{$scraps['BtcUpCycleLow']}} %</span></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">KEY MARKETS</h4>
+                <table class="table">
+                    <tbody class="font-weight-bold">
+                        <tr>
+                            <th>Bitcoin</th>
+                            <td>$ {{ $scraps["currentPrice"] }}</td>
+                            <td>{{ $scraps["PriceChange"] }}</td>
+                            <td>{{ $scraps["PriceChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>S&P 500</th>
+                            <td>{{ $scraps["spPrice"] }}</td>
+                            <td>{{ $scraps["spChange"] }}</td>
+                            <td>{{ $scraps["spChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gold</th>
+                            <td>$ {{ $scraps["goldPrice"] }}</td>
+                            <td>{{ $scraps["goldChange"] }}</td>
+                            <td>{{ $scraps["goldChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Silver</th>
+                            <td>$ {{ $scraps["silverPrice"] }}</td>
+                            <td>{{ $scraps["silverChange"] }}</td>
+                            <td>{{ $scraps["silverChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Euro</th>
+                            <td>$ {{ $scraps["euroPrice"] }}</td>
+                            <td>{{ $scraps["euroChange"] }}</td>
+                            <td>{{ $scraps["euroChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Yen</th>
+                            <td>¥ {{ $scraps["yenPrice"] }}</td>
+                            <td>{{ $scraps["yenChange"] }}</td>
+                            <td>{{ $scraps["yenChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Renminbi (CNY)</th>
+                            <td>¥ {{ $scraps["renminbiPrice"] }}</td>
+                            <td>{{ $scraps["renminbiChange"] }}</td>
+                            <td>{{ $scraps["renminbiChangePCT"] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Oil (WTI)</th>
+                            <td>$ {{ $scraps["oilPrice"] }}</td>
+                            <td>{{ $scraps["oilChange"] }}</td>
+                            <td>{{ $scraps["oilChangePCT"] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="col-md-4 mb-4">
                 <h4 class="px-3">Difficulty Stats</h4>
                 <ul class="list-group list-group-flush">

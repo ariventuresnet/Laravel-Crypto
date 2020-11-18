@@ -8,6 +8,7 @@ use Goutte\Client;
 class BitcoinDashboardController extends Controller
 {
     private $states = [];
+    private $caseBitcoinStates = [];
     
     public function index(){
         
@@ -20,12 +21,27 @@ class BitcoinDashboardController extends Controller
         $goutteClient = new Client();
 
         $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
+        $casebitcoin = $goutteClient->request('GET', 'https://casebitcoin.com/');
 
         $bitbo->filter('.stat .value')->each(function ($item) {
             array_push($this->states, $item->text());
         });
         $CurrentPrice  = $bitbo->filter('.amount')->text();
         array_push($this->states, $CurrentPrice);
+
+        //scrape data from casebitcoin
+        $page  = $casebitcoin->filter('.qb_itemset');
+        for($i = 0 ; $i < 18 ; $i++){
+            if($i <= 7){
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content1')->text() );
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content2')->text() );
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_change')->text() );
+            }
+            else{
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content_big')->text() );
+            }
+            
+        }
 
         $result = $this->makeResult();
         
@@ -137,6 +153,42 @@ class BitcoinDashboardController extends Controller
         $output["ActiveChannels"] = $this->states[88];
         $output["NumberOfTorNodes"] = $this->states[89];
         $output['currentPrice'] = $this->states[90];
+
+        //casebitcoin
+        $output['CaseBitcoinPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[0]);
+        $output['PriceChange'] = str_replace('$', ' $', $this->caseBitcoinStates[1]);
+        $output['PriceChangePCT'] = $this->caseBitcoinStates[2];
+        $output['spPrice']  = str_replace( array('📈', '📉' ), '', $this->caseBitcoinStates[3]);
+        $output['spChange'] = str_replace('$', ' $', $this->caseBitcoinStates[4]);
+        $output['spChangePCT'] = $this->caseBitcoinStates[5];
+        $output['goldPrice']  = str_replace( array( '$', '📈', '📉' ), '', $this->caseBitcoinStates[6]);
+        $output['goldChange'] = str_replace('$', ' $', $this->caseBitcoinStates[7]);
+        $output['goldChangePCT'] = $this->caseBitcoinStates[8];
+        $output['silverPrice']  = str_replace( array( '$', '📈', '📉' ), '', $this->caseBitcoinStates[9]);
+        $output['silverChange'] = str_replace('$', ' $', $this->caseBitcoinStates[10]);
+        $output['silverChangePCT'] = $this->caseBitcoinStates[11];
+        $output['euroPrice']  = str_replace( array( '$', '📈', '📉' ), '', $this->caseBitcoinStates[12]);
+        $output['euroChange'] = str_replace('$', ' $', $this->caseBitcoinStates[13]);
+        $output['euroChangePCT'] = $this->caseBitcoinStates[14];
+        $output['yenPrice']  = str_replace( array( '¥', '📈', '📉' ), '', $this->caseBitcoinStates[15]);
+        $output['yenChange'] = str_replace('¥', ' ¥', $this->caseBitcoinStates[16]);
+        $output['yenChangePCT'] = $this->caseBitcoinStates[17];
+        $output['renminbiPrice']  = str_replace( array( '¥', '📈', '📉' ), '', $this->caseBitcoinStates[18]);
+        $output['renminbiChange'] = str_replace('¥', ' ¥', $this->caseBitcoinStates[19]);
+        $output['renminbiChangePCT'] = $this->caseBitcoinStates[20];
+        $output['oilPrice']  = str_replace( array( '$', '📈', '📉' ), '', $this->caseBitcoinStates[21]);
+        $output['oilChange'] = str_replace('$', ' $', $this->caseBitcoinStates[22]);
+        $output['oilChangePCT'] = $this->caseBitcoinStates[23];
+
+        $output['BtcInflationRate'] = str_replace('%', ' %', $this->caseBitcoinStates[25]);
+        $output['SupplyIssued'] = str_replace('%', ' %', $this->caseBitcoinStates[26]);
+        $output['BtcSettlementVolume'] = str_replace('B', '', $this->caseBitcoinStates[27]);
+        $output['RealExchangeVolume'] = str_replace('B', '', $this->caseBitcoinStates[28]);
+        $output['ActiveAddresses'] = str_replace('M', '', $this->caseBitcoinStates[29]);
+        $output['MiningRewardValue'] = str_replace('M', '', $this->caseBitcoinStates[30]);
+        $output['BtcDownATH'] = str_replace('%', ' %', $this->caseBitcoinStates[32]);
+        $output['BtcUpCycleLow'] = str_replace('%', ' %', $this->caseBitcoinStates[33]);
+        
 
         return $output;
     }

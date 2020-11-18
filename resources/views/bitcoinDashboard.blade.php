@@ -116,7 +116,7 @@
                 <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4">
             </div>
             <div class="col-md-4">
-                <h4 class="px-3">Bitcoin Market Stats</h4>
+                <h4 class="px-3">Bitcoin Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Range</span> <span class="float-right"><span class="low">{{$states['DISPLAY']['BTC']['USD']['LOWDAY']}}</span> - <span class="high">{{$states['DISPLAY']['BTC']['USD']['HIGHDAY']}}</span> </span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">USD Per Satoshi</span> <span class="float-right">$ {{$scraps["USDPerSatoshi"]}}</span></li>

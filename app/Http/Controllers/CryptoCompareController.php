@@ -309,30 +309,30 @@ class CryptoCompareController extends Controller
         $output["NumberOfTorNodes"] = $this->states[89];
         $output['currentPrice'] = $this->states[90];
 
-        //casebitcoin
+        // casebitcoin
         $output['CaseBitcoinPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[0]);
-        $output['PriceChange'] = $this->caseBitcoinStates[1];
+        $output['PriceChange'] = str_replace('$', ' $', $this->caseBitcoinStates[1]);
         $output['PriceChangePCT'] = $this->caseBitcoinStates[2];
         $output['spPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[3]);
-        $output['spChange'] = $this->caseBitcoinStates[4];
+        $output['spChange'] = str_replace('$', ' $', $this->caseBitcoinStates[4]);
         $output['spChangePCT'] = $this->caseBitcoinStates[5];
         $output['goldPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[6]);
-        $output['goldChange'] = $this->caseBitcoinStates[7];
+        $output['goldChange'] = str_replace('$', ' $', $this->caseBitcoinStates[7]);
         $output['goldChangePCT'] = $this->caseBitcoinStates[8];
         $output['silverPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[9]);
-        $output['silverChange'] = $this->caseBitcoinStates[10];
+        $output['silverChange'] = str_replace('$', ' $', $this->caseBitcoinStates[10]);
         $output['silverChangePCT'] = $this->caseBitcoinStates[11];
         $output['euroPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[12]);
-        $output['euroChange'] = $this->caseBitcoinStates[13];
+        $output['euroChange'] = str_replace('$', ' $', $this->caseBitcoinStates[13]);
         $output['euroChangePCT'] = $this->caseBitcoinStates[14];
         $output['yenPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[15]);
-        $output['yenChange'] = $this->caseBitcoinStates[16];
+        $output['yenChange'] = str_replace('$', ' $', $this->caseBitcoinStates[16]);
         $output['yenChangePCT'] = $this->caseBitcoinStates[17];
         $output['renminbiPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[18]);
-        $output['renminbiChange'] = $this->caseBitcoinStates[19];
+        $output['renminbiChange'] = str_replace('$', ' $', $this->caseBitcoinStates[19]);
         $output['renminbiChangePCT'] = $this->caseBitcoinStates[20];
         $output['oilPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[21]);
-        $output['oilChange'] = $this->caseBitcoinStates[22];
+        $output['oilChange'] = str_replace('$', ' $', $this->caseBitcoinStates[22]);
         $output['oilChangePCT'] = $this->caseBitcoinStates[23];
 
         $output['BtcInflationRate'] = str_replace('%', ' %', $this->caseBitcoinStates[25]);
@@ -343,7 +343,7 @@ class CryptoCompareController extends Controller
         $output['MiningRewardValue'] = str_replace('M', '', $this->caseBitcoinStates[30]);
         $output['BtcDownATH'] = str_replace('%', ' %', $this->caseBitcoinStates[32]);
         $output['BtcUpCycleLow'] = str_replace('%', ' %', $this->caseBitcoinStates[33]);
-
+        
         return $output;
     }
 
