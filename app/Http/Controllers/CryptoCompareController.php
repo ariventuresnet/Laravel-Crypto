@@ -10,7 +10,7 @@ class CryptoCompareController extends Controller
 {   
     private $states = [];
     private $caseBitcoinStates = [];
-    //ajax call
+    //ajax call pospond
     public function getCurrency(){
         $manager = app('cryptocurrencies.manager');
         $priceGateway = $manager->getGateway('price');
@@ -88,13 +88,16 @@ class CryptoCompareController extends Controller
     public function web_scrap(){
         $goutteClient = new Client();
 
-        $page = $goutteClient->request('GET', 'https://bitbo.io/');
+        $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
         // $value = $page->filter('.stat .value')->text();
 
-        $page->filter('.stat .value')->each(function ($item) {
+        $bitbo->filter('.stat .value')->each(function ($item) {
             // echo $item->text() . "<br>";
             array_push($this->states, $item->text());
         });
+        $CurrentPrice  = $bitbo->filter('.amount')->text();
+        array_push($this->states, $CurrentPrice);
+
         $result = $this->makeResult();
         
         return $result;
@@ -104,7 +107,7 @@ class CryptoCompareController extends Controller
         $goutteClient = new Client();
 
         $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
-
+        $casebitcoin = $goutteClient->request('GET', 'https://casebitcoin.com/');
 
         $bitbo->filter('.stat .value')->each(function ($item) {
             // echo $item->text() . "<br>";
@@ -114,6 +117,20 @@ class CryptoCompareController extends Controller
         $CurrentPrice  = $bitbo->filter('.amount')->text();
         array_push($this->states, $CurrentPrice);
         // return $this->states;
+
+        //scrape data from casebitcoin
+        $page  = $casebitcoin->filter('.qb_itemset');
+        for($i = 0 ; $i < 18 ; $i++){
+            if($i <= 7){
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content1')->text() );
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content2')->text() );
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_change')->text() );
+            }
+            else{
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content_big')->text() );
+            }
+            
+        }
 
         $result = $this->makeResult();
         
@@ -131,9 +148,6 @@ class CryptoCompareController extends Controller
         $casebitcoin = $goutteClient->request('GET', 'https://casebitcoin.com/');
         // $value = $casebitcoin->filter('.qb_itemset')->count();
         // return $value;
-        $casebitcoin->filter('.qb_content .qb_itemset')->each(function ($item) {
-            echo $item->text() . "<br>";
-        });
 
         // $casebitcoin->filter('.qb_itemset')->each(function ($item , $i) {
         //     if($i <= 7){
@@ -144,18 +158,28 @@ class CryptoCompareController extends Controller
         //     }
         // });
 
-        // $page  = $casebitcoin->filter('.qb_itemset');
-        // for($i = 0 ; $i < 18 ; $i++){
-        //     if($i <= 7){
-        //         echo $i . " => " . $casebitcoin->filter('.qb_itemset')->eq($i)->filter('.qbi_content1')->text();
-        //         echo "<br>";
-        //     }
-        //     else{
-        //         echo $i . " => " . $casebitcoin->filter('.qb_itemset')->eq($i)->filter('.qbi_content_big')->text();
-        //         echo "<br>";
-        //     }
+        $page  = $casebitcoin->filter('.qb_itemset');
+        for($i = 0 ; $i < 18 ; $i++){
+            if($i <= 7){
+
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content1')->text() );
+                // echo $i . " => " . $page->eq($i)->filter('.qbi_content1')->text();
+                // echo "<br>";
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content2')->text() );
+                // echo $i . " => " . $page->eq($i)->filter('.qbi_content2')->text();
+                // echo "<br>";
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_change')->text() );
+                // echo $i . " => " . $page->eq($i)->filter('.qbi_change')->text();
+                // echo "<br>";
+            }
+            else{
+                array_push( $this->caseBitcoinStates, $page->eq($i)->filter('.qbi_content_big')->text() );
+                // echo $i . " => " . $page->eq($i)->filter('.qbi_content_big')->text();
+                // echo "<br>";
+            }
             
-        // }
+        }
+        return $this->caseBitcoinStates;
         
         // return $casebitcoin->filter('.qb_itemset')->eq(0)->filter('.qbi_content1')->text();
 
@@ -179,6 +203,8 @@ class CryptoCompareController extends Controller
 
     private function makeResult(){
         $output = [];
+
+        //bitbo
         $output["Range24hr"] = str_replace('-', ' - ', $this->states[0]);
         $output["USDPerSatoshi"] = str_replace('$', '', $this->states[1]);
         $output["SatoshisPerUSD"] = str_replace('ⓢ', '', $this->states[2]);
@@ -282,7 +308,42 @@ class CryptoCompareController extends Controller
         $output["ActiveChannels"] = $this->states[88];
         $output["NumberOfTorNodes"] = $this->states[89];
         $output['currentPrice'] = $this->states[90];
-        
+
+        //casebitcoin
+        $output['CaseBitcoinPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[0]);
+        $output['PriceChange'] = $this->caseBitcoinStates[1];
+        $output['PriceChangePCT'] = $this->caseBitcoinStates[2];
+        $output['spPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[3]);
+        $output['spChange'] = $this->caseBitcoinStates[4];
+        $output['spChangePCT'] = $this->caseBitcoinStates[5];
+        $output['goldPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[6]);
+        $output['goldChange'] = $this->caseBitcoinStates[7];
+        $output['goldChangePCT'] = $this->caseBitcoinStates[8];
+        $output['silverPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[9]);
+        $output['silverChange'] = $this->caseBitcoinStates[10];
+        $output['silverChangePCT'] = $this->caseBitcoinStates[11];
+        $output['euroPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[12]);
+        $output['euroChange'] = $this->caseBitcoinStates[13];
+        $output['euroChangePCT'] = $this->caseBitcoinStates[14];
+        $output['yenPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[15]);
+        $output['yenChange'] = $this->caseBitcoinStates[16];
+        $output['yenChangePCT'] = $this->caseBitcoinStates[17];
+        $output['renminbiPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[18]);
+        $output['renminbiChange'] = $this->caseBitcoinStates[19];
+        $output['renminbiChangePCT'] = $this->caseBitcoinStates[20];
+        $output['oilPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[21]);
+        $output['oilChange'] = $this->caseBitcoinStates[22];
+        $output['oilChangePCT'] = $this->caseBitcoinStates[23];
+
+        $output['BtcInflationRate'] = str_replace('%', ' %', $this->caseBitcoinStates[25]);
+        $output['SupplyIssued'] = str_replace('%', ' %', $this->caseBitcoinStates[26]);
+        $output['BtcSettlementVolume'] = str_replace('B', '', $this->caseBitcoinStates[27]);
+        $output['RealExchangeVolume'] = str_replace('B', '', $this->caseBitcoinStates[28]);
+        $output['ActiveAddresses'] = str_replace('M', '', $this->caseBitcoinStates[29]);
+        $output['MiningRewardValue'] = str_replace('M', '', $this->caseBitcoinStates[30]);
+        $output['BtcDownATH'] = str_replace('%', ' %', $this->caseBitcoinStates[32]);
+        $output['BtcUpCycleLow'] = str_replace('%', ' %', $this->caseBitcoinStates[33]);
+
         return $output;
     }
 
