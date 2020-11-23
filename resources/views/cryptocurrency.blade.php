@@ -3,7 +3,7 @@
 @section('custom-css')
     <style>
         body{
-            color:#242424;
+            color:#000;
         }
         header {
             height          : 27vh;
@@ -33,21 +33,41 @@
 @section('main-content')
     <!-- Main -->
     <section class="container-fluid main-content">
-        <div class="row mb-3">
-            <div class="col">
+       
+        {{-- <div class="row">
+            <div class="col mb-3">
+                <div style="height:62px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; text-align: right; line-height:14px; block-size:62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; padding: 0px; margin: 0px; width: 100%;">
+                    <div style="height:40px; padding:0px; margin:0px; width: 100%;">
+                        <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=light&pref_coin_id=1505&invert_hover=" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        {{-- <div class="row mb-3">
+            <div class="col px-md-4">
                 <h4>Bitcoin (BTC) Live Price</h4>
                 <p>
                     <span class="font-weight-bold doller-sign">$</span>
                     <span class="display-4 price">{{$scraps["currentPrice"]}}</span>
                     <span class="font-weight-bold">USD</span>
                     <!-- <span class="change-percent font-weight-bold"> (<span class="value">0.00</span>%)</span> -->
-                {{-- <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4"> --}}
+                    <!-- <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4"> -->
                 </p>
             </div>
-        </div>
+        </div> --}}
         <div class="row mb-md-3">
             <div class="col-md-8 mb-3">
-                <div style="height:480px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px; width: 100%;">
+                <div class="px-md-4">
+                    <h4>Bitcoin (BTC) Live Price</h4>
+                    <p>
+                        <span class="font-weight-bold doller-sign">$</span>
+                        <span class="display-4 price">{{$scraps["currentPrice"]}}</span>
+                        <span class="font-weight-bold">USD</span>
+                        <!-- <span class="change-percent font-weight-bold"> (<span class="value">0.00</span>%)</span> -->
+                        <!-- <img src="{{asset('images/demo-chart2.png')}}" alt="chart" class="img-fluid mt-4"> -->
+                    </p>
+                </div>
+                <div style="height:420px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px; width: 100%;">
                     <div style="height:540px; padding:0px; margin:0px; width: 100%;">
                         <iframe src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" width="100%" height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;line-height:14px;"></iframe>
                     </div>
@@ -56,21 +76,21 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <h4 class="px-3">Bitcoin Stats</h4>
+                <h4 class="px-3">Bitcoin Market Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Range</span> <span class="float-right"><span class="low">{{$scraps["Range24hr"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">USD Per Satoshi</span> <span class="float-right">$ {{$scraps["USDPerSatoshi"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Satoshis Per USD</span> <span class="float-right">ⓢ {{$scraps["SatoshisPerUSD"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Volume (BTC)</span> <span class="float-right BtcVolume">{{$scraps["BTCVolume24hr"]}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">24hr Volume (USD)</span> <span class="float-right">{{$scraps["USDVolume24hr"]}} <span class="small font-weight-bold">B</span> </span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Market Cap</span> <span class="float-right"> <span class="marketCap">{{$scraps["MarketCap"]}}</span><span class="small font-weight-bold"> B</span> </span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Market Cap</span> <span class="float-right"> <span class="marketCap">{{$scraps["MarketCap"]}}</span> <span class="small font-weight-bold">B</span> </span></span></li>
                 </ul>
             </div>
         </div>
 
         <div class="row pt-3">
             <div class="col-md-4 mb-4">
-                <h4 class="px-3">Bitcoin Market Stats</h4>
+                <h4 class="px-3">Bitcoin Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">BTC Inflation Rate (next 1yr)</span> <span class="float-right">{{$scraps['BtcInflationRate']}}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">% Supply Issued</span> <span class="float-right">{{$scraps['SupplyIssued']}}</span></li>
@@ -90,26 +110,26 @@
                         <tr>
                             <th class="exception">Bitcoin</th>
                             <td class="exception">$ {{ $scraps["currentPrice"] }}</td>
-                            <td class="exception">{{ $scraps["PriceChange"] }}</td>
-                            <td class="exception">{{ $scraps["PriceChangePCT"] }}</td>
+                            <td class='exception {{$scraps["PriceChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["PriceChange"] }}</td>
+                            <td class='exception {{$scraps["PriceChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["PriceChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>S&P 500</th>
                             <td>{{ $scraps["spPrice"] }}</td>
-                            <td>{{ $scraps["spChange"] }}</td>
-                            <td>{{ $scraps["spChangePCT"] }}</td>
+                            <td class='{{$scraps["spChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["spChange"] }}</td>
+                            <td class='{{$scraps["spChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["spChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Gold</th>
                             <td>$ {{ $scraps["goldPrice"] }}</td>
-                            <td>{{ $scraps["goldChange"] }}</td>
-                            <td>{{ $scraps["goldChangePCT"] }}</td>
+                            <td class='{{$scraps["goldChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["goldChange"] }}</td>
+                            <td class='{{$scraps["goldChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["goldChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Silver</th>
                             <td>$ {{ $scraps["silverPrice"] }}</td>
-                            <td>{{ $scraps["silverChange"] }}</td>
-                            <td>{{ $scraps["silverChangePCT"] }}</td>
+                            <td class='{{$scraps["silverChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["silverChange"] }}</td>
+                            <td class='{{$scraps["silverChange"][0] == "-" ?"text-danger": "text-success" }}'> {{ $scraps["silverChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Euro</th>
@@ -134,6 +154,189 @@
                             <td>$ {{ $scraps["oilPrice"] }}</td>
                             <td>{{ $scraps["oilChange"] }}</td>
                             <td>{{ $scraps["oilChangePCT"] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Bitcoin Price & ROI On This Date</h4>
+                <table class="table">
+                    <thead >
+                        <tr>
+                          <th class="exception">Date</th>
+                          <th class="exception">Price</th>
+                          <th class="exception text-right">ROI to Today</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                        <tr>
+                            <td>{{ $scraps["roi_date_r1"] }}</td>
+                            <td>{{ $scraps["roi_price_r1"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r1"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r2"] }}</td>
+                            <td>{{ $scraps["roi_price_r2"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r2"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r3"] }}</td>
+                            <td>{{ $scraps["roi_price_r3"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r3"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r4"] }}</td>
+                            <td>{{ $scraps["roi_price_r4"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r4"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r5"] }}</td>
+                            <td>{{ $scraps["roi_price_r5"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r5"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r6"] }}</td>
+                            <td>{{ $scraps["roi_price_r6"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r6"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r7"] }}</td>
+                            <td>{{ $scraps["roi_price_r7"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r7"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r8"] }}</td>
+                            <td>{{ $scraps["roi_price_r8"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r8"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r9"] }}</td>
+                            <td>{{ $scraps["roi_price_r9"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r9"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["roi_date_r10"] }}</td>
+                            <td>{{ $scraps["roi_price_r10"] }}</td>
+                            <td class='text-success text-right'>{{ $scraps["roi_today_r10"] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Bitcoin Price Closing History</h4>
+                <table class="table text-right">
+                    <thead>
+                        <tr>
+                            <th class="exception">Price</th>
+                            <th class="exception">Days Above</th>
+                            <th class="exception">% of Bitcoin's Life</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                        <tr>
+                            <td>{{ $scraps["price_close_r1"] }}</td>
+                            <td>{{ $scraps["price_close_days_r1"] }}</td>
+                            <td>{{ $scraps["price_close_per_r1"] }}</td>
+                        </tr>
+                        <tr class="text-success">
+                            <td>{{ $scraps["price_close_r2"] }}</td>
+                            <td>{{ $scraps["price_close_days_r2"] }}</td>
+                            <td>{{ $scraps["price_close_per_r2"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["price_close_r3"] }}</td>
+                            <td>{{ $scraps["price_close_days_r3"] }}</td>
+                            <td>{{ $scraps["price_close_per_r3"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["price_close_r4"] }}</td>
+                            <td>{{ $scraps["price_close_days_r4"] }}</td>
+                            <td>{{ $scraps["price_close_per_r4"] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Bitcoin Marketcap Closing History</h4>
+                <table class="table text-right">
+                    <thead>
+                        <tr>
+                            <th class="exception">Mcap</th>
+                            <th class="exception">Days Above</th>
+                            <th class="exception">% of Bitcoin's Life</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                        <tr class="text-success">
+                            <td>{{ $scraps["mcap_close_r1"] }}</td>
+                            <td>{{ $scraps["mcap_close_days_r1"] }}</td>
+                            <td>{{ $scraps["mcap_close_per_r1"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["mcap_close_r2"] }}</td>
+                            <td>{{ $scraps["mcap_close_days_r2"] }}</td>
+                            <td>{{ $scraps["mcap_close_per_r2"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["mcap_close_r3"] }}</td>
+                            <td>{{ $scraps["mcap_close_days_r3"] }}</td>
+                            <td>{{ $scraps["mcap_close_per_r3"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["mcap_close_r4"] }}</td>
+                            <td>{{ $scraps["mcap_close_days_r4"] }}</td>
+                            <td>{{ $scraps["mcap_close_per_r4"] }}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h4 class="px-3">Bitcoin & Traditional Assets ROI</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="exception"></th>
+                            <th class="exception">Bitcoin</th>
+                            <th class="exception">Gold</th>
+                            <th class="exception">S&P 500</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                        <tr>
+                            <td>1 year:</td>
+                            <td class="text-success text-right">{{ $scraps["firstyr_bitcoin"] }}</td>
+                            <td class="text-success">{{ $scraps["firstyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["firstyr_sp"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>2 year:</td>
+                            <td class="text-success text-right">{{ $scraps["secondyr_bitcoin"] }}</td>
+                            <td class="text-success">{{ $scraps["secondyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["secondyr_sp"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>3 year:</td>
+                            <td class="text-success text-right">{{ $scraps["thirdyr_bitcoin"] }}</td>
+                            <td class="text-success">{{ $scraps["thirdyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["thirdyr_sp"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>4 year:</td>
+                            <td class="text-success text-right">{{ $scraps["fourthyr_bitcoin"] }}</td>
+                            <td class="text-success">{{ $scraps["fourthyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["fourthyr_sp"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>5 year:</td>
+                            <td class="text-success text-right">{{ $scraps["fifthyr_bitcoin"] }}</td>
+                            <td class="text-success">{{ $scraps["fifthyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["fifthyr_sp"] }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -319,8 +522,8 @@
                 type: "GET",
                 dataType: 'json',
                 success: function(response){
-                    var current_price = response.price;
-                    $('.price').html(current_price);
+                    // console.log(response);
+                    $('.price').html(response.price);
                     $('.BtcVolume').html(response.btc_volume);
                     $('.marketCap').html(response.market_cap);
                 },

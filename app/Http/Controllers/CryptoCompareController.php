@@ -10,6 +10,7 @@ class CryptoCompareController extends Controller
 {   
     private $states = [];
     private $caseBitcoinStates = [];
+    private $cbstates = [];
     //ajax call pospond
     public function getCurrency(){
         $manager = app('cryptocurrencies.manager');
@@ -345,6 +346,22 @@ class CryptoCompareController extends Controller
         $output['BtcUpCycleLow'] = str_replace('%', ' %', $this->caseBitcoinStates[33]);
         
         return $output;
+    }
+
+    public function GetData(){
+        $goutteClient = new Client();
+
+        $cb_data = $goutteClient->request('GET', 'https://casebitcoin.com/charts');
+
+        $cb_data->filter('.cbst_datum')->each(function ($item) {
+            array_push( $this->cbstates, $item->text() );
+            echo $item->text() . "<br>";
+        });
+
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        return $this->cbstates[86];
     }
 
 

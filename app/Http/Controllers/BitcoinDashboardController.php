@@ -9,6 +9,7 @@ class BitcoinDashboardController extends Controller
 {
     private $states = [];
     private $caseBitcoinStates = [];
+    private $cbstates = [];
     
     public function index(){
         
@@ -22,12 +23,18 @@ class BitcoinDashboardController extends Controller
 
         $bitbo = $goutteClient->request('GET', 'https://bitbo.io/');
         $casebitcoin = $goutteClient->request('GET', 'https://casebitcoin.com/');
+        $cb_data = $goutteClient->request('GET', 'https://casebitcoin.com/charts');
 
         $bitbo->filter('.stat .value')->each(function ($item) {
             array_push($this->states, $item->text());
         });
         $CurrentPrice  = $bitbo->filter('.amount')->text();
+        $sign = $bitbo->filter('.plus-minus')->text();
+        $change_amount = $bitbo->filter('.change-amount')->text();
+        $change_percent = $bitbo->filter('.change-percent')->text();
         array_push($this->states, $CurrentPrice);
+        array_push($this->states, $sign);
+
 
         //scrape data from casebitcoin
         $page  = $casebitcoin->filter('.qb_itemset');
@@ -42,6 +49,11 @@ class BitcoinDashboardController extends Controller
             }
             
         }
+
+        //scrape data from casebitcoin charts
+        $cb_data->filter('.cbst_datum')->each(function ($item) {
+            array_push( $this->cbstates, $item->text() );
+        });
 
         $result = $this->makeResult();
         
@@ -153,6 +165,7 @@ class BitcoinDashboardController extends Controller
         $output["ActiveChannels"] = $this->states[88];
         $output["NumberOfTorNodes"] = $this->states[89];
         $output['currentPrice'] = $this->states[90];
+        $output['sign'] = $this->states[91];
 
         //casebitcoin
         $output['CaseBitcoinPrice']  = str_replace( array( '📈', '📉' ), '', $this->caseBitcoinStates[0]);
@@ -180,6 +193,7 @@ class BitcoinDashboardController extends Controller
         $output['oilChange'] = str_replace('$', ' $', $this->caseBitcoinStates[22]);
         $output['oilChangePCT'] = $this->caseBitcoinStates[23];
 
+        //coinbaseBitcoin
         $output['BtcInflationRate'] = str_replace('%', ' %', $this->caseBitcoinStates[25]);
         $output['SupplyIssued'] = str_replace('%', ' %', $this->caseBitcoinStates[26]);
         $output['BtcSettlementVolume'] = str_replace('B', '', $this->caseBitcoinStates[27]);
@@ -189,6 +203,76 @@ class BitcoinDashboardController extends Controller
         $output['BtcDownATH'] = str_replace('%', ' %', $this->caseBitcoinStates[32]);
         $output['BtcUpCycleLow'] = str_replace('%', ' %', $this->caseBitcoinStates[33]);
         
+        $output["firstyr_bitcoin"] = $this->cbstates[5];
+        $output["firstyr_gold"] = $this->cbstates[6];
+        $output["firstyr_sp"] = $this->cbstates[7];
+        $output["secondyr_bitcoin"] = $this->cbstates[9];
+        $output["secondyr_gold"] = $this->cbstates[10];
+        $output["secondyr_sp"] = $this->cbstates[11];
+        $output["thirdyr_bitcoin"] = $this->cbstates[13];
+        $output["thirdyr_gold"] = $this->cbstates[14];
+        $output["thirdyr_sp"] = $this->cbstates[15];
+        $output["fourthyr_bitcoin"] = $this->cbstates[17];
+        $output["fourthyr_gold"] = $this->cbstates[18];
+        $output["fourthyr_sp"] = $this->cbstates[19];
+        $output["fifthyr_bitcoin"] = $this->cbstates[21];
+        $output["fifthyr_gold"] = $this->cbstates[22];
+        $output["fifthyr_sp"] = $this->cbstates[23];
+        $output["mcap_close_r1"] = $this->cbstates[27];
+        $output["mcap_close_days_r1"] = $this->cbstates[28];
+        $output["mcap_close_per_r1"] = $this->cbstates[29];
+        $output["mcap_close_r2"] = $this->cbstates[30];
+        $output["mcap_close_days_r2"] = $this->cbstates[31];
+        $output["mcap_close_per_r2"] = $this->cbstates[32];
+        $output["mcap_close_r3"] = $this->cbstates[33];
+        $output["mcap_close_days_r3"] = $this->cbstates[34];
+        $output["mcap_close_per_r3"] = $this->cbstates[35];
+        $output["mcap_close_r4"] = $this->cbstates[36];
+        $output["mcap_close_days_r4"] = $this->cbstates[37];
+        $output["mcap_close_per_r4"] = $this->cbstates[38];
+        $output["price_close_r1"] = $this->cbstates[42];
+        $output["price_close_days_r1"] = $this->cbstates[43];
+        $output["price_close_per_r1"] = $this->cbstates[44];
+        $output["price_close_r2"] = $this->cbstates[45];
+        $output["price_close_days_r2"] = $this->cbstates[46];
+        $output["price_close_per_r2"] = $this->cbstates[47];
+        $output["price_close_r3"] = $this->cbstates[48];
+        $output["price_close_days_r3"] = $this->cbstates[49];
+        $output["price_close_per_r3"] = $this->cbstates[50];
+        $output["price_close_r4"] = $this->cbstates[51];
+        $output["price_close_days_r4"] = $this->cbstates[52];
+        $output["price_close_per_r4"] = $this->cbstates[53];
+        $output["roi_date_r1"] = $this->cbstates[57];
+        $output["roi_price_r1"] = $this->cbstates[58];
+        $output["roi_today_r1"] = $this->cbstates[59];
+        $output["roi_date_r2"] = $this->cbstates[60];
+        $output["roi_price_r2"] = $this->cbstates[61];
+        $output["roi_today_r2"] = $this->cbstates[62];
+        $output["roi_date_r3"] = $this->cbstates[63];
+        $output["roi_price_r3"] = $this->cbstates[64];
+        $output["roi_today_r3"] = $this->cbstates[65];
+        $output["roi_date_r4"] = $this->cbstates[66];
+        $output["roi_price_r4"] = $this->cbstates[67];
+        $output["roi_today_r4"] = $this->cbstates[68];
+        $output["roi_date_r5"] = $this->cbstates[69];
+        $output["roi_price_r5"] = $this->cbstates[70];
+        $output["roi_today_r5"] = $this->cbstates[71];
+        $output["roi_date_r6"] = $this->cbstates[72];
+        $output["roi_price_r6"] = $this->cbstates[73];
+        $output["roi_today_r6"] = $this->cbstates[74];
+        $output["roi_date_r7"] = $this->cbstates[75];
+        $output["roi_price_r7"] = $this->cbstates[76];
+        $output["roi_today_r7"] = $this->cbstates[77];
+        $output["roi_date_r8"] = $this->cbstates[78];
+        $output["roi_price_r8"] = $this->cbstates[79];
+        $output["roi_today_r8"] = $this->cbstates[80];
+        $output["roi_date_r9"] = $this->cbstates[81];
+        $output["roi_price_r9"] = $this->cbstates[82];
+        $output["roi_today_r9"] = $this->cbstates[83];
+        $output["roi_date_r10"] = $this->cbstates[84];
+        $output["roi_price_r10"] = $this->cbstates[85];
+        $output["roi_today_r10"] = $this->cbstates[86];
+
 
         return $output;
     }
