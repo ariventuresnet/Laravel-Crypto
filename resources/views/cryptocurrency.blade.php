@@ -134,31 +134,30 @@
                         <tr>
                             <th>Euro</th>
                             <td>$ {{ $scraps["euroPrice"] }}</td>
-                            <td>{{ $scraps["euroChange"] }}</td>
-                            <td>{{ $scraps["euroChangePCT"] }}</td>
+                            <td class='{{$scraps["euroChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["euroChange"] }}</td>
+                            <td class='{{$scraps["euroChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["euroChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Yen</th>
                             <td>¥ {{ $scraps["yenPrice"] }}</td>
-                            <td>{{ $scraps["yenChange"] }}</td>
-                            <td>{{ $scraps["yenChangePCT"] }}</td>
+                            <td class='{{$scraps["yenChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["yenChange"] }}</td>
+                            <td class='{{$scraps["yenChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["yenChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Renminbi (CNY)</th>
                             <td>¥ {{ $scraps["renminbiPrice"] }}</td>
-                            <td>{{ $scraps["renminbiChange"] }}</td>
-                            <td>{{ $scraps["renminbiChangePCT"] }}</td>
+                            <td class='{{$scraps["renminbiChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["renminbiChange"] }}</td>
+                            <td class='{{$scraps["renminbiChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["renminbiChangePCT"] }}</td>
                         </tr>
                         <tr>
                             <th>Oil (WTI)</th>
                             <td>$ {{ $scraps["oilPrice"] }}</td>
-                            <td>{{ $scraps["oilChange"] }}</td>
-                            <td>{{ $scraps["oilChangePCT"] }}</td>
+                            <td class='{{$scraps["oilChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["oilChange"] }}</td>
+                            <td class='{{$scraps["oilChange"][0] == "-" ?"text-danger": "text-success" }}'>{{ $scraps["oilChangePCT"] }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
 
             <div class="col-md-4 mb-4">
                 <h4 class="px-3">Bitcoin Price & ROI On This Date</h4>
@@ -174,52 +173,52 @@
                         <tr>
                             <td>{{ $scraps["roi_date_r1"] }}</td>
                             <td>{{ $scraps["roi_price_r1"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r1"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r1"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r1"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r2"] }}</td>
                             <td>{{ $scraps["roi_price_r2"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r2"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r2"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r2"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r3"] }}</td>
                             <td>{{ $scraps["roi_price_r3"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r3"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r3"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r3"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r4"] }}</td>
                             <td>{{ $scraps["roi_price_r4"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r4"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r4"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r4"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r5"] }}</td>
                             <td>{{ $scraps["roi_price_r5"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r5"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r5"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r5"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r6"] }}</td>
                             <td>{{ $scraps["roi_price_r6"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r6"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r6"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r6"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r7"] }}</td>
                             <td>{{ $scraps["roi_price_r7"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r7"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r7"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r7"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r8"] }}</td>
                             <td>{{ $scraps["roi_price_r8"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r8"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r8"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r8"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r9"] }}</td>
                             <td>{{ $scraps["roi_price_r9"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r9"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r9"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r9"] }}</td>
                         </tr>
                         <tr>
                             <td>{{ $scraps["roi_date_r10"] }}</td>
                             <td>{{ $scraps["roi_price_r10"] }}</td>
-                            <td class='text-success text-right'>{{ $scraps["roi_today_r10"] }}</td>
+                            <td class='text-right {{$scraps["roi_today_r10"][0] == "+" ?"text-success": "text-danger" }}'>{{ $scraps["roi_today_r10"] }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -241,7 +240,7 @@
                             <td>{{ $scraps["price_close_days_r1"] }}</td>
                             <td>{{ $scraps["price_close_per_r1"] }}</td>
                         </tr>
-                        <tr class="text-success">
+                        <tr>
                             <td>{{ $scraps["price_close_r2"] }}</td>
                             <td>{{ $scraps["price_close_days_r2"] }}</td>
                             <td>{{ $scraps["price_close_per_r2"] }}</td>
@@ -271,7 +270,7 @@
                         </tr>
                     </thead>
                     <tbody class="font-weight-bold">
-                        <tr class="text-success">
+                        <tr>
                             <td>{{ $scraps["mcap_close_r1"] }}</td>
                             <td>{{ $scraps["mcap_close_days_r1"] }}</td>
                             <td>{{ $scraps["mcap_close_per_r1"] }}</td>
@@ -302,40 +301,40 @@
                     <thead>
                         <tr>
                             <th class="exception"></th>
-                            <th class="exception">Bitcoin</th>
-                            <th class="exception">Gold</th>
-                            <th class="exception">S&P 500</th>
+                            <th class="exception text-right">Bitcoin</th>
+                            <th class="exception text-right">Gold</th>
+                            <th class="exception text-right">S&P 500</th>
                         </tr>
                     </thead>
                     <tbody class="font-weight-bold">
                         <tr>
                             <td>1 year:</td>
                             <td class="text-success text-right">{{ $scraps["firstyr_bitcoin"] }}</td>
-                            <td class="text-success">{{ $scraps["firstyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["firstyr_gold"] }}</td>
                             <td class="text-success text-right">{{ $scraps["firstyr_sp"] }}</td>
                         </tr>
                         <tr>
                             <td>2 year:</td>
                             <td class="text-success text-right">{{ $scraps["secondyr_bitcoin"] }}</td>
-                            <td class="text-success">{{ $scraps["secondyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["secondyr_gold"] }}</td>
                             <td class="text-success text-right">{{ $scraps["secondyr_sp"] }}</td>
                         </tr>
                         <tr>
                             <td>3 year:</td>
                             <td class="text-success text-right">{{ $scraps["thirdyr_bitcoin"] }}</td>
-                            <td class="text-success">{{ $scraps["thirdyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["thirdyr_gold"] }}</td>
                             <td class="text-success text-right">{{ $scraps["thirdyr_sp"] }}</td>
                         </tr>
                         <tr>
                             <td>4 year:</td>
                             <td class="text-success text-right">{{ $scraps["fourthyr_bitcoin"] }}</td>
-                            <td class="text-success">{{ $scraps["fourthyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["fourthyr_gold"] }}</td>
                             <td class="text-success text-right">{{ $scraps["fourthyr_sp"] }}</td>
                         </tr>
                         <tr>
                             <td>5 year:</td>
                             <td class="text-success text-right">{{ $scraps["fifthyr_bitcoin"] }}</td>
-                            <td class="text-success">{{ $scraps["fifthyr_gold"] }}</td>
+                            <td class="text-success text-right">{{ $scraps["fifthyr_gold"] }}</td>
                             <td class="text-success text-right">{{ $scraps["fifthyr_sp"] }}</td>
                         </tr>
                     </tbody>
@@ -482,6 +481,17 @@
             </div>
 
             <div class="col-md-4 mb-4">
+                <h4 class="px-3">Top Bitcoin Node Versions</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.1</span> <span class="float-right"> {{$scraps['Satoshi_1'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.0</span> <span class="float-right">{{$scraps['Satoshi_2'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.19.1</span> <span class="float-right">{{$scraps['Satoshi_4'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.1</span> <span class="float-right">{{$scraps['Satoshi_3'] }}</span></li>
+                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.0</span> <span class="float-right">{{$scraps['Satoshi_5'] }}</span></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 mb-4">
                 <h4 class="px-3">Lightning Network Stats</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">Network Capacity</span> <span class="float-right"> {{$scraps['NetworkCapacity'] }} <span class="small font-weight-bold">BTC</span> </span></li>
@@ -494,17 +504,6 @@
                     <li class="list-group-item font-weight-bold"><span class="float-left">Average Node Capacity</span> <span class="float-right">{{$scraps['AverageNodeCapacity'] }}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Number of Active Channels</span> <span class="float-right">{{$scraps['ActiveChannels'] }}</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Number of Tor Nodes</span> <span class="float-right">{{$scraps['NumberOfTorNodes'] }}</span></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <h4 class="px-3">Top Bitcoin Node Versions</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.1</span> <span class="float-right"> {{$scraps['Satoshi_1'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.20.0</span> <span class="float-right">{{$scraps['Satoshi_2'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.19.1</span> <span class="float-right">{{$scraps['Satoshi_4'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.1</span> <span class="float-right">{{$scraps['Satoshi_3'] }}</span></li>
-                    <li class="list-group-item font-weight-bold"><span class="float-left">Satoshi  0.18.0</span> <span class="float-right">{{$scraps['Satoshi_5'] }}</span></li>
                 </ul>
             </div>
         </div>
