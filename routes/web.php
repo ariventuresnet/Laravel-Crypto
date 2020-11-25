@@ -115,3 +115,4 @@ Route::get('/fetch_data', 'CryptoCompareController@fetch_data');
 
 //ajax call
 Route::get('getbtcPrice', 'BitcoinDashboardController@currentStatus');
+Route::get('web/scrape', 'BitcoinDashboardController@storeState')->name('web.scrape');

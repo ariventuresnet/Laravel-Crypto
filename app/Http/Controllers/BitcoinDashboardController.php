@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\WebScrape;
 use Illuminate\Http\Request;
 use Goutte\Client;
+use Exception;
 
 class BitcoinDashboardController extends Controller
 {
@@ -30,8 +32,6 @@ class BitcoinDashboardController extends Controller
         });
         $CurrentPrice  = $bitbo->filter('.amount')->text();
         $sign = $bitbo->filter('.plus-minus')->text();
-        $change_amount = $bitbo->filter('.change-amount')->text();
-        $change_percent = $bitbo->filter('.change-percent')->text();
         array_push($this->states, $CurrentPrice);
         array_push($this->states, $sign);
 
@@ -55,9 +55,20 @@ class BitcoinDashboardController extends Controller
             array_push( $this->cbstates, $item->text() );
         });
 
-        $result = $this->makeResult();
+        // $result = $this->makeResult();
+        try {
+
+            $result = $this->makeResult();
+            return $result;
+          
+        } catch (Exception $e) {
+            //fetch store data
+            $webState = WebScrape::select('state')->where('id', '1')->first();
+            $result = json_decode($webState->state, true);
+            return $result;
+        }
         
-        return $result;
+        // return $result;
     }
 
     private function makeResult(){
@@ -287,5 +298,24 @@ class BitcoinDashboardController extends Controller
         // return $CurrentPrice;
         // var_dump($CurrentPrice);
         return response()->json(["price"=>$CurrentPrice, "btc_volume"=>$btc_volume, "market_cap"=>$marketCap]);
+    }
+
+    public function storeState(){
+        $scraps = $this->web_scrap();
+
+        $data["state"] = json_encode($scraps);
+
+        // store data
+        // $res = WebScrape::create($data);
+        //update data
+        $web = WebScrape::find(1);
+        $res = $web->update($data);
+        if($res){
+            return "Data successfully stored";
+        }
+        else{
+            return "Data not stored";
+        }
+        
     }
 }
