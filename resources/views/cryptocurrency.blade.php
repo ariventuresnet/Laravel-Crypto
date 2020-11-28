@@ -255,6 +255,12 @@
                             <td>{{ $scraps["price_close_days_r4"] }}</td>
                             <td>{{ $scraps["price_close_per_r4"] }}</td>
                         </tr>
+                        <tr>
+                            <td>{{ $scraps["price_close_r5"] }}</td>
+                            <td>{{ $scraps["price_close_days_r5"] }}</td>
+                            <td>{{ $scraps["price_close_per_r5"] }}</td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -289,6 +295,11 @@
                             <td>{{ $scraps["mcap_close_r4"] }}</td>
                             <td>{{ $scraps["mcap_close_days_r4"] }}</td>
                             <td>{{ $scraps["mcap_close_per_r4"] }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $scraps["mcap_close_r5"] }}</td>
+                            <td>{{ $scraps["mcap_close_days_r5"] }}</td>
+                            <td>{{ $scraps["mcap_close_per_r5"] }}</td>
                         </tr>
                         
                     </tbody>

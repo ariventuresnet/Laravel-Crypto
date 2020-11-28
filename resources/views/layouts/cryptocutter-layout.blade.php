@@ -14,7 +14,9 @@
     <script src="https://kit.fontawesome.com/9d28b7cdc0.js" crossorigin="anonymous"></script>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
