@@ -361,7 +361,7 @@ class CryptoCompareController extends Controller
         echo "<br>";
         echo "<br>";
         echo "<br>";
-        return $this->cbstates[95];
+        return $this->cbstates[65];
     }
 
 
