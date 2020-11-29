@@ -16,6 +16,7 @@ use App\Payment;
 use App\Post;
 use App\Wallet;
 use App\WalletType;
+use App\WebScrape;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,8 @@ class CryptoController extends Controller
         $no_of_exchanges = Exchange::count();
         $no_of_posts = Post::count();
         $last_post = Post::latest()->first();
-        return view('dashboard', compact('no_of_exchanges', 'no_of_posts','last_post'));
+        $web_scrape = WebScrape::find(1);
+        return view('dashboard', compact('no_of_exchanges', 'no_of_posts', 'last_post', 'web_scrape'));
     }
 
     //exchanges

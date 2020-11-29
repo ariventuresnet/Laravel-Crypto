@@ -34,7 +34,6 @@ Route::get('/wallet/{slug}', 'CryptoController@PostOfWallet')->name('wallet.post
 
 
 //Backend
-// Route::view('/home', 'dashboard')->name('dashboard')->middleware('auth');
 Route::get('/home', 'CryptoController@dashboard')->name('dashboard')->middleware('auth');
 Route::resource('admin/exchanges', 'ExchangeController');
 Route::resource('admin/cards', 'CardController');
@@ -115,4 +114,4 @@ Route::get('/fetch_data', 'CryptoCompareController@fetch_data');
 
 //ajax call
 Route::get('getbtcPrice', 'BitcoinDashboardController@currentStatus');
-Route::get('web/scrape', 'BitcoinDashboardController@storeState')->name('web.scrape');
+Route::get('web/scrape', 'BitcoinDashboardController@storeState')->name('web.scrape')->middleware('auth');

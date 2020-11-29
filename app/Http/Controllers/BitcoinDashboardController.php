@@ -339,7 +339,7 @@ class BitcoinDashboardController extends Controller
         $web = WebScrape::find(1);
         $res = $web->update($data);
         if($res){
-            return "Data successfully stored";
+            return redirect()->back();
         }
         else{
             return "Data not stored";

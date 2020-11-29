@@ -70,16 +70,17 @@
                             <div class="card card-common">  <!--'card-common' is not a Bootstrap class-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-users fa-3x text-primary"></i>
+                                        <i class="fas fa-download fa-3x text-primary"></i>
                                         <div class="text-right text-secondary">
-                                            <h5>Visitors</h5>
-                                            <h3>45,000</h3>
+                                            <h5>Last Scrape</h5>
+                                            <p></p>
+                                            <h5>{{$web_scrape->updated_at->format('d-M g:i A')}}</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-secondary">
                                     <i class="fas fa-sync mr-3"></i>
-                                    <span>Updated Now</span>
+                                    <span><a href="{{route('web.scrape')}}" class="p-0 m-0 text-muted btn-scrape">Updated Now</a></span>
                                 </div>
                             </div>
                         </div>
