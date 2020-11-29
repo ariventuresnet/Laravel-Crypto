@@ -246,9 +246,7 @@ class BitcoinDashboardController extends Controller
         $output["mcap_close_r4"] = $this->cbstates[$x++];
         $output["mcap_close_days_r4"] = $this->cbstates[$x++];
         $output["mcap_close_per_r4"] = $this->cbstates[$x++];
-        $output["mcap_close_r5"] = $this->cbstates[$x++];
-        $output["mcap_close_days_r5"] = $this->cbstates[$x++];
-        $output["mcap_close_per_r5"] = $this->cbstates[$x++];
+
         // $x = 45;
         // $output["price_close_r1"] = $this->cbstates[$x++];
         // $output["price_close_days_r1"] = $this->cbstates[$x++];
@@ -298,10 +296,10 @@ class BitcoinDashboardController extends Controller
         $output["roi_price_r1"] = $this->cbstates[$x--];
         $output["roi_date_r1"] = $this->cbstates[$x--];
 
-        $x = 65;
-        $output["price_close_per_r5"] = $this->cbstates[$x--];
-        $output["price_close_days_r5"] = $this->cbstates[$x--];
-        $output["price_close_r5"] = $this->cbstates[$x--];
+        $x--;
+        $x--;
+        $x--;
+
         $output["price_close_per_r4"] = $this->cbstates[$x--];
         $output["price_close_days_r4"] = $this->cbstates[$x--];
         $output["price_close_r4"] = $this->cbstates[$x--];
