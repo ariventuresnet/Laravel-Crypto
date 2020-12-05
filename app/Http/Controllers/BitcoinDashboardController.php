@@ -12,6 +12,8 @@ class BitcoinDashboardController extends Controller
     private $states = [];
     private $caseBitcoinStates = [];
     private $cbstates = [];
+    private $multi_asset_roi = [];
+    private $multi_asset_roi_size = 0;
     
     public function index(){
         
@@ -55,6 +57,11 @@ class BitcoinDashboardController extends Controller
             array_push( $this->cbstates, $item->text() );
         });
 
+        //count size for bitcoin asset roi
+        $cb_data->filter('#tbl_multi_asset_roi .cbst_datum')->each(function ($item) {
+            array_push( $this->multi_asset_roi, $item->text() );
+        });
+        $this->multi_asset_roi_size = count($this->multi_asset_roi);
         try {
 
             $result = $this->makeResult();
@@ -233,7 +240,7 @@ class BitcoinDashboardController extends Controller
         $output["fifthyr_gold"] = $this->cbstates[$x++];
         $output["fifthyr_sp"] = $this->cbstates[$x++];
 
-        $x = 27;
+        $x = $this->multi_asset_roi_size + 3;
         $output["mcap_close_r1"] = $this->cbstates[$x++];
         $output["mcap_close_days_r1"] = $this->cbstates[$x++];
         $output["mcap_close_per_r1"] = $this->cbstates[$x++];

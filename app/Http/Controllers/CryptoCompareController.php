@@ -357,11 +357,16 @@ class CryptoCompareController extends Controller
             array_push( $this->cbstates, $item->text() );
             echo $item->text() . "<br>";
         });
+        // $cb_data->filter('#tbl_multi_asset_roi .cbst_datum')->each(function ($item) {
+        //     array_push( $this->cbstates, $item->text() );
+        //     echo $item->text() . "<br>";
+        // });
 
         echo "<br>";
         echo "<br>";
         echo "<br>";
-        return $this->cbstates[60];
+        return $this->cbstates[43];
+        // return count($this->cbstates);
     }
 
 
