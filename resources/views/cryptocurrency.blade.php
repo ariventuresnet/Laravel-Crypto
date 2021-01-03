@@ -429,13 +429,13 @@
                 </ul>
             </div>
 
-            <div class="col-md-4 mb-4">
+            {{-- <div class="col-md-4 mb-4">
                 <h4 class="px-3">Economics</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item font-weight-bold"><span class="float-left">Forward Annual Inflation</span> <span class="float-right"> {{$scraps['RealizedAnnualInflation'] - .95 }} %</span></li>
                     <li class="list-group-item font-weight-bold"><span class="float-left">Realized Annual Inflation</span> <span class="float-right">{{$scraps['RealizedAnnualInflation'] }} %</span></li>
                 </ul>
-            </div>
+            </div> --}}
 
             <div class="col-md-4 mb-4">
                 <h4 class="px-3">Bitcoin Treasuries</h4>
