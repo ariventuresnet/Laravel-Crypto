@@ -36,6 +36,7 @@ class CryptoController extends Controller
     {
         //get user Location
         $location = $this->clientLocation();
+        // $location = 'bangladesh';
 
         //get default exchanges
         $exchanges = Exchange::where('countries', 'like', '%'.$location.'%')->get();

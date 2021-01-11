@@ -32,6 +32,7 @@
         <!-- navbar -->
         <nav class="navbar navbar-expand-md nav-menu fixed-top pl-md-5 pr-md-4">
             <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo2.png')}}" class="img-fluid not" alt="brand logo" width="200"></a>
+            {{-- <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/planbitcoin_logo.png')}}" class="img-fluid not" alt="brand logo" width="200"></a> --}}
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>

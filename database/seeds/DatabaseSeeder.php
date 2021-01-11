@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(DummyCategorySeeder::class);
+        $this->call(DummyPostSeeder::class);
+        $this->call(AutocompleteCardSeeder::class);
     }
 }
