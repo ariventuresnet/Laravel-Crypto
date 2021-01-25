@@ -31,8 +31,8 @@
     <header>
         <!-- navbar -->
         <nav class="navbar navbar-expand-md nav-menu fixed-top pl-md-5 pr-md-4">
-            <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo2.png')}}" class="img-fluid not" alt="brand logo" width="200"></a>
-            {{-- <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/planbitcoin_logo.png')}}" class="img-fluid not" alt="brand logo" width="200"></a> --}}
+            {{-- <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/cryptocutter_logo2.png')}}" class="img-fluid not" alt="brand logo" width="200"></a> --}}
+            <a href="{{ URL::to('/') }}" class="navbar-brand"><img src="{{asset('images/planbitcoin_logo.png')}}" class="img-fluid not" alt="brand logo" width="200"></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center text-primary font-weight-bold mt-2 donate">Cryptocutter is reader-supported through donations & commissions. <a href="{{route('donate')}}">Donate now</a></p>
+            <p class="text-center text-primary font-weight-bold mt-2 donate">PlanBitcoin is reader-supported through donations & commissions. <a href="{{route('donate')}}">Donate now</a></p>
         </div>
         <!-- end of wrapper -->
 
@@ -105,7 +105,7 @@
             <hr>
             <div class="row align-items-center justify-content-md-between py-4">
                 <div class="col text-md-center">
-                   <span class="footer-font-size">&copy; 2020 Cryptocutter is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.</span> 
+                   <span class="footer-font-size">&copy; 2020 PlanBitcoin is handcrafted by <a href="https://ariventures.net" target="_blank">Ari Ventures</a>.</span> 
                 </div>
             </div>
         </div>
